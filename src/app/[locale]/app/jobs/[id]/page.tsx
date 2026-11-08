@@ -24,7 +24,7 @@ export default async function JobPage({ params }: { params: Promise<{ locale: st
   return (
     <div className="grid gap-6 lg:grid-cols-[1.6fr_1fr]">
       <article>
-        <Link href={`/${locale}/app/jobs`} className="mb-4 inline-flex text-sm font-bold text-mist hover:text-navy">← {J.title}</Link>
+        <Link href={`/${locale}/app/jobs`} className="mb-4 inline-flex text-sm font-bold text-mist hover:text-navy"><span className="flip-rtl me-1 inline-block">←</span>{J.title}</Link>
         <div className="card p-6 sm:p-8">
           <div className="mb-3 flex flex-wrap gap-1.5">
             {j.is_managerial && <span className="badge badge-navy">{J.managerial}</span>}

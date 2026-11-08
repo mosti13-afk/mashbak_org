@@ -23,7 +23,7 @@ export default async function MemberPage({ params }: { params: Promise<{ locale:
 
   return (
     <div className="mx-auto max-w-3xl">
-      <Link href={`/${locale}/app/members`} className="mb-4 inline-flex text-sm font-bold text-mist hover:text-navy">← {t.app.members.title}</Link>
+      <Link href={`/${locale}/app/members`} className="mb-4 inline-flex text-sm font-bold text-mist hover:text-navy"><span className="flip-rtl me-1 inline-block">←</span>{t.app.members.title}</Link>
       <div className="card overflow-hidden">
         <div className="mesh h-28" />
         <div className="px-6 pb-6 sm:px-8">

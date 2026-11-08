@@ -30,7 +30,7 @@ export default async function AdminEvent({ params, searchParams }: { params: Pro
   );
   return (
     <>
-      <Link href={`/${locale}/admin/events`} className="mb-4 inline-flex text-sm font-bold text-mist hover:text-navy">← {t.admin.nav.events}</Link>
+      <Link href={`/${locale}/admin/events`} className="mb-4 inline-flex text-sm font-bold text-mist hover:text-navy"><span className="flip-rtl me-1 inline-block">←</span>{t.admin.nav.events}</Link>
       <PageHeader title={tr(e.title, locale)} sub={`${fmtDate(e.starts_at, locale, { weekday: "long", day: "numeric", month: "long", hour: "2-digit", minute: "2-digit" })} · ${e.registered_count}${e.capacity ? ` / ${e.capacity}` : ""} · ${checked} ${t.admin.checkedIn}`}
         actions={<Link href={`/${locale}/app/events/${id}`} className="btn btn-outline btn-sm">{t.common.learnMore}</Link>} />
       <Tabs items={[

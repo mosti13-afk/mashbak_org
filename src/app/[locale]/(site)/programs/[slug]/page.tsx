@@ -23,7 +23,7 @@ export default async function ProgramPage({ params }: P) {
       <section className="relative overflow-hidden text-white" style={{ background: `linear-gradient(135deg, #06314d 0%, ${p.color} 140%)` }}>
         <div className="grid-lines absolute inset-0" aria-hidden />
         <div className="container-x relative py-16 sm:py-24">
-          <Link href={`/${locale}/programs`} className="mb-6 inline-flex text-sm font-bold text-white/70 hover:text-white">← {t.programs.title}</Link>
+          <Link href={`/${locale}/programs`} className="mb-6 inline-flex text-sm font-bold text-white/70 hover:text-white"><span className="flip-rtl me-1 inline-block">←</span>{t.programs.title}</Link>
           <span className="mb-5 flex h-14 w-14 items-center justify-center rounded-2xl bg-white/15"><ProgramIcon name={p.icon} className="h-7 w-7" /></span>
           <h1 className="h-display max-w-3xl text-4xl text-white sm:text-6xl">{tr(p.title, locale)}</h1>
           <p className="mt-5 max-w-2xl text-xl text-white/80">{tr(p.summary, locale)}</p>

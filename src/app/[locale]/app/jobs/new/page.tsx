@@ -11,7 +11,7 @@ export default async function NewJob({ params, searchParams }: { params: Promise
   const J = t.app.jobs;
   return (
     <div className="mx-auto max-w-2xl">
-      <Link href={`/${locale}/app/jobs`} className="mb-4 inline-flex text-sm font-bold text-mist hover:text-navy">← {J.title}</Link>
+      <Link href={`/${locale}/app/jobs`} className="mb-4 inline-flex text-sm font-bold text-mist hover:text-navy"><span className="flip-rtl me-1 inline-block">←</span>{J.title}</Link>
       <PageHeader title={J.newTitle} sub={J.newSub} />
       {sp((await searchParams).error) ? <Notice tone="red">{J.fDescription}: 10+</Notice> : null}
       <form action={createJob} className="card grid gap-4 p-6 sm:grid-cols-2 sm:p-8">

@@ -9,7 +9,7 @@ export default async function NewEvent({ params }: LocaleParams) {
   await requireAdmin(locale);
   return (
     <div className="mx-auto max-w-4xl">
-      <Link href={`/${locale}/admin/events`} className="mb-4 inline-flex text-sm font-bold text-mist hover:text-navy">← {t.admin.nav.events}</Link>
+      <Link href={`/${locale}/admin/events`} className="mb-4 inline-flex text-sm font-bold text-mist hover:text-navy"><span className="flip-rtl me-1 inline-block">←</span>{t.admin.nav.events}</Link>
       <PageHeader title={t.admin.newEvent} />
       <EventForm locale={locale} t={t} />
     </div>

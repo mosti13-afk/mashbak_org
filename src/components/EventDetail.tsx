@@ -22,7 +22,7 @@ export async function EventDetail({ e, locale, t, viewer, backHref }: { e: Event
   return (
     <div className="grid gap-8 lg:grid-cols-[1.6fr_1fr]">
       <article>
-        <Link href={backHref} className="mb-4 inline-flex text-sm font-bold text-mist hover:text-navy">← {t.common.back}</Link>
+        <Link href={backHref} className="mb-4 inline-flex text-sm font-bold text-mist hover:text-navy"><span className="flip-rtl me-1 inline-block">←</span>{t.common.back}</Link>
         {e.cover_url && (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={e.cover_url} alt="" className="mb-6 aspect-[2/1] w-full rounded-[var(--radius-card)] object-cover" />
