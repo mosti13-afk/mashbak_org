@@ -1,0 +1,129 @@
+@import "tailwindcss";
+
+/* ---------- Fonts ---------- */
+@font-face { font-family: "Ooredoo"; src: url("/fonts/OoredooArabic-Regular.ttf") format("truetype"); font-weight: 300 600; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Ooredoo"; src: url("/fonts/OoredooArabic-Heavy.ttf") format("truetype"); font-weight: 700 900; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF; }
+@font-face { font-family: "Rubik"; src: url("/fonts/rubik-latin-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Rubik"; src: url("/fonts/rubik-latin-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; }
+@font-face { font-family: "Rubik"; src: url("/fonts/rubik-latin-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
+@font-face { font-family: "Rubik"; src: url("/fonts/rubik-latin-700-normal.woff2") format("woff2"); font-weight: 700 900; font-display: swap; }
+@font-face { font-family: "Rubik"; src: url("/fonts/rubik-hebrew-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; unicode-range: U+0590-05FF, U+FB1D-FB4F; }
+@font-face { font-family: "Rubik"; src: url("/fonts/rubik-hebrew-500-normal.woff2") format("woff2"); font-weight: 500 600; font-display: swap; unicode-range: U+0590-05FF, U+FB1D-FB4F; }
+@font-face { font-family: "Rubik"; src: url("/fonts/rubik-hebrew-700-normal.woff2") format("woff2"); font-weight: 700 900; font-display: swap; unicode-range: U+0590-05FF, U+FB1D-FB4F; }
+
+/* ---------- Tokens ---------- */
+@theme {
+  --font-sans: "Ooredoo", "Rubik", system-ui, sans-serif;
+  --font-display: "Ooredoo", "Rubik", system-ui, sans-serif;
+
+  --color-navy: #0a476d;
+  --color-navy-deep: #06314d;
+  --color-navy-ink: #04223a;
+  --color-mint: #78bf98;
+  --color-mint-soft: #dff0e6;
+  --color-green: #3e9a6c;
+  --color-green-deep: #2f7d57;
+  --color-paper: #f6f8f7;
+  --color-line: #e2e9e6;
+  --color-ink: #0e2233;
+  --color-ink-2: #4a5d6b;
+  --color-mist: #8796a1;
+
+  /* station colours */
+  --color-sage: #80a69e;
+  --color-olive: #a5b683;
+  --color-forest: #4e8c74;
+  --color-teal: #117286;
+  --color-steel: #6795a8;
+
+  --radius-card: 1.25rem;
+  --shadow-card: 0 1px 2px rgb(4 34 58 / 0.04), 0 8px 24px -12px rgb(4 34 58 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(4 34 58 / 0.05), 0 22px 48px -20px rgb(4 34 58 / 0.28);
+
+  --animate-drift: drift 9s ease-in-out infinite;
+  --animate-rise: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, -12px, 0); }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  background: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+:lang(he) body, body:lang(he) { font-family: "Rubik", system-ui, sans-serif; }
+::selection { background: var(--color-mint); color: var(--color-navy-ink); }
+
+/* ---------- Components ---------- */
+@layer components {
+  .container-x { @apply mx-auto w-full max-w-6xl px-4 sm:px-6; }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-[0.95rem] font-bold leading-none transition
+      focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mint disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary { @apply bg-navy text-white hover:bg-navy-deep active:translate-y-px; }
+  .btn-mint { @apply bg-mint text-navy-ink hover:bg-[#6ab48b] active:translate-y-px; }
+  .btn-ghost { @apply bg-transparent text-navy hover:bg-navy/5; }
+  .btn-outline { @apply border border-line bg-white text-navy hover:border-navy/30; }
+  .btn-danger { @apply bg-[#b3261e] text-white hover:bg-[#8f1e18]; }
+  .btn-sm { @apply px-3.5 py-2 text-sm; }
+  .btn-lg { @apply px-7 py-3.5 text-base; }
+
+  .card { @apply rounded-[var(--radius-card)] border border-line bg-white shadow-[var(--shadow-card)]; }
+  .card-hover { @apply transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-lift)]; }
+
+  .input, .select, .textarea {
+    @apply w-full rounded-xl border border-line bg-white px-3.5 py-2.5 text-[0.95rem] text-ink placeholder:text-mist
+      transition focus:border-navy/40 focus:outline-none focus:ring-4 focus:ring-mint/25;
+  }
+  .textarea { @apply min-h-28 leading-relaxed; }
+  .label { @apply mb-1.5 block text-sm font-bold text-ink; }
+  .hint { @apply mt-1 text-xs text-mist; }
+
+  .chip { @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3 py-1 text-xs font-bold text-ink-2; }
+  .badge { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-bold; }
+  .badge-mint { @apply bg-mint-soft text-green-deep; }
+  .badge-navy { @apply bg-navy/8 text-navy; }
+  .badge-amber { @apply bg-[#fdf3d8] text-[#7a5a00]; }
+  .badge-red { @apply bg-[#fde7e5] text-[#9b1c13]; }
+  .badge-gray { @apply bg-[#eef1f3] text-ink-2; }
+
+  .eyebrow { @apply text-xs font-bold tracking-[0.18em] text-green uppercase; }
+  .h-display { @apply font-[var(--font-display)] font-black tracking-tight text-navy-ink; }
+
+  .table { @apply w-full text-sm; }
+  .table th { @apply border-b border-line px-3 py-2.5 text-start text-xs font-bold text-mist; }
+  .table td { @apply border-b border-line/70 px-3 py-3 align-middle; }
+  .table tr:last-child td { @apply border-b-0; }
+
+  .mesh {
+    background:
+      radial-gradient(60% 50% at 85% 10%, rgb(120 191 152 / 0.22), transparent 70%),
+      radial-gradient(50% 60% at 10% 90%, rgb(17 114 134 / 0.18), transparent 70%),
+      linear-gradient(180deg, #06314d 0%, #0a476d 100%);
+  }
+  .grid-lines {
+    background-image:
+      linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
+    background-size: 56px 56px;
+  }
+}
+
+/* Flip directional icons in RTL */
+[dir="rtl"] .flip-rtl { transform: scaleX(-1); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}
