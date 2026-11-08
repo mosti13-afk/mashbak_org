@@ -1,7 +1,7 @@
 import { Check as CheckIcon, Plus, Trash2, X } from "lucide-react";
 import { approveDropdown, removeDropdown, saveDropdown } from "@/app/actions";
 import { L10nFields } from "@/components/admin/L10nFields";
-import { Check, Field, PageHeader, Tabs } from "@/components/ui";
+import { Check, Field, Notice, PageHeader, Tabs } from "@/components/ui";
 import { SubmitButton } from "@/components/ui/client";
 import type { Locale } from "@/i18n/config";
 import { repo } from "@/lib/data";
@@ -24,9 +24,9 @@ const TYPES: Record<string, Record<Locale, string>> = {
 };
 
 const C = {
-  ar: { pending: "اقتراحات بانتظار الموافقة", pendingHint: "قيم كتبها المتقدمون أو الأعضاء وليست في القائمة.", add: "إضافة قيم", addHint: "قيمة في كل سطر. يمكن لصق قائمة كاملة من Excel.", value: "القيمة", order: "الترتيب", active: "مفعّل", save: "حفظ", inactive: "غير مفعّل", total: "قيمة" },
-  en: { pending: "Suggestions waiting for approval", pendingHint: "Values typed by applicants or members that are not in the list yet.", add: "Add values", addHint: "One value per line. You can paste a whole column from Excel.", value: "Value", order: "Order", active: "Active", save: "Save", inactive: "Inactive", total: "values" },
-  he: { pending: "הצעות שממתינות לאישור", pendingHint: "ערכים שמועמדים או חברים הקלידו ועדיין לא ברשימה.", add: "הוספת ערכים", addHint: "ערך אחד בכל שורה. אפשר להדביק עמודה שלמה מאקסל.", value: "ערך", order: "סדר", active: "פעיל", save: "שמירה", inactive: "לא פעיל", total: "ערכים" },
+  ar: { pending: "اقتراحات بانتظار الموافقة", pendingHint: "قيم كتبها المتقدمون أو الأعضاء وليست في القائمة.", add: "إضافة قيم", addHint: "قيمة في كل سطر. يمكن لصق قائمة كاملة من Excel.", value: "القيمة", order: "الترتيب", active: "مفعّل", save: "حفظ", inactive: "غير مفعّل", total: "قيمة", seed: "هذه القوائم الافتراضية لم تُحفظ بعد في قاعدة البيانات. اضغط \"تثبيت المحتوى الافتراضي\" في صفحة النظرة العامة لتتمكن من تعديلها." },
+  en: { pending: "Suggestions waiting for approval", pendingHint: "Values typed by applicants or members that are not in the list yet.", add: "Add values", addHint: "One value per line. You can paste a whole column from Excel.", value: "Value", order: "Order", active: "Active", save: "Save", inactive: "Inactive", total: "values", seed: "These are the built-in lists and are not saved in the database yet. Press \"Install defaults\" on the overview page to edit them." },
+  he: { pending: "הצעות שממתינות לאישור", pendingHint: "ערכים שמועמדים או חברים הקלידו ועדיין לא ברשימה.", add: "הוספת ערכים", addHint: "ערך אחד בכל שורה. אפשר להדביק עמודה שלמה מאקסל.", value: "ערך", order: "סדר", active: "פעיל", save: "שמירה", inactive: "לא פעיל", total: "ערכים", seed: "אלה הרשימות המובנות והן עדיין לא נשמרו במסד הנתונים. לחצו על \"התקנת ברירות מחדל\" בעמוד הסקירה כדי לערוך אותן." },
 };
 
 export default async function AdminDropdowns({ params, searchParams }: { params: Promise<{ locale: string }>; searchParams: SearchParams }) {
@@ -45,6 +45,7 @@ export default async function AdminDropdowns({ params, searchParams }: { params:
   return (
     <>
       <PageHeader title={t.admin.nav.dropdowns} />
+      {all.some((d) => d.id < 0) && <Notice tone="red">{L.seed}</Notice>}
       {pending.length > 0 && (
         <section className="card mb-5 p-5">
           <h2 className="font-black">{L.pending} <span className="badge badge-red ms-1">{pending.length}</span></h2>

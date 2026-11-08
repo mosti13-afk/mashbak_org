@@ -10,5 +10,5 @@ export const defaultFaqs: Faq[] = live.faqs as unknown as Faq[];
 export const defaultReviews: MemberReview[] = (live.reviews as unknown as Omit<MemberReview, "created_at">[]).map((r) => ({ ...r, created_at: "2026-11-01T00:00:00Z" }));
 export const defaultSettings: SiteSettings = live.settings as SiteSettings;
 export const defaultDropdowns: DropdownOption[] = (live.dropdowns as { type: string; key: string; is_active: boolean; sort_order: number }[]).map((d, i) => ({
-  id: i + 1, type: d.type, key: d.key, label: {}, sort_order: d.sort_order, is_active: d.is_active, status: "approved",
+  id: -(i + 1), type: d.type, key: d.key, label: {}, sort_order: d.sort_order, is_active: d.is_active, status: "approved",
 }));

@@ -76,11 +76,16 @@ export const supabaseRepo: Repo = {
     const s = await sb();
     let q = s.from("programs").select("*").order("sort_order");
     if (!o?.all) q = q.eq("is_active", true);
-    return check(await q) as Program[];
+    const rows = check(await q) as Program[];
+    // Before "Install defaults" is pressed, the public site shows the built-in live content
+    return rows.length || o?.all ? rows : defaultPrograms.filter((p) => p.is_active);
   },
   async getProgram(slug) {
     const s = await sb();
-    return check(await s.from("programs").select("*").eq("slug", slug).eq("is_active", true).maybeSingle()) as Program | null;
+    const row = check(await s.from("programs").select("*").eq("slug", slug).eq("is_active", true).maybeSingle()) as Program | null;
+    if (row) return row;
+    const { count } = await s.from("programs").select("id", { count: "exact", head: true });
+    return count ? null : defaultPrograms.find((p) => p.slug === slug && p.is_active) ?? null;
   },
   async upsertProgram(p) {
     const s = await sb();
@@ -93,7 +98,8 @@ export const supabaseRepo: Repo = {
     const s = await sb();
     let q = s.from("faqs").select("*").order("sort_order");
     if (!o?.all) q = q.eq("is_active", true);
-    return check(await q) as Faq[];
+    const rows = check(await q) as Faq[];
+    return rows.length || o?.all ? rows : defaultFaqs.filter((f) => f.is_active);
   },
   async upsertFaq(f) {
     const s = await sb();
@@ -106,7 +112,8 @@ export const supabaseRepo: Repo = {
     const s = await sb();
     let q = s.from("member_reviews").select("*").order("sort_order");
     if (!o?.all) q = q.eq("is_active", true);
-    return check(await q) as MemberReview[];
+    const rows = check(await q) as MemberReview[];
+    return rows.length || o?.all ? rows : defaultReviews.filter((r) => r.is_active);
   },
   async upsertReview(r) {
     const s = await sb();
@@ -125,7 +132,8 @@ export const supabaseRepo: Repo = {
   },
   async listDropdowns() {
     const s = await sb();
-    return check(await s.from("dropdown_options").select("*").order("type").order("sort_order").limit(5000)) as DropdownOption[];
+    const rows = check(await s.from("dropdown_options").select("*").order("type").order("sort_order").limit(5000)) as DropdownOption[];
+    return rows.some((r) => r.status === "approved") ? rows : [...defaultDropdowns, ...rows];
   },
   async suggestDropdown(type, key) {
     const s = await sb();
