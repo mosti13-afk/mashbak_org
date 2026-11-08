@@ -1,3 +1,5 @@
+import { defaultCompanies } from "../companies-seed";
+import type { Ask, AskReply, Company } from "../types";
 import type {
   Application, Connection, ContactMessage, EventItem, Job, Notification, Profile, ReferralRequest, Registration,
 } from "../types";
@@ -263,3 +265,64 @@ export function seedMessages(): ContactMessage[] {
       message: "We'd love to host one of your HighTech Club meetups at our Haifa office." },
   ];
 }
+
+/* ---------- V2 demo data: companies, more insiders, careers-site jobs, asks ---------- */
+
+export function seedCompanies(): Company[] {
+  return defaultCompanies.map((c, i) => ({
+    id: `co-${c.slug}`, slug: c.slug, name: c.name, name_ar: c.name_ar ?? null, name_he: c.name_he ?? null, aliases: c.aliases ?? [],
+    logo_url: null, website: c.website ?? null, sector: c.sector ?? null, careers_url: c.careers_url ?? null, location_filter: "israel",
+    sync_enabled: true, last_synced_at: c.careers_url ? ago(0) : null, last_sync_status: c.careers_url ? "ok" : null,
+    last_sync_count: c.careers_url ? 3 : null, created_at: ago(30 + i),
+  }));
+}
+
+export function seedMoreProfiles(): Profile[] {
+  return [
+    p({ id: "u-ahmad", full_name_ar: "أحمد زعبي", full_name_en: "Ahmad Zoabi", email: "ahmad@example.com", headline: "Senior Software Architect", company: "Amdocs",
+      sector: "Software", city: "الناصرة", years_experience: 14, help_offers: ["مقابلات تقنية", "الانتقال لدور معماري"], open_to_mentoring: true }),
+    p({ id: "u-reem", full_name_ar: "ريم عثامنة", full_name_en: "Reem Athamna", email: "reem@example.com", headline: "Product Manager", company: "Amdocs",
+      sector: "Product", city: "عرعرة", years_experience: 8, help_offers: ["الانتقال للمنتج", "CV"] }),
+    p({ id: "u-khaled", full_name_ar: "خالد مصاروة", full_name_en: "Khaled Masarwa", email: "khaled@example.com", headline: "Delivery Manager", company: "Amdocs",
+      sector: "Software", city: "الطيبة", years_experience: 12, help_offers: ["إدارة مشاريع", "ترقية لدور إداري"] }),
+    p({ id: "u-sana", full_name_ar: "سناء حاج يحيى", full_name_en: "Sana Haj Yahya", email: "sana@example.com", headline: "ASIC Design Engineer", company: "NVIDIA",
+      sector: "Hardware", city: "يافة الناصرة", years_experience: 6, help_offers: ["مقابلات Hardware"] }),
+    p({ id: "u-majd", full_name_ar: "مجد عودة", full_name_en: "Majd Odeh", email: "majd@example.com", headline: "Software Engineering Manager", company: "NVIDIA",
+      sector: "Software", city: "حيفا", years_experience: 13, help_offers: ["أول دور إداري", "مقابلات Behavioral"], open_to_mentoring: true }),
+    p({ id: "u-tamer", full_name_ar: "تامر بشارة", full_name_en: "Tamer Bishara", email: "tamer@example.com", headline: "Verification Lead", company: "NVIDIA",
+      sector: "Hardware", city: "كفر ياسيف", years_experience: 10 }),
+    p({ id: "u-dana", full_name_ar: "دانا سليمان", full_name_en: "Dana Suleiman", email: "dana@example.com", headline: "Senior Recruiter", company: "Intel",
+      sector: "HR", city: "حيفا", years_experience: 7, help_offers: ["CV", "LinkedIn", "التفاوض على الراتب"] }),
+  ].map((x) => ({ ...x, open_to_referrals: true, open_to_chats: true }));
+}
+
+export function seedCareerJobs(): Job[] {
+  const careers = (id: string, company: string, title: string, location: string, managerial: boolean, days: number): Job => ({
+    id, title, company, company_id: `co-${company.toLowerCase().replace(/\s+/g, "-")}`, city: null, location, job_type: "full_time", work_mode: "hybrid",
+    is_managerial: managerial, description: "", requirements: null, apply_url: `https://example.com/careers/${id}`, external_url: `https://example.com/careers/${id}`,
+    source: "careers", posted_by: null, is_open: true, expires_at: at(30, 12), created_at: ago(days),
+  });
+  return [
+    careers("cj-amdocs-1", "Amdocs", "Software Development Manager", "Ra'anana, Israel", true, 1),
+    careers("cj-amdocs-2", "Amdocs", "Product Owner, Billing", "Ra'anana, Israel", false, 3),
+    careers("cj-amdocs-3", "Amdocs", "Data Science Team Leader", "Ra'anana, Israel", true, 5),
+    careers("cj-nvidia-1", "NVIDIA", "Senior Software Engineer, Networking", "Yokneam, Israel", false, 2),
+    careers("cj-nvidia-2", "NVIDIA", "Engineering Manager, DPU Software", "Tel Aviv, Israel", true, 4),
+    careers("cj-intel-1", "Intel", "Validation Team Lead", "Haifa, Israel", true, 6),
+  ];
+}
+
+export function seedAsks(): Ask[] {
+  return [
+    { id: "ask1", member_id: "u-rana", kind: "ask", title: "أبحث عن شخص انتقل من QA إلى Product", body: "أفكر بالانتقال للمنتج بعد 9 سنوات في الجودة. أحب أسمع من شخص عمل هذه الخطوة: ماذا تعلّمت وكيف قدّمت نفسك؟",
+      tags: ["Product", "تغيير مسار"], status: "open", created_at: ago(1), closed_at: null },
+    { id: "ask2", member_id: "u-omar", kind: "offer", title: "مقابلات تجريبية لمدراء هندسة جدد", body: "أخصص ساعتين كل أسبوعين لمقابلات تجريبية لأول دور إداري في الهندسة. اكتب لي عن الدور الذي تتقدم إليه.",
+      tags: ["Engineering", "Management"], status: "open", created_at: ago(2), closed_at: null },
+    { id: "ask3", member_id: "u-huda", kind: "ask", title: "هل يعرف أحد شخصًا في قسم المالية في بنك لئومي؟", body: "أتقدّم لوظيفة Controller وأحتاج فهم ثقافة الفريق.",
+      tags: ["Finance", "Banking"], status: "open", created_at: ago(3), closed_at: null },
+    { id: "ask4", member_id: "u-dana", kind: "offer", title: "مراجعة CV وملف LinkedIn", body: "أنا مجنّدة في Intel. أراجع 3 سير ذاتية كل أسبوع وأعطي ملاحظات صريحة.",
+      tags: ["CV", "LinkedIn"], status: "open", created_at: ago(4), closed_at: null },
+  ];
+}
+
+export function seedAskReplies(): AskReply[] { return []; }

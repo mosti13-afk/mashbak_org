@@ -17,6 +17,7 @@ export default async function AdminLayout({ children, params }: { children: Reac
     { href: `${b}/members`, label: N.members, icon: "members" },
     { href: `${b}/events`, label: N.events, icon: "events" },
     { href: `${b}/jobs`, label: N.jobs, icon: "jobs" },
+    { href: `${b}/companies`, label: N.companies, icon: "building" },
     { href: `${b}/reviews`, label: N.reviews, icon: "star" },
     { href: `${b}/programs`, label: N.programs, icon: "layers" },
     { href: `${b}/dropdowns`, label: N.dropdowns, icon: "file" },
@@ -25,6 +26,6 @@ export default async function AdminLayout({ children, params }: { children: Reac
     { href: `${b}/messages`, label: N.messages, icon: "mail", badge: msgs.filter((m) => !m.replied_at).length },
     { href: `${b}/settings`, label: N.settings, icon: "settings" },
   ];
-  const mobile = [items[0], items[1], items[3], items[5], items[9]];
+  const mobile = [items[0], items[1], items[2], items[3], items[items.length - 1]];
   return <Shell locale={locale} t={t} viewer={viewer} items={items} mobileItems={mobile} area="admin">{children}</Shell>;
 }

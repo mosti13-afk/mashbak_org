@@ -1,127 +1,156 @@
-import { ArrowRight, Briefcase, Search } from "lucide-react";
+import { ArrowLeft, Briefcase, Building2, CheckCircle2, Circle, FileText, HandHelping, Inbox, MessageSquareText, Sparkles } from "lucide-react";
 import Link from "next/link";
-import { EventCard, JobRow } from "@/components/cards";
-import { Avatar, Empty } from "@/components/ui";
-import { tr } from "@/i18n/config";
+import { EventCard } from "@/components/cards";
+import { Avatar } from "@/components/ui";
+import { JobCard, MemberCardV2, Section } from "@/components/v2";
+import { fmt, memberDict } from "@/i18n/member";
 import { repo } from "@/lib/data";
-import { displayName, fmtRelative, profileStrength } from "@/lib/format";
+import { displayName, fmtRelative } from "@/lib/format";
 import { pageLocale, type LocaleParams } from "@/lib/page";
 import { requireMember } from "@/lib/session";
 
-export default async function Dashboard({ params }: LocaleParams) {
+function dayHash(s: string) {
+  let h = 2166136261;
+  for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = Math.imul(h, 16777619); }
+  return (h >>> 0) / 4294967296;
+}
+
+export default async function Home({ params }: LocaleParams) {
   const { locale, t } = await pageLocale(params);
+  const M = memberDict[locale];
   const v = await requireMember(locale);
-  const [events, jobs, cons, notes] = await Promise.all([
-    repo.listEvents({ when: "upcoming", viewerId: v.id }),
-    repo.listJobs({ viewerId: v.id }),
+  const b = `/${locale}/app`;
+  const followed = await repo.followedCompanyIds(v.id);
+  const [jobsFollow, jobsLatest, refs, cons, members, asks, events, pulse] = await Promise.all([
+    followed.length ? repo.listJobs({ viewerId: v.id, companyIds: followed, limit: 6 }) : Promise.resolve([]),
+    repo.listJobs({ viewerId: v.id, limit: 6 }),
+    repo.listMyReferrals(v.id),
     repo.listConnections(v.id),
-    repo.listNotifications(v.id),
+    repo.listMembers({ viewerId: v.id, chats: true }),
+    repo.listAsks({ viewerId: v.id }),
+    repo.listEvents({ when: "upcoming", viewerId: v.id }),
+    repo.platformStats().catch(() => null),
   ]);
-  const mine = events.filter((e) => e.my_registration);
-  const others = events.filter((e) => !e.my_registration);
-  const incoming = cons.filter((c) => c.direction === "incoming" && c.status === "pending");
-  const myJobs = jobs.filter((j) => j.posted_by === v.id && j.referral_count > 0);
-  const strength = profileStrength(v);
+  const jobs = (jobsFollow.length ? jobsFollow : jobsLatest).slice(0, 4);
+  const waitingRefs = refs.filter((r) => r.direction === "incoming" && r.status === "pending");
+  const waitingChats = cons.filter((c) => c.direction === "incoming" && c.status === "pending");
+  const day = new Date().toISOString().slice(0, 10);
+  const people = members
+    .filter((m) => !m.connection)
+    .map((m) => ({ m, k: dayHash(`${v.id}|${day}|${m.id}`) * (m.sector && m.sector === v.sector ? 1.6 : 1) * (m.company_id && m.company_id !== v.company_id ? 1.2 : 1) * (m.help_offers?.length ? 1.3 : 1) }))
+    .sort((a, z) => z.k - a.k).slice(0, 4).map((x) => x.m);
+  const stats = await repo.memberStats(people.map((p) => p.id));
+  const otherAsks = asks.filter((a) => a.member_id !== v.id && !a.my_reply).slice(0, 3);
   const first = displayName(v, locale).split(" ")[0];
+  const steps = [
+    { done: !!v.company_id, label: M.home.stepCompany, icon: Building2 },
+    { done: !!v.help_offers?.length, label: M.home.stepHelp, icon: HandHelping },
+    { done: !!v.cv_url, label: M.home.stepCv, icon: FileText },
+  ];
+  const doneCount = steps.filter((s) => s.done).length;
 
   return (
-    <div className="space-y-8">
-      <section className="mesh relative overflow-hidden rounded-[1.75rem] p-6 text-white sm:p-8">
-        <div className="grid-lines absolute inset-0" aria-hidden />
-        <div className="relative flex flex-wrap items-center justify-between gap-6">
-          <div>
-            <h1 className="h-display text-3xl text-white sm:text-4xl">{t.app.hello}{locale === "ar" ? "،" : ","} {first}</h1>
-            <p className="mt-1 text-white/70">{t.app.dashSub}</p>
-            <div className="mt-5 flex flex-wrap gap-2">
-              <Link href={`/${locale}/app/members`} className="btn btn-mint btn-sm"><Search className="h-4 w-4" />{t.app.findMembers}</Link>
-              <Link href={`/${locale}/app/jobs/new`} className="btn btn-sm border border-white/25 text-white hover:bg-white/10"><Briefcase className="h-4 w-4" />{t.app.postJob}</Link>
-            </div>
-          </div>
-          <Link href={`/${locale}/app/profile`} className="flex items-center gap-4 rounded-2xl bg-white/10 p-4 backdrop-blur hover:bg-white/15">
-            <div className="relative h-16 w-16">
-              <svg viewBox="0 0 36 36" className="h-16 w-16 -rotate-90">
-                <circle cx="18" cy="18" r="15.5" fill="none" stroke="rgb(255 255 255 / .15)" strokeWidth="3" />
-                <circle cx="18" cy="18" r="15.5" fill="none" stroke="#78bf98" strokeWidth="3" strokeLinecap="round" strokeDasharray={`${strength * 0.974} 100`} />
-              </svg>
-              <span className="absolute inset-0 flex items-center justify-center text-sm font-black">{strength}%</span>
-            </div>
-            <div>
-              <p className="text-xs font-bold text-mint">{t.app.profileStrength}</p>
-              <p className="font-black">{strength < 100 ? t.app.completeProfile : t.common.saved}</p>
-            </div>
-          </Link>
+    <div className="mx-auto max-w-5xl">
+      <header className="relative overflow-hidden rounded-[24px] bg-navy px-5 py-6 text-white sm:px-8 sm:py-8">
+        <span className="pointer-events-none absolute -end-16 -top-16 h-56 w-56 rounded-full bg-mint/25 blur-2xl" aria-hidden />
+        <p className="relative text-[13px] text-white/70">{new Intl.DateTimeFormat(locale === "ar" ? "ar-EG" : locale === "he" ? "he-IL" : "en-GB", { weekday: "long", day: "numeric", month: "long" }).format(new Date())}</p>
+        <h1 className="relative mt-1 text-[26px] font-bold sm:text-[32px]">{fmt(M.home.hello, { name: first })}</h1>
+        <p className="relative mt-1 max-w-xl text-[15px] leading-7 text-white/85">{M.home.sub}</p>
+        <div className="relative mt-5 flex flex-wrap gap-2">
+          <Link href={`${b}/jobs`} className="inline-flex items-center gap-2 rounded-[14px] bg-white px-4 py-2.5 text-[14px] font-semibold text-navy"><Briefcase className="h-4 w-4" />{M.nav.jobs}</Link>
+          <Link href={`${b}/mashbakni`} className="inline-flex items-center gap-2 rounded-[14px] bg-white/10 px-4 py-2.5 text-[14px] font-semibold text-white ring-1 ring-white/25 hover:bg-white/15"><Sparkles className="h-4 w-4 text-mint" />{M.nav.mashbakni}</Link>
+          <Link href={`${b}/asks/new?kind=ask`} className="inline-flex items-center gap-2 rounded-[14px] bg-white/10 px-4 py-2.5 text-[14px] font-semibold text-white ring-1 ring-white/25 hover:bg-white/15"><MessageSquareText className="h-4 w-4 text-mint" />{M.asks.newAsk}</Link>
         </div>
-      </section>
+      </header>
 
-      {(incoming.length > 0 || myJobs.length > 0) && (
-        <section>
-          <h2 className="mb-3 text-lg font-black text-navy-ink">{t.app.requests}</h2>
-          <div className="grid gap-3 md:grid-cols-2">
-            {incoming.map((c) => (
-              <Link key={c.id} href={`/${locale}/app/connections`} className="card card-hover flex items-center gap-3 p-4">
-                <Avatar src={c.other.avatar_url} name={displayName(c.other, locale)} size={44} />
-                <div className="min-w-0 flex-1">
-                  <p className="truncate font-black">{displayName(c.other, locale)}</p>
-                  <p className="truncate text-sm text-ink-2">{c.message}</p>
-                </div>
-                <span className="badge badge-amber">{t.app.connections.pending}</span>
-              </Link>
-            ))}
-            {myJobs.map((j) => (
-              <Link key={j.id} href={`/${locale}/app/jobs/${j.id}`} className="card card-hover flex items-center gap-3 p-4">
-                <span className="flex h-11 w-11 items-center justify-center rounded-full bg-mint-soft text-green-deep"><Briefcase className="h-5 w-5" /></span>
-                <div className="min-w-0 flex-1">
-                  <p className="truncate font-black" dir="auto">{j.title}</p>
-                  <p className="text-sm text-ink-2">{t.app.jobs.requests}: {j.referral_count}</p>
-                </div>
-              </Link>
-            ))}
+      {doneCount < 3 && (
+        <section className="card mt-5 p-5">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div>
+              <h2 className="font-bold text-ink">{M.home.setup}</h2>
+              <p className="text-[13px] text-mist">{M.home.setupSub}</p>
+            </div>
+            <span className="text-[13px] font-semibold text-navy">{doneCount}/3</span>
           </div>
+          <div className="mt-3 h-1.5 overflow-hidden rounded-full bg-haze"><div className="h-full rounded-full bg-mint" style={{ width: `${(doneCount / 3) * 100}%` }} /></div>
+          <ul className="mt-4 grid gap-2 sm:grid-cols-3">
+            {steps.map((s) => (
+              <li key={s.label}>
+                <Link href={`${b}/profile#edit`} className="flex items-center gap-2 rounded-[14px] border border-line px-3 py-2.5 text-[14px] hover:border-navy">
+                  {s.done ? <CheckCircle2 className="h-5 w-5 shrink-0 text-mint" /> : <Circle className="h-5 w-5 shrink-0 text-line" />}
+                  <span className={s.done ? "text-mist line-through" : "text-ink"}>{s.label}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
         </section>
       )}
 
-      <div className="grid gap-8 xl:grid-cols-[1.4fr_1fr]">
-        <section>
-          <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-lg font-black text-navy-ink">{t.app.newJobs}</h2>
-            <Link href={`/${locale}/app/jobs`} className="flex items-center gap-1 text-sm font-bold text-navy">{t.common.viewAll}<ArrowRight className="flip-rtl h-4 w-4" /></Link>
+      {(waitingRefs.length > 0 || waitingChats.length > 0) && (
+        <Section title={M.home.waiting} sub={M.home.waitingSub} href={`${b}/requests`} more={M.home.seeAll}>
+          <ul className="grid gap-3 md:grid-cols-2">
+            {[...waitingRefs.map((r) => ({ id: r.id, who: r.requester, kind: M.requests.referral, what: `${r.job.title} · ${r.job.company}`, at: r.created_at })),
+              ...waitingChats.map((c) => ({ id: c.id, who: c.other, kind: M.requests.chat, what: c.message, at: c.created_at }))].slice(0, 4).map((x) => (
+              <li key={x.id}>
+                <Link href={`${b}/requests`} className="card card-hover flex items-center gap-3 border-s-4 border-s-mint p-4">
+                  <Avatar src={x.who.avatar_url} name={displayName(x.who, locale)} size={44} />
+                  <div className="min-w-0 flex-1">
+                    <p className="text-[12px] font-semibold text-green-deep"><Inbox className="me-1 inline h-3.5 w-3.5" />{x.kind} · {fmtRelative(x.at, locale)}</p>
+                    <p className="truncate font-semibold text-ink">{displayName(x.who, locale)}</p>
+                    <p className="truncate text-[13px] text-ink-2" dir="auto">{x.what}</p>
+                  </div>
+                  <ArrowLeft className="h-4 w-4 shrink-0 text-mist ltr:rotate-180" />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
+
+      <Section title={jobsFollow.length ? M.home.jobsFollow : M.home.jobsLatest} sub={jobsFollow.length ? undefined : M.home.noFollow} href={`${b}/jobs${jobsFollow.length ? "?tab=following" : ""}`} more={M.home.seeAll}>
+        <div className="grid gap-3 md:grid-cols-2">{jobs.map((j) => <JobCard key={j.id} j={j} locale={locale} M={M} t={t} compact />)}</div>
+      </Section>
+
+      {people.length > 0 && (
+        <Section title={M.home.meet} sub={M.home.meetSub} href={`${b}/members`} more={M.home.seeAll}>
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">{people.map((m) => <MemberCardV2 key={m.id} m={m} locale={locale} M={M} stats={stats[m.id]} />)}</div>
+        </Section>
+      )}
+
+      {otherAsks.length > 0 && (
+        <Section title={M.home.asks} href={`${b}/asks`} more={M.home.seeAll}>
+          <ul className="grid gap-3 md:grid-cols-3">
+            {otherAsks.map((a) => (
+              <li key={a.id}>
+                <Link href={`${b}/asks/${a.id}`} className="card card-hover flex h-full flex-col p-4">
+                  <span className={`badge self-start ${a.kind === "ask" ? "badge-amber" : "badge-mint"}`}>{a.kind === "ask" ? M.asks.asks : M.asks.offers}</span>
+                  <p className="mt-2 line-clamp-2 font-semibold leading-6 text-ink" dir="auto">{a.title}</p>
+                  <p className="mt-auto flex items-center gap-2 pt-3 text-[12px] text-mist"><Avatar src={a.author.avatar_url} name={displayName(a.author, locale)} size={22} />{displayName(a.author, locale)} · {fmtRelative(a.created_at, locale)}</p>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </Section>
+      )}
+
+      {events.length > 0 && (
+        <Section title={M.home.events} href={`${b}/events`} more={M.home.seeAll}>
+          <div className="grid gap-3 md:grid-cols-2">{events.slice(0, 2).map((e) => <EventCard key={e.id} e={e} locale={locale} t={t} href={`${b}/events/${e.id}`} />)}</div>
+        </Section>
+      )}
+
+      {pulse && (
+        <Section title={M.home.pulse}>
+          <div className="grid grid-cols-2 gap-3 sm:grid-cols-5">
+            {[[pulse.members, M.home.members], [pulse.companies ?? 0, M.home.companies], [pulse.jobs_open, M.home.jobsOpen], [pulse.referrals ?? 0, M.home.referrals], [pulse.hires ?? 0, M.home.hires]].map(([n, l]) => (
+              <div key={String(l)} className="rounded-[18px] bg-mint-soft p-4 text-center">
+                <p className="text-[26px] font-bold text-navy" dir="ltr">{n}</p>
+                <p className="text-[12px] text-ink-2">{l}</p>
+              </div>
+            ))}
           </div>
-          <div className="space-y-3">
-            {jobs.filter((j) => j.posted_by !== v.id).slice(0, 4).map((j) => <JobRow key={j.id} j={j} locale={locale} t={t} />)}
-          </div>
-        </section>
-        <section className="space-y-6">
-          <div>
-            <div className="mb-3 flex items-center justify-between">
-              <h2 className="text-lg font-black text-navy-ink">{t.app.upcoming}</h2>
-              <Link href={`/${locale}/app/events`} className="flex items-center gap-1 text-sm font-bold text-navy">{t.common.viewAll}<ArrowRight className="flip-rtl h-4 w-4" /></Link>
-            </div>
-            <div className="space-y-3">
-              {mine.length ? mine.slice(0, 3).map((e) => <EventCard key={e.id} e={e} locale={locale} t={t} href={`/${locale}/app/events/${e.id}`} />)
-                : <Empty action={<Link href={`/${locale}/app/events`} className="btn btn-outline btn-sm">{t.events.title}</Link>}>{t.app.nothingUpcoming}</Empty>}
-              {others.slice(0, mine.length ? 1 : 2).map((e) => <EventCard key={e.id} e={e} locale={locale} t={t} href={`/${locale}/app/events/${e.id}`} />)}
-            </div>
-          </div>
-          {notes.length > 0 && (
-            <div>
-              <h2 className="mb-3 text-lg font-black text-navy-ink">{t.app.nav.notifications}</h2>
-              <ul className="card divide-y divide-line">
-                {notes.slice(0, 4).map((n) => (
-                  <li key={n.id}>
-                    <Link href={n.link ? `/${locale}${n.link}` : "#"} className="flex items-start gap-3 p-4 hover:bg-paper">
-                      <span className={`mt-1.5 h-2 w-2 shrink-0 rounded-full ${n.read_at ? "bg-line" : "bg-mint"}`} />
-                      <span className="min-w-0 flex-1">
-                        <span className="block text-sm font-bold">{tr(n.title, locale)}</span>
-                        <span className="text-xs text-mist">{fmtRelative(n.created_at, locale)}</span>
-                      </span>
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-        </section>
-      </div>
+        </Section>
+      )}
     </div>
   );
 }

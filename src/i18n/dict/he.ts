@@ -310,6 +310,7 @@ const he: Dict = {
   admin: {
     title: "ניהול",
     nav: {
+      companies: "חברות",
       dropdowns: "רשימות בחירה",
       notifications: "התראות והודעות",
       overview: "סקירה",

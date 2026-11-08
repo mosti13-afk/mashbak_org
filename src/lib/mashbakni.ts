@@ -16,7 +16,7 @@ export async function mashbakniSystem(viewer: Profile, locale: Locale) {
   const [programs, events, jobs, members, faqs] = await Promise.all([
     repo.listPrograms().catch(() => []),
     repo.listEvents({ when: "upcoming", viewerId: viewer.id }).catch(() => []),
-    repo.listJobs({ viewerId: viewer.id }).catch(() => []),
+    repo.listJobs({ viewerId: viewer.id, limit: 120 }).catch(() => []),
     repo.listMembers({ viewerId: viewer.id }).catch(() => []),
     repo.listFaqs().catch(() => []),
   ]);
@@ -34,8 +34,8 @@ export async function mashbakniSystem(viewer: Profile, locale: Locale) {
     `- ${tr(e.title, locale)} | ${e.starts_at.slice(0, 16).replace("T", " ")} | ${e.is_online ? "online" : tr(e.location, locale)} | ${
       e.capacity ? `${Math.max(0, e.capacity - e.registered_count)} seats left` : "open"} | ${e.my_registration ? `member status: ${e.my_registration.status}` : "not registered"} | link: ${b}/events/${e.id}`,
   ).join("\n");
-  const jobLines = jobs.filter((j) => j.is_open).slice(0, 40).map((j) =>
-    `- ${j.title} at ${j.company}${j.city ? `, ${j.city}` : ""} | ${j.job_type}, ${j.work_mode}${j.is_managerial ? ", managerial" : ""} | ${clip(j.description, 160)} | link: ${b}/jobs/${j.id}`,
+  const jobLines = jobs.filter((j) => j.is_open).sort((a, z) => (z.insiders_count ?? 0) - (a.insiders_count ?? 0)).slice(0, 60).map((j) =>
+    `- ${j.title} at ${j.company}${j.location || j.city ? `, ${j.location || j.city}` : ""} | ${j.job_type}, ${j.work_mode}${j.is_managerial ? ", managerial" : ""} | ${j.source === "careers" ? "from company careers site" : "posted by a member"} | ${j.insiders_count ? `${j.insiders_count} Mashbak members work there (can ask for a referral on the job page)` : "no members there yet"} | ${clip(j.description, 140)} | link: ${b}/jobs/${j.id}`,
   ).join("\n");
   const memberLines = members.filter((m) => m.id !== viewer.id).slice(0, 250).map((m) => {
     const name = locale === "en" ? m.full_name_en || m.full_name_ar : m.full_name_ar || m.full_name_en;
@@ -52,6 +52,7 @@ Your job: help this member get real value from the community. You can
 3. Point out relevant open jobs posted by members and help write a referral request.
 4. Give practical career advice (interviews, promotion, career change, salary conversations, LinkedIn), grounded in the Israeli job market and the Arab professional experience.
 5. Answer questions about how Mashbak works using the FAQ below.
+6. Explain the referral flow: on a job page the member picks an insider (a member who works at that company) and sends a short request with their CV; insiders are shown in a fair, rotating order. Point them to the Companies page to see who works where, and to "Asks & offers" (/${locale}/app/asks) for help that doesn't fit a job.
 
 Rules:
 - Reply in ${LANG[locale]} unless the member writes in another language, then use theirs. Arabic should be clear Modern Standard Arabic with a friendly tone.

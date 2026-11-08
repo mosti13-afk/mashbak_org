@@ -108,30 +108,3 @@ export function MemberTile({ m, locale, t }: { m: MemberCardT; locale: Locale; t
     </Link>
   );
 }
-
-export function JobRow({ j, locale, t }: { j: JobWithPoster; locale: Locale; t: Dict }) {
-  const poster = displayName(j.poster, locale);
-  return (
-    <Link href={`/${locale}/app/jobs/${j.id}`} className="card card-hover group flex flex-col gap-4 p-5 sm:flex-row sm:items-center">
-      <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-mint-soft text-green-deep">
-        <Briefcase className="h-5 w-5" />
-      </span>
-      <div className="min-w-0 flex-1">
-        <h3 className="text-lg font-black text-navy-ink group-hover:text-navy" dir="auto">{j.title}</h3>
-        <p className="text-sm text-ink-2">
-          <span className="font-bold">{j.company}</span>
-          {j.city && <> · {j.city}</>} · {t.app.jobs.modes[j.work_mode]} · {t.app.jobs.types[j.job_type]}
-        </p>
-        <div className="mt-2 flex flex-wrap items-center gap-1.5">
-          {j.is_managerial && <span className="badge badge-navy">{t.app.jobs.managerial}</span>}
-          {!j.is_open && <span className="badge badge-gray">{t.app.jobs.closed}</span>}
-          {j.my_referral && <span className="badge badge-mint">{j.my_referral.status === "accepted" ? t.app.jobs.referralAccepted : t.app.jobs.referralSent}</span>}
-        </div>
-      </div>
-      <div className="flex items-center gap-2 text-sm text-mist sm:flex-col sm:items-end">
-        <span className="flex items-center gap-2"><Avatar src={j.poster.avatar_url} name={poster} size={26} /><span className="font-semibold text-ink-2">{poster}</span></span>
-        <span>{fmtRelative(j.created_at, locale)}</span>
-      </div>
-    </Link>
-  );
-}

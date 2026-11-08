@@ -40,6 +40,10 @@ export interface Profile {
   interested_opportunities?: string[];
   interested_in_mentoring?: string[];
   cv_url?: string | null;
+  company_id?: string | null;
+  open_to_referrals?: boolean;
+  open_to_chats?: boolean;
+  help_offers?: string[];
   onboarded_at?: string | null;
   notify_email?: boolean;
   notify_whatsapp?: boolean;
@@ -121,16 +125,22 @@ export interface Job {
   seniority?: string | null;
   notes_for_members?: string | null;
   archived?: boolean;
-  posted_by: string;
+  posted_by: string | null;
+  company_id?: string | null;
+  source?: "member" | "careers" | "link";
+  external_url?: string | null;
+  location?: string | null;
   is_open: boolean;
   expires_at: string;
   created_at: string;
 }
 
 export interface JobWithPoster extends Job {
-  poster: Pick<Profile, "id" | "full_name_ar" | "full_name_en" | "avatar_url" | "headline" | "company">;
+  poster: Pick<Profile, "id" | "full_name_ar" | "full_name_en" | "avatar_url" | "headline" | "company"> | null;
   my_referral: ReferralRequest | null;
   referral_count: number;
+  company_ref?: Pick<Company, "id" | "slug" | "name" | "name_ar" | "name_he" | "logo_url"> | null;
+  insiders_count?: number;
 }
 
 export interface ReferralRequest {
@@ -142,7 +152,13 @@ export interface ReferralRequest {
   status: RequestStatus;
   responded_at: string | null;
   created_at: string;
+  insider_id?: string | null;
+  insider_note?: string | null;
+  outcome?: ReferralOutcome | null;
+  outcome_at?: string | null;
 }
+
+export type ReferralOutcome = "interview" | "offer" | "hired" | "no_news" | "rejected";
 
 export interface Connection {
   id: string;
@@ -229,6 +245,47 @@ export interface DropdownOption {
 }
 
 export type MiniProfile = Pick<Profile, "id" | "full_name_ar" | "full_name_en" | "avatar_url" | "headline" | "company">;
+
+export interface Company {
+  id: string;
+  slug: string;
+  name: string;
+  name_ar: string | null;
+  name_he: string | null;
+  aliases: string[];
+  logo_url: string | null;
+  website: string | null;
+  sector: string | null;
+  careers_url: string | null;
+  location_filter: "israel" | "all";
+  sync_enabled: boolean;
+  last_synced_at: string | null;
+  last_sync_status: string | null;
+  last_sync_count: number | null;
+  created_at: string;
+}
+export interface CompanyCard extends Company { members: number; jobs: number; following: boolean }
+
+/** A member who works at a company, with load figures used for fair rotation. */
+export interface Insider extends MiniProfile {
+  pending: number; accepted: number; answered: number; total: number; last_asked: string | null;
+  sector?: string | null; open_to_chats?: boolean;
+}
+export interface MemberStats { referrals: number; chats: number; answers: number; hires: number }
+
+export interface Ask {
+  id: string; member_id: string; kind: "ask" | "offer"; title: string; body: string; tags: string[];
+  status: "open" | "closed"; created_at: string; closed_at: string | null;
+}
+export interface AskWithAuthor extends Ask { author: MiniProfile; replies: number; my_reply: boolean }
+export interface AskReply { id: string; ask_id: string; member_id: string; message: string; created_at: string; author: MiniProfile }
+
+export interface ReferralFull extends ReferralRequest {
+  job: Pick<Job, "id" | "title" | "company" | "company_id" | "external_url" | "apply_url">;
+  requester: MiniProfile;
+  insider: MiniProfile | null;
+  direction: "incoming" | "outgoing";
+}
 
 export interface ConnectionWithPeople extends Connection {
   other: MiniProfile;

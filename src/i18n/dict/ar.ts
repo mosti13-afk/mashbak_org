@@ -310,6 +310,7 @@ const ar: Dict = {
   admin: {
     title: "الإدارة",
     nav: {
+      companies: "الشركات",
       dropdowns: "القوائم المنسدلة",
       notifications: "الإشعارات والرسائل",
       overview: "نظرة عامة",

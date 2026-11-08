@@ -308,6 +308,7 @@ const en = {
   admin: {
     title: "Admin",
     nav: {
+      companies: "Companies",
       dropdowns: "Dropdown lists",
       notifications: "Notifications",
       overview: "Overview",

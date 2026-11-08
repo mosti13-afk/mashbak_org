@@ -89,13 +89,13 @@ export const TEMPLATES = {
   },
   job_application: {
     audience: "member",
-    subject: L("طلب جديد على وظيفة {job}", "New application for {job}", "מועמדות חדשה למשרה {job}"),
+    subject: L("{from} يطلب توصيتك: {job}", "{from} is asking for your referral: {job}", "{from} מבקש/ת המלצה ממך: {job}"),
     body: L(
-      "أهلًا {name}،\n\nقدّم {from} طلبًا على الوظيفة التي نشرتها: {job}.\n\n“{message}”\n\nراجع الطلب واقبله أو ارفضه من صفحة الوظيفة.",
-      "Hi {name},\n\n{from} applied to the job you posted: {job}.\n\n“{message}”\n\nReview it and accept or decline from the job page.",
-      "שלום {name},\n\n{from} הגיש/ה מועמדות למשרה שפרסמת: {job}.\n\n“{message}”\n\nאפשר לבחון ולאשר או לדחות מעמוד המשרה.",
+      "أهلًا {name}،\n\nيطلب {from} توصيتك لوظيفة {job}، لأنك تعمل هناك.\n\n“{message}”\n\nيمكنك القبول، أو الاعتذار بلطف، أو إرسال نصيحة قصيرة. كل رد يساعد.",
+      "Hi {name},\n\n{from} is asking for your referral for {job}, because you work there.\n\n“{message}”\n\nYou can accept, kindly decline, or send a short tip. Every answer helps.",
+      "שלום {name},\n\n{from} מבקש/ת ממך המלצה למשרה {job}, כי את/ה עובד/ת שם.\n\n“{message}”\n\nאפשר לאשר, לסרב בנימוס או לשלוח טיפ קצר. כל תשובה עוזרת.",
     ),
-    cta: { label: L("عرض الطلب", "Review application", "לצפייה במועמדות"), path: "/app/jobs/{jobId}" },
+    cta: { label: L("عرض الطلب", "Review request", "לצפייה בבקשה"), path: "/app/requests" },
     wa: ["name", "from", "job"],
   },
   job_application_update: {
@@ -108,6 +108,23 @@ export const TEMPLATES = {
     ),
     cta: { label: L("عرض الوظيفة", "View job", "למשרה"), path: "/app/jobs/{jobId}" },
     wa: ["name", "job"],
+  },
+  ask_reply: {
+    audience: "member",
+    subject: L("{from} ردّ على: {title}", "{from} replied to: {title}", "{from} הגיב/ה ל: {title}"),
+    body: L(
+      "أهلًا {name}،\n\nردّ {from} على ما نشرته في «بدّي / بقدر»:\n\n“{message}”\n\nإذا كان الرد مناسبًا، تواصل معه من صفحة الرد.",
+      "Hi {name},\n\n{from} replied to your post on Asks & Offers:\n\n“{message}”\n\nIf it's a good fit, connect from the post page.",
+      "שלום {name},\n\n{from} הגיב/ה לפוסט שלך בלוח הבקשות וההצעות:\n\n“{message}”\n\nאם זה מתאים, אפשר ליצור קשר מעמוד הפוסט.",
+    ),
+    cta: { label: L("عرض الرد", "View reply", "לצפייה בתגובה"), path: "/app/asks/{askId}" },
+    wa: ["name", "from"],
+  },
+  weekly_digest: {
+    audience: "member",
+    subject: L("هذا الأسبوع في مشبك", "This week on Mashbak", "השבוע במשבק"),
+    body: L("أهلًا {name}،\n\n{digest}", "Hi {name},\n\n{digest}", "שלום {name},\n\n{digest}"),
+    cta: { label: L("فتح مشبك", "Open Mashbak", "לפתיחת משבק"), path: "/app" },
   },
   event_registered: {
     audience: "member",

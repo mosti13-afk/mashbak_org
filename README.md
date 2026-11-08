@@ -26,7 +26,7 @@ npm run dev
 
 ## Connecting Supabase
 
-1. In the Supabase SQL editor, run the files in `supabase/migrations/` in order (`0001_init.sql`, `0002_live_parity.sql`, `0003_auth.sql`).
+1. In the Supabase SQL editor, run the files in `supabase/migrations/` in order (`0001_init.sql` to `0004_v2_insiders.sql`).
 2. Public URL and anon key are baked into the Dockerfile (they are public by design).
 3. Sign in once, make yourself admin, then press **Install defaults** on the admin overview to load programs, FAQs, testimonials, settings and dropdown lists:
    `update public.profiles set role = 'admin', status = 'active' where email = 'you@example.com';`
@@ -52,7 +52,7 @@ npm run dev
 | `ADMIN_EMAILS` | Who gets "new application / new message" alerts, comma separated. Default `info@mashbak.org` |
 | `WHATSAPP_TOKEN` / `WHATSAPP_PHONE_NUMBER_ID` | Meta WhatsApp Cloud API. Templates to create: see `WHATSAPP_TEMPLATES.md` |
 | `ANTHROPIC_API_KEY` | Turns on the Mashbakni assistant. Optional `ANTHROPIC_MODEL` (default `claude-sonnet-5-5`) |
-| `CRON_SECRET` | Any long random string. Cloud Scheduler calls `GET /api/cron/reminders` every 15 minutes with `Authorization: Bearer <CRON_SECRET>` for 24h / 2h event reminders |
+| `CRON_SECRET` | Any long random string. Cloud Scheduler jobs, each with header `Authorization: Bearer <CRON_SECRET>`: `GET /api/cron/reminders` every 15 minutes (event reminders), `GET /api/cron/careers` daily (imports jobs from company career sites), `GET /api/cron/digest` weekly (digest email) |
 
 Everything is optional: without a channel configured, the platform keeps working and the delivery log shows "skipped".
 

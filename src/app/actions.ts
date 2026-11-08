@@ -232,6 +232,9 @@ const jobSchema = z.object({
   description: z.string().min(10).max(6000),
   requirements: z.string().max(4000).nullable(),
   apply_url: z.string().max(400).nullable(),
+  external_url: z.string().max(600).nullable(),
+  location: z.string().max(120).nullable(),
+  source: z.enum(["member", "link"]),
 });
 export async function createJob(f: FormData) {
   const locale = loc(f);
@@ -239,11 +242,12 @@ export async function createJob(f: FormData) {
   const parsed = jobSchema.safeParse({
     title: str(f, "title"), company: str(f, "company"), city: opt(f, "city"), job_type: str(f, "job_type"), work_mode: str(f, "work_mode"),
     is_managerial: bool(f, "is_managerial"), description: str(f, "description"), requirements: opt(f, "requirements"), apply_url: opt(f, "apply_url"),
+    external_url: opt(f, "external_url"), location: opt(f, "location"), source: opt(f, "external_url") ? "link" : "member",
   });
   if (!parsed.success) redirect(`/${locale}/app/jobs/new?error=1`);
-  const id = await repo.createJob(v.id, parsed.data);
+  const id = await repo.createJob(v.id, { ...parsed.data, apply_url: parsed.data.apply_url ?? parsed.data.external_url });
   revalidatePath("/", "layout");
-  redirect(`/${locale}/app/jobs/${id}`);
+  redirect(`/${locale}/app/jobs/${id}?posted=1`);
 }
 export async function toggleJob(f: FormData) {
   const v = await requireMember(loc(f));
@@ -252,21 +256,122 @@ export async function toggleJob(f: FormData) {
   redirect(back(f, `/${loc(f)}/app/jobs/${str(f, "id")}`));
 }
 export async function requestReferral(f: FormData) {
-  const v = await requireMember(loc(f));
+  const locale = loc(f);
+  const v = await requireMember(locale);
   const msg = str(f, "message").slice(0, 1500);
-  if (msg.length >= 5) {
-    await repo.requestReferral(str(f, "job_id"), v.id, msg, opt(f, "cv_url"));
-    await hooks.onReferralRequested(str(f, "job_id"), v.id, msg);
-  }
+  const jobId = str(f, "job_id");
+  const insider = opt(f, "insider_id");
+  if (msg.length < 5) redirect(`/${locale}/app/jobs/${jobId}?error=msg`);
+  await repo.requestReferral(jobId, v.id, msg, opt(f, "cv_url") ?? v.cv_url ?? null, insider);
+  await hooks.onReferralRequested(jobId, v.id, msg, insider);
   revalidatePath("/", "layout");
-  redirect(`/${loc(f)}/app/jobs/${str(f, "job_id")}`);
+  redirect(`/${locale}/app/jobs/${jobId}?asked=1`);
 }
 export async function respondReferral(f: FormData) {
   const v = await requireMember(loc(f));
-  await repo.respondReferral(str(f, "id"), v.id, str(f, "accept") === "1");
-  await hooks.onReferralResponded(str(f, "id"), str(f, "job_id"), v.id, str(f, "accept") === "1");
+  const accept = str(f, "accept") === "1";
+  const note = opt(f, "note")?.slice(0, 1200) ?? null;
+  await repo.respondReferral(str(f, "id"), v.id, accept, note);
+  await hooks.onReferralResponded(str(f, "id"), v.id, accept, note);
   revalidatePath("/", "layout");
-  redirect(`/${loc(f)}/app/jobs/${str(f, "job_id")}`);
+  redirect(back(f, `/${loc(f)}/app/requests`));
+}
+export async function withdrawReferral(f: FormData) {
+  const v = await requireMember(loc(f));
+  await repo.withdrawReferral(str(f, "id"), v.id);
+  revalidatePath("/", "layout");
+  redirect(back(f, `/${loc(f)}/app/requests?tab=sent`));
+}
+export async function setReferralOutcome(f: FormData) {
+  const v = await requireMember(loc(f));
+  const o = str(f, "outcome");
+  if (["interview", "offer", "hired", "no_news", "rejected"].includes(o)) await repo.referralOutcome(str(f, "id"), v.id, o as "hired");
+  revalidatePath("/", "layout");
+  redirect(back(f, `/${loc(f)}/app/requests?tab=sent`));
+}
+
+// ---------- member: companies ----------
+const slugify = (s: string) => s.toLowerCase().normalize("NFKD").replace(/[^a-z0-9\u0600-\u06FF\u0590-\u05FF]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 60) || `c-${Date.now()}`;
+export async function followCompany(f: FormData) {
+  const v = await requireMember(loc(f));
+  await repo.followCompany(v.id, str(f, "company_id"), str(f, "on") === "1");
+  revalidatePath("/", "layout");
+  redirect(back(f, `/${loc(f)}/app/companies`));
+}
+export async function addCompany(f: FormData) {
+  const locale = loc(f);
+  const v = await requireMember(locale);
+  const name = str(f, "name").slice(0, 120);
+  if (name.length < 2) redirect(`/${locale}/app/companies?error=1`);
+  const existing = (await repo.listCompanies({ viewerId: v.id, q: name })).find((c) => c.name.toLowerCase() === name.toLowerCase() || c.aliases.includes(name.toLowerCase()));
+  if (existing) redirect(`/${locale}/app/companies/${existing.slug}`);
+  const website = opt(f, "website");
+  const id = await repo.upsertCompany({
+    slug: slugify(name), name, website: website && !/^https?:/i.test(website) ? `https://${website}` : website, careers_url: opt(f, "careers_url"),
+    sector: opt(f, "sector"), aliases: [name.toLowerCase()], location_filter: "israel", sync_enabled: true,
+  }, v.id);
+  if (bool(f, "mine")) await repo.updateProfile(v.id, { company: name, company_id: id });
+  const c = await repo.getCompany(id);
+  if (c?.careers_url) { const { syncCompany } = await import("@/lib/careers/sync"); await syncCompany(c).catch(() => {}); }
+  revalidatePath("/", "layout");
+  redirect(`/${locale}/app/companies/${c?.slug ?? ""}`);
+}
+
+// ---------- member: asks & offers ----------
+export async function createAsk(f: FormData) {
+  const locale = loc(f);
+  const v = await requireMember(locale);
+  const title = str(f, "title").slice(0, 140);
+  const kind = str(f, "kind") === "offer" ? "offer" : "ask";
+  if (title.length < 5) redirect(`/${locale}/app/asks/new?kind=${kind}&error=1`);
+  const id = await repo.createAsk(v.id, { kind, title, body: str(f, "body").slice(0, 3000), tags: list(str(f, "tags")).slice(0, 6) });
+  revalidatePath("/", "layout");
+  redirect(`/${locale}/app/asks/${id}`);
+}
+export async function closeAsk(f: FormData) {
+  const v = await requireMember(loc(f));
+  await repo.setAskStatus(str(f, "id"), v.id, str(f, "status") === "open" ? "open" : "closed");
+  revalidatePath("/", "layout");
+  redirect(`/${loc(f)}/app/asks/${str(f, "id")}`);
+}
+export async function replyAsk(f: FormData) {
+  const v = await requireMember(loc(f));
+  const msg = str(f, "message").slice(0, 1500);
+  if (msg.length >= 2) {
+    await repo.replyAsk(str(f, "ask_id"), v.id, msg);
+    await hooks.onAskReply(str(f, "ask_id"), v.id, msg);
+  }
+  revalidatePath("/", "layout");
+  redirect(`/${loc(f)}/app/asks/${str(f, "ask_id")}?replied=1`);
+}
+
+// ---------- admin: companies ----------
+export async function saveCompany(f: FormData) {
+  const locale = loc(f);
+  const v = await requireAdmin(locale);
+  const name = str(f, "name");
+  await repo.upsertCompany({
+    id: opt(f, "id") ?? undefined, slug: str(f, "slug") || slugify(name), name, name_ar: opt(f, "name_ar"), name_he: opt(f, "name_he"),
+    aliases: [name, str(f, "name_ar"), str(f, "name_he"), ...list(str(f, "aliases"))].filter(Boolean), logo_url: opt(f, "logo_url"), website: opt(f, "website"),
+    sector: opt(f, "sector"), careers_url: opt(f, "careers_url"), location_filter: str(f, "location_filter") === "all" ? "all" : "israel", sync_enabled: bool(f, "sync_enabled"),
+  }, v.id);
+  revalidatePath("/", "layout");
+  redirect(`/${locale}/admin/companies?saved=1`);
+}
+export async function deleteCompany(f: FormData) {
+  await requireAdmin(loc(f));
+  await repo.deleteCompany(str(f, "id"));
+  revalidatePath("/", "layout");
+  redirect(`/${loc(f)}/admin/companies`);
+}
+export async function syncCompanyNow(f: FormData) {
+  const locale = loc(f);
+  await requireAdmin(locale);
+  const c = await repo.getCompany(str(f, "id"));
+  const { syncCompany } = await import("@/lib/careers/sync");
+  const r = c ? await syncCompany(c) : { ok: false, total: 0, added: 0, error: "not found" };
+  revalidatePath("/", "layout");
+  redirect(`/${locale}/admin/companies?synced=${encodeURIComponent(c?.name ?? "")}&n=${r.total}&new=${r.added}${r.ok ? "" : `&err=${encodeURIComponent(r.error ?? "")}`}#${c?.slug ?? ""}`);
 }
 
 // ---------- member: notifications & profile ----------
@@ -280,13 +385,18 @@ export async function saveProfile(f: FormData) {
   const locale = loc(f);
   const v = await requireMember(locale);
   const phone = str(f, "phone").replace(/[^\d+]/g, "");
+  const companyText = opt(f, "company");
+  const t = companyText?.toLowerCase();
+  const match = t ? (await repo.listCompanies({ viewerId: v.id, q: companyText! })).find((c) => c.name.toLowerCase() === t || c.aliases.includes(t) || c.name_ar?.toLowerCase() === t || c.name_he?.toLowerCase() === t) : undefined;
   await repo.updateProfile(v.id, {
     full_name_ar: str(f, "full_name_ar").slice(0, 120), full_name_en: str(f, "full_name_en").slice(0, 120),
-    headline: opt(f, "headline"), company: opt(f, "company"), sector: opt(f, "sector"), city: opt(f, "city"),
+    headline: opt(f, "headline"), company: match?.name ?? companyText, sector: opt(f, "sector"), city: opt(f, "city"),
     years_experience: int(f, "years_experience"), linkedin_url: opt(f, "linkedin_url"), avatar_url: opt(f, "avatar_url"),
     phone: phone || null, bio: opt(f, "bio"), career_goals: list(str(f, "career_goals")), interests: list(str(f, "interests")),
     open_to_mentoring: bool(f, "open_to_mentoring"), show_phone_to_connections: bool(f, "show_phone_to_connections"),
     notify_email: bool(f, "notify_email"), notify_whatsapp: bool(f, "notify_whatsapp"),
+    company_id: match?.id ?? null, open_to_referrals: bool(f, "open_to_referrals"), open_to_chats: bool(f, "open_to_chats"),
+    help_offers: list(str(f, "help_offers")).slice(0, 8), cv_url: opt(f, "cv_url"),
   });
   revalidatePath("/", "layout");
   redirect(`/${locale}/app/profile?saved=1`);
