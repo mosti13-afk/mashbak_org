@@ -49,6 +49,8 @@ const ar: Dict = {
     language: "اللغة",
     privacy: "سياسة الخصوصية",
     rights: "جميع الحقوق محفوظة",
+    install: "ثبّت التطبيق",
+    installHint: 'اضغط زر المشاركة ثم "إضافة إلى الشاشة الرئيسية".',
     exclusive: "شبكة حصرية",
   },
   nav: {

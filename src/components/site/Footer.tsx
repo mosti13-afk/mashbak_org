@@ -8,7 +8,7 @@ export async function Footer({ locale, t }: { locale: Locale; t: Dict }) {
   const s = await repo.getSettings();
   const year = new Date().getFullYear();
   return (
-    <footer className="mesh relative overflow-hidden text-white">
+    <footer className="mesh relative overflow-hidden pb-[calc(4.5rem+env(safe-area-inset-bottom))] text-white lg:pb-0">
       <div className="grid-lines absolute inset-0 opacity-60" aria-hidden />
       <div className="container-x relative grid gap-10 py-14 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>

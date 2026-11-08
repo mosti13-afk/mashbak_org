@@ -8,6 +8,7 @@ import type { Profile } from "@/lib/types";
 import { Avatar, Logo } from "../ui";
 import { LangSwitcher, SubmitButton } from "../ui/client";
 import { NavLinks, type NavItem } from "./NavLinks";
+import { InstallButton } from "../pwa";
 
 export function Shell({ locale, t, viewer, items, mobileItems, children, area }: {
   locale: Locale; t: Dict; viewer: Profile; items: NavItem[]; mobileItems: NavItem[]; children: ReactNode; area: "app" | "admin";
@@ -24,6 +25,7 @@ export function Shell({ locale, t, viewer, items, mobileItems, children, area }:
           <NavLinks items={items} />
         </div>
         <div className="border-t border-line p-4">
+          <div className="mb-3"><InstallButton label={t.common.install} iosHint={t.common.installHint} /></div>
           {viewer.role === "admin" && (
             <Link href={`/${locale}/${area === "admin" ? "app" : "admin"}`} className="btn btn-outline btn-sm mb-3 w-full">
               {area === "admin" ? t.common.myArea : t.common.admin}
@@ -53,7 +55,10 @@ export function Shell({ locale, t, viewer, items, mobileItems, children, area }:
             <form action={logout}><input type="hidden" name="locale" value={locale} /><SubmitButton className="rounded-full p-2 text-mist"><LogOut className="flip-rtl h-4 w-4" /></SubmitButton></form>
           </div>
         </header>
-        <main className="mx-auto w-full max-w-6xl px-4 pb-28 pt-6 sm:px-8 lg:pb-12 lg:pt-10">{children}</main>
+        <main className="mx-auto w-full max-w-6xl px-4 pb-28 pt-6 sm:px-8 lg:pb-12 lg:pt-10">
+          <div className="mb-4 lg:hidden"><InstallButton label={t.common.install} iosHint={t.common.installHint} className="btn btn-mint btn-sm w-full" /></div>
+          {children}
+        </main>
         <nav className="fixed inset-x-0 bottom-0 z-30 border-t border-line bg-white/95 pb-[env(safe-area-inset-bottom)] backdrop-blur lg:hidden">
           <NavLinks items={mobileItems} mobile />
         </nav>

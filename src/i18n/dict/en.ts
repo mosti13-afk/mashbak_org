@@ -47,6 +47,8 @@ const en = {
     language: "Language",
     privacy: "Privacy policy",
     rights: "All rights reserved",
+    install: "Install the app",
+    installHint: 'Tap Share, then "Add to Home Screen".',
     exclusive: "Curated network",
   },
   nav: {

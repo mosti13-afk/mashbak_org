@@ -23,9 +23,9 @@ export function NavLinks({ items, mobile = false }: { items: NavItem[]; mobile?:
           const active = isActive(i);
           return (
             <li key={i.href}>
-              <Link href={i.href} className={clsx("relative flex flex-col items-center gap-1 py-2.5 text-[10.5px] font-bold", active ? "text-navy" : "text-mist")}>
+              <Link href={i.href} className={clsx("relative flex min-w-0 flex-col items-center gap-1 py-2.5 text-[10.5px] font-bold", active ? "text-navy" : "text-mist")}>
                 <span className={clsx("flex h-8 w-12 items-center justify-center rounded-full transition", active && "bg-mint-soft")}><I className="h-5 w-5" /></span>
-                <span className="truncate">{i.label}</span>
+                <span className="w-full truncate px-0.5 text-center">{i.label}</span>
                 {i.badge ? <span className="absolute end-[22%] top-1.5 h-2.5 w-2.5 rounded-full bg-[#d64545] ring-2 ring-white" /> : null}
               </Link>
             </li>

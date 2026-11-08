@@ -49,6 +49,8 @@ const he: Dict = {
     language: "שפה",
     privacy: "מדיניות פרטיות",
     rights: "כל הזכויות שמורות",
+    install: "התקנת האפליקציה",
+    installHint: 'הקישו על שיתוף ואז "הוספה למסך הבית".',
     exclusive: "רשת בלעדית",
   },
   nav: {

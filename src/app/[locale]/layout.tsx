@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import "../globals.css";
 import { getDict, isLocale, localeMeta, type Locale } from "@/i18n";
+import { ServiceWorker } from "@/components/pwa";
 import { isDemo } from "@/lib/env";
 
 // Content comes from the database and the session, so every page renders on request
@@ -16,10 +17,14 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://mashbak.org"),
     openGraph: { title: t.common.brand, description: t.home.sub, images: ["/logo_color.png"] },
     alternates: { languages: { ar: "/ar", en: "/en", he: "/he" } },
+    applicationName: t.common.brand,
+    appleWebApp: { capable: true, title: t.common.brand, statusBarStyle: "default" },
+    icons: { icon: [{ url: "/icons/favicon-32.png", sizes: "32x32" }, { url: "/icons/icon-192.png", sizes: "192x192" }], apple: "/icons/apple-touch-icon.png" },
+    formatDetection: { telephone: false },
   };
 }
 
-export const viewport: Viewport = { themeColor: "#0a476d" };
+export const viewport: Viewport = { themeColor: "#0a476d", width: "device-width", initialScale: 1, viewportFit: "cover" };
 
 export default async function LocaleLayout({ children, params }: { children: ReactNode; params: Promise<{ locale: string }> }) {
   const { locale: raw } = await params;
@@ -32,6 +37,7 @@ export default async function LocaleLayout({ children, params }: { children: Rea
           <div className="bg-navy-ink px-4 py-1.5 text-center text-[11px] font-semibold tracking-wide text-white/80">{t.common.demoBanner}</div>
         )}
         {children}
+        <ServiceWorker />
       </body>
     </html>
   );
