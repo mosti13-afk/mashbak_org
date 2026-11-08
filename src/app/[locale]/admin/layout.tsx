@@ -19,6 +19,8 @@ export default async function AdminLayout({ children, params }: { children: Reac
     { href: `${b}/jobs`, label: N.jobs, icon: "jobs" },
     { href: `${b}/reviews`, label: N.reviews, icon: "star" },
     { href: `${b}/programs`, label: N.programs, icon: "layers" },
+    { href: `${b}/dropdowns`, label: N.dropdowns, icon: "file" },
+    { href: `${b}/notifications`, label: N.notifications, icon: "bell" },
     { href: `${b}/faqs`, label: N.faqs, icon: "help" },
     { href: `${b}/messages`, label: N.messages, icon: "mail", badge: msgs.filter((m) => !m.replied_at).length },
     { href: `${b}/settings`, label: N.settings, icon: "settings" },

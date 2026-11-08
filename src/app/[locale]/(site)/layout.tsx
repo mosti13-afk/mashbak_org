@@ -4,12 +4,12 @@ import { Header } from "@/components/site/Header";
 import { pageLocale } from "@/lib/page";
 
 export default async function SiteLayout({ children, params }: { children: ReactNode; params: Promise<{ locale: string }> }) {
-  const { locale, t } = await pageLocale(params);
+  const { locale } = await pageLocale(params);
   return (
     <>
-      <Header locale={locale} t={t} />
-      <main>{children}</main>
-      <Footer locale={locale} t={t} />
+      <Header locale={locale} />
+      <main id="main-content">{children}</main>
+      <Footer locale={locale} />
     </>
   );
 }

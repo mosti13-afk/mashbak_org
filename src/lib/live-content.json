@@ -1,0 +1,3379 @@
+{
+ "programs": [
+  {
+   "id": "019e2d01-9947-7145-8e50-8316d6d766be",
+   "slug": "career-boost",
+   "title": {
+    "ar": "Career Boost",
+    "he": "קרייר בוסט",
+    "en": "Career Boost"
+   },
+   "summary": {
+    "ar": "تدريب مكثّف مخصّص لمدراء في بداية طريقهم الإدارية ولمهنيين يشقّون طريقهم نحو أدوار إدارية في أماكن عملهم.",
+    "he": "הכשרה אינטנסיבית למנהלים בתחילת דרכם ולאנשי מקצוע המתפתחים לקראת תפקידי ניהול בארגונים שלהם.",
+    "en": "An intensive training program for early-career managers and professionals moving toward managerial roles in their workplaces."
+   },
+   "body": {
+    "ar": "تدريب مكثّف مخصّص لمدراء في بداية طريقهم الإدارية ولمهنيين يشقّون طريقهم نحو أدوار إدارية في أماكن عملهم. يجمع البرنامج بين التشبيك المكثّف واكتساب مهارات إدارية وتنظيمية معاصرة تدفع المشاركين قدمًا مهنيًا.",
+    "he": "הכשרה אינטנסיבית למנהלים בתחילת דרכם ולאנשי מקצוע המתפתחים לקראת תפקידי ניהול בארגונים שלהם. התוכנית משלבת נטוורקינג משמעותי ורכישת מיומנויות ניהוליות וארגוניות עדכניות לקידום מקצועי.",
+    "en": "An intensive training program for early-career managers and professionals moving toward managerial roles in their workplaces. The program combines focused networking with contemporary management and organizational skills to support professional growth."
+   },
+   "target_audience": [
+    {
+     "ar": "مهنيون ومهنيات بخبرة 5 سنوات فأكثر يطمحون إلى دور إداري",
+     "he": "אנשי ונשות מקצוע עם 5+ שנות ניסיון השואפים לתפקיד ניהולי",
+     "en": "Professionals with 5+ years of experience aiming for a management role"
+    },
+    {
+     "ar": "مدراء في بداية طريقهم الإدارية",
+     "he": "מנהלים בתחילת דרכם הניהולית",
+     "en": "Managers at the start of their management journey"
+    }
+   ],
+   "benefits": [
+    {
+     "ar": "تدريب إداري مكثّف",
+     "he": "הכשרה ניהולית אינטנסיבית",
+     "en": "Intensive management training"
+    },
+    {
+     "ar": "تشبيك مهني بين المشاركين",
+     "he": "נטוורקינג מקצועי בין המשתתפים",
+     "en": "Professional networking among participants"
+    },
+    {
+     "ar": "أدوات عملية للتقدم المهني",
+     "he": "כלים מעשיים לקידום מקצועי",
+     "en": "Practical tools for career growth"
+    }
+   ],
+   "icon_url": "/live/programs/01a19d43-f475-73e9-8666-5ccbbf5b5608.png",
+   "image_url": "/live/programs/01a19d43-f6f0-778c-8ffd-bb60df05b0ef.png",
+   "sessions_count": 6,
+   "duration_months": null,
+   "sort_order": 1,
+   "is_active": true
+  },
+  {
+   "id": "019e2d02-3233-7f8c-abc0-8e8643039e95",
+   "slug": "ceo-session",
+   "title": {
+    "ar": "جلسة CEO",
+    "he": "מפגש CEO",
+    "en": "CEO Session"
+   },
+   "summary": {
+    "ar": "برنامج يفتح المجال أمام أعضاء مشبك للقاء مدراء تنفيذيين من أبرز الشركات، والتعرّف على أفضل الممارسات في عالم القيادة التنفيذية، وبناء قنوات تواصل مباشرة مع قادة الصناعة.",
+    "he": "תוכנית המאפשרת לחברי משבק לפגוש מנכ״לים מחברות מובילות, להיחשף לפרקטיקות של מנהיגות בכירה וליצור ערוצי קשר ישירים עם מובילי תעשייה.",
+    "en": "A program that gives Mashbak members access to CEOs from leading companies, offering exposure to executive leadership practices and direct connections with industry leaders."
+   },
+   "body": {
+    "ar": "برنامج يفتح المجال أمام أعضاء مشبك للقاء مدراء تنفيذيين من أبرز الشركات، والتعرّف على أفضل الممارسات في عالم القيادة التنفيذية، وبناء قنوات تواصل مباشرة مع قادة الصناعة.",
+    "he": "תוכנית המאפשרת לחברי משבק לפגוש מנכ״לים מחברות מובילות, להיחשף לפרקטיקות של מנהיגות בכירה וליצור ערוצי קשר ישירים עם מובילי תעשייה.",
+    "en": "A program that gives Mashbak members access to CEOs from leading companies, offering exposure to executive leadership practices and direct connections with industry leaders."
+   },
+   "target_audience": [
+    {
+     "ar": "أعضاء مشبك الطامحون إلى مواقع قيادية في القطاع الخاص",
+     "he": "חברי משבק השואפים לתפקידי מנהיגות במגזר הפרטי",
+     "en": "Mashbak members aiming for leadership roles in the private sector"
+    },
+    {
+     "ar": "من يريد التعلّم مباشرة من مدراء تنفيذيين",
+     "he": "מי שרוצה ללמוד ישירות ממנכ״לים",
+     "en": "Those who want to learn directly from CEOs"
+    }
+   ],
+   "benefits": [
+    {
+     "ar": "لقاءات مع قيادات تنفيذية",
+     "he": "מפגשים עם מנהלים בכירים",
+     "en": "Meetings with executive leaders"
+    },
+    {
+     "ar": "رؤى من عالم القيادة",
+     "he": "תובנות מעולם הניהול הבכיר",
+     "en": "Insights from executive leadership"
+    },
+    {
+     "ar": "توسيع شبكة العلاقات",
+     "he": "הרחבת רשת קשרים מקצועית",
+     "en": "Expanding professional networks"
+    }
+   ],
+   "icon_url": "/live/programs/01a19d43-fa02-71b9-834f-6a6ddf2d3560.png",
+   "image_url": "/live/programs/01a19d43-fb5e-71ff-9ed0-5fd8723ba5f3.png",
+   "sessions_count": null,
+   "duration_months": null,
+   "sort_order": 2,
+   "is_active": true
+  },
+  {
+   "id": "019e2d02-6f10-7b9c-967c-4b20abba6cb8",
+   "slug": "qahwa-mashbak",
+   "title": {
+    "ar": "قهوة مشبك",
+    "he": "קפה משבק",
+    "en": "Qahwa Mashbak"
+   },
+   "summary": {
+    "ar": "برنامج يجمع أعضاء مشبك في مجموعات صغيرة لتبادل الخبرات وتقديم الدعم المتبادل.",
+    "he": "תוכנית בקבוצות קטנות שבה חברי משבק מחליפים ידע ותומכים זה בזה.",
+    "en": "A small-group program where Mashbak members exchange experience and provide mutual support."
+   },
+   "body": {
+    "ar": "برنامج يجمع أعضاء مشبك في مجموعات صغيرة لتبادل الخبرات وتقديم الدعم المتبادل. تعمل كل مجموعة على مساعدة أحد أعضائها في تحدٍ مهني أو شخصي من خلال الموارد والعلاقات والخبرة الجماعية.",
+    "he": "תוכנית בקבוצות קטנות שבה חברי משבק מחליפים ידע ותומכים זה בזה. כל קבוצה מסייעת לאחד מחבריה בהתמודדות עם אתגר מקצועי או אישי בעזרת משאבים, קשרים וניסיון משותף.",
+    "en": "A small-group program where Mashbak members exchange experience and provide mutual support. Each group helps one member address a professional or personal challenge using collective resources, relationships, and knowledge."
+   },
+   "target_audience": [
+    {
+     "ar": "أعضاء يفضّلون التعلّم في مجموعات صغيرة",
+     "he": "חברים המעדיפים ללמוד בקבוצות קטנות",
+     "en": "Members who prefer learning in small groups"
+    },
+    {
+     "ar": "من يواجه تحديًا مهنيًا ويبحث عن خبرة زملائه",
+     "he": "מי שמתמודד עם אתגר מקצועי ומחפש את ניסיון עמיתיו",
+     "en": "Those facing a professional challenge and seeking peers’ experience"
+    }
+   ],
+   "benefits": [
+    {
+     "ar": "مجموعات صغيرة للدعم المهني",
+     "he": "קבוצות קטנות לתמיכה מקצועית",
+     "en": "Small peer-support groups"
+    },
+    {
+     "ar": "تبادل خبرات بين الأعضاء",
+     "he": "שיתוף ניסיון בין חברים",
+     "en": "Peer experience sharing"
+    },
+    {
+     "ar": "مساعدة عملية في تحديات مهنية",
+     "he": "סיוע מעשי באתגרים מקצועיים",
+     "en": "Practical support with professional challenges"
+    }
+   ],
+   "icon_url": "/live/programs/01a19d43-fda3-71ca-a16f-aa5a99be1b4b.png",
+   "image_url": "/live/programs/01a19d43-ff39-725b-aba6-1b21d782e887.png",
+   "sessions_count": null,
+   "duration_months": null,
+   "sort_order": 3,
+   "is_active": true
+  },
+  {
+   "id": "019e2d02-a4ce-7295-aec6-382ad55e6a83",
+   "slug": "mashbak-connects",
+   "title": {
+    "ar": "مشبك Connects",
+    "he": "משבק Connects",
+    "en": "Mashbak Connects"
+   },
+   "summary": {
+    "ar": "ندوة تفاعلية مكثفة تهدف إلى تعزيز التواصل المهني وتقوية الروابط بين أعضاء مشبك.",
+    "he": "מפגש אינטראקטיבי ומרוכז שנועד לחזק תקשורת מקצועית וקשרים בין חברי משבק.",
+    "en": "An intensive interactive gathering designed to strengthen professional connection and relationships among Mashbak members."
+   },
+   "body": {
+    "ar": "ندوة تفاعلية مكثفة تهدف إلى تعزيز التواصل المهني وتقوية الروابط بين أعضاء مشبك. تشمل ورشات عمل وحلقات مع الطاقم القيادي لتوجيه مسار الشبكة وتطور الأفراد فيها.",
+    "he": "מפגש אינטראקטיבי ומרוכז שנועד לחזק תקשורת מקצועית וקשרים בין חברי משבק. המפגש כולל סדנאות ומעגלים עם הצוות המוביל להכוונת התפתחות הרשת והמשתתפים בה.",
+    "en": "An intensive interactive gathering designed to strengthen professional connection and relationships among Mashbak members. It includes workshops and leadership-team circles that support the network’s direction and members’ development."
+   },
+   "target_audience": [
+    {
+     "ar": "أعضاء مشبك الحاليون والجدد",
+     "he": "חברי משבק ותיקים וחדשים",
+     "en": "Current and new Mashbak members"
+    },
+    {
+     "ar": "من يريد توسيع شبكة علاقاته داخل المجتمع",
+     "he": "מי שרוצה להרחיב את רשת הקשרים שלו בקהילה",
+     "en": "Those who want to grow their network within the community"
+    }
+   ],
+   "benefits": [
+    {
+     "ar": "ورشات عمل تفاعلية",
+     "he": "סדנאות אינטראקטיביות",
+     "en": "Interactive workshops"
+    },
+    {
+     "ar": "تشبيك وتعارف بين الأعضاء",
+     "he": "נטוורקינג והיכרות בין חברים",
+     "en": "Networking among members"
+    },
+    {
+     "ar": "حلقات مع الطاقم القيادي",
+     "he": "מעגלים עם הצוות המוביל",
+     "en": "Circles with the leadership team"
+    }
+   ],
+   "icon_url": "/live/programs/01a19d44-0231-70cb-944b-d5de8e312deb.png",
+   "image_url": "/live/programs/01a19d44-03fb-7028-852f-1cd46dc28569.png",
+   "sessions_count": null,
+   "duration_months": null,
+   "sort_order": 4,
+   "is_active": true
+  },
+  {
+   "id": "019e2d02-cb4f-778c-a3c6-988f3af66c14",
+   "slug": "workshop",
+   "title": {
+    "ar": "ورشة",
+    "he": "סדנה",
+    "en": "Workshop"
+   },
+   "summary": {
+    "ar": "ينظم مشبك خلال السنة ورشات، محاضرات ولقاءات تعليمية مخصصة لأعضاء مشبك وللجمهور الواسع، حول مهارات وأدوات ومعرفة مبتكرة من عوالم الإدارة والمسيرة المهنية.",
+    "he": "לאורך השנה משבק מקיים סדנאות, הרצאות ומפגשי למידה לחברי הקהילה ולקהל הרחב, סביב מיומנויות, כלים וידע חדשניים מעולמות הניהול ופיתוח הקריירה.",
+    "en": "Throughout the year, Mashbak organizes workshops, talks, and learning sessions for members and the wider public, focusing on innovative skills, tools, and knowledge from the worlds of management and career development."
+   },
+   "body": {
+    "ar": "ينظم مشبك خلال السنة ورشات، محاضرات ولقاءات تعليمية مخصصة لأعضاء مشبك وللجمهور الواسع، حول مهارات وأدوات ومعرفة مبتكرة من عوالم الإدارة والمسيرة المهنية.",
+    "he": "לאורך השנה משבק מקיים סדנאות, הרצאות ומפגשי למידה לחברי הקהילה ולקהל הרחב, סביב מיומנויות, כלים וידע חדשניים מעולמות הניהול ופיתוח הקריירה.",
+    "en": "Throughout the year, Mashbak organizes workshops, talks, and learning sessions for members and the wider public, focusing on innovative skills, tools, and knowledge from the worlds of management and career development."
+   },
+   "target_audience": [
+    {
+     "ar": "أعضاء مشبك والجمهور المهني الواسع",
+     "he": "חברי משבק והקהל המקצועי הרחב",
+     "en": "Mashbak members and the wider professional public"
+    },
+    {
+     "ar": "من يبحث عن أدوات عملية في الإدارة وتطوير المسار المهني",
+     "he": "מי שמחפש כלים מעשיים בניהול ובפיתוח קריירה",
+     "en": "Those looking for practical tools in management and career development"
+    }
+   ],
+   "benefits": [
+    {
+     "ar": "ورشات عملية",
+     "he": "סדנאות מעשיות",
+     "en": "Practical workshops"
+    },
+    {
+     "ar": "محاضرات مهنية",
+     "he": "הרצאות מקצועיות",
+     "en": "Professional talks"
+    },
+    {
+     "ar": "أدوات ومهارات حديثة",
+     "he": "כלים ומיומנויות עדכניות",
+     "en": "Modern tools and skills"
+    }
+   ],
+   "icon_url": "/live/programs/01a19d44-067b-7188-8c67-277a965f0d3a.png",
+   "image_url": "/live/programs/01a19d44-07c7-772a-b6a3-5ec7ec5c149a.png",
+   "sessions_count": null,
+   "duration_months": null,
+   "sort_order": 5,
+   "is_active": true
+  },
+  {
+   "id": "019e2d02-eb3f-7af7-a1eb-205cc70d67b3",
+   "slug": "challenge-circle",
+   "title": {
+    "ar": "عَ قد التحدّي",
+    "he": "מעגל האתגר",
+    "en": "Challenge Circle"
+   },
+   "summary": {
+    "ar": "فعالية يشارك فيها أعضاء مشبك بتحديات مهمة من أماكن عملهم، غالبًا ما تكون مشتركة ومتشابهة، ويتحاورون حولها بشكل جماعي ومنهجي لإيجاد حلول ومبادرات وآفاق عملية للتعامل معها.",
+    "he": "פעילות שבה חברי משבק מביאים אתגרים משמעותיים ממקומות העבודה שלהם, שלרוב דומים או משותפים, ודנים בהם בצורה קבוצתית ושיטתית כדי לפתח פתרונות, יוזמות וכיווני פעולה מעשיים.",
+    "en": "An activity where Mashbak members bring important workplace challenges, often shared or similar, and discuss them collectively and methodically to develop solutions, initiatives, and practical directions."
+   },
+   "body": {
+    "ar": "فعالية يشارك فيها أعضاء مشبك بتحديات مهمة من أماكن عملهم، غالبًا ما تكون مشتركة ومتشابهة، ويتحاورون حولها بشكل جماعي ومنهجي لإيجاد حلول ومبادرات وآفاق عملية للتعامل معها.",
+    "he": "פעילות שבה חברי משבק מביאים אתגרים משמעותיים ממקומות העבודה שלהם, שלרוב דומים או משותפים, ודנים בהם בצורה קבוצתית ושיטתית כדי לפתח פתרונות, יוזמות וכיווני פעולה מעשיים.",
+    "en": "An activity where Mashbak members bring important workplace challenges, often shared or similar, and discuss them collectively and methodically to develop solutions, initiatives, and practical directions."
+   },
+   "target_audience": [
+    {
+     "ar": "أعضاء يحملون تحديًا حقيقيًا من مكان عملهم",
+     "he": "חברים המביאים אתגר אמיתי ממקום העבודה",
+     "en": "Members bringing a real challenge from their workplace"
+    },
+    {
+     "ar": "من يريد الوصول إلى حلول بالتفكير الجماعي",
+     "he": "מי שרוצה להגיע לפתרונות בחשיבה קבוצתית",
+     "en": "Those who want to reach solutions through group thinking"
+    }
+   ],
+   "benefits": [
+    {
+     "ar": "نقاش جماعي ومنهجي",
+     "he": "דיון קבוצתי מובנה",
+     "en": "Structured group discussion"
+    },
+    {
+     "ar": "حلول ومبادرات عملية",
+     "he": "פתרונות ויוזמות מעשיים",
+     "en": "Practical solutions and initiatives"
+    },
+    {
+     "ar": "مرافقة مهنية مختصة",
+     "he": "ליווי מקצועי",
+     "en": "Professional facilitation"
+    }
+   ],
+   "icon_url": "/live/programs/01a19d44-0acc-726f-a93d-3d11944b4509.png",
+   "image_url": "/live/programs/01a19d44-0cab-750b-8ee2-c1bff5d6e003.png",
+   "sessions_count": null,
+   "duration_months": null,
+   "sort_order": 6,
+   "is_active": true
+  },
+  {
+   "id": "01a19d32-69dd-73e9-b9ae-a6450e34c763",
+   "slug": "annual-conference",
+   "title": {
+    "ar": "المؤتمر السنوي",
+    "he": "הכנס השנתי",
+    "en": "Annual Conference"
+   },
+   "summary": {
+    "ar": "نشاط التشبيك المركزي والأهم لمجتمع مشبك خلال العام.",
+    "he": "אירוע הנטוורקינג המרכזי של קהילת משבק במהלך השנה.",
+    "en": "Mashbak’s central annual networking event."
+   },
+   "body": {
+    "ar": "نشاط التشبيك المركزي والأهم لمجتمع مشبك خلال العام. يهدف إلى إعادة التركيز على أهمية مشبك كمنصة تعزز القيادة في القطاع الخاص وتؤمن بقوة الشبكة في دعم المبادرات المختلفة.",
+    "he": "אירוע הנטוורקינג המרכזי של קהילת משבק במהלך השנה. מטרתו להחזיר את המיקוד לחשיבות משבק כפלטפורמה המחזקת מנהיגות במגזר הפרטי ומאמינה בכוחה של הרשת לתמוך ביוזמות שונות.",
+    "en": "Mashbak’s central annual networking event. It refocuses attention on Mashbak as a platform that strengthens leadership in the private sector and believes in the power of the network to support different initiatives."
+   },
+   "target_audience": [
+    {
+     "ar": "جميع أعضاء مشبك",
+     "he": "כל חברי משבק",
+     "en": "All Mashbak members"
+    },
+    {
+     "ar": "شركاء كو-إمباكت وقيادات من القطاع الخاص",
+     "he": "שותפי קו-אימפקט ומנהיגים מהמגזר הפרטי",
+     "en": "Co-Impact partners and private-sector leaders"
+    }
+   ],
+   "benefits": [
+    {
+     "ar": "تشبيك مركزي على مستوى المجتمع",
+     "he": "נטוורקינג קהילתי מרכזי",
+     "en": "Community-wide networking"
+    },
+    {
+     "ar": "محتوى مهني وقيادي",
+     "he": "תוכן מקצועי ומנהיגותי",
+     "en": "Professional and leadership content"
+    },
+    {
+     "ar": "تعزيز مبادرات المجتمع",
+     "he": "חיזוק יוזמות הקהילה",
+     "en": "Strengthening community initiatives"
+    }
+   ],
+   "icon_url": "/live/programs/01a19d44-1034-740d-8d5a-a75fe3de69e4.png",
+   "image_url": "/live/programs/01a19d44-11b7-709a-9591-772a300848a6.png",
+   "sessions_count": null,
+   "duration_months": null,
+   "sort_order": 7,
+   "is_active": true
+  },
+  {
+   "id": "01a19d32-6ef5-705f-a671-12334aeae4af",
+   "slug": "accountnet-accounting-hub",
+   "title": {
+    "ar": "نتAccount | ملتقى المحاسبين",
+    "he": "AccountNet | פורום החשבונאים",
+    "en": "AccountNet | Accounting Hub"
+   },
+   "summary": {
+    "ar": "ملتقى المحاسبين بالشراكة مع نتAccount‏: مساحة مهنية ضمن مشبك للمحاسبين والمدققين والمهنيين في عالم المالية.",
+    "he": "פורום החשבונאים בשיתוף AccountNet: מרחב מקצועי בתוך משבק לרואי חשבון, מבקרים ואנשי פיננסים.",
+    "en": "The Accountants' Forum, in partnership with AccountNet: a professional space within Mashbak for accountants, auditors and finance professionals."
+   },
+   "body": {
+    "ar": "ملتقى المحاسبين بالشراكة مع نتAccount‏: مساحة مهنية ضمن مشبك للمحاسبين، المدققين، والمهنيين في عالم المالية والمحاسبة، تهدف إلى تطوير المعرفة المهنية، فتح نقاشات متقدمة، وبناء شبكة علاقات بين أصحاب خبرة في القطاع الخاص.",
+    "he": "פורום החשבונאים בשיתוף AccountNet: מרחב מקצועי בתוך משבק לרואי חשבון, מבקרים ואנשי פיננסים וחשבונאות. המרחב נועד לפתח ידע מקצועי, לפתוח דיונים מתקדמים ולבנות רשת קשרים בין אנשי מקצוע מנוסים במגזר הפרטי.",
+    "en": "The Accountants' Forum, in partnership with AccountNet: a professional space within Mashbak for accountants, auditors, and finance and accounting professionals. It develops professional knowledge, opens advanced discussions, and builds a network among experienced professionals in the private sector."
+   },
+   "target_audience": [
+    {
+     "ar": "محاسبون ومدققو حسابات",
+     "he": "רואי חשבון ומבקרים",
+     "en": "Accountants and auditors"
+    },
+    {
+     "ar": "مهنيون في المالية والرقابة المالية في القطاع الخاص",
+     "he": "אנשי פיננסים ובקרה פיננסית במגזר הפרטי",
+     "en": "Finance and financial-control professionals in the private sector"
+    }
+   ],
+   "benefits": [
+    {
+     "ar": "محاضرات مهنية متخصصة",
+     "he": "הרצאות מקצועיות ממוקדות",
+     "en": "Specialized professional talks"
+    },
+    {
+     "ar": "حواريات مع CFOs وخبراء",
+     "he": "פאנלים עם CFOs ומומחים",
+     "en": "Panels with CFOs and experts"
+    },
+    {
+     "ar": "تشبيك بين محاسبين وماليين",
+     "he": "נטוורקינג בין אנשי חשבונאות ופיננסים",
+     "en": "Networking among accounting and finance professionals"
+    }
+   ],
+   "icon_url": "/live/programs/01a19d44-1457-7783-bd57-850889344bb8.png",
+   "image_url": "/live/programs/01a19d44-15ef-775b-892b-bdb03252549e.png",
+   "sessions_count": null,
+   "duration_months": null,
+   "sort_order": 8,
+   "is_active": true
+  },
+  {
+   "id": "01a19d32-7397-746c-9c0f-de429c83e167",
+   "slug": "leadtech-high-tech-club",
+   "title": {
+    "ar": "تكLead | نادي الهايتك",
+    "he": "LeadTech | מועדון ההייטק",
+    "en": "LeadTech | High-Tech Club"
+   },
+   "summary": {
+    "ar": "مساحة مهنية ضمن مشبك، بالشراكة مع Hasoub Labs، تجمع مهنيين عربًا في عالم التكنولوجيا والهايتك لتبادل المعرفة، بناء علاقات مهنية، وتطوير الحضور القيادي في القطاع.",
+    "he": "מרחב מקצועי בתוך משבק, בשיתוף Hasoub Labs, שמפגיש אנשי מקצוע ערבים מעולמות הטכנולוגיה וההייטק לשיתוף ידע, בניית קשרים מקצועיים וחיזוק נוכחות מנהיגותית בתחום.",
+    "en": "A professional space within Mashbak, in partnership with Hasoub Labs, bringing together Arab professionals in technology and high-tech to exchange knowledge, build professional relationships, and strengthen leadership presence in the sector."
+   },
+   "body": {
+    "ar": "مساحة مهنية ضمن مشبك، بالشراكة مع Hasoub Labs، تجمع مهنيين عربًا في عالم التكنولوجيا والهايتك لتبادل المعرفة، بناء علاقات مهنية، وتطوير الحضور القيادي في القطاع.",
+    "he": "מרחב מקצועי בתוך משבק, בשיתוף Hasoub Labs, שמפגיש אנשי מקצוע ערבים מעולמות הטכנולוגיה וההייטק לשיתוף ידע, בניית קשרים מקצועיים וחיזוק נוכחות מנהיגותית בתחום.",
+    "en": "A professional space within Mashbak, in partnership with Hasoub Labs, bringing together Arab professionals in technology and high-tech to exchange knowledge, build professional relationships, and strengthen leadership presence in the sector."
+   },
+   "target_audience": [
+    {
+     "ar": "مهنيون عرب في البرمجة، البيانات، المنتج، الأمن السيبراني والتصميم",
+     "he": "אנשי מקצוע ערבים בפיתוח, דאטה, מוצר, סייבר ועיצוב",
+     "en": "Arab professionals in software, data, product, cybersecurity and design"
+    },
+    {
+     "ar": "أصحاب خبرة في الهايتك يطمحون إلى أدوار قيادية",
+     "he": "אנשי הייטק מנוסים השואפים לתפקידי מנהיגות",
+     "en": "Experienced high-tech professionals aiming for leadership roles"
+    }
+   ],
+   "benefits": [
+    {
+     "ar": "لقاءات مهنية في عالم التكنولوجيا",
+     "he": "מפגשי הייטק מקצועיים",
+     "en": "Professional high-tech gatherings"
+    },
+    {
+     "ar": "تشبيك بين مهنيي الهايتك",
+     "he": "נטוורקינג בין אנשי הייטק",
+     "en": "Networking among high-tech professionals"
+    },
+    {
+     "ar": "تبادل خبرات وتعلّم جماعي",
+     "he": "שיתוף ניסיון ולמידת עמיתים",
+     "en": "Experience sharing and peer learning"
+    }
+   ],
+   "icon_url": "/live/programs/01a19d44-195d-7795-a547-9c8bea99e516.png",
+   "image_url": "/live/programs/01a19d44-1ab3-7230-bc57-68337acb8dd8.png",
+   "sessions_count": null,
+   "duration_months": null,
+   "sort_order": 9,
+   "is_active": true
+  },
+  {
+   "id": "01a19d44-216e-739b-80b1-f4e358981e02",
+   "slug": "mentoring-program",
+   "title": {
+    "ar": "برنامج الإرشاد | Mentoring",
+    "he": "תכנית המנטורינג",
+    "en": "Mentoring Program"
+   },
+   "summary": {
+    "ar": "مرافقة شخصية من قيادات القطاع الخاص لتطوير مسيرتك المهنية.",
+    "he": "ליווי אישי ממנהיגות המגזר העסקי לקידום הקריירה שלך.",
+    "en": "Personal mentoring from private-sector leaders to grow your career."
+   },
+   "body": {
+    "ar": "برنامج الإرشاد الرائد في كو-إمباكت، يربط بين مئات المرشدين والمرشدات من قيادات القطاع الخاص وبين كفاءات من المجتمع العربي، في مسار شخصي للنمو والتطوّر المهني وتوسيع الآفاق. مساحة فريدة للتعلّم المتبادل وبناء علاقات ذات معنى وفرص مهنية، تجمع بين منهجية مجرَّبة للمرافقة الشخصية على مستوى العين، وحساسية ثقافية، وتطوير المهارات الشخصية.",
+    "he": "תכנית הדגל של קו-אימפקט מחברת בין מאות מנטורים ומנטוריות, מנהיגים ומנהיגות מהמגזר העסקי, לבין טאלנטים מהחברה הערבית, לתהליך אישי של צמיחה, פיתוח מקצועי והרחבת אופקים. מרחב ייחודי של למידה הדדית, קשרים משמעותיים והזדמנויות קריירה, המבוסס על מתודולוגיה מוכחת לליווי אישי בגובה העיניים, עם רגישות תרבותית ודגש על מיומנויות רכות.",
+    "en": "Co-Impact's flagship mentoring program connects hundreds of mentors, leaders from the private sector, with talented professionals from Arab society, for a personal journey of growth, professional development and wider horizons. A unique space for mutual learning, meaningful relationships and career opportunities, built on a proven eye-level mentoring methodology with cultural sensitivity and a focus on soft skills."
+   },
+   "target_audience": [
+    {
+     "ar": "مهنيون ومهنيات عرب مع لقب أكاديمي وخبرة 3 سنوات فأكثر (في بداية الطريق، متوسطو الخبرة وكبار)",
+     "he": "אנשי ואנשות מקצוע מהחברה הערבית עם תואר אקדמי ו-3+ שנות ניסיון (ג'וניור, ביניים ובכירים)",
+     "en": "Arab professionals with an academic degree and 3+ years of experience (junior, mid-level and senior)"
+    },
+    {
+     "ar": "من يطمح إلى نمو شخصي ومهني ومنفتح على التعلّم والإرشاد بين الثقافات",
+     "he": "מי ששואפים לצמיחה אישית ומקצועית ופתוחים ללמידה ולמנטורינג בין-תרבותי",
+     "en": "People seeking personal and professional growth who are open to cross-cultural mentoring"
+    },
+    {
+     "ar": "مرشدون ومرشدات: قيادات ومدراء من القطاع الخاص بخبرة إدارية 7 سنوات فأكثر",
+     "he": "מנטורים ומנטוריות: מנהיגים ומנהלים מהמגזר העסקי עם 7+ שנות ניסיון ניהולי",
+     "en": "Mentors: private-sector leaders and managers with 7+ years of management experience"
+    }
+   ],
+   "benefits": [
+    {
+     "ar": "مرافقة شخصية من مدراء كبار",
+     "he": "ליווי אישי ממנהלים בכירים",
+     "en": "One-on-one mentoring from senior managers"
+    },
+    {
+     "ar": "خطة تطوير شخصية مركّزة على أهداف",
+     "he": "תכנית פיתוח אישית ממוקדת יעדים",
+     "en": "A goal-focused personal development plan"
+    },
+    {
+     "ar": "شبكة علاقات مهنية وتواصل مع قيادات عليا",
+     "he": "רשת קשרים עסקית וחיבור למנהיגות בכירה",
+     "en": "A professional network and access to senior leadership"
+    }
+   ],
+   "icon_url": "/live/programs/01a19d44-1dfe-71fd-ac4e-ebae06693c4f.png",
+   "image_url": "/live/programs/01a19d44-1f6a-73ab-898a-5b2c1838e047.png",
+   "sessions_count": null,
+   "duration_months": null,
+   "sort_order": 10,
+   "is_active": true
+  }
+ ],
+ "faqs": [
+  {
+   "id": "019e2d03-0ac2-7604-8822-9db275096a60",
+   "question": {
+    "ar": "ما هو مشبك؟",
+    "he": "מה זה משבק?",
+    "en": "What is Mashbak?"
+   },
+   "answer": {
+    "ar": "مشبك مجتمع مهني يجمع مهنيين ومهنيات عربًا من مجالات مختلفة، بهدف بناء علاقات ذات قيمة، التعلّم، والوصول إلى فرص مهنية ومواقع قيادية.",
+    "he": "משבק היא קהילה מקצועית של אנשי ונשות מקצוע ערבים מתחומים שונים, שנועדה ליצור קשרים בעלי ערך, למידה וגישה להזדמנויות מקצועיות ולתפקידי מנהיגות.",
+    "en": "Mashbak is a professional community of Arab professionals from a range of fields, built to create valuable relationships, learning, and access to career opportunities and leadership roles."
+   },
+   "sort_order": 1,
+   "is_active": true
+  },
+  {
+   "id": "01a00fc2-ef49-775d-93aa-b8adf17ce592",
+   "question": {
+    "ar": "من يمكنه التقديم؟",
+    "he": "מי יכול להגיש מועמדות?",
+    "en": "Who can apply?"
+   },
+   "answer": {
+    "ar": "المهنيون والمهنيات العرب من مستويات متوسطة إلى متقدمة، من تخصصات وصناعات مختلفة.",
+    "he": "אנשי ונשות מקצוע ערבים בדרגים בינוניים עד בכירים, מתחומים ותעשיות מגוונים.",
+    "en": "Arab professionals at mid to senior levels, from a wide range of fields and industries."
+   },
+   "sort_order": 2,
+   "is_active": true
+  },
+  {
+   "id": "019e2d03-2cde-7fd1-a7b8-aca56c32eb21",
+   "question": {
+    "ar": "كيف أقدّم طلبًا؟",
+    "he": "איך מגישים בקשה?",
+    "en": "How do I apply?"
+   },
+   "answer": {
+    "ar": "من خلال زر «قدّم طلب انضمام». النموذج قصير ومن مرحلتين: المعلومات الأساسية ثم الخلفية المهنية، ويستغرق بضع دقائق.",
+    "he": "דרך כפתור „הגישו בקשת הצטרפות”. זה טופס קצר בשני שלבים: פרטים בסיסיים ואז רקע מקצועי, וזה לוקח כמה דקות.",
+    "en": "Use the “Apply to join” button. It is a short two-step form (basic details, then your professional background) that takes a few minutes."
+   },
+   "sort_order": 3,
+   "is_active": true
+  },
+  {
+   "id": "019e2d03-4ae1-7d3e-afab-8d82e73646e8",
+   "question": {
+    "ar": "هل الانضمام تلقائي بعد التقديم؟",
+    "he": "האם ההצטרפות אוטומטית לאחר ההגשה?",
+    "en": "Is joining automatic after applying?"
+   },
+   "answer": {
+    "ar": "لا. تتم مراجعة الطلبات لضمان الملاءمة مع طبيعة المجتمع وأهدافه.",
+    "he": "לא. הבקשות נבדקות כדי לוודא התאמה לאופי הקהילה ולמטרותיה.",
+    "en": "No. Applications are reviewed to make sure they fit the nature and goals of the community."
+   },
+   "sort_order": 4,
+   "is_active": true
+  },
+  {
+   "id": "01a19c9f-ade1-76a8-b4b5-fdf2bb6ba36b",
+   "question": {
+    "ar": "كيف أعرف نتيجة طلبي؟",
+    "he": "איך אדע מה תוצאת הבקשה שלי?",
+    "en": "How will I know the result of my application?"
+   },
+   "answer": {
+    "ar": "سنتواصل معك بعد مراجعة الطلب، وفي حال القبول يصلك رابط الدخول إلى التطبيق.",
+    "he": "ניצור איתך קשר לאחר בדיקת הבקשה. אם תתקבל/י, יישלח אליך קישור לכניסה לאפליקציה.",
+    "en": "We will contact you after reviewing your application. If accepted, you will receive a link to sign in to the app."
+   },
+   "sort_order": 5,
+   "is_active": true
+  },
+  {
+   "id": "019e2d03-987a-7561-8f4d-c21b4ae4d9af",
+   "question": {
+    "ar": "ما نوع الفعاليات والبرامج التي يقدمها مشبك؟",
+    "he": "אילו אירועים ותוכניות משבק מציעה?",
+    "en": "What kind of events and programs does Mashbak offer?"
+   },
+   "answer": {
+    "ar": "فعاليات تشبيك، مجموعات تبادل خبرات، برامج تطوير مهني، لقاءات مع مدراء تنفيذيين وخبراء، برنامج الإرشاد (Mentoring)، ومساحات متخصصة مثل نتAccount وتكLead.",
+    "he": "אירועי נטוורקינג, קבוצות למידת עמיתים, תוכניות פיתוח מקצועי, מפגשים עם מנכ״לים ומומחים, תכנית המנטורינג, ומרחבים ייעודיים כמו AccountNet ו-LeadTech.",
+    "en": "Networking events, peer-learning groups, professional development programs, meetings with CEOs and experts, the Mentoring Program, and dedicated spaces such as AccountNet and LeadTech."
+   },
+   "sort_order": 6,
+   "is_active": true
+  },
+  {
+   "id": "01a19c9f-ae5b-701b-ab46-07d32d8afd0b",
+   "question": {
+    "ar": "ما علاقة مشبك بكو-إمباكت؟",
+    "he": "מה הקשר בין משבק לקו-אימפקט?",
+    "en": "How is Mashbak related to Co-Impact?"
+   },
+   "answer": {
+    "ar": "مشبك هو المجتمع المهني من كو-إمباكت، الشراكة لتعزيز العمل في المجتمع العربي، والتي تعمل منذ 2013 مع شركات القطاع الخاص.",
+    "he": "משבק היא הקהילה המקצועית של קו-אימפקט, הפועלת מאז 2013 עם חברות במגזר הפרטי לקידום תעסוקה בחברה הערבית.",
+    "en": "Mashbak is the professional community by Co-Impact, which has worked with private-sector companies since 2013 to advance Arab employment."
+   },
+   "sort_order": 7,
+   "is_active": true
+  },
+  {
+   "id": "019e2d03-697c-74e7-a8ba-f571a65e4b35",
+   "question": {
+    "ar": "هل توجد رسوم عضوية؟",
+    "he": "האם יש דמי חבר?",
+    "en": "Are there membership fees?"
+   },
+   "answer": {
+    "ar": "لا توجد رسوم عضوية. القبول في مشبك يتم بناءً على الملاءمة المهنية، والمشاركة في البرامج تتطلب التزامًا بالحضور.",
+    "he": "אין דמי חבר. הקבלה מבוססת על התאמה מקצועית, והשתתפות בתוכניות מחייבת התחייבות להגיע.",
+    "en": "There are no membership fees. Acceptance is based on professional fit, and taking part in programs requires a commitment to attend."
+   },
+   "sort_order": 8,
+   "is_active": true
+  }
+ ],
+ "reviews": [
+  {
+   "id": "019e2d04-1816-7a74-a0b7-5776f9f5023f",
+   "name": {
+    "ar": "رلى ابو ظلام",
+    "he": "רולא אבו ט'לאם",
+    "en": "Rula Abu Zalam"
+   },
+   "role_title": {
+    "ar": "Investment Control Team Lead",
+    "he": "Investment Control Team Lead",
+    "en": "Investment Control Team Lead"
+   },
+   "organization": "Altshuler Shaham",
+   "photo_url": "/live/reviews/01a1a09d-0a6f-76c2-8cd7-b2b6ca18513d.jpg",
+   "quote": {
+    "ar": "مشبك بالنسبة إلي مش بس مجتمع، بل مساحة بتدعم الطموح، بتشجع على التطور، وبتخلق فرص حقيقية. أنا مؤمنة إن النجاح مش بس إنك توصلي لحالك، بل إنك تتركي أثر وتفتحي طريق لغيرك. ومن خلال مشبك بحاول أشارك تجربتي وأتعلم من الناس اللي حولي، لأن قوة مشبك الحقيقية هي لما نجاح كل شخص فيه يصير دعم ودَفعة لغيره.",
+    "he": "בשבילי משבק היא לא רק קהילה, אלא מרחב שתומך בשאיפות, מעודד התפתחות ויוצר הזדמנויות אמיתיות. אני מאמינה שהצלחה היא לא רק להגיע בעצמך, אלא גם להשאיר חותם ולפתוח דרך לאחרים. דרך משבק אני משתפת מהניסיון שלי ולומדת מהאנשים סביבי, כי הכוח האמיתי של משבק הוא כשההצלחה של כל אחד בה הופכת לתמיכה, להזדמנות ולדחיפה עבור אחרים.",
+    "en": "For me, Mashbak is more than a community. It is a space that supports ambition, encourages growth and creates real opportunities. I believe success is not only about getting there yourself, but also about leaving a mark and opening the way for others. Through Mashbak I share my experience and learn from the people around me, because Mashbak's real strength is when each person's success becomes support, opportunity and a push for others."
+   },
+   "sort_order": 1,
+   "is_active": true
+  },
+  {
+   "id": "019e2d03-f9b2-7cc5-920f-a35f72260387",
+   "name": {
+    "ar": "جاد مجادلة",
+    "he": "ג'אד מג'אדלה",
+    "en": "Jad Majadlih"
+   },
+   "role_title": {
+    "ar": "Senior System Validation Engineer",
+    "he": "Senior System Validation Engineer",
+    "en": "Senior System Validation Engineer"
+   },
+   "organization": "NVIDIA",
+   "photo_url": "/live/reviews/01a1a09d-0c6f-714c-b0a3-117c7faf231c.jpg",
+   "quote": {
+    "ar": "مشبك خلّاني أسترجع الأمل بالمجتمع. ذكّرني إنّه بمجتمعنا في ناس مستعدة تفتح أبواب، تشارك خبرتها، وتدفع غيرها ينجح. والأهم، أعطاني مساحة أكتشف وأعبّر عن روح المبادرة اللي كانت جواي، وأحوّلها لمبادرات تخدم غيري. بالنسبة إلي، هاي هي قوة مشبك: إنه يحوّل قصص النجاح الفردية إلى مجتمع يؤمن ببعض ويكبر مع بعض.",
+    "he": "משבק החזירה לי את התקווה בחברה שלנו. היא הזכירה לי שבחברה שלנו יש אנשים שמוכנים לפתוח דלתות, לשתף מהניסיון שלהם ולדחוף אחרים להצליח. והכי חשוב, היא נתנה לי מרחב לגלות ולבטא את רוח היוזמה שהייתה בתוכי, ולהפוך אותה ליוזמות שמשרתות אחרים. בשבילי, זה הכוח של משבק: היא הופכת סיפורי הצלחה אישיים לקהילה שמאמינה זה בזה וגדלה יחד.",
+    "en": "Mashbak gave me back my hope in our community. It reminded me that there are people in our society ready to open doors, share their experience and push others to succeed. Most importantly, it gave me space to discover and express the spirit of initiative I had inside, and turn it into initiatives that serve others. For me, that is Mashbak's strength: it turns individual success stories into a community that believes in each other and grows together."
+   },
+   "sort_order": 2,
+   "is_active": true
+  },
+  {
+   "id": "019e2d03-cbd3-7978-abb2-0939199807ec",
+   "name": {
+    "ar": "عصام يعقوبي",
+    "he": "עיסאם יעקובי",
+    "en": "Essam Yacoubi"
+   },
+   "role_title": {
+    "ar": "CEO",
+    "he": "CEO",
+    "en": "CEO"
+   },
+   "organization": "Super Travel AI",
+   "photo_url": "/live/reviews/01a1a0ba-d960-77c9-8477-3ed7322672c3.jpg",
+   "quote": {
+    "ar": "مشبك هي مساحة بتجمع أفضل وأبرز العقول المحلية لتبادل الخبرات والدعم المهني للجميع. بشكل شخصي، أكثر أشخاص بتواصل معهم يوم بيوم هم من مشبك وقهوة مشبك. مشبك هي عيلة مهنية بكل معنى الكلمة، ومن مشبك وعلاقات مشبك قدرت أوصل للعالمية مع مشروعي الشخصي.",
+    "he": "משבק היא מרחב שמפגיש את המוחות הטובים והבולטים ביותר כאן, לשיתוף ידע ותמיכה מקצועית לכולם. באופן אישי, רוב האנשים שאני בקשר איתם ביום יום הם ממשבק ומקפה משבק. משבק היא משפחה מקצועית במלוא מובן המילה, ודרך משבק והקשרים של משבק הצלחתי להביא את המיזם האישי שלי לרמה בינלאומית.",
+    "en": "Mashbak is a space that brings together the best and most prominent local minds to share expertise and offer professional support to everyone. Personally, most of the people I am in touch with day to day are from Mashbak and Mashbak Coffee. Mashbak is a professional family in every sense of the word, and through Mashbak and its relationships I was able to take my own project global."
+   },
+   "sort_order": 3,
+   "is_active": true
+  },
+  {
+   "id": "01a1aca6-d65d-75ec-be6b-ef514da671f5",
+   "name": {
+    "ar": "سحر فارس",
+    "he": "סחר פארס",
+    "en": "Sahar Fares"
+   },
+   "role_title": {
+    "ar": "QA Technical Lead",
+    "he": "QA Technical Lead",
+    "en": "QA Technical Lead"
+   },
+   "organization": "Toluna",
+   "photo_url": "/live/reviews/01a1aca5-255e-77ed-bba4-10217bb7e1de.jpg",
+   "quote": {
+    "ar": "أكتر إشي بميّز مشبك بالنسبة إلي هو الناس.\nمجتمع بيجمع أشخاص عندهم الشغف يتعلّموا، يدعموا بعض ويخلقوا فرص جديدة. مشبك أعطاني فرصة أطلع من إطار شغلي اليومي، أجرّب أشياء جديدة، وأكتشف جوانب من شخصيتي وقدراتي ما كنت منتبهة إلها قبل. والأحلى إنه العلاقات اللي بنيتها ما وقفت عند التعارف، بل تحوّلت لصداقات حقيقية وفرص ومبادرات إلها أثر، مش بس على مسيرتي المهنية، بل كمان على المستوى الشخصي.",
+    "he": "מה שהכי מייחד את משבק בעיניי זה האנשים.\nקהילה שמחברת בין אנשים עם תשוקה ללמוד, לתמוך זה בזה וליצור הזדמנויות חדשות. משבק נתנה לי הזדמנות לצאת מהמסגרת של העבודה היומיומית, לנסות דברים חדשים ולגלות צדדים באישיות וביכולות שלי שלא שמתי לב אליהם קודם. והכי יפה, הקשרים שבניתי לא נעצרו בהיכרות, אלא הפכו לחברויות אמיתיות, להזדמנויות וליוזמות עם השפעה, לא רק על הקריירה שלי אלא גם ברמה האישית.",
+    "en": "What sets Mashbak apart for me is the people.\nA community that brings together people with a passion for learning, supporting each other and creating new opportunities. Mashbak gave me the chance to step outside my daily work, try new things, and discover sides of my personality and abilities I hadn't noticed before. And the best part is that the relationships I built didn't stop at an introduction. They turned into real friendships, opportunities and initiatives with impact, not only on my career but on a personal level too."
+   },
+   "sort_order": 4,
+   "is_active": true
+  },
+  {
+   "id": "01a1aca8-1bab-720e-91b3-1ee615997ed6",
+   "name": {
+    "ar": "محمود عرابي",
+    "he": "מחמוד עראבי",
+    "en": "Mahmoud Arabi"
+   },
+   "role_title": {
+    "ar": "Industrial Engineer • SMB Consultant",
+    "he": "Industrial Engineer • SMB Consultant",
+    "en": "Industrial Engineer • SMB Consultant"
+   },
+   "organization": null,
+   "photo_url": "/live/reviews/01a1aca7-1585-7507-a28f-2466db5b555e.jpg",
+   "quote": {
+    "ar": "مشبك إلي أكتر من شبكة علاقات، هو مساحة بتوسّع الأفق وبتفتح أبواب. من خلاله تعرّفت على ناس من مجالات مختلفة، وكل واحد فيهم أضافلي إشي، والمحاضرات الغنية ساعدتني أتطوّر وأكبر. وبالنسبة إلي، هاي هي قوة مشبك: إنّه بيقوّي مجتمعنا العربي ومواهبه، وبيعطي كل واحد فينا مكان ينمو ويدعم غيره.",
+    "he": "משבק בשבילי זה יותר מרשת קשרים, זה מרחב שמרחיב אופקים ופותח דלתות. דרכו הכרתי אנשים מתחומים שונים, וכל אחד מהם הוסיף לי משהו, וההרצאות העשירות עזרו לי להתפתח ולגדול. ובעיניי, זה הכוח של משבק: הוא מחזק את החברה הערבית ואת הכישרונות שלה, ונותן לכל אחד מאיתנו מקום לצמוח ולתמוך באחרים.",
+    "en": "For me, Mashbak is more than a network. It is a space that broadens your horizons and opens doors. Through it I met people from different fields, and each of them added something to me, while the rich lectures helped me develop and grow. For me, that is the strength of Mashbak: it empowers our Arab community and its talent, and gives each of us a place to grow and support others."
+   },
+   "sort_order": 5,
+   "is_active": true
+  },
+  {
+   "id": "01a1b9f7-02b2-7538-9699-cd7d4117c475",
+   "name": {
+    "ar": "منار سرحان",
+    "he": "מנאר סרחאן",
+    "en": "Manar Sarhan"
+   },
+   "role_title": {
+    "ar": "Accounts Manager & Group Facilitator",
+    "he": "Accounts Manager & Group Facilitator",
+    "en": "Accounts Manager & Group Facilitator"
+   },
+   "organization": null,
+   "photo_url": "/live/reviews/01a1b9f6-2153-75ec-aa14-8fa9e16ec628.jpg",
+   "quote": {
+    "ar": "بالنسبة إلي، مشبك بيتي وأعضاء مشبك عيلتي. من خلال مشبك تعرفت على أشخاص مهنيين بفتخر فيهم، ناس بعطوا أمل وبأكدوا إنه مجتمعنا مليان طاقات وقدرات، وإنه رغم كل التحديات لسه في خير كثير. مشبك كانت مساحة للنمو والتطور، اكتسبت من خلالها مهارات جديدة، واكتشفت قدرات وجوانب بشخصيتي ما كنت أعرفها، وطورت من نفسي. والأهم إنها أعطتني مساحة أكون مبادرة، أشارك بمشاريع ومبادرات مجتمعية، وأكون ع قدّ التحدي. بالنسبة إلي، مشبك مش بس شبكة علاقات، هي بيت بنكبر فيه مع بعض وبنؤمن بقدرات بعض.",
+    "he": "בשבילי, משבק היא הבית שלי וחברי משבק הם המשפחה שלי. דרך משבק הכרתי אנשי מקצוע שאני גאה בהם, אנשים שנותנים תקווה ומוכיחים שהחברה שלנו מלאה באנרגיות וביכולות, ושלמרות כל האתגרים עדיין יש הרבה טוב. משבק הייתה מרחב לצמיחה ולהתפתחות. דרכה רכשתי מיומנויות חדשות, גיליתי יכולות וצדדים באישיות שלי שלא הכרתי, ופיתחתי את עצמי. והכי חשוב, היא נתנה לי מקום ליזום, לקחת חלק בפרויקטים וביוזמות קהילתיות, ולעמוד באתגר. בשבילי, משבק היא לא רק רשת קשרים, היא בית שבו אנחנו גדלים יחד ומאמינים זה ביכולות של זה.",
+    "en": "For me, Mashbak is my home and its members are my family. Through Mashbak I met professionals I am proud of, people who give hope and prove that our community is full of energy and ability, and that despite all the challenges there is still so much good. Mashbak has been a space for growth and development. Through it I gained new skills, discovered abilities and sides of my personality I didn't know, and developed myself. Most importantly, it gave me room to take initiative, to take part in community projects and initiatives, and to rise to the challenge. For me, Mashbak is not just a network of relationships, it is a home where we grow together and believe in each other's abilities."
+   },
+   "sort_order": 6,
+   "is_active": true
+  }
+ ],
+ "settings": {
+  "MAX_CLIENT_CONNECTIONS": 100,
+  "MIN_CAREER_GOAL_SELECTIONS": 1,
+  "MAX_CAREER_GOAL_SELECTIONS": 3,
+  "MIN_CURRENT_INTERESTS_SELECTIONS": 1,
+  "MAX_CURRENT_INTERESTS_SELECTIONS": 3,
+  "MIN_TOP_CAREER_CHALLENGE_SELECTIONS": 1,
+  "MAX_TOP_CAREER_CHALLENGE_SELECTIONS": 3,
+  "MIN_INTERESTED_OPPORTUNITIES_SELECTIONS": 1,
+  "MAX_INTERESTED_OPPORTUNITIES_SELECTIONS": 3,
+  "MIN_INTERESTED_IN_MENTORING_SELECTIONS": 1,
+  "MAX_INTERESTED_IN_MENTORING_SELECTIONS": 3,
+  "CONTACT_REQUEST_COOLDOWN_DAYS": 7,
+  "CANCELLATION_DEADLINE_HOURS": 12,
+  "CLIENT_REGISTRATION_OPEN": true,
+  "SPAM_CONNECTION_THRESHOLD": 20,
+  "SPAM_TIME_WINDOW_HOURS": 24,
+  "WORKING_HOURS": [
+   {
+    "title": {
+     "ar": "الأحد - الخميس",
+     "en": "Sunday - Thursday",
+     "he": "ראשון - חמישי"
+    },
+    "value": {
+     "ar": "9:00 صباحًا - 5:00 مساءً",
+     "en": "9:00 AM - 5:00 PM",
+     "he": "9:00 - 17:00"
+    },
+    "valueHexColor": "#9ED9C6"
+   },
+   {
+    "title": {
+     "ar": "الجمعة والسبت",
+     "en": "Friday - Saturday",
+     "he": "שישי - שבת"
+    },
+    "value": {
+     "ar": "مغلق",
+     "en": "Closed",
+     "he": "סגור"
+    },
+    "valueHexColor": "#FF6B6B"
+   }
+  ],
+  "DEFAULT_LANGUAGE": "ar",
+  "PRINCIPLES_SECTION": {
+   "badgeText": {
+    "ar": "مبادئنا",
+    "en": "Our Principles",
+    "he": "העקרונות שלנו"
+   },
+   "primaryColorTitle1": {
+    "ar": "ما يجعل",
+    "en": "What makes",
+    "he": "מה שהופך את"
+   },
+   "secondaryColorTitle": {
+    "ar": "مشبك",
+    "en": "Mashbak",
+    "he": "משבק"
+   },
+   "primaryColorTitle2": {
+    "ar": "مختلفاً",
+    "en": "different",
+    "he": "לשונה"
+   },
+   "description": {
+    "ar": "ثلاثة مبادئ توجّه كل ما نفعله في مشبك.",
+    "en": "Three principles guide everything we do at Mashbak.",
+    "he": "שלושה עקרונות מנחים את כל מה שאנחנו עושים במשבק."
+   },
+   "cards": [
+    {
+     "iconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"7\" cy=\"8\" r=\"2.5\"/><circle cx=\"17\" cy=\"8\" r=\"2.5\"/><path d=\"M2.5 19c0-2.8 2-4.8 4.5-4.8 1.3 0 2.5.6 3.3 1.5\"/><path d=\"M21.5 19c0-2.8-2-4.8-4.5-4.8-1.3 0-2.5.6-3.3 1.5\"/><path d=\"M9.5 18.5c1.4 1.3 3.6 1.3 5 0\"/></svg>",
+     "badge": {
+      "ar": "",
+      "en": "",
+      "he": ""
+     },
+     "title": {
+      "ar": "دعم متبادل",
+      "en": "Mutual Support",
+      "he": "תמיכה הדדית"
+     },
+     "description": {
+      "ar": "علاقات قائمة على الثقة والتفاعل الحقيقي بين الأعضاء.",
+      "en": "Relationships built on trust and genuine interaction between members.",
+      "he": "קשרים המבוססים על אמון ואינטראקציה אמיתית בין החברים."
+     },
+     "subDescription": {
+      "ar": "قوة المجتمع تظهر عندما يفتح كل عضو بابًا لعضو آخر.",
+      "en": "A community’s strength shows when each member opens a door for another.",
+      "he": "הכוח של קהילה ניכר כשכל חבר פותח דלת לחבר אחר."
+     }
+    },
+    {
+     "iconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 21h18\"/><path d=\"M6 21v-5M11 21v-8M16 21v-11\"/><path d=\"M5 10.5 10 6l3 2.5L19.5 3M15.5 3h4v4\"/></svg>",
+     "badge": {
+      "ar": "الأساس",
+      "en": "The Foundation",
+      "he": "היסודות"
+     },
+     "title": {
+      "ar": "نتائج مهنية ملموسة",
+      "en": "Tangible Professional Outcomes",
+      "he": "תוצאות מקצועיות מוחשיות"
+     },
+     "description": {
+      "ar": "نقيس النجاح بفرص حقيقية وتقدّم مهني واضح.",
+      "en": "We measure success by real opportunities and clear career progress.",
+      "he": "אנחנו מודדים הצלחה בהזדמנויות אמיתיות ובהתקדמות מקצועית ברורה."
+     },
+     "subDescription": {
+      "ar": "كل لقاء وبرنامج في مشبك مصمَّم ليقرّب الأعضاء خطوة من أهدافهم المهنية.",
+      "en": "Every meeting and program at Mashbak is designed to bring members one step closer to their career goals.",
+      "he": "כל מפגש ותוכנית במשבק נועדו לקרב את החברים צעד אחד ליעדים המקצועיים שלהם."
+     }
+    },
+    {
+     "iconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2.5 14.3 4l2.7-.2.9 2.6 2.3 1.5-.8 2.6.8 2.6-2.3 1.5-.9 2.6-2.7-.2L12 18.5 9.7 17l-2.7.2-.9-2.6-2.3-1.5.8-2.6-.8-2.6 2.3-1.5.9-2.6 2.7.2Z\"/><path d=\"m8.8 10.5 2.2 2.2 4.2-4.2\"/><path d=\"M8.5 18.2 7.5 22l4.5-2 4.5 2-1-3.8\"/></svg>",
+     "badge": {
+      "ar": "",
+      "en": "",
+      "he": ""
+     },
+     "title": {
+      "ar": "مجتمع حصري",
+      "en": "Exclusive Community",
+      "he": "קהילה בלעדית"
+     },
+     "description": {
+      "ar": "العضوية عبر طلب ومراجعة.",
+      "en": "Membership is by application and review.",
+      "he": "החברות היא בהגשת בקשה ובדיקה."
+     },
+     "subDescription": {
+      "ar": "الجودة قبل العدد: كل عضو يضيف قيمة حقيقية للمجتمع.",
+      "en": "Quality before numbers: every member adds real value to the community.",
+      "he": "איכות לפני כמות: כל חבר מוסיף ערך אמיתי לקהילה."
+     }
+    }
+   ]
+  },
+  "CONTACT_INFO": {
+   "headOfficeAddress": {
+    "ar": "قيسارية",
+    "en": "Caesarea",
+    "he": "קיסריה"
+   },
+   "headOfficeLocationUrl": "https://www.google.com/maps/search/?api=1&query=Caesarea",
+   "phoneNumber": "+972504411004",
+   "email": "info@mashbak.org",
+   "whatsappUrl": "https://wa.me/972504411004",
+   "linkedInUrl": "https://www.linkedin.com/showcase/mashbak-co-impact/",
+   "instagramUrl": "https://www.instagram.com/mashbak_community/"
+  },
+  "HOW_IT_WORKS_SECTION": {
+   "badgeText": {
+    "ar": "كيف يعمل مشبك؟",
+    "en": "How Mashbak works",
+    "he": "איך משבק עובדת"
+   },
+   "primaryColorTitle1": {
+    "ar": "في مشبك،",
+    "en": "At Mashbak,",
+    "he": "במשבק,"
+   },
+   "secondaryColorTitle": {
+    "ar": "خمس ركائز",
+    "en": "five pillars",
+    "he": "חמישה עמודי תווך"
+   },
+   "primaryColorTitle2": {
+    "ar": "تنظّم كل ما نقدّمه لأعضائنا.",
+    "en": "shape everything we offer our members.",
+    "he": "מארגנים את כל מה שאנחנו מציעים לחברים."
+   },
+   "steps": [
+    {
+     "number": "01",
+     "iconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"5\" r=\"2.2\"/><circle cx=\"5\" cy=\"18\" r=\"2.2\"/><circle cx=\"19\" cy=\"18\" r=\"2.2\"/><circle cx=\"12\" cy=\"13\" r=\"1.6\"/><path d=\"M12 7.2v4.2M10.7 14.1l-4 2.7M13.3 14.1l4 2.7M7.2 18h9.6\"/></svg>",
+     "title": {
+      "ar": "التشبيك",
+      "en": "Networking",
+      "he": "נטוורקינג"
+     },
+     "description": {
+      "ar": "لقاءات وفعاليات مختارة تبني علاقات مهنية عميقة، بين الأعضاء ومع قيادات القطاع الخاص.",
+      "en": "Curated meetups and events that build deep professional relationships, among members and with private-sector leaders.",
+      "he": "מפגשים ואירועים נבחרים שבונים קשרים מקצועיים עמוקים, בין החברים ועם מובילי המגזר הפרטי."
+     }
+    },
+    {
+     "number": "02",
+     "iconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3.5 5.5h10a1.5 1.5 0 0 1 1.5 1.5v5.5a1.5 1.5 0 0 1-1.5 1.5H8l-3.5 3v-3h-1A1.5 1.5 0 0 1 2 12.5V7a1.5 1.5 0 0 1 1.5-1.5Z\"/><path d=\"M17.5 9.5h3a1.5 1.5 0 0 1 1.5 1.5v5a1.5 1.5 0 0 1-1.5 1.5H20v2.5L17 17.5h-4.5A1.5 1.5 0 0 1 11 16v-.5\"/></svg>",
+     "title": {
+      "ar": "تبادل الخبرات",
+      "en": "Peer Learning",
+      "he": "למידת עמיתים"
+     },
+     "description": {
+      "ar": "مجموعات صغيرة يتعلّم فيها الأعضاء من تجارب بعضهم، ويعملون معًا على تحديات حقيقية من أماكن عملهم.",
+      "en": "Small groups where members learn from each other’s experience and work together on real challenges from their workplaces.",
+      "he": "קבוצות קטנות שבהן החברים לומדים זה מניסיונו של זה ועובדים יחד על אתגרים אמיתיים ממקומות העבודה שלהם."
+     }
+    },
+    {
+     "number": "03",
+     "iconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 6.5C10.2 5 7.6 4.5 3 4.5v13c4.6 0 7.2.5 9 2 1.8-1.5 4.4-2 9-2v-13c-4.6 0-7.2.5-9 2Z\"/><path d=\"M12 6.5v13\"/></svg>",
+     "title": {
+      "ar": "التدريبات",
+      "en": "Training",
+      "he": "הכשרות"
+     },
+     "description": {
+      "ar": "ورشات وبرامج تطوير تمنح أدوات عملية في الإدارة والقيادة وبناء المسار المهني.",
+      "en": "Workshops and development programs with practical tools in management, leadership and career building.",
+      "he": "סדנאות ותוכניות פיתוח עם כלים מעשיים בניהול, במנהיגות ובבניית קריירה."
+     }
+    },
+    {
+     "number": "04",
+     "iconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2.5 20.5 9 10l3.5 5.5 2.5-3.5 6.5 8.5Z\"/><path d=\"M9 10V3.5l5 1.8-5 1.8\"/></svg>",
+     "title": {
+      "ar": "القيادة",
+      "en": "Leadership",
+      "he": "מנהיגות"
+     },
+     "description": {
+      "ar": "لقاءات مباشرة مع مدراء تنفيذيين، وفرص يقود فيها الأعضاء مبادرات داخل المجتمع وخارجه.",
+      "en": "Direct meetings with CEOs, and opportunities for members to lead initiatives inside and beyond the community.",
+      "he": "מפגשים ישירים עם מנכ״לים, והזדמנויות לחברים להוביל יוזמות בתוך הקהילה ומחוצה לה."
+     }
+    },
+    {
+     "number": "05",
+     "iconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"9\" y=\"2.5\" width=\"6\" height=\"11\" rx=\"3\"/><path d=\"M5.5 11a6.5 6.5 0 0 0 13 0M12 17.5v4M8.5 21.5h7\"/></svg>",
+     "title": {
+      "ar": "التموضع",
+      "en": "Positioning",
+      "he": "מיצוב"
+     },
+     "description": {
+      "ar": "منصّات تُبرز خبرات الأعضاء: مقالات، حملات، ومشاركة كمتحدّثين في برامج مشبك وكو-إمباكت.",
+      "en": "Platforms that showcase members’ expertise: articles, campaigns, and speaking at Mashbak and Co-Impact programs.",
+      "he": "במות שמבליטות את מומחיות החברים: מאמרים, קמפיינים והרצאות בתוכניות משבק וקו-אימפקט."
+     }
+    }
+   ]
+  },
+  "WHY_MASHBEK_SECTION": {
+   "badgeText": {
+    "ar": "ما يجعلنا مختلفين",
+    "en": "What Makes Us Different",
+    "he": "מה מייחד אותנו"
+   },
+   "primaryColorTitle1": {
+    "ar": "ما الذي",
+    "en": "What makes Mashbak",
+    "he": "מה מייחד את משבק"
+   },
+   "secondaryColorTitle": {
+    "ar": "يميز",
+    "en": "stand out",
+    "he": "באמת"
+   },
+   "primaryColorTitle2": {
+    "ar": "مشبك؟",
+    "en": "?",
+    "he": "؟"
+   },
+   "description": {
+    "ar": "أربعة أسباب تجعل مشبك تجربة مهنية مختلفة.",
+    "en": "Four reasons Mashbak is a different kind of professional experience.",
+    "he": "ארבע סיבות שהופכות את משבק לחוויה מקצועית אחרת."
+   },
+   "cards": [
+    {
+     "iconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"7.5\" r=\"3\"/><circle cx=\"16\" cy=\"7.5\" r=\"3\"/><path d=\"M2.5 20c0-3.2 2.5-5.5 5.5-5.5s5.5 2.3 5.5 5.5\"/><path d=\"M13.6 15c.7-.3 1.5-.5 2.4-.5 3 0 5.5 2.3 5.5 5.5\"/></svg>",
+     "title": {
+      "ar": "زملاء بمستوى مهني قريب",
+      "en": "Peers at a similar level",
+      "he": "עמיתים ברמה מקצועית דומה"
+     },
+     "description": {
+      "ar": "يلتقي الأعضاء بنظراء من مستويات متوسطة وقيادية، ما يرفع مستوى النقاش وقيمة كل علاقة.",
+      "en": "Members meet peers at mid and senior levels, which raises the level of every conversation and the value of every relationship.",
+      "he": "החברים פוגשים עמיתים בדרג ביניים ובכיר, וזה מעלה את רמת השיח ואת הערך של כל קשר."
+     }
+    },
+    {
+     "iconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M10 14a4.5 4.5 0 0 0 6.4 0l3.2-3.2a4.5 4.5 0 0 0-6.4-6.4L11.6 6\"/><path d=\"M14 10a4.5 4.5 0 0 0-6.4 0l-3.2 3.2a4.5 4.5 0 0 0 6.4 6.4L12.4 18\"/></svg>",
+     "title": {
+      "ar": "علاقات مهنية ذات جودة",
+      "en": "High-quality relationships",
+      "he": "קשרים מקצועיים איכותיים"
+     },
+     "description": {
+      "ar": "صلات حقيقية بين المهنيين تتجاوز تبادل البطاقات إلى علاقات ذات أثر.",
+      "en": "Real connections between professionals that go beyond swapping business cards to relationships with impact.",
+      "he": "חיבורים אמיתיים בין אנשי מקצוע, מעבר להחלפת כרטיסי ביקור, לקשרים עם השפעה."
+     }
+    },
+    {
+     "iconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"5\" y=\"4\" width=\"14\" height=\"17.5\" rx=\"2\"/><path d=\"M9 4V3a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v1\"/><path d=\"m8.5 13 2.5 2.5 4.5-4.5\"/></svg>",
+     "title": {
+      "ar": "برامج مبنية على احتياج",
+      "en": "Needs-based programs",
+      "he": "תוכניות מבוססות צורך"
+     },
+     "description": {
+      "ar": "كل برنامج وفعالية نطلقها تنطلق من احتياجات يطرحها الأعضاء أنفسهم.",
+      "en": "Every program and event we run starts from needs raised by the members themselves.",
+      "he": "כל תוכנית ואירוע שלנו יוצאים מצרכים שהחברים עצמם מעלים."
+     }
+    },
+    {
+     "iconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 21.5V11\"/><path d=\"M12 11C12 7 9.5 4.5 4.5 4.5c0 4.5 2.8 6.5 7.5 6.5Z\"/><path d=\"M12 14c0-3.5 2.3-6 7.5-6 0 4-2.7 6-7.5 6Z\"/><path d=\"M7 21.5h10\"/></svg>",
+     "title": {
+      "ar": "الانتماء والتطوّر معًا",
+      "en": "Belonging and growth together",
+      "he": "שייכות והתפתחות יחד"
+     },
+     "description": {
+      "ar": "في مشبك لا تختار بين الانتماء لمجتمع والتقدّم المهني. الاثنان في مكان واحد.",
+      "en": "At Mashbak you do not choose between belonging to a community and advancing your career. Both are in one place.",
+      "he": "במשבק לא בוחרים בין שייכות לקהילה לבין התקדמות מקצועית. שתיהן במקום אחד."
+     }
+    }
+   ],
+   "cta": {
+    "prompt": {
+     "ar": "هل ترى نفسك في مشبك؟",
+     "en": "Do you see yourself at Mashbak?",
+     "he": "רואים את עצמכם במשבק?"
+    },
+    "buttonText": {
+     "ar": "قدّم طلب انضمام",
+     "en": "Apply to join",
+     "he": "הגישו בקשת הצטרפות"
+    },
+    "buttonIconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M4 12h16\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\"/><path d=\"M13 5l7 7-7 7\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+   }
+  },
+  "VISION_MISSION_SECTION": {
+   "badgeText": {
+    "ar": "الرؤية والرسالة",
+    "en": "Vision & Mission",
+    "he": "חזון ומשימה"
+   },
+   "primaryColorTitle1": {
+    "ar": "رؤية",
+    "en": "Vision",
+    "he": "חזון"
+   },
+   "secondaryColorTitle": {
+    "ar": "ورسالة",
+    "en": "& Mission",
+    "he": "ומשימה"
+   },
+   "primaryColorTitle2": {
+    "ar": "مشبك",
+    "en": "Mashbak",
+    "he": "משבק"
+   },
+   "description": {
+    "ar": "العلاقات المهنية التي تصنع فرقًا لا تُبنى بالصدفة. تُبنى في بيئة مدروسة تتيح التعارف العميق، وتبادل الخبرات، والنمو المشترك.",
+    "en": "Professional relationships that make a difference are not built by chance. They are built in a deliberate environment that allows deep connection, knowledge exchange and shared growth.",
+    "he": "קשרים מקצועיים שעושים הבדל לא נבנים במקרה. הם נבנים בסביבה מתוכננת שמאפשרת היכרות עמוקה, חילופי ידע וצמיחה משותפת."
+   },
+   "blocks": [
+    {
+     "key": "mission",
+     "iconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"11\" cy=\"13\" r=\"8\"/><circle cx=\"11\" cy=\"13\" r=\"4\"/><path d=\"M11 13 20 4M16.5 4H20v3.5\"/></svg>",
+     "title": {
+      "ar": "رسالتنا",
+      "en": "Our Mission",
+      "he": "המשימה שלנו"
+     },
+     "description": {
+      "ar": "بناء مجتمع مهني عربي يقوم على التشبيك الهادف والتعلّم المتبادل، ويوفّر لأعضائه المساحات والأدوات والعلاقات التي يحتاجونها للتقدّم.",
+      "en": "To build an Arab professional community grounded in purposeful networking and mutual learning, giving members the spaces, tools and relationships they need to advance.",
+      "he": "לבנות קהילה מקצועית ערבית המבוססת על נטוורקינג ממוקד ולמידה הדדית, ולתת לחברים את המרחבים, הכלים והקשרים שהם צריכים כדי להתקדם."
+     },
+     "image": "/live/settings/01a1a0b0-e8bf-75fa-a067-46e27261fd76.jpg",
+     "imagePosition": "right"
+    },
+    {
+     "key": "vision",
+     "iconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2 18h20M5 21.5h14M7 18a5 5 0 0 1 10 0\"/><path d=\"M12 3.5v3M4.6 8.6l2 2M19.4 8.6l-2 2M1.5 13.5h2.5M20 13.5h2.5\"/></svg>",
+     "title": {
+      "ar": "رؤيتنا",
+      "en": "Our Vision",
+      "he": "החזון שלנו"
+     },
+     "description": {
+      "ar": "حضور واضح للمهنيين والمهنيات العرب في مواقع القيادة واتخاذ القرار في القطاع الخاص، ومشبك هو الشبكة التي توصلهم إليها.",
+      "en": "A clear presence of Arab professionals in leadership and decision-making roles across the private sector, with Mashbak as the network that gets them there.",
+      "he": "נוכחות ברורה של אנשי ונשות מקצוע ערבים בתפקידי מנהיגות וקבלת החלטות במגזר הפרטי, ומשבק כרשת שמביאה אותם לשם."
+     },
+     "image": "/live/settings/01a1a0b1-93d4-72bd-bf39-8b49047ca7ea.jpg",
+     "imagePosition": "left"
+    }
+   ]
+  },
+  "JOB_AUTO_EXPIRE_DAYS": 60,
+  "ABOUT_PLATFORM_SECTION": {
+   "primaryColorTitle": {
+    "ar": "عن",
+    "en": "About",
+    "he": "על"
+   },
+   "secondaryColorTitle": {
+    "ar": "مشبك",
+    "en": "Mashbak",
+    "he": "משבק"
+   },
+   "description": {
+    "ar": "بدأ مشبك عام 2017 كمجموعة صغيرة داخل كو-إمباكت، واليوم يضم أكثر من 450 مهنيًا ومهنية عربًا من مجالات وصناعات مختلفة. ما يجمع الأعضاء هدف واضح: الوصول إلى مواقع القيادة والتأثير في القطاع الخاص، وأن يصبح نجاح كل عضو رصيدًا للمجتمع كله.",
+    "en": "Mashbak started in 2017 as a small group within Co-Impact. Today it brings together more than 450 Arab professionals from different fields and industries. Members share a clear goal: reaching leadership and influence in the private sector, and making each member’s success an asset for the whole community.",
+    "he": "משבק התחילה ב-2017 כקבוצה קטנה בתוך קו-אימפקט. היום היא מאגדת יותר מ-450 אנשי ונשות מקצוע ערבים מתחומים ותעשיות שונים. לחברים מטרה ברורה: להגיע לעמדות מנהיגות והשפעה במגזר הפרטי, ולהפוך את ההצלחה של כל חבר וחברה לנכס של הקהילה כולה."
+   },
+   "badgeText": {
+    "ar": "مجتمع مشبك المهني",
+    "en": "The Mashbak professional community",
+    "he": "קהילת משבק המקצועית"
+   },
+   "badgeIconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"7.5\" r=\"2.8\"/><path d=\"M6.5 19.5c0-3.1 2.5-5.5 5.5-5.5s5.5 2.4 5.5 5.5\"/><circle cx=\"5\" cy=\"9.5\" r=\"2\"/><path d=\"M1.8 17.5c.3-2.1 1.6-3.5 3.4-3.8\"/><circle cx=\"19\" cy=\"9.5\" r=\"2\"/><path d=\"M22.2 17.5c-.3-2.1-1.6-3.5-3.4-3.8\"/></svg>",
+   "mainImage": "/live/settings/01a1a08e-a51a-731b-9ed5-122a8f4fd978.jpg",
+   "primaryColorSubtitle": {
+    "ar": "+500",
+    "en": "+500",
+    "he": "+500"
+   },
+   "secondaryColorSubtitle": {
+    "ar": "عضوًا وعضوة",
+    "en": "members",
+    "he": "חברות וחברים"
+   },
+   "subDescription": {
+    "ar": "مهنيون ومهنيات عرب في القطاع الخاص",
+    "en": "Arab professionals in the private sector",
+    "he": "אנשי ונשות מקצוע ערבים במגזר הפרטי"
+   },
+   "subImages": []
+  },
+  "OUR_VALUES_SECTION": {
+   "badgeText": {
+    "ar": "ما نؤمن به",
+    "en": "What We Believe In",
+    "he": "במה אנחנו מאמינים"
+   },
+   "primaryColorTitle": {
+    "ar": "قيم",
+    "en": "Our",
+    "he": "הערכים"
+   },
+   "secondaryColorTitle": {
+    "ar": "نا",
+    "en": " Values",
+    "he": " שלנו"
+   },
+   "description": {
+    "ar": "القيم التي توجّه كل قرار وكل تجربة في مشبك.",
+    "en": "The values behind every decision and every experience at Mashbak.",
+    "he": "הערכים שמאחורי כל החלטה וכל חוויה במשבק."
+   },
+   "values": [
+    {
+     "iconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M6.5 3.5h11L22 9l-10 12L2 9Z\"/><path d=\"M2 9h20M9.5 3.5 8 9l4 12 4-12-1.5-5.5\"/></svg>",
+     "label": {
+      "ar": "الجودة",
+      "en": "Quality",
+      "he": "איכות"
+     }
+    },
+    {
+     "iconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"2.5\" y=\"7\" width=\"19\" height=\"13.5\" rx=\"2\"/><path d=\"M8.5 7V5a1.5 1.5 0 0 1 1.5-1.5h4A1.5 1.5 0 0 1 15.5 5v2M2.5 13h19M10.5 13v1.5h3V13\"/></svg>",
+     "label": {
+      "ar": "المهنية",
+      "en": "Professionalism",
+      "he": "מקצועיות"
+     }
+    },
+    {
+     "iconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 2.5 20 5.5v6c0 5-3.4 8.7-8 10-4.6-1.3-8-5-8-10v-6Z\"/><path d=\"m8.5 12 2.5 2.5 4.5-4.5\"/></svg>",
+     "label": {
+      "ar": "الثقة",
+      "en": "Trust",
+      "he": "אמון"
+     }
+    },
+    {
+     "iconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 8h14.5M15 4.5 18.5 8 15 11.5\"/><path d=\"M20 16H5.5M9 12.5 5.5 16 9 19.5\"/></svg>",
+     "label": {
+      "ar": "التبادل",
+      "en": "Exchange",
+      "he": "הדדיות"
+     }
+    },
+    {
+     "iconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 10.5 12 3l9 7.5\"/><path d=\"M5 9v11.5h14V9\"/><circle cx=\"12\" cy=\"13\" r=\"1.8\"/><path d=\"M8.8 20.5c0-2 1.4-3.6 3.2-3.6s3.2 1.6 3.2 3.6\"/></svg>",
+     "label": {
+      "ar": "الانتماء",
+      "en": "Belonging",
+      "he": "שייכות"
+     }
+    },
+    {
+     "iconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"2\"/><path d=\"M7.8 7.8a6 6 0 0 0 0 8.4M16.2 7.8a6 6 0 0 1 0 8.4M4.6 4.6a10.5 10.5 0 0 0 0 14.8M19.4 4.6a10.5 10.5 0 0 1 0 14.8\"/></svg>",
+     "label": {
+      "ar": "التأثير",
+      "en": "Impact",
+      "he": "השפעה"
+     }
+    }
+   ]
+  },
+  "JOIN_CTA_SECTION": {
+   "preTitle": {
+    "ar": "العضوية في مشبك تتم عبر طلب ومراجعة",
+    "en": "Membership in Mashbak is by application and review",
+    "he": "החברות במשבק היא בהגשת בקשה ובדיקה"
+   },
+   "primaryColorTitle1": {
+    "ar": "مجتمع",
+    "en": "A community",
+    "he": "קהילה"
+   },
+   "secondaryColorTitle": {
+    "ar": " يُبنى",
+    "en": " built",
+    "he": " שנבנית"
+   },
+   "primaryColorTitle2": {
+    "ar": " على الجودة والثقة",
+    "en": " on quality and trust",
+    "he": " על איכות ואמון"
+   },
+   "description": {
+    "ar": "إذا كانت مرحلتك المهنية تتقاطع مع ما نقدّمه، يسعدنا أن نتعرّف عليك.",
+    "en": "If your career stage matches what we offer, we would be glad to get to know you.",
+    "he": "אם השלב המקצועי שלך מתאים למה שאנחנו מציעים, נשמח להכיר אותך."
+   },
+   "buttonText": {
+    "ar": "قدّم طلب انضمام",
+    "en": "Apply to join",
+    "he": "הגישו בקשת הצטרפות"
+   },
+   "buttonIconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M20 12H4\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\"/><path d=\"M11 19l-7-7 7-7\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>"
+  },
+  "HERO_SECTION": {
+   "badgeText": {
+    "ar": "مجتمع مهني منذ 2017 · من كو-إمباكت",
+    "en": "A professional community since 2017 · by Co-Impact",
+    "he": "קהילה מקצועית מאז 2017 · מבית קו-אימפקט"
+   },
+   "badgeIconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"9\" cy=\"12\" r=\"5\"/><circle cx=\"15\" cy=\"12\" r=\"5\"/></svg>",
+   "primaryColorTitle": {
+    "ar": "من علاقات مهنية",
+    "en": "From professional relationships",
+    "he": "מקשרים מקצועיים"
+   },
+   "secondaryColorTitle": {
+    "ar": "إلى مواقع قيادية",
+    "en": "to leadership roles",
+    "he": "לתפקידי מנהיגות"
+   },
+   "description": {
+    "ar": "مشبك يجمع مهنيين ومهنيات عربًا في القطاع الخاص، من مستويات متوسطة وقيادية، في شبكة واحدة تفتح الطريق إلى التعلّم من الأقران، والفرص المهنية، ومواقع اتخاذ القرار.",
+    "en": "Mashbak brings together Arab professionals in the private sector, from mid-level to senior, in one network that opens the way to peer learning, career opportunities and decision-making roles.",
+    "he": "משבק מפגישה אנשי ונשות מקצוע ערבים במגזר הפרטי, מדרג ביניים ועד דרג בכיר, ברשת אחת שפותחת את הדרך ללמידת עמיתים, להזדמנויות מקצועיות ולתפקידים של קבלת החלטות."
+   },
+   "primaryButtonText": {
+    "ar": "قدّم طلب انضمام",
+    "en": "Apply to join",
+    "he": "הגישו בקשת הצטרפות"
+   },
+   "primaryButtonIconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M20 12H4\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\"/><path d=\"M11 19l-7-7 7-7\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
+   "secondaryButtonText": {
+    "ar": "تعرّف على البرامج",
+    "en": "Explore programs",
+    "he": "הכירו את התוכניות"
+   },
+   "statsNumber": {
+    "ar": "+450",
+    "en": "+450",
+    "he": "+450"
+   },
+   "statsLabel": {
+    "ar": "عضوًا وعضوة",
+    "en": "members",
+    "he": "חברות וחברים"
+   },
+   "statsAvatars": [
+    "/live/reviews/01a1a09d-0a6f-76c2-8cd7-b2b6ca18513d.jpg",
+    "/live/reviews/01a1a09d-0c6f-714c-b0a3-117c7faf231c.jpg",
+    "/live/reviews/01a1a0ba-d960-77c9-8477-3ed7322672c3.jpg"
+   ],
+   "floatingAvatars": [
+    "/live/reviews/01a1a09d-0a6f-76c2-8cd7-b2b6ca18513d.jpg",
+    "/live/reviews/01a1a09d-0c6f-714c-b0a3-117c7faf231c.jpg",
+    "/live/reviews/01a1a0ba-d960-77c9-8477-3ed7322672c3.jpg",
+    "/live/reviews/01a1aca5-255e-77ed-bba4-10217bb7e1de.jpg",
+    "/live/reviews/01a1b9f6-2153-75ec-aa14-8fa9e16ec628.jpg",
+    "/live/reviews/01a1aca7-1585-7507-a28f-2466db5b555e.jpg"
+   ],
+   "scrollDownIconSvg": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\"><path d=\"M12 4v16m0 0l-6-6m6 6l6-6\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"/></svg>",
+   "slides": [
+    {
+     "title": {
+      "ar": "مشبك: مجتمع مهني يفتح",
+      "he": "משבק: קהילה מקצועית שפותחת",
+      "en": "Mashbak: A professional community that opens"
+     },
+     "highlight": {
+      "ar": "أبوابًا حقيقية للنمو والتقدّم",
+      "he": "דלתות אמיתיות לצמיחה והתקדמות",
+      "en": "real doors to growth and progress"
+     },
+     "description": {
+      "ar": "نربطك بفعاليات وبرامج وأعضاء يشاركونك الطموح والخبرة، ضمن مساحة مهنية عربية مبنية على القيمة والثقة.",
+      "he": "אנו מחברים אותך לאירועים, תוכניות וחברים שחולקים את השאיפות והניסיון שלך - במרחב מקצועי ערבי הבנוי על ערך ואמון.",
+      "en": "We connect you with events, programs, and members who share your ambition and experience - in an Arabic professional space built on value and trust."
+     }
+    },
+    {
+     "title": {
+      "ar": "حوّل علاقاتك إلى",
+      "he": "הפוך קשרים ל",
+      "en": "Turn your relationships into"
+     },
+     "highlight": {
+      "ar": "فرص وشراكات ملموسة",
+      "he": "הזדמנויות ושותפויות ממשיות",
+      "en": "tangible opportunities and partnerships"
+     },
+     "description": {
+      "ar": "بيئة مختارة للتشبيك الهادف، التعلّم وتبادل الخبرات - لتخرج من كل لقاء بنتائج واضحة تدفعك للأمام.",
+      "he": "סביבה נבחרת לנטוורקינג ממוקד, למידה וחילופי ניסיון - כך שכל מפגש מקדם אותך קדימה עם תוצאות ברורות.",
+      "en": "A curated environment for purposeful networking, learning, and peer exchange - so every interaction moves you forward with clear outcomes."
+     }
+    },
+    {
+     "title": {
+      "ar": "مجتمع انتقائي",
+      "he": "קהילה סלקטיבית",
+      "en": "A selective community"
+     },
+     "highlight": {
+      "ar": "للمحترفين العرب",
+      "he": "לאנשי מקצוע דוברי ערבית",
+      "en": "for Arabic-speaking professionals"
+     },
+     "description": {
+      "ar": "انضم إلى شبكة نوعية من القادة والخبراء، واكتشف برامج مصممة لتوسيع أفقك وتطوير مسارك المهني.",
+      "he": "הצטרף לרשת איכותית של מנהיגים ומומחים, וגלה תוכניות שתוכננו להרחיב את האופקים שלך ולפתח את המסלול המקצועי שלך.",
+      "en": "Join a quality network of leaders and experts, and discover programs designed to broaden your perspective and advance your career."
+     }
+    }
+   ]
+  }
+ },
+ "dropdowns": [
+  {
+   "type": "CITY",
+   "key": "cairo",
+   "is_active": false,
+   "sort_order": 0
+  },
+  {
+   "type": "CITY",
+   "key": "alexandria",
+   "is_active": false,
+   "sort_order": 1
+  },
+  {
+   "type": "CITY",
+   "key": "giza",
+   "is_active": false,
+   "sort_order": 2
+  },
+  {
+   "type": "CITY",
+   "key": "mansoura",
+   "is_active": false,
+   "sort_order": 3
+  },
+  {
+   "type": "ACADEMIC_TITLE",
+   "key": "bachelor",
+   "is_active": false,
+   "sort_order": 4
+  },
+  {
+   "type": "ACADEMIC_TITLE",
+   "key": "master",
+   "is_active": false,
+   "sort_order": 5
+  },
+  {
+   "type": "ACADEMIC_TITLE",
+   "key": "phd",
+   "is_active": false,
+   "sort_order": 6
+  },
+  {
+   "type": "YEARS_OF_EXPERIENCE",
+   "key": "0-2",
+   "is_active": false,
+   "sort_order": 7
+  },
+  {
+   "type": "YEARS_OF_EXPERIENCE",
+   "key": "3-5",
+   "is_active": false,
+   "sort_order": 8
+  },
+  {
+   "type": "YEARS_OF_EXPERIENCE",
+   "key": "6-9",
+   "is_active": false,
+   "sort_order": 9
+  },
+  {
+   "type": "YEARS_OF_EXPERIENCE",
+   "key": "10-plus",
+   "is_active": false,
+   "sort_order": 10
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "technology",
+   "is_active": false,
+   "sort_order": 11
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "healthcare",
+   "is_active": false,
+   "sort_order": 12
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "education",
+   "is_active": false,
+   "sort_order": 13
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "finance",
+   "is_active": false,
+   "sort_order": 14
+  },
+  {
+   "type": "CAREER_GOAL",
+   "key": "career-advancement",
+   "is_active": false,
+   "sort_order": 15
+  },
+  {
+   "type": "CAREER_GOAL",
+   "key": "leadership",
+   "is_active": false,
+   "sort_order": 16
+  },
+  {
+   "type": "CAREER_GOAL",
+   "key": "entrepreneurship",
+   "is_active": false,
+   "sort_order": 17
+  },
+  {
+   "type": "CURRENT_INTERESTS",
+   "key": "ai-ml",
+   "is_active": false,
+   "sort_order": 18
+  },
+  {
+   "type": "CURRENT_INTERESTS",
+   "key": "product-management",
+   "is_active": false,
+   "sort_order": 19
+  },
+  {
+   "type": "CURRENT_INTERESTS",
+   "key": "people-development",
+   "is_active": false,
+   "sort_order": 20
+  },
+  {
+   "type": "TOP_CAREER_CHALLENGE",
+   "key": "career-growth",
+   "is_active": false,
+   "sort_order": 21
+  },
+  {
+   "type": "TOP_CAREER_CHALLENGE",
+   "key": "work-life-balance",
+   "is_active": false,
+   "sort_order": 22
+  },
+  {
+   "type": "TOP_CAREER_CHALLENGE",
+   "key": "confidence",
+   "is_active": false,
+   "sort_order": 23
+  },
+  {
+   "type": "INTERESTED_OPPORTUNITIES_ACTIVITIES",
+   "key": "workshops",
+   "is_active": false,
+   "sort_order": 24
+  },
+  {
+   "type": "INTERESTED_OPPORTUNITIES_ACTIVITIES",
+   "key": "mentoring-circles",
+   "is_active": false,
+   "sort_order": 25
+  },
+  {
+   "type": "INTERESTED_OPPORTUNITIES_ACTIVITIES",
+   "key": "networking-events",
+   "is_active": false,
+   "sort_order": 26
+  },
+  {
+   "type": "INTERESTED_IN_MENTORING",
+   "key": "career-guidance",
+   "is_active": false,
+   "sort_order": 27
+  },
+  {
+   "type": "INTERESTED_IN_MENTORING",
+   "key": "cv-review",
+   "is_active": false,
+   "sort_order": 28
+  },
+  {
+   "type": "INTERESTED_IN_MENTORING",
+   "key": "interview-preparation",
+   "is_active": false,
+   "sort_order": 29
+  },
+  {
+   "type": "ORGANIZATION",
+   "key": "orbit logistics",
+   "is_active": false,
+   "sort_order": 30
+  },
+  {
+   "type": "ORGANIZATION",
+   "key": "seabridge health",
+   "is_active": false,
+   "sort_order": 31
+  },
+  {
+   "type": "ORGANIZATION",
+   "key": "brightpath academy",
+   "is_active": false,
+   "sort_order": 32
+  },
+  {
+   "type": "ORGANIZATION",
+   "key": "nile capital",
+   "is_active": false,
+   "sort_order": 33
+  },
+  {
+   "type": "ORGANIZATION",
+   "key": "apex digital",
+   "is_active": false,
+   "sort_order": 34
+  },
+  {
+   "type": "ORGANIZATION",
+   "key": "harbor finance",
+   "is_active": false,
+   "sort_order": 35
+  },
+  {
+   "type": "ORGANIZATION",
+   "key": "vertex labs",
+   "is_active": false,
+   "sort_order": 36
+  },
+  {
+   "type": "ORGANIZATION",
+   "key": "north star industries",
+   "is_active": false,
+   "sort_order": 37
+  },
+  {
+   "type": "INDUSTRY",
+   "key": "technology",
+   "is_active": false,
+   "sort_order": 38
+  },
+  {
+   "type": "INDUSTRY",
+   "key": "marketing",
+   "is_active": false,
+   "sort_order": 39
+  },
+  {
+   "type": "INDUSTRY",
+   "key": "operations",
+   "is_active": false,
+   "sort_order": 40
+  },
+  {
+   "type": "INDUSTRY",
+   "key": "design",
+   "is_active": false,
+   "sort_order": 41
+  },
+  {
+   "type": "INDUSTRY",
+   "key": "data",
+   "is_active": false,
+   "sort_order": 42
+  },
+  {
+   "type": "ORGANIZATION",
+   "key": "جمعية الدليل",
+   "is_active": true,
+   "sort_order": 43
+  },
+  {
+   "type": "CITY",
+   "key": "الجزائر",
+   "is_active": false,
+   "sort_order": 44
+  },
+  {
+   "type": "ORGANIZATION",
+   "key": "كو-إمباكت",
+   "is_active": true,
+   "sort_order": 45
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "جمعية غير ربحية",
+   "is_active": false,
+   "sort_order": 46
+  },
+  {
+   "type": "CITY",
+   "key": "عكا",
+   "is_active": true,
+   "sort_order": 47
+  },
+  {
+   "type": "CITY",
+   "key": "أبو سنان",
+   "is_active": true,
+   "sort_order": 48
+  },
+  {
+   "type": "CITY",
+   "key": "أبو غوش",
+   "is_active": true,
+   "sort_order": 49
+  },
+  {
+   "type": "CITY",
+   "key": "أم الفحم",
+   "is_active": true,
+   "sort_order": 50
+  },
+  {
+   "type": "CITY",
+   "key": "إكسال",
+   "is_active": true,
+   "sort_order": 51
+  },
+  {
+   "type": "CITY",
+   "key": "البعنة",
+   "is_active": true,
+   "sort_order": 52
+  },
+  {
+   "type": "CITY",
+   "key": "البعينة",
+   "is_active": true,
+   "sort_order": 53
+  },
+  {
+   "type": "CITY",
+   "key": "البقيعة",
+   "is_active": true,
+   "sort_order": 54
+  },
+  {
+   "type": "CITY",
+   "key": "البياضة",
+   "is_active": true,
+   "sort_order": 55
+  },
+  {
+   "type": "CITY",
+   "key": "الجش",
+   "is_active": true,
+   "sort_order": 56
+  },
+  {
+   "type": "CITY",
+   "key": "الدحي",
+   "is_active": true,
+   "sort_order": 57
+  },
+  {
+   "type": "CITY",
+   "key": "الشبلي - أم الغنم",
+   "is_active": true,
+   "sort_order": 58
+  },
+  {
+   "type": "CITY",
+   "key": "الشيخ دنون",
+   "is_active": true,
+   "sort_order": 59
+  },
+  {
+   "type": "CITY",
+   "key": "الرامة",
+   "is_active": true,
+   "sort_order": 60
+  },
+  {
+   "type": "CITY",
+   "key": "الرملة",
+   "is_active": true,
+   "sort_order": 61
+  },
+  {
+   "type": "CITY",
+   "key": "الرينة",
+   "is_active": true,
+   "sort_order": 62
+  },
+  {
+   "type": "CITY",
+   "key": "الطيبة",
+   "is_active": true,
+   "sort_order": 63
+  },
+  {
+   "type": "CITY",
+   "key": "الطيرة",
+   "is_active": true,
+   "sort_order": 64
+  },
+  {
+   "type": "CITY",
+   "key": "العزير",
+   "is_active": true,
+   "sort_order": 65
+  },
+  {
+   "type": "CITY",
+   "key": "الفريديس",
+   "is_active": true,
+   "sort_order": 66
+  },
+  {
+   "type": "CITY",
+   "key": "القدس",
+   "is_active": true,
+   "sort_order": 67
+  },
+  {
+   "type": "CITY",
+   "key": "الكمانة",
+   "is_active": true,
+   "sort_order": 68
+  },
+  {
+   "type": "CITY",
+   "key": "اللد",
+   "is_active": true,
+   "sort_order": 69
+  },
+  {
+   "type": "CITY",
+   "key": "اللقية",
+   "is_active": true,
+   "sort_order": 70
+  },
+  {
+   "type": "CITY",
+   "key": "بستان المرج",
+   "is_active": true,
+   "sort_order": 71
+  },
+  {
+   "type": "CITY",
+   "key": "المزرعة",
+   "is_active": true,
+   "sort_order": 72
+  },
+  {
+   "type": "CITY",
+   "key": "المشهد",
+   "is_active": true,
+   "sort_order": 73
+  },
+  {
+   "type": "CITY",
+   "key": "المغار",
+   "is_active": true,
+   "sort_order": 74
+  },
+  {
+   "type": "CITY",
+   "key": "الناصرة",
+   "is_active": true,
+   "sort_order": 75
+  },
+  {
+   "type": "CITY",
+   "key": "الناعورة",
+   "is_active": true,
+   "sort_order": 76
+  },
+  {
+   "type": "CITY",
+   "key": "بئر السبع",
+   "is_active": true,
+   "sort_order": 77
+  },
+  {
+   "type": "CITY",
+   "key": "بئر المكسور",
+   "is_active": true,
+   "sort_order": 78
+  },
+  {
+   "type": "CITY",
+   "key": "باقة الغربية",
+   "is_active": true,
+   "sort_order": 79
+  },
+  {
+   "type": "CITY",
+   "key": "برطعة الغربية",
+   "is_active": true,
+   "sort_order": 80
+  },
+  {
+   "type": "CITY",
+   "key": "بسمة",
+   "is_active": true,
+   "sort_order": 81
+  },
+  {
+   "type": "CITY",
+   "key": "بسمة طبعون",
+   "is_active": true,
+   "sort_order": 82
+  },
+  {
+   "type": "CITY",
+   "key": "بيت جن",
+   "is_active": true,
+   "sort_order": 83
+  },
+  {
+   "type": "CITY",
+   "key": "بيت نقوبا",
+   "is_active": true,
+   "sort_order": 84
+  },
+  {
+   "type": "CITY",
+   "key": "تل السبع",
+   "is_active": true,
+   "sort_order": 85
+  },
+  {
+   "type": "CITY",
+   "key": "ترشيحا",
+   "is_active": true,
+   "sort_order": 86
+  },
+  {
+   "type": "CITY",
+   "key": "جت",
+   "is_active": true,
+   "sort_order": 87
+  },
+  {
+   "type": "CITY",
+   "key": "جديدة - المكر",
+   "is_active": true,
+   "sort_order": 88
+  },
+  {
+   "type": "CITY",
+   "key": "جسر الزرقاء",
+   "is_active": true,
+   "sort_order": 89
+  },
+  {
+   "type": "CITY",
+   "key": "جلجولية",
+   "is_active": true,
+   "sort_order": 90
+  },
+  {
+   "type": "CITY",
+   "key": "جولس",
+   "is_active": true,
+   "sort_order": 91
+  },
+  {
+   "type": "CITY",
+   "key": "حورة",
+   "is_active": true,
+   "sort_order": 92
+  },
+  {
+   "type": "CITY",
+   "key": "حرفيش",
+   "is_active": true,
+   "sort_order": 93
+  },
+  {
+   "type": "CITY",
+   "key": "حيفا",
+   "is_active": true,
+   "sort_order": 94
+  },
+  {
+   "type": "CITY",
+   "key": "دالية الكرمل",
+   "is_active": true,
+   "sort_order": 95
+  },
+  {
+   "type": "CITY",
+   "key": "دبورية",
+   "is_active": true,
+   "sort_order": 96
+  },
+  {
+   "type": "CITY",
+   "key": "دير الأسد",
+   "is_active": true,
+   "sort_order": 97
+  },
+  {
+   "type": "CITY",
+   "key": "دير حنا",
+   "is_active": true,
+   "sort_order": 98
+  },
+  {
+   "type": "CITY",
+   "key": "رهط",
+   "is_active": true,
+   "sort_order": 99
+  },
+  {
+   "type": "CITY",
+   "key": "رمانة",
+   "is_active": true,
+   "sort_order": 100
+  },
+  {
+   "type": "CITY",
+   "key": "زلفة",
+   "is_active": true,
+   "sort_order": 101
+  },
+  {
+   "type": "CITY",
+   "key": "زيمر",
+   "is_active": true,
+   "sort_order": 102
+  },
+  {
+   "type": "CITY",
+   "key": "الزرازير",
+   "is_active": true,
+   "sort_order": 103
+  },
+  {
+   "type": "CITY",
+   "key": "سالم",
+   "is_active": true,
+   "sort_order": 104
+  },
+  {
+   "type": "CITY",
+   "key": "ساجور",
+   "is_active": true,
+   "sort_order": 105
+  },
+  {
+   "type": "CITY",
+   "key": "سخنين",
+   "is_active": true,
+   "sort_order": 106
+  },
+  {
+   "type": "CITY",
+   "key": "سولم",
+   "is_active": true,
+   "sort_order": 107
+  },
+  {
+   "type": "CITY",
+   "key": "شعب",
+   "is_active": true,
+   "sort_order": 108
+  },
+  {
+   "type": "CITY",
+   "key": "شفا عمرو",
+   "is_active": true,
+   "sort_order": 109
+  },
+  {
+   "type": "CITY",
+   "key": "شقيب السلام",
+   "is_active": true,
+   "sort_order": 110
+  },
+  {
+   "type": "CITY",
+   "key": "صندلة",
+   "is_active": true,
+   "sort_order": 111
+  },
+  {
+   "type": "CITY",
+   "key": "طرعان",
+   "is_active": true,
+   "sort_order": 112
+  },
+  {
+   "type": "CITY",
+   "key": "طلعة عارة",
+   "is_active": true,
+   "sort_order": 113
+  },
+  {
+   "type": "CITY",
+   "key": "طمرة",
+   "is_active": true,
+   "sort_order": 114
+  },
+  {
+   "type": "CITY",
+   "key": "طمرة الزعبية",
+   "is_active": true,
+   "sort_order": 115
+  },
+  {
+   "type": "CITY",
+   "key": "طوبا الزنغرية",
+   "is_active": true,
+   "sort_order": 116
+  },
+  {
+   "type": "CITY",
+   "key": "ضميدة",
+   "is_active": true,
+   "sort_order": 117
+  },
+  {
+   "type": "CITY",
+   "key": "إعبلين",
+   "is_active": true,
+   "sort_order": 118
+  },
+  {
+   "type": "CITY",
+   "key": "عرابة (البطوف)",
+   "is_active": true,
+   "sort_order": 119
+  },
+  {
+   "type": "CITY",
+   "key": "عرب الهيب",
+   "is_active": true,
+   "sort_order": 120
+  },
+  {
+   "type": "CITY",
+   "key": "عرب العرامشة",
+   "is_active": true,
+   "sort_order": 121
+  },
+  {
+   "type": "CITY",
+   "key": "عرعرة",
+   "is_active": true,
+   "sort_order": 122
+  },
+  {
+   "type": "CITY",
+   "key": "عرعرة النقب",
+   "is_active": true,
+   "sort_order": 123
+  },
+  {
+   "type": "CITY",
+   "key": "عسفيا",
+   "is_active": true,
+   "sort_order": 124
+  },
+  {
+   "type": "CITY",
+   "key": "عيلبون",
+   "is_active": true,
+   "sort_order": 125
+  },
+  {
+   "type": "CITY",
+   "key": "عيلوط",
+   "is_active": true,
+   "sort_order": 126
+  },
+  {
+   "type": "CITY",
+   "key": "عين الاسد",
+   "is_active": true,
+   "sort_order": 127
+  },
+  {
+   "type": "CITY",
+   "key": "عين السهلة",
+   "is_active": true,
+   "sort_order": 128
+  },
+  {
+   "type": "CITY",
+   "key": "عين ماهل",
+   "is_active": true,
+   "sort_order": 129
+  },
+  {
+   "type": "CITY",
+   "key": "عرب النعيم",
+   "is_active": true,
+   "sort_order": 130
+  },
+  {
+   "type": "CITY",
+   "key": "عاره",
+   "is_active": true,
+   "sort_order": 131
+  },
+  {
+   "type": "CITY",
+   "key": "عرب النجيدات",
+   "is_active": true,
+   "sort_order": 132
+  },
+  {
+   "type": "CITY",
+   "key": "غجر (قرية)",
+   "is_active": true,
+   "sort_order": 133
+  },
+  {
+   "type": "CITY",
+   "key": "فسوطة",
+   "is_active": true,
+   "sort_order": 134
+  },
+  {
+   "type": "CITY",
+   "key": "قلنسوة",
+   "is_active": true,
+   "sort_order": 135
+  },
+  {
+   "type": "CITY",
+   "key": "كابول",
+   "is_active": true,
+   "sort_order": 136
+  },
+  {
+   "type": "CITY",
+   "key": "كسيفة",
+   "is_active": true,
+   "sort_order": 137
+  },
+  {
+   "type": "CITY",
+   "key": "كسرى-كفرسميع",
+   "is_active": true,
+   "sort_order": 138
+  },
+  {
+   "type": "CITY",
+   "key": "كعبية",
+   "is_active": true,
+   "sort_order": 139
+  },
+  {
+   "type": "CITY",
+   "key": "كفر برا",
+   "is_active": true,
+   "sort_order": 140
+  },
+  {
+   "type": "CITY",
+   "key": "كفر قاسم",
+   "is_active": true,
+   "sort_order": 141
+  },
+  {
+   "type": "CITY",
+   "key": "كفر قرع",
+   "is_active": true,
+   "sort_order": 142
+  },
+  {
+   "type": "CITY",
+   "key": "كفر كنا",
+   "is_active": true,
+   "sort_order": 143
+  },
+  {
+   "type": "CITY",
+   "key": "كفر مندا",
+   "is_active": true,
+   "sort_order": 144
+  },
+  {
+   "type": "CITY",
+   "key": "كفر مصر",
+   "is_active": true,
+   "sort_order": 145
+  },
+  {
+   "type": "CITY",
+   "key": "كفر ياسيف",
+   "is_active": true,
+   "sort_order": 146
+  },
+  {
+   "type": "CITY",
+   "key": "كوكب أبو الهيجاء",
+   "is_active": true,
+   "sort_order": 147
+  },
+  {
+   "type": "CITY",
+   "key": "مجد الكروم",
+   "is_active": true,
+   "sort_order": 148
+  },
+  {
+   "type": "CITY",
+   "key": "مشيرفة",
+   "is_active": true,
+   "sort_order": 149
+  },
+  {
+   "type": "CITY",
+   "key": "مصمص",
+   "is_active": true,
+   "sort_order": 150
+  },
+  {
+   "type": "CITY",
+   "key": "معاوية",
+   "is_active": true,
+   "sort_order": 151
+  },
+  {
+   "type": "CITY",
+   "key": "معليا",
+   "is_active": true,
+   "sort_order": 152
+  },
+  {
+   "type": "CITY",
+   "key": "منشية زبدة",
+   "is_active": true,
+   "sort_order": 153
+  },
+  {
+   "type": "CITY",
+   "key": "مقيبلة",
+   "is_active": true,
+   "sort_order": 154
+  },
+  {
+   "type": "CITY",
+   "key": "ميسر",
+   "is_active": true,
+   "sort_order": 155
+  },
+  {
+   "type": "CITY",
+   "key": "نحف",
+   "is_active": true,
+   "sort_order": 156
+  },
+  {
+   "type": "CITY",
+   "key": "نين",
+   "is_active": true,
+   "sort_order": 157
+  },
+  {
+   "type": "CITY",
+   "key": "وادي الحمام",
+   "is_active": true,
+   "sort_order": 158
+  },
+  {
+   "type": "CITY",
+   "key": "وادي سلامة",
+   "is_active": true,
+   "sort_order": 159
+  },
+  {
+   "type": "CITY",
+   "key": "يافا",
+   "is_active": true,
+   "sort_order": 160
+  },
+  {
+   "type": "CITY",
+   "key": "يافة الناصرة",
+   "is_active": true,
+   "sort_order": 161
+  },
+  {
+   "type": "CITY",
+   "key": "يانوح-جت",
+   "is_active": true,
+   "sort_order": 162
+  },
+  {
+   "type": "CITY",
+   "key": "يركا",
+   "is_active": true,
+   "sort_order": 163
+  },
+  {
+   "type": "CITY",
+   "key": "أخرى",
+   "is_active": true,
+   "sort_order": 164
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "إدارة أعمال",
+   "is_active": true,
+   "sort_order": 165
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "إدارة مشاريع",
+   "is_active": true,
+   "sort_order": 166
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "إدارة عمليات",
+   "is_active": true,
+   "sort_order": 167
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "ريادة أعمال",
+   "is_active": true,
+   "sort_order": 168
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تطوير أعمال",
+   "is_active": true,
+   "sort_order": 169
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "موارد بشرية",
+   "is_active": true,
+   "sort_order": 170
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "مشتريات وسلاسل إمداد",
+   "is_active": true,
+   "sort_order": 171
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "محاسبة",
+   "is_active": true,
+   "sort_order": 172
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تدقيق",
+   "is_active": true,
+   "sort_order": 173
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تحليل مالي",
+   "is_active": true,
+   "sort_order": 174
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "بنوك واستثمار",
+   "is_active": true,
+   "sort_order": 175
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "ضرائب",
+   "is_active": true,
+   "sort_order": 176
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "رواتب",
+   "is_active": true,
+   "sort_order": 177
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تطوير برمجيات",
+   "is_active": true,
+   "sort_order": 178
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "هندسة برمجيات",
+   "is_active": true,
+   "sort_order": 179
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تحليل بيانات",
+   "is_active": true,
+   "sort_order": 180
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "ذكاء اصطناعي",
+   "is_active": true,
+   "sort_order": 181
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "أمن سيبراني",
+   "is_active": true,
+   "sort_order": 182
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "شبكات",
+   "is_active": true,
+   "sort_order": 183
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "دعم تقني",
+   "is_active": true,
+   "sort_order": 184
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "إدارة منتجات",
+   "is_active": true,
+   "sort_order": 185
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تجربة المستخدم وتصميم الواجهات",
+   "is_active": true,
+   "sort_order": 186
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "هندسة مدنية",
+   "is_active": true,
+   "sort_order": 187
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "هندسة معمارية",
+   "is_active": true,
+   "sort_order": 188
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "هندسة ميكانيكية",
+   "is_active": true,
+   "sort_order": 189
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "هندسة كهربائية",
+   "is_active": true,
+   "sort_order": 190
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "هندسة صناعية",
+   "is_active": true,
+   "sort_order": 191
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "هندسة حاسوب",
+   "is_active": true,
+   "sort_order": 192
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "هندسة طبية",
+   "is_active": true,
+   "sort_order": 193
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تسويق رقمي",
+   "is_active": true,
+   "sort_order": 194
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "إدارة علامات تجارية",
+   "is_active": true,
+   "sort_order": 195
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "صناعة محتوى",
+   "is_active": true,
+   "sort_order": 196
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "كتابة تسويقية",
+   "is_active": true,
+   "sort_order": 197
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "مبيعات",
+   "is_active": true,
+   "sort_order": 198
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تطوير شراكات",
+   "is_active": true,
+   "sort_order": 199
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "خدمة عملاء",
+   "is_active": true,
+   "sort_order": 200
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تدريس",
+   "is_active": true,
+   "sort_order": 201
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تدريب مهني",
+   "is_active": true,
+   "sort_order": 202
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تصميم مناهج",
+   "is_active": true,
+   "sort_order": 203
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "إرشاد أكاديمي",
+   "is_active": true,
+   "sort_order": 204
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تعليم خاص",
+   "is_active": true,
+   "sort_order": 205
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "طب",
+   "is_active": true,
+   "sort_order": 206
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تمريض",
+   "is_active": true,
+   "sort_order": 207
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "صيدلة",
+   "is_active": true,
+   "sort_order": 208
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "علاج طبيعي",
+   "is_active": true,
+   "sort_order": 209
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "علاج وظيفي",
+   "is_active": true,
+   "sort_order": 210
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "مختبرات طبية",
+   "is_active": true,
+   "sort_order": 211
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تغذية",
+   "is_active": true,
+   "sort_order": 212
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "محاماة",
+   "is_active": true,
+   "sort_order": 213
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "استشارات قانونية",
+   "is_active": true,
+   "sort_order": 214
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "امتثال",
+   "is_active": true,
+   "sort_order": 215
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "سياسات عامة",
+   "is_active": true,
+   "sort_order": 216
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "علاقات حكومية",
+   "is_active": true,
+   "sort_order": 217
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تصميم جرافيك",
+   "is_active": true,
+   "sort_order": 218
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تصوير",
+   "is_active": true,
+   "sort_order": 219
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "مونتاج",
+   "is_active": true,
+   "sort_order": 220
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "صحافة",
+   "is_active": true,
+   "sort_order": 221
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "علاقات عامة",
+   "is_active": true,
+   "sort_order": 222
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "إنتاج إعلامي",
+   "is_active": true,
+   "sort_order": 223
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تصميم داخلي",
+   "is_active": true,
+   "sort_order": 224
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "عمل اجتماعي",
+   "is_active": true,
+   "sort_order": 225
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "إرشاد مهني",
+   "is_active": true,
+   "sort_order": 226
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تنمية مجتمعية",
+   "is_active": true,
+   "sort_order": 227
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "إدارة برامج",
+   "is_active": true,
+   "sort_order": 228
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "منظمات غير ربحية",
+   "is_active": true,
+   "sort_order": 229
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "فني كهرباء",
+   "is_active": true,
+   "sort_order": 230
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "فني ميكانيك",
+   "is_active": true,
+   "sort_order": 231
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تشغيل آلات",
+   "is_active": true,
+   "sort_order": 232
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "جودة وإنتاج",
+   "is_active": true,
+   "sort_order": 233
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "صيانة",
+   "is_active": true,
+   "sort_order": 234
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "إدارة فنادق",
+   "is_active": true,
+   "sort_order": 235
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "سياحة وسفر",
+   "is_active": true,
+   "sort_order": 236
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تنظيم فعاليات",
+   "is_active": true,
+   "sort_order": 237
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "طهي",
+   "is_active": true,
+   "sort_order": 238
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "استقبال وخدمة ضيوف",
+   "is_active": true,
+   "sort_order": 239
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "كتابة",
+   "is_active": true,
+   "sort_order": 240
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "ترجمة",
+   "is_active": true,
+   "sort_order": 241
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تعليق صوتي",
+   "is_active": true,
+   "sort_order": 242
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "استشارات",
+   "is_active": true,
+   "sort_order": 243
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "تدريب فردي",
+   "is_active": true,
+   "sort_order": 244
+  },
+  {
+   "type": "WORK_SECTOR",
+   "key": "عمل حر",
+   "is_active": true,
+   "sort_order": 245
+  },
+  {
+   "type": "CAREER_GOAL",
+   "key": "الترقية داخل مكان عملي الحالي",
+   "is_active": true,
+   "sort_order": 246
+  },
+  {
+   "type": "CAREER_GOAL",
+   "key": "الانتقال إلى أول منصب إداري",
+   "is_active": true,
+   "sort_order": 247
+  },
+  {
+   "type": "CAREER_GOAL",
+   "key": "التقدّم إلى منصب إداري أعلى أو قيادة عليا",
+   "is_active": true,
+   "sort_order": 248
+  },
+  {
+   "type": "CAREER_GOAL",
+   "key": "الانتقال إلى مجال أو شركة جديدة",
+   "is_active": true,
+   "sort_order": 249
+  },
+  {
+   "type": "CAREER_GOAL",
+   "key": "تأسيس مشروع أو شركة ناشئة",
+   "is_active": true,
+   "sort_order": 250
+  },
+  {
+   "type": "CAREER_GOAL",
+   "key": "تعميق خبرتي المهنية والتخصص",
+   "is_active": true,
+   "sort_order": 251
+  },
+  {
+   "type": "CAREER_GOAL",
+   "key": "دور تأثير عام (مجالس إدارة، مبادرات مجتمعية)",
+   "is_active": true,
+   "sort_order": 252
+  },
+  {
+   "type": "CURRENT_INTERESTS",
+   "key": "القيادة والإدارة",
+   "is_active": true,
+   "sort_order": 253
+  },
+  {
+   "type": "CURRENT_INTERESTS",
+   "key": "الذكاء الاصطناعي والتحوّل الرقمي",
+   "is_active": true,
+   "sort_order": 254
+  },
+  {
+   "type": "CURRENT_INTERESTS",
+   "key": "ريادة الأعمال والابتكار",
+   "is_active": true,
+   "sort_order": 255
+  },
+  {
+   "type": "CURRENT_INTERESTS",
+   "key": "المالية والاستثمار",
+   "is_active": true,
+   "sort_order": 256
+  },
+  {
+   "type": "CURRENT_INTERESTS",
+   "key": "إدارة المنتجات والتكنولوجيا",
+   "is_active": true,
+   "sort_order": 257
+  },
+  {
+   "type": "CURRENT_INTERESTS",
+   "key": "تطوير الأفراد والموارد البشرية",
+   "is_active": true,
+   "sort_order": 258
+  },
+  {
+   "type": "CURRENT_INTERESTS",
+   "key": "التسويق والعلامة الشخصية",
+   "is_active": true,
+   "sort_order": 259
+  },
+  {
+   "type": "CURRENT_INTERESTS",
+   "key": "التفاوض والتأثير",
+   "is_active": true,
+   "sort_order": 260
+  },
+  {
+   "type": "CURRENT_INTERESTS",
+   "key": "الإرشاد والتوجيه",
+   "is_active": true,
+   "sort_order": 261
+  },
+  {
+   "type": "CURRENT_INTERESTS",
+   "key": "التأثير المجتمعي والتطوع",
+   "is_active": true,
+   "sort_order": 262
+  },
+  {
+   "type": "TOP_CAREER_CHALLENGE",
+   "key": "الوصول إلى أدوار إدارية",
+   "is_active": true,
+   "sort_order": 263
+  },
+  {
+   "type": "TOP_CAREER_CHALLENGE",
+   "key": "شبكة علاقات محدودة في القطاع الخاص",
+   "is_active": true,
+   "sort_order": 264
+  },
+  {
+   "type": "TOP_CAREER_CHALLENGE",
+   "key": "الظهور والتموضع داخل المؤسسة",
+   "is_active": true,
+   "sort_order": 265
+  },
+  {
+   "type": "TOP_CAREER_CHALLENGE",
+   "key": "الثقة بالنفس والتأثير في الاجتماعات",
+   "is_active": true,
+   "sort_order": 266
+  },
+  {
+   "type": "TOP_CAREER_CHALLENGE",
+   "key": "اللغة (العبرية / الإنجليزية) في بيئة العمل",
+   "is_active": true,
+   "sort_order": 267
+  },
+  {
+   "type": "TOP_CAREER_CHALLENGE",
+   "key": "الوصول إلى فرص عمل نوعية",
+   "is_active": true,
+   "sort_order": 268
+  },
+  {
+   "type": "TOP_CAREER_CHALLENGE",
+   "key": "غياب الإرشاد والقدوات",
+   "is_active": true,
+   "sort_order": 269
+  },
+  {
+   "type": "TOP_CAREER_CHALLENGE",
+   "key": "التوازن بين العمل والحياة",
+   "is_active": true,
+   "sort_order": 270
+  },
+  {
+   "type": "TOP_CAREER_CHALLENGE",
+   "key": "بُعد أماكن العمل والمواصلات",
+   "is_active": true,
+   "sort_order": 271
+  },
+  {
+   "type": "INTERESTED_OPPORTUNITIES_ACTIVITIES",
+   "key": "ورشات ومحاضرات مهنية",
+   "is_active": true,
+   "sort_order": 272
+  },
+  {
+   "type": "INTERESTED_OPPORTUNITIES_ACTIVITIES",
+   "key": "مجموعات تبادل خبرات (قهوة مشبك)",
+   "is_active": true,
+   "sort_order": 273
+  },
+  {
+   "type": "INTERESTED_OPPORTUNITIES_ACTIVITIES",
+   "key": "لقاءات مع مدراء تنفيذيين",
+   "is_active": true,
+   "sort_order": 274
+  },
+  {
+   "type": "INTERESTED_OPPORTUNITIES_ACTIVITIES",
+   "key": "فعاليات تشبيك",
+   "is_active": true,
+   "sort_order": 275
+  },
+  {
+   "type": "INTERESTED_OPPORTUNITIES_ACTIVITIES",
+   "key": "برامج تطوير مهني",
+   "is_active": true,
+   "sort_order": 276
+  },
+  {
+   "type": "INTERESTED_OPPORTUNITIES_ACTIVITIES",
+   "key": "الإرشاد - كمرشد/ة أو كمسترشد/ة",
+   "is_active": true,
+   "sort_order": 277
+  },
+  {
+   "type": "INTERESTED_OPPORTUNITIES_ACTIVITIES",
+   "key": "نوادٍ مهنية (المحاسبون، الهايتك)",
+   "is_active": true,
+   "sort_order": 278
+  },
+  {
+   "type": "INTERESTED_OPPORTUNITIES_ACTIVITIES",
+   "key": "كتابة مقالات أو التحدث في فعاليات",
+   "is_active": true,
+   "sort_order": 279
+  },
+  {
+   "type": "INTERESTED_OPPORTUNITIES_ACTIVITIES",
+   "key": "فرص عمل وتوصيات",
+   "is_active": true,
+   "sort_order": 280
+  },
+  {
+   "type": "INTERESTED_OPPORTUNITIES_ACTIVITIES",
+   "key": "التطوع في فرق عمل مشبك",
+   "is_active": true,
+   "sort_order": 281
+  },
+  {
+   "type": "ACADEMIC_TITLE",
+   "key": "شهادة مهنية / دبلوم",
+   "is_active": true,
+   "sort_order": 282
+  },
+  {
+   "type": "ACADEMIC_TITLE",
+   "key": "بدون لقب أكاديمي",
+   "is_active": true,
+   "sort_order": 283
+  },
+  {
+   "type": "ACADEMIC_TITLE",
+   "key": "لقب أول (بكالوريوس)",
+   "is_active": true,
+   "sort_order": 284
+  },
+  {
+   "type": "ACADEMIC_TITLE",
+   "key": "لقب ثانٍ (ماجستير)",
+   "is_active": true,
+   "sort_order": 285
+  },
+  {
+   "type": "ACADEMIC_TITLE",
+   "key": "لقب ثالث (دكتوراه)",
+   "is_active": true,
+   "sort_order": 286
+  },
+  {
+   "type": "YEARS_OF_EXPERIENCE",
+   "key": "من 0 إلى 2 سنوات",
+   "is_active": true,
+   "sort_order": 287
+  },
+  {
+   "type": "YEARS_OF_EXPERIENCE",
+   "key": "من 3 إلى 5 سنوات",
+   "is_active": true,
+   "sort_order": 288
+  },
+  {
+   "type": "YEARS_OF_EXPERIENCE",
+   "key": "من 6 إلى 9 سنوات",
+   "is_active": true,
+   "sort_order": 289
+  },
+  {
+   "type": "YEARS_OF_EXPERIENCE",
+   "key": "10 سنوات فأكثر",
+   "is_active": true,
+   "sort_order": 290
+  },
+  {
+   "type": "INTERESTED_IN_MENTORING",
+   "key": "توجيه مهني",
+   "is_active": true,
+   "sort_order": 291
+  },
+  {
+   "type": "INTERESTED_IN_MENTORING",
+   "key": "مراجعة السيرة الذاتية",
+   "is_active": true,
+   "sort_order": 292
+  },
+  {
+   "type": "INTERESTED_IN_MENTORING",
+   "key": "التحضير لمقابلات العمل",
+   "is_active": true,
+   "sort_order": 293
+  },
+  {
+   "type": "INDUSTRY",
+   "key": "الإدارة والأعمال",
+   "is_active": true,
+   "sort_order": 294
+  },
+  {
+   "type": "INDUSTRY",
+   "key": "المال والمحاسبة",
+   "is_active": true,
+   "sort_order": 295
+  },
+  {
+   "type": "INDUSTRY",
+   "key": "التكنولوجيا",
+   "is_active": true,
+   "sort_order": 296
+  },
+  {
+   "type": "INDUSTRY",
+   "key": "الهندسة",
+   "is_active": true,
+   "sort_order": 297
+  },
+  {
+   "type": "INDUSTRY",
+   "key": "التسويق والمبيعات",
+   "is_active": true,
+   "sort_order": 298
+  },
+  {
+   "type": "INDUSTRY",
+   "key": "التعليم والتدريب",
+   "is_active": true,
+   "sort_order": 299
+  },
+  {
+   "type": "INDUSTRY",
+   "key": "الصحة والعلاج",
+   "is_active": true,
+   "sort_order": 300
+  },
+  {
+   "type": "INDUSTRY",
+   "key": "القانون والسياسات",
+   "is_active": true,
+   "sort_order": 301
+  },
+  {
+   "type": "INDUSTRY",
+   "key": "الإعلام والتصميم",
+   "is_active": true,
+   "sort_order": 302
+  },
+  {
+   "type": "INDUSTRY",
+   "key": "المجتمع والخدمات",
+   "is_active": true,
+   "sort_order": 303
+  },
+  {
+   "type": "INDUSTRY",
+   "key": "الصناعة والمهن التطبيقية",
+   "is_active": true,
+   "sort_order": 304
+  },
+  {
+   "type": "INDUSTRY",
+   "key": "الضيافة والسياحة",
+   "is_active": true,
+   "sort_order": 305
+  },
+  {
+   "type": "INDUSTRY",
+   "key": "الوظائف الإبداعية والمستقلة",
+   "is_active": true,
+   "sort_order": 306
+  },
+  {
+   "type": "INDUSTRY",
+   "key": "إدارة أعمال",
+   "is_active": false,
+   "sort_order": 307
+  },
+  {
+   "type": "ORGANIZATION",
+   "key": "zz_test_org",
+   "is_active": true,
+   "sort_order": 308
+  },
+  {
+   "type": "ORGANIZATION",
+   "key": "ستراوس",
+   "is_active": true,
+   "sort_order": 309
+  },
+  {
+   "type": "ACADEMIC_TITLE",
+   "key": "لقب ثان (ماجستير)",
+   "is_active": true,
+   "sort_order": 310
+  },
+  {
+   "type": "ORGANIZATION",
+   "key": "أمدوكس",
+   "is_active": true,
+   "sort_order": 311
+  },
+  {
+   "type": "ORGANIZATION",
+   "key": "مكتب عبد الحي للمحاسبة والضرائب",
+   "is_active": true,
+   "sort_order": 312
+  },
+  {
+   "type": "ORGANIZATION",
+   "key": "مايكروسوفت",
+   "is_active": true,
+   "sort_order": 313
+  },
+  {
+   "type": "ORGANIZATION",
+   "key": "كلاليت",
+   "is_active": true,
+   "sort_order": 314
+  },
+  {
+   "type": "ORGANIZATION",
+   "key": "إلكترا",
+   "is_active": true,
+   "sort_order": 315
+  },
+  {
+   "type": "ORGANIZATION",
+   "key": "أبو ريا ومشاركوه للمحاماة",
+   "is_active": true,
+   "sort_order": 316
+  },
+  {
+   "type": "ORGANIZATION",
+   "key": "وولت",
+   "is_active": true,
+   "sort_order": 317
+  }
+ ]
+}

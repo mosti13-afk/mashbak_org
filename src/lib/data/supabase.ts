@@ -1,11 +1,10 @@
 import "server-only";
-import { defaultFaqs, defaultPrograms, defaultReviews, defaultSettings } from "../content";
-import { siteUrl } from "../site-url";
-import { supabaseAdmin, supabaseServer } from "../supabase/server";
+import { defaultDropdowns, defaultFaqs, defaultPrograms, defaultReviews, defaultSettings } from "../content";
+import { supabaseServer } from "../supabase/server";
 import type {
   Application, AttendeeRow, Connection, ConnectionWithPeople, ContactMessage, EventItem, EventWithStats, Faq, Job,
   JobWithPoster, MemberReview, MiniProfile, Notification, Profile, Program, ReferralRequest, ReferralWithRequester,
-  Registration, SiteSettings,
+  Registration, SiteSettings, DropdownOption,
 } from "../types";
 import type { MemberCard, Repo } from "./repo";
 
@@ -117,7 +116,35 @@ export const supabaseRepo: Repo = {
   },
   async deleteReview(id) { const s = await sb(); check(await s.from("member_reviews").delete().eq("id", id)); },
 
-  async createApplication(a) { const s = await sb(); check(await s.from("applications").insert(a)); },
+  async createApplication(a) {
+    const s = await sb();
+    const { data: dup } = await s.rpc("application_pending", { p_email: a.email });
+    if (dup) return "duplicate";
+    check(await s.from("applications").insert(a));
+    return "ok";
+  },
+  async listDropdowns() {
+    const s = await sb();
+    return check(await s.from("dropdown_options").select("*").order("type").order("sort_order").limit(5000)) as DropdownOption[];
+  },
+  async suggestDropdown(type, key) {
+    const s = await sb();
+    await s.from("dropdown_options").insert({ type, key, is_active: false, status: "pending", sort_order: 999 });
+  },
+  async upsertDropdown(d) {
+    const s = await sb();
+    const { id, ...rest } = d;
+    check(await (id ? s.from("dropdown_options").update(rest).eq("id", id) : s.from("dropdown_options").upsert(rest, { onConflict: "type,key" })));
+  },
+  async deleteDropdown(id) { const s = await sb(); check(await s.from("dropdown_options").delete().eq("id", id)); },
+  async platformStats() {
+    const s = await sb();
+    return check(await s.rpc("platform_stats")) as { members: number; events_upcoming: number; jobs_open: number; connections: number; programs: number };
+  },
+  async getApplication(id) {
+    const s = await sb();
+    return check(await s.from("applications").select("*").eq("id", id).maybeSingle()) as Application | null;
+  },
   async createContactMessage(m) { const s = await sb(); check(await s.from("contact_messages").insert(m)); },
 
   async listEvents({ when, viewerId, includeDrafts, publicOnly }) {
@@ -269,9 +296,16 @@ export const supabaseRepo: Repo = {
     const s = await sb();
     let added = 0;
     const empty = async (table: string) => ((await s.from(table).select("id", { count: "exact", head: true })).count ?? 0) === 0;
-    if (await empty("programs")) {
-      check(await s.from("programs").insert(defaultPrograms.map(({ id: _id, ...p }) => p)));
-      added += defaultPrograms.length;
+    {
+      // Insert missing programs; refresh old-format ones (no image yet) with the live content
+      const existing = (check(await s.from("programs").select("slug,image_url")) as { slug: string; image_url: string | null }[]);
+      const rows = defaultPrograms.map(({ id: _id, ...p }) => p).filter((p) => { const e = existing.find((x) => x.slug === p.slug); return !e || !e.image_url; });
+      if (rows.length) { check(await s.from("programs").upsert(rows, { onConflict: "slug" })); added += rows.length; }
+    }
+    if (await empty("dropdown_options")) {
+      const rows = defaultDropdowns.map(({ id: _id, ...d }) => d);
+      for (let i = 0; i < rows.length; i += 500) check(await s.from("dropdown_options").insert(rows.slice(i, i + 500)));
+      added += rows.length;
     }
     if (await empty("faqs")) {
       check(await s.from("faqs").insert(defaultFaqs.map(({ id: _id, ...f }) => f)));
@@ -282,9 +316,7 @@ export const supabaseRepo: Repo = {
       added += defaultReviews.length;
     }
     const keys = (check(await s.from("site_settings").select("key")) as { key: string }[]).map((r) => r.key);
-    // Production default: only real member photos float on the homepage
-    const settings = { ...defaultSettings, floatingAvatars: defaultReviews.map((r) => r.photo_url).filter(Boolean) as string[] };
-    const missing = Object.entries(settings).filter(([k]) => !keys.includes(k)).map(([key, value]) => ({ key, value }));
+    const missing = Object.entries(defaultSettings).filter(([k]) => !keys.includes(k)).map(([key, value]) => ({ key, value }));
     if (missing.length) { check(await s.from("site_settings").insert(missing)); added += missing.length; }
     return added;
   },
@@ -311,20 +343,17 @@ export const supabaseRepo: Repo = {
     if (status) q = q.eq("status", status);
     return check(await q) as Application[];
   },
-  async reviewApplication(id, status, note) {
+  async reviewApplication(id, status, note, rejectReason) {
     const s = await sb();
     const { data: auth } = await s.auth.getUser();
-    const app = check(await s.from("applications").update({ status, review_note: note, reviewed_at: new Date().toISOString(), reviewed_by: auth.user?.id })
+    const app = check(await s.from("applications").update({ status, review_note: note, reject_reason: rejectReason ?? null, reviewed_at: new Date().toISOString(), reviewed_by: auth.user?.id })
       .eq("id", id).select("*").single()) as Application;
-    if (status !== "approved") return;
-    // If the applicant already has an account, activate it; otherwise invite them (the signup trigger activates on first login).
+    if (status !== "approved") return app;
+    // If the applicant already has an account (e.g. signed in with Google before approval), activate it.
+    // Otherwise the approval email links to /login, and the signup trigger activates them on first sign-in.
     const existing = check(await s.from("profiles").select("id").ilike("email", app.email).maybeSingle()) as { id: string } | null;
-    if (existing) {
-      check(await s.from("profiles").update({ status: "active" }).eq("id", existing.id));
-    } else {
-      const admin = supabaseAdmin();
-      if (admin) await admin.auth.admin.inviteUserByEmail(app.email, { data: { full_name: app.full_name }, redirectTo: `${await siteUrl()}/auth/callback` });
-    }
+    if (existing) check(await s.from("profiles").update({ status: "active" }).eq("id", existing.id));
+    return app;
   },
   async listAllMembers() {
     const s = await sb();
@@ -334,6 +363,11 @@ export const supabaseRepo: Repo = {
   async listMessages() {
     const s = await sb();
     return check(await s.from("contact_messages").select("*").order("created_at", { ascending: false })) as ContactMessage[];
+  },
+  async addNotifications(ids, kind, title, body, link) {
+    const s = await sb();
+    for (let i = 0; i < ids.length; i += 500)
+      check(await s.from("notifications").insert(ids.slice(i, i + 500).map((member_id) => ({ member_id, kind, title, body, link }))));
   },
   async markMessageReplied(id) { const s = await sb(); check(await s.from("contact_messages").update({ replied_at: new Date().toISOString() }).eq("id", id)); },
   async listAllJobs() {

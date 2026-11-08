@@ -199,6 +199,7 @@ const en = {
   },
   app: {
     nav: {
+      mashbakni: "Mashbakni",
       home: "Home",
       members: "Members",
       connections: "Connections",
@@ -307,6 +308,8 @@ const en = {
   admin: {
     title: "Admin",
     nav: {
+      dropdowns: "Dropdown lists",
+      notifications: "Notifications",
       overview: "Overview",
       applications: "Applications",
       members: "Members",

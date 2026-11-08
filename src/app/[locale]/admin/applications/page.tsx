@@ -3,6 +3,7 @@ import Link from "next/link";
 import { reviewApplication } from "@/app/actions";
 import { Empty, PageHeader, StatusBadge, Tabs } from "@/components/ui";
 import { repo } from "@/lib/data";
+import { labelFor } from "@/lib/dropdowns";
 import { fmtDate, fmtRelative } from "@/lib/format";
 import type { ApplicationStatus } from "@/lib/types";
 import { pageLocale, sp, type SearchParams } from "@/lib/page";
@@ -13,7 +14,14 @@ export default async function Applications({ params, searchParams }: { params: P
   await requireAdmin(locale);
   const q = await searchParams;
   const status = (sp(q.status) ?? "pending") as ApplicationStatus | "all";
-  const all = await repo.listApplications();
+  const [all, dd] = await Promise.all([repo.listApplications(), repo.listDropdowns().catch(() => [])]);
+  const age = (dob: string | null) => (dob ? Math.floor((Date.now() - Date.parse(dob)) / (365.25 * 864e5)) : null);
+  const yn = (v: boolean | null | undefined) => (v === true ? "✓" : v === false ? "✗" : "-");
+  const L = {
+    ar: { age: "العمر", gender: "الجنس", male: "ذكر", female: "أنثى", degree: "اللقب الأكاديمي", manager: "يشغل منصبًا إداريًا", mentoring: "شارك في برنامج إرشاد", reason: "سبب الرفض (يُرسل للمتقدم)", silent: "لا ترسل إشعارًا للمتقدم", notifyHint: "عند القبول أو الرفض يصل المتقدم بريد إلكتروني ورسالة واتساب تلقائيًا.", flagged: "مُعلَّم" },
+    en: { age: "Age", gender: "Gender", male: "Male", female: "Female", degree: "Academic title", manager: "In a managerial role", mentoring: "Took part in mentoring", reason: "Rejection reason (sent to the applicant)", silent: "Don't notify the applicant", notifyHint: "On approve or reject, the applicant automatically gets an email and a WhatsApp message.", flagged: "Flagged" },
+    he: { age: "גיל", gender: "מגדר", male: "זכר", female: "נקבה", degree: "תואר אקדמי", manager: "בתפקיד ניהולי", mentoring: "השתתף/ה בתוכנית מנטורינג", reason: "סיבת הדחייה (נשלחת למועמד/ת)", silent: "לא לשלוח הודעה למועמד/ת", notifyHint: "באישור או דחייה המועמד/ת מקבל/ת מייל והודעת וואטסאפ אוטומטית.", flagged: "מסומן" },
+  }[locale];
   const list = status === "all" ? all : all.filter((a) => a.status === status);
   const selected = all.find((a) => a.id === sp(q.id)) ?? list[0];
   const b = `/${locale}/admin/applications`;
@@ -56,8 +64,13 @@ export default async function Applications({ params, searchParams }: { params: P
                 <div className="flex items-center gap-2"><Mail className="h-4 w-4 text-mist" /><a href={`mailto:${selected.email}`} className="font-semibold hover:underline" dir="ltr">{selected.email}</a></div>
                 <div className="flex items-center gap-2"><Phone className="h-4 w-4 text-mist" /><a href={`tel:${selected.phone}`} className="font-semibold" dir="ltr">{selected.phone}</a></div>
                 <div><dt className="text-xs text-mist">{t.common.years}</dt><dd className="font-bold">{selected.years_experience}</dd></div>
-                <div><dt className="text-xs text-mist">{t.common.sector}</dt><dd className="font-bold">{selected.sector ?? "-"}</dd></div>
-                <div><dt className="text-xs text-mist">{t.common.city}</dt><dd className="font-bold">{selected.city ?? "-"}</dd></div>
+                <div><dt className="text-xs text-mist">{L.age}</dt><dd className="font-bold">{age(selected.date_of_birth) ?? "-"}{selected.date_of_birth ? <span className="ms-2 text-xs font-normal text-mist" dir="ltr">{selected.date_of_birth}</span> : null}</dd></div>
+                <div><dt className="text-xs text-mist">{L.gender}</dt><dd className="font-bold">{selected.gender ? L[selected.gender] : "-"}</dd></div>
+                <div><dt className="text-xs text-mist">{L.degree}</dt><dd className="font-bold">{labelFor(dd, "ACADEMIC_TITLE", selected.academic_title, locale) || "-"}</dd></div>
+                <div><dt className="text-xs text-mist">{t.common.sector}</dt><dd className="font-bold">{labelFor(dd, "WORK_SECTOR", selected.sector, locale) || "-"}</dd></div>
+                <div><dt className="text-xs text-mist">{t.common.city}</dt><dd className="font-bold">{labelFor(dd, "CITY", selected.city, locale) || "-"}</dd></div>
+                <div><dt className="text-xs text-mist">{L.manager}</dt><dd className="font-bold">{yn(selected.is_manager)}</dd></div>
+                <div><dt className="text-xs text-mist">{L.mentoring}</dt><dd className="font-bold">{yn(selected.mentoring_participated)}</dd></div>
                 <div><dt className="text-xs text-mist">{t.apply.source}</dt><dd className="font-bold">{selected.referral_source ?? "-"}</dd></div>
                 {selected.linkedin_url && <div className="sm:col-span-2"><a href={selected.linkedin_url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-bold text-navy"><ExternalLink className="h-4 w-4" />LinkedIn</a></div>}
               </dl>
@@ -71,6 +84,9 @@ export default async function Applications({ params, searchParams }: { params: P
                 <input type="hidden" name="id" value={selected.id} />
                 <input type="hidden" name="redirect" value={`${b}?status=${status}`} />
                 <label className="block"><span className="label">{t.admin.note}</span><textarea name="note" rows={2} defaultValue={selected.review_note ?? ""} className="textarea min-h-0" /></label>
+                <label className="block"><span className="label">{L.reason}</span><textarea name="reject_reason" rows={2} defaultValue={selected.reject_reason ?? ""} className="textarea min-h-0" /></label>
+                <p className="text-xs text-mist">{L.notifyHint}</p>
+                <label className="flex items-center gap-2 text-sm text-ink-2"><input type="checkbox" name="silent" value="1" className="h-4 w-4 accent-navy" />{L.silent}</label>
                 <div className="flex flex-wrap gap-2">
                   <button name="status" value="approved" className="btn btn-primary">{t.admin.approve}</button>
                   <button name="status" value="rejected" className="btn btn-outline">{t.admin.reject}</button>

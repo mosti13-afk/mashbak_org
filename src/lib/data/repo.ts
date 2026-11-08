@@ -1,7 +1,8 @@
+import type { L10n } from "@/i18n/config";
 import type {
   Application, ApplicationStatus, AttendeeRow, ConnectionWithPeople, ContactMessage, EventItem, EventWithStats, Faq,
   JobType, JobWithPoster, MemberReview, Notification, Profile, Program, ReferralWithRequester, RequestStatus, SiteSettings,
-  WorkMode, Connection, Job,
+  WorkMode, Connection, Job, DropdownOption,
 } from "../types";
 
 export interface MemberCard extends Profile {
@@ -12,6 +13,8 @@ export interface ApplicationInput {
   full_name: string; email: string; phone: string; city?: string | null; headline: string; company?: string | null;
   sector?: string | null; years_experience: number; linkedin_url?: string | null; motivation: string;
   referral_source?: string | null; age_confirmed: boolean;
+  date_of_birth?: string | null; gender?: "male" | "female" | null; academic_title?: string | null;
+  is_manager?: boolean | null; mentoring_participated?: boolean | null; locale?: string;
 }
 export interface JobInput {
   title: string; company: string; city?: string | null; job_type: JobType; work_mode: WorkMode; is_managerial: boolean;
@@ -19,7 +22,7 @@ export interface JobInput {
 }
 export type ProfilePatch = Partial<Pick<Profile,
   "full_name_ar" | "full_name_en" | "phone" | "avatar_url" | "headline" | "company" | "sector" | "city" | "years_experience" |
-  "linkedin_url" | "bio" | "career_goals" | "interests" | "open_to_mentoring" | "show_phone_to_connections" | "locale">>;
+  "linkedin_url" | "bio" | "career_goals" | "interests" | "open_to_mentoring" | "show_phone_to_connections" | "locale" | "notify_email" | "notify_whatsapp">>;
 
 export type CheckinResult = { ok: true; already: boolean; name: string } | { ok: false };
 
@@ -41,7 +44,12 @@ export interface Repo {
   listReviews(opts?: { all?: boolean }): Promise<MemberReview[]>;
   upsertReview(r: MemberReview): Promise<void>;
   deleteReview(id: string): Promise<void>;
-  createApplication(a: ApplicationInput): Promise<void>;
+  createApplication(a: ApplicationInput): Promise<"ok" | "duplicate">;
+  listDropdowns(): Promise<DropdownOption[]>;
+  suggestDropdown(type: string, key: string): Promise<void>;
+  upsertDropdown(d: Partial<DropdownOption> & { type: string; key: string }): Promise<void>;
+  deleteDropdown(id: number): Promise<void>;
+  platformStats(): Promise<{ members: number; events_upcoming: number; jobs_open: number; connections: number; programs: number }>;
   createContactMessage(m: Omit<ContactMessage, "id" | "created_at" | "replied_at">): Promise<void>;
 
   // events
@@ -83,8 +91,10 @@ export interface Repo {
   seedDefaults(): Promise<number>;
   adminStats(): Promise<AdminStats>;
   listApplications(status?: ApplicationStatus): Promise<Application[]>;
-  reviewApplication(id: string, status: ApplicationStatus, note: string | null): Promise<void>;
+  reviewApplication(id: string, status: ApplicationStatus, note: string | null, rejectReason?: string | null): Promise<Application | null>;
+  getApplication(id: string): Promise<Application | null>;
   listAllMembers(): Promise<Profile[]>;
+  addNotifications(memberIds: string[], kind: string, title: L10n, body: L10n, link: string | null): Promise<void>;
   adminUpdateMember(id: string, patch: Partial<Pick<Profile, "role" | "status">>): Promise<void>;
   listMessages(): Promise<ContactMessage[]>;
   markMessageReplied(id: string): Promise<void>;

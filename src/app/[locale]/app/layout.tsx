@@ -13,6 +13,7 @@ export default async function AppLayout({ children, params }: { children: ReactN
   const b = `/${locale}/app`;
   const items: NavItem[] = [
     { href: b, label: t.app.nav.home, icon: "home", exact: true },
+    { href: `${b}/mashbakni`, label: t.app.nav.mashbakni, icon: "sparkles" },
     { href: `${b}/members`, label: t.app.nav.members, icon: "members" },
     { href: `${b}/connections`, label: t.app.nav.connections, icon: "connections", badge: incoming },
     { href: `${b}/jobs`, label: t.app.nav.jobs, icon: "jobs" },
@@ -20,6 +21,6 @@ export default async function AppLayout({ children, params }: { children: ReactN
     { href: `${b}/notifications`, label: t.app.nav.notifications, icon: "bell", badge: unread },
     { href: `${b}/profile`, label: t.app.nav.profile, icon: "profile" },
   ];
-  const mobile = [items[0], items[1], items[3], items[4], { ...items[5] }];
+  const mobile = [items[0], items[2], items[1], items[4], items[5]];
   return <Shell locale={locale} t={t} viewer={viewer} items={items} mobileItems={mobile} area="app">{children}</Shell>;
 }

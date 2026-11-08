@@ -242,7 +242,8 @@ export function seedNotifications(): Notification[] {
 }
 
 export function seedApplications(): Application[] {
-  const base = { city: null, company: null, sector: null, linkedin_url: null, referral_source: null, age_confirmed: true, review_note: null, reviewed_at: null } as const;
+  const base = { city: null, company: null, sector: null, linkedin_url: null, referral_source: null, age_confirmed: true, review_note: null, reviewed_at: null,
+    date_of_birth: "1992-04-11", gender: null, academic_title: "bachelor", is_manager: false, mentoring_participated: false, reject_reason: null, flagged: false, locale: "ar" } as const;
   return [
     { ...base, id: "app1", full_name: "أحمد زيدان", email: "ahmad.z@example.com", phone: "+972500000101", headline: "Senior Backend Engineer",
       company: "Nvidia", sector: "Software", city: "يافة الناصرة", years_experience: 6, status: "pending", created_at: ago(1), referral_source: "Instagram",

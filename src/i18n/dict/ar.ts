@@ -201,6 +201,7 @@ const ar: Dict = {
   },
   app: {
     nav: {
+      mashbakni: "مشبكني",
       home: "الرئيسية",
       members: "الأعضاء",
       connections: "التواصل",
@@ -309,6 +310,8 @@ const ar: Dict = {
   admin: {
     title: "الإدارة",
     nav: {
+      dropdowns: "القوائم المنسدلة",
+      notifications: "الإشعارات والرسائل",
       overview: "نظرة عامة",
       applications: "طلبات العضوية",
       members: "الأعضاء",

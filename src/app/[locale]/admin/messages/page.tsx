@@ -1,4 +1,4 @@
-import { markMessageReplied } from "@/app/actions";
+import { markMessageReplied, replyToMessage } from "@/app/actions";
 import { Empty, PageHeader } from "@/components/ui";
 import { SubmitButton } from "@/components/ui/client";
 import { repo } from "@/lib/data";
@@ -10,6 +10,7 @@ export default async function AdminMessages({ params }: LocaleParams) {
   const { locale, t } = await pageLocale(params);
   await requireAdmin(locale);
   const msgs = await repo.listMessages();
+  const R = { ar: { ph: "اكتب ردًا يصل إلى بريد المرسل من info@mashbak.org", send: "إرسال الرد" }, en: { ph: "Write a reply, it is emailed from info@mashbak.org", send: "Send reply" }, he: { ph: "כתבו תשובה שתישלח במייל מ-info@mashbak.org", send: "שליחת תשובה" } }[locale];
   return (
     <div className="mx-auto max-w-3xl">
       <PageHeader title={t.admin.nav.messages} />
@@ -28,10 +29,22 @@ export default async function AdminMessages({ params }: LocaleParams) {
               <p className="mt-3 whitespace-pre-line text-ink-2" dir="auto">{m.message}</p>
               <div className="mt-4 text-end">
                 {m.replied_at ? <span className="badge badge-mint">{t.admin.messages.replied}</span> : (
-                  <form action={markMessageReplied}>
-                    <input type="hidden" name="locale" value={locale} /><input type="hidden" name="id" value={m.id} />
-                    <SubmitButton className="btn btn-outline btn-sm">{t.admin.messages.markReplied}</SubmitButton>
-                  </form>
+                  <div className="space-y-3 text-start">
+                    <form action={replyToMessage} className="space-y-2">
+                      <input type="hidden" name="locale" value={locale} /><input type="hidden" name="id" value={m.id} />
+                      <textarea name="reply" rows={3} required className="textarea min-h-0" placeholder={R.ph} dir="auto" />
+                      <div className="flex flex-wrap items-center justify-between gap-2">
+                        <select name="lang" defaultValue={/[\u0590-\u05FF]/.test(m.message) ? "he" : /[\u0600-\u06FF]/.test(m.message) ? "ar" : "en"} className="select h-9 w-auto py-0 text-sm">
+                          <option value="ar">العربية</option><option value="en">English</option><option value="he">עברית</option>
+                        </select>
+                        <SubmitButton className="btn btn-primary btn-sm">{R.send}</SubmitButton>
+                      </div>
+                    </form>
+                    <form action={markMessageReplied} className="text-end">
+                      <input type="hidden" name="locale" value={locale} /><input type="hidden" name="id" value={m.id} />
+                      <SubmitButton className="btn btn-ghost btn-sm">{t.admin.messages.markReplied}</SubmitButton>
+                    </form>
+                  </div>
                 )}
               </div>
             </li>

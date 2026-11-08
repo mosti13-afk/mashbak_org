@@ -1,4 +1,4 @@
-import { LogOut } from "lucide-react";
+import { Bell, LogOut } from "lucide-react";
 import Link from "next/link";
 import type { ReactNode } from "react";
 import { logout } from "@/app/actions";
@@ -14,6 +14,7 @@ export function Shell({ locale, t, viewer, items, mobileItems, children, area }:
   locale: Locale; t: Dict; viewer: Profile; items: NavItem[]; mobileItems: NavItem[]; children: ReactNode; area: "app" | "admin";
 }) {
   const name = displayName(viewer, locale);
+  const bell = items.find((i) => i.icon === "bell");
   return (
     <div className="min-h-dvh lg:grid lg:grid-cols-[264px_1fr]">
       <aside className="sticky top-0 hidden h-dvh flex-col border-e border-line bg-white lg:flex">
@@ -49,8 +50,15 @@ export function Shell({ locale, t, viewer, items, mobileItems, children, area }:
       <div className="min-w-0">
         <header className="sticky top-0 z-30 flex h-14 items-center justify-between border-b border-line bg-white/90 px-4 backdrop-blur lg:hidden">
           <Link href={`/${locale}/${area}`}><Logo height={30} /></Link>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1.5">
             <LangSwitcher locale={locale} />
+            {bell && (
+              <Link href={bell.href} aria-label={bell.label} className="relative grid h-9 w-9 place-items-center rounded-full text-ink-2 hover:bg-haze/50">
+                <Bell className="h-5 w-5" />
+                {!!bell.badge && <span className="absolute end-1 top-1 grid h-4 min-w-4 place-items-center rounded-full bg-[#e53935] px-1 text-[10px] font-bold text-white">{bell.badge}</span>}
+              </Link>
+            )}
+            {area === "app" && <Link href={`/${locale}/app/profile`} aria-label={name}><Avatar src={viewer.avatar_url} name={name} size={30} /></Link>}
             {viewer.role === "admin" && <Link href={`/${locale}/${area === "admin" ? "app" : "admin"}`} className="btn btn-outline btn-sm">{area === "admin" ? t.common.myArea : t.common.admin}</Link>}
             <form action={logout}><input type="hidden" name="locale" value={locale} /><SubmitButton className="rounded-full p-2 text-mist"><LogOut className="flip-rtl h-4 w-4" /></SubmitButton></form>
           </div>

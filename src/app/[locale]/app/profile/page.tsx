@@ -10,6 +10,11 @@ export default async function Profile({ params, searchParams }: { params: Promis
   const { locale, t } = await pageLocale(params);
   const v = await requireMember(locale);
   const P = t.app.profile;
+  const N = {
+    ar: { title: "الإشعارات", email: "أرسلوا لي إشعارات بالبريد الإلكتروني", wa: "أرسلوا لي إشعارات عبر واتساب", hint: "طلبات التواصل، الوظائف، الفعاليات والتذكيرات. الإشعارات داخل المنصة تبقى دائمًا." },
+    en: { title: "Notifications", email: "Send me email notifications", wa: "Send me WhatsApp notifications", hint: "Connection requests, jobs, events and reminders. In-app notifications always stay on." },
+    he: { title: "התראות", email: "שלחו לי התראות במייל", wa: "שלחו לי התראות בוואטסאפ", hint: "בקשות קשר, משרות, אירועים ותזכורות. ההתראות במערכת תמיד פעילות." },
+  }[locale];
   return (
     <div className="mx-auto max-w-3xl">
       <PageHeader title={P.title} sub={P.sub} />
@@ -37,6 +42,12 @@ export default async function Profile({ params, searchParams }: { params: Promis
           <Field label={t.common.phone} hint={P.phoneHint}><input name="phone" type="tel" defaultValue={v.phone ?? ""} className="input" dir="ltr" /></Field>
           <Check name="show_phone_to_connections" label={P.showPhone} defaultChecked={v.show_phone_to_connections} />
           <Check name="open_to_mentoring" label={P.mentoring} defaultChecked={v.open_to_mentoring} />
+        </div>
+        <div className="card grid gap-3 p-6">
+          <p className="font-black">{N.title}</p>
+          <Check name="notify_email" label={N.email} defaultChecked={v.notify_email !== false} />
+          <Check name="notify_whatsapp" label={N.wa} defaultChecked={v.notify_whatsapp !== false} />
+          <p className="text-xs text-mist">{N.hint}</p>
         </div>
         <div className="flex gap-2">
           <SubmitButton className="btn btn-primary btn-lg">{t.common.save}</SubmitButton>

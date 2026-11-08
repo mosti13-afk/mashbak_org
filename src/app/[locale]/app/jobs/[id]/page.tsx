@@ -19,7 +19,7 @@ export default async function JobPage({ params }: { params: Promise<{ locale: st
   const mine = j.posted_by === v.id;
   const refs = mine ? await repo.listReferralsForJob(j.id) : [];
   const poster = displayName(j.poster, locale);
-  const refLabel = { pending: J.referralSent, accepted: J.referralAccepted, declined: J.referralDeclined };
+  const refLabel = { pending: J.referralSent, accepted: J.referralAccepted, declined: J.referralDeclined, withdrawn: J.referralDeclined };
 
   return (
     <div className="grid gap-6 lg:grid-cols-[1.6fr_1fr]">

@@ -34,9 +34,15 @@ function ProgramForm({ p, locale, t, next }: { p?: Program; locale: Locale; t: D
       <L10nFields name="title" labels={[F.titleAr, F.titleEn, F.titleHe]} value={p?.title} required />
       <L10nFields name="summary" labels={[F.sumAr, F.sumEn, F.sumHe]} value={p?.summary} textarea rows={2} />
       <L10nFields name="body" labels={[F.descAr, F.descEn, F.descHe]} value={p?.body} textarea rows={4} />
-      <L10nFields name="for_who" labels={[`${P.forWho} (AR)`, `${P.forWho} (EN)`, `${P.forWho} (HE)`]} value={p?.for_who} />
-      <L10nFields name="duration" labels={[`${P.duration} (AR)`, `${P.duration} (EN)`, `${P.duration} (HE)`]} value={p?.duration} />
-      <L10nFields name="sessions" labels={[`${P.sessions} (AR)`, `${P.sessions} (EN)`, `${P.sessions} (HE)`]} value={p?.sessions} />
+      <div className="grid gap-3 sm:grid-cols-4">
+        <Field label={P.sessions}><input name="sessions_count" type="number" min={0} defaultValue={p?.sessions_count ?? ""} className="input" dir="ltr" /></Field>
+        <Field label={`${P.duration} (months)`}><input name="duration_months" type="number" min={0} defaultValue={p?.duration_months ?? ""} className="input" dir="ltr" /></Field>
+        <Field label="Image URL"><input name="image_url" defaultValue={p?.image_url ?? ""} className="input" dir="ltr" /></Field>
+        <Field label="Icon URL"><input name="icon_url" defaultValue={p?.icon_url ?? ""} className="input" dir="ltr" /></Field>
+      </div>
+      {[0, 1, 2, 3, 4].map((i) => (
+        <L10nFields key={`a${i}`} name={`aud${i}`} labels={[`${P.forWho} ${i + 1} (AR)`, "EN", "HE"]} value={p?.target_audience?.[i]} />
+      ))}
       {[0, 1, 2, 3, 4].map((i) => (
         <L10nFields key={i} name={`benefit${i}`} labels={[`${P.benefits} ${i + 1} (AR)`, "EN", "HE"]} value={p?.benefits[i]} />
       ))}

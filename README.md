@@ -26,14 +26,35 @@ npm run dev
 
 ## Connecting Supabase
 
-1. In the Supabase SQL editor, run `supabase/migrations/0001_init.sql`, then `supabase/seed.sql` (default programs, FAQs, testimonials and settings).
-2. Set `NEXT_PUBLIC_SUPABASE_URL` and `NEXT_PUBLIC_SUPABASE_ANON_KEY` (Project Settings → API).
-3. Optional: `SUPABASE_SERVICE_ROLE_KEY` so approving an application emails an invite. Without it, approved applicants activate automatically the first time they sign in with the same email (magic link on `/login`).
-4. Auth → URL configuration: add `https://<your-domain>/auth/callback` to redirect URLs.
-5. Make yourself admin: sign in once, then run
+1. In the Supabase SQL editor, run the files in `supabase/migrations/` in order (`0001_init.sql`, `0002_live_parity.sql`, `0003_auth.sql`).
+2. Public URL and anon key are baked into the Dockerfile (they are public by design).
+3. Sign in once, make yourself admin, then press **Install defaults** on the admin overview to load programs, FAQs, testimonials, settings and dropdown lists:
    `update public.profiles set role = 'admin', status = 'active' where email = 'you@example.com';`
 
-Regenerate the seed after editing `src/lib/content.ts`: `node --experimental-strip-types scripts/gen-seed.ts`.
+### Supabase Auth settings
+
+- **URL configuration**: Site URL `https://mashbak.org`; redirect URLs `https://mashbak.org/auth/callback` and the Cloud Run URL `/auth/callback`.
+- **Email sign-in with a 6-digit code**: Authentication → Email Templates → *Magic Link*: put `{{ .Token }}` in the body (the login page asks for the code, not a link). Example body:
+  `<h2>رمز الدخول إلى مشبك / Your Mashbak code</h2><p style="font-size:28px;letter-spacing:6px"><b>{{ .Token }}</b></p>`
+- **Send auth emails from info@mashbak.org**: Authentication → SMTP settings → enable custom SMTP with the same mailbox as below.
+- **Google**: Authentication → Providers → Google, paste the OAuth client ID/secret from Google Cloud (authorized redirect URI = `https://<project>.supabase.co/auth/v1/callback`).
+- **LinkedIn**: Authentication → Providers → LinkedIn (OIDC), paste the client ID/secret from the LinkedIn developer app (product "Sign In with LinkedIn using OpenID Connect", same redirect URI).
+
+## Server secrets (Cloud Run → Edit → Variables & secrets)
+
+| Variable | What it is |
+|---|---|
+| `NEXT_PUBLIC_SITE_URL` | `https://mashbak.org` (used in email links) |
+| `SUPABASE_SERVICE_ROLE_KEY` | Supabase → Settings → API. Needed for notifications to look up members, the delivery log and reminders |
+| `SMTP_HOST` / `SMTP_PORT` | Defaults `smtp.gmail.com` / `465` (Google Workspace). Change for another provider |
+| `SMTP_USER` / `SMTP_PASS` | `info@mashbak.org` and its app password |
+| `EMAIL_FROM` | Optional, default `Mashbak \| مشبك <info@mashbak.org>` |
+| `ADMIN_EMAILS` | Who gets "new application / new message" alerts, comma separated. Default `info@mashbak.org` |
+| `WHATSAPP_TOKEN` / `WHATSAPP_PHONE_NUMBER_ID` | Meta WhatsApp Cloud API. Templates to create: see `WHATSAPP_TEMPLATES.md` |
+| `ANTHROPIC_API_KEY` | Turns on the Mashbakni assistant. Optional `ANTHROPIC_MODEL` (default `claude-sonnet-5-5`) |
+| `CRON_SECRET` | Any long random string. Cloud Scheduler calls `GET /api/cron/reminders` every 15 minutes with `Authorization: Bearer <CRON_SECRET>` for 24h / 2h event reminders |
+
+Everything is optional: without a channel configured, the platform keeps working and the delivery log shows "skipped".
 
 ## Rules encoded in the database
 

@@ -201,6 +201,7 @@ const he: Dict = {
   },
   app: {
     nav: {
+      mashbakni: "משבקני",
       home: "בית",
       members: "חברים",
       connections: "קשרים",
@@ -309,6 +310,8 @@ const he: Dict = {
   admin: {
     title: "ניהול",
     nav: {
+      dropdowns: "רשימות בחירה",
+      notifications: "התראות והודעות",
       overview: "סקירה",
       applications: "בקשות חברות",
       members: "חברים",

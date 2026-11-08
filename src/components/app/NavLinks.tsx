@@ -2,12 +2,12 @@
 
 import clsx from "clsx";
 import {
-  Bell, Briefcase, CalendarDays, FileText, Handshake, HelpCircle, Home, Inbox, LayoutDashboard, Layers, Mail, Settings, Star, UserRound, Users,
+  Bell, Briefcase, CalendarDays, FileText, Handshake, HelpCircle, Home, Sparkles, Inbox, LayoutDashboard, Layers, Mail, Settings, Star, UserRound, Users,
 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const icons = { home: Home, members: Users, connections: Handshake, jobs: Briefcase, events: CalendarDays, bell: Bell, profile: UserRound,
+const icons = { home: Home, members: Users, connections: Handshake, jobs: Briefcase, events: CalendarDays, bell: Bell, profile: UserRound, sparkles: Sparkles,
   dashboard: LayoutDashboard, inbox: Inbox, star: Star, help: HelpCircle, layers: Layers, settings: Settings, mail: Mail, file: FileText } as const;
 
 export type NavItem = { href: string; label: string; icon: keyof typeof icons; badge?: number; exact?: boolean };

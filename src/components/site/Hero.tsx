@@ -1,90 +1,69 @@
-import { ArrowRight, ShieldCheck } from "lucide-react";
+import { ArrowLeft } from "lucide-react";
 import Link from "next/link";
-import type { Dict, Locale } from "@/i18n";
+import type { Locale } from "@/i18n";
 import { tr } from "@/i18n/config";
+import { siteDict } from "@/i18n/site";
+import { hero, txt } from "@/lib/settings";
 import type { SiteSettings } from "@/lib/types";
+import { HeroSlider } from "./interactive";
+import { SafeSvg } from "./sections";
 
-// Node positions (percent of the square stage) for the six floating faces
-const NODES = [
-  { x: 22, y: 16, s: 92 },
-  { x: 76, y: 12, s: 76 },
-  { x: 90, y: 50, s: 96 },
-  { x: 70, y: 86, s: 80 },
-  { x: 22, y: 82, s: 98 },
-  { x: 8, y: 48, s: 72 },
+// Same arrangement as the live hero: three faces on each side (desktop only)
+const SPOTS = [
+  "right-[5%] top-[60px]", "right-[0%] top-[300px]", "right-[11%] top-[540px]",
+  "left-[5%] top-[100px]", "left-[0%] top-[340px]", "left-[9%] top-[560px]",
 ];
-const EDGES: [number, number][] = [[0, 1], [1, 2], [2, 3], [3, 4], [4, 5], [5, 0], [0, 2], [1, 4], [5, 3]];
 
-export function Hero({ locale, t, settings }: { locale: Locale; t: Dict; settings: SiteSettings }) {
-  const h = settings.hero;
-  const eyebrow = tr(h.eyebrow, locale) || t.home.eyebrow;
-  const title = tr(h.title, locale) || t.home.title1;
-  const highlight = tr(h.highlight, locale) || t.home.titleHighlight;
-  const sub = tr(h.sub, locale) || t.home.sub;
-  const faces = settings.floatingAvatars.slice(0, 6);
-  const fmt = new Intl.NumberFormat("en");
-
+export function Hero({ locale, s }: { locale: Locale; s: SiteSettings }) {
+  const h = hero(s);
+  const t = siteDict[locale];
+  const slides = (h.slides?.length ? h.slides : [{ title: h.primaryColorTitle ?? {}, highlight: h.secondaryColorTitle ?? {}, description: h.description ?? {} }])
+    .map((x) => ({ title: tr(x.title, locale), highlight: tr(x.highlight, locale), description: tr(x.description, locale) }));
+  const faces = (h.floatingAvatars ?? []).slice(0, 6);
+  const stats = (h.statsAvatars ?? []).slice(0, 3);
+  const statsNumber = txt(h.statsNumber, locale);
   return (
-    <section className="relative overflow-hidden">
-      <div className="pointer-events-none absolute -top-40 end-[-10%] h-[520px] w-[520px] rounded-full bg-mint/20 blur-3xl" aria-hidden />
-      <div className="pointer-events-none absolute bottom-[-30%] start-[-10%] h-[420px] w-[420px] rounded-full bg-teal/10 blur-3xl" aria-hidden />
-      <div className="container-x relative grid items-center gap-12 pb-16 pt-12 lg:grid-cols-[1.1fr_1fr] lg:pb-24 lg:pt-20">
-        <div className="animate-rise">
-          <span className="chip mb-6"><ShieldCheck className="h-3.5 w-3.5 text-green" />{eyebrow}</span>
-          <h1 className="h-display text-[2.6rem] leading-[1.08] sm:text-6xl lg:text-[4.2rem]">
-            {title}{" "}
-            <span className="text-navy [box-decoration-break:clone] bg-[linear-gradient(transparent_68%,rgb(120_191_152_/_0.55)_68%,rgb(120_191_152_/_0.55)_92%,transparent_92%)] px-1">{highlight}</span>
-          </h1>
-          <p className="mt-7 max-w-xl text-lg leading-relaxed text-ink-2 sm:text-xl">{sub}</p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            <Link href={`/${locale}/apply`} className="btn btn-primary btn-lg">
-              {t.home.ctaApply} <ArrowRight className="flip-rtl h-4 w-4" />
-            </Link>
-            <Link href={`/${locale}/programs`} className="btn btn-outline btn-lg">{t.home.ctaPrograms}</Link>
-          </div>
-          <dl className="mt-12 grid max-w-lg grid-cols-3 gap-4 border-t border-line pt-6">
-            {[
-              [settings.stats.members, t.home.statMembers],
-              [settings.stats.companies, t.home.statCompanies],
-              [settings.stats.events, t.home.statEvents],
-            ].map(([n, l]) => (
-              <div key={String(l)}>
-                <dt className="text-3xl font-black text-navy" dir="ltr" style={{ textAlign: "start" }}>{fmt.format(Number(n))}+</dt>
-                <dd className="mt-1 text-sm font-semibold text-mist">{l}</dd>
-              </div>
-            ))}
-          </dl>
+    <section className="relative w-full overflow-x-clip bg-white">
+      <div className="pointer-events-none absolute -top-16 end-[-10%] h-[260px] w-[260px] rounded-full bg-sky opacity-90 blur-[48px]" />
+      <div className="pointer-events-none absolute -bottom-24 start-[-15%] h-[260px] w-[260px] rounded-full bg-mint-soft opacity-90 blur-[48px]" />
+      <div className="container-x relative py-8 sm:py-12 lg:py-16">
+        <div className="pointer-events-none absolute inset-0 hidden xl:block" aria-hidden>
+          {faces.map((src, i) => (
+            <div key={i} className={`absolute ${SPOTS[i]} animate-drift`} style={{ animationDelay: `${i * -1.3}s` }}>
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img src={src} alt="" className="h-[100px] w-[100px] rounded-full border-4 border-white object-cover shadow-[0_20px_25px_-5px_rgba(0,0,0,0.1),0_8px_10px_-6px_rgba(0,0,0,0.1)]" />
+            </div>
+          ))}
         </div>
-
-        {/* Constellation of members */}
-        <div className="relative mx-auto aspect-square w-full max-w-[520px]" aria-hidden>
-          <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-            {EDGES.map(([a, b], i) => (
-              <line key={i} x1={NODES[a].x} y1={NODES[a].y} x2={NODES[b].x} y2={NODES[b].y} stroke="#78bf98" strokeOpacity={0.55} strokeWidth={0.35} strokeDasharray="1.2 1.4" vectorEffect="non-scaling-stroke" />
-            ))}
-            {NODES.map((n, i) => (
-              <line key={`c${i}`} x1={n.x} y1={n.y} x2={50} y2={50} stroke="#0a476d" strokeOpacity={0.14} strokeWidth={0.3} />
-            ))}
-          </svg>
-          <div className="absolute left-1/2 top-1/2 flex h-[38%] w-[38%] -translate-x-1/2 -translate-y-1/2 flex-col items-center justify-center rounded-full bg-navy text-center text-white shadow-[var(--shadow-lift)]">
-            <div className="absolute inset-0 rounded-full ring-[14px] ring-navy/10" />
-            <span className="text-3xl font-black sm:text-4xl" dir="ltr">{fmt.format(settings.stats.members)}+</span>
-            <span className="mt-1 px-4 text-xs font-bold text-mint sm:text-sm">{t.home.statMembers}</span>
+        <div className="relative z-10 mx-auto max-w-[900px] text-center">
+          <span className="mx-auto inline-flex items-center gap-2 rounded-full border border-navy/15 bg-white px-4 py-1.5 text-[12px] font-medium text-navy-deep sm:text-[14px]">
+            <span className="grid h-6 w-6 place-items-center rounded-full bg-mint-soft text-mint"><SafeSvg svg={h.badgeIconSvg} className="h-3.5 w-3.5" /></span>
+            {txt(h.badgeText, locale)}
+          </span>
+          <div className="mt-6 lg:mt-9"><HeroSlider slides={slides} underline /></div>
+          <div className="mt-8 flex flex-col items-stretch justify-center gap-3 px-4 sm:flex-row sm:items-center">
+            <Link href={`/${locale}/application`} className="btn btn-primary h-[52px] min-w-[210px] px-6 text-[16px] md:text-[18px]">
+              {txt(h.primaryButtonText, locale) || t.apply}<ArrowLeft className="h-5 w-5 text-mint ltr:rotate-180" />
+            </Link>
+            <Link href={`/${locale}/our_programs`} className="btn btn-outline h-[52px] min-w-[190px] px-6 text-[16px]">{txt(h.secondaryButtonText, locale) || t.programs.all}</Link>
           </div>
-          {faces.map((src, i) => {
-            const n = NODES[i];
-            return (
-              <div
-                key={i}
-                className="absolute animate-drift"
-                style={{ left: `${n.x}%`, top: `${n.y}%`, width: `${n.s / 5.2}%`, animationDelay: `${i * -1.4}s`, translate: "-50% -50%" }}
-              >
+          {statsNumber && (
+            <div className="mt-7 flex items-center justify-center gap-3">
+              <div className="flex -space-x-3 rtl:space-x-reverse">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img src={src} alt="" className="aspect-square w-full rounded-full object-cover shadow-[var(--shadow-lift)] ring-4 ring-white" />
-                {i % 2 === 0 && <span className="absolute bottom-[6%] end-[4%] h-[18%] w-[18%] rounded-full bg-mint ring-[3px] ring-white" />}
+                {stats.map((src, i) => <img key={i} src={src} alt="" className="h-10 w-10 rounded-full border-2 border-white object-cover" />)}
               </div>
-            );
-          })}
+              <div className="text-start leading-tight">
+                <p className="text-[16px] font-bold text-mint" dir="ltr" style={{ textAlign: "inherit" }}>{statsNumber}</p>
+                <p className="text-[13px] text-mist md:text-[15px]">{txt(h.statsLabel, locale)}</p>
+              </div>
+            </div>
+          )}
+        </div>
+        {/* phones and tablets: faces in a row under the hero */}
+        <div className="mt-8 flex justify-center -space-x-2 xl:hidden rtl:space-x-reverse" aria-hidden>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          {faces.map((src, i) => <img key={i} src={src} alt="" className="h-12 w-12 rounded-full border-[3px] border-white object-cover shadow-md sm:h-14 sm:w-14" />)}
         </div>
       </div>
     </section>

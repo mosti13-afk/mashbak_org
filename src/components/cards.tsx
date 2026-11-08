@@ -16,7 +16,7 @@ export function ProgramIcon({ name, className }: { name: string; className?: str
 
 export function ProgramCard({ p, locale, t }: { p: Program; locale: Locale; t: Dict }) {
   return (
-    <Link href={`/${locale}/programs/${p.slug}`} className="card card-hover group relative flex flex-col overflow-hidden p-6">
+    <Link href={`/${locale}/our_programs/${p.slug}`} className="card card-hover group relative flex flex-col overflow-hidden p-6">
       <span className="absolute inset-x-0 top-0 h-1.5" style={{ background: p.color }} />
       <span className="mb-5 flex h-12 w-12 items-center justify-center rounded-2xl text-white" style={{ background: p.color }}>
         <ProgramIcon name={p.icon} className="h-6 w-6" />
@@ -24,7 +24,7 @@ export function ProgramCard({ p, locale, t }: { p: Program; locale: Locale; t: D
       <h3 className="h-display text-xl">{tr(p.title, locale)}</h3>
       <p className="mt-2 flex-1 text-ink-2">{tr(p.summary, locale)}</p>
       <div className="mt-5 flex flex-wrap items-center justify-between gap-2 text-sm">
-        <span className="font-semibold text-mist">{tr(p.duration, locale)} · {tr(p.sessions, locale)}</span>
+        <span className="font-semibold text-mist">{p.sessions_count ? `${p.sessions_count} ${t.programs.sessions}` : ""}</span>
         <span className="flex items-center gap-1 whitespace-nowrap font-bold text-navy transition-all group-hover:gap-2">
           {t.common.learnMore} <ArrowRight className="flip-rtl h-4 w-4" />
         </span>

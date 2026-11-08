@@ -1,8 +1,8 @@
 import "server-only";
-import { defaultFaqs, defaultPrograms, defaultReviews, defaultSettings } from "../content";
+import { defaultDropdowns, defaultFaqs, defaultPrograms, defaultReviews, defaultSettings } from "../content";
 import type {
   Application, Connection, ContactMessage, EventItem, EventWithStats, Faq, Job, JobWithPoster, MemberReview, MiniProfile,
-  Notification, Profile, Program, ReferralRequest, Registration, SiteSettings,
+  Notification, Profile, Program, ReferralRequest, Registration, SiteSettings, DropdownOption,
 } from "../types";
 import type { L10n } from "@/i18n/config";
 import * as seed from "./demo-seed";
@@ -22,6 +22,7 @@ interface Store {
   connections: Connection[];
   notifications: Notification[];
   messages: ContactMessage[];
+  dropdowns: DropdownOption[];
 }
 
 const g = globalThis as unknown as { __mashbakDemo?: Store };
@@ -41,6 +42,7 @@ function db(): Store {
       connections: seed.seedConnections(),
       notifications: seed.seedNotifications(),
       messages: seed.seedMessages(),
+      dropdowns: structuredClone(defaultDropdowns),
     };
   }
   return g.__mashbakDemo;
@@ -103,11 +105,31 @@ export const demoRepo: Repo = {
   async deleteReview(id) { db().reviews = db().reviews.filter((r) => r.id !== id); },
 
   async createApplication(a) {
+    if (db().applications.some((x) => x.email.toLowerCase() === a.email.toLowerCase() && x.status === "pending")) return "duplicate";
     db().applications.unshift({
-      id: uid("app"), city: null, company: null, sector: null, linkedin_url: null, referral_source: null, ...a,
+      id: uid("app"), city: null, company: null, sector: null, linkedin_url: null, referral_source: null, date_of_birth: null, gender: null,
+      academic_title: null, is_manager: null, mentoring_participated: null, reject_reason: null, flagged: false, ...a, locale: (a.locale ?? "ar") as "ar",
       status: "pending", review_note: null, reviewed_at: null, created_at: now(),
     });
+    return "ok";
   },
+  async listDropdowns() { return db().dropdowns; },
+  async suggestDropdown(type, key) {
+    if (db().dropdowns.some((d) => d.type === type && d.key === key)) return;
+    db().dropdowns.push({ id: Date.now(), type, key, label: {}, sort_order: 999, is_active: false, status: "pending" });
+  },
+  async upsertDropdown(d) {
+    const ex = d.id ? db().dropdowns.find((x) => x.id === d.id) : undefined;
+    if (ex) Object.assign(ex, d);
+    else db().dropdowns.push({ id: Date.now(), label: {}, sort_order: 0, is_active: true, status: "approved", ...d });
+  },
+  async deleteDropdown(id) { db().dropdowns = db().dropdowns.filter((x) => x.id !== id); },
+  async platformStats() {
+    const s = db(); const t = Date.now();
+    return { members: s.profiles.filter((p) => p.status === "active").length, events_upcoming: s.events.filter((e) => e.status === "published" && Date.parse(e.starts_at) > t).length,
+      jobs_open: s.jobs.filter((j) => j.is_open).length, connections: s.connections.filter((c) => c.status === "accepted").length, programs: s.programs.filter((p) => p.is_active).length };
+  },
+  async getApplication(id) { return db().applications.find((a) => a.id === id) ?? null; },
   async createContactMessage(m) { db().messages.unshift({ ...m, id: uid("msg"), replied_at: null, created_at: now() }); },
 
   async listEvents({ when, viewerId, includeDrafts, publicOnly }) {
@@ -279,6 +301,7 @@ export const demoRepo: Repo = {
   async markAllRead(viewerId) { db().notifications.forEach((n) => { if (n.member_id === viewerId && !n.read_at) n.read_at = now(); }); },
 
   async seedDefaults() { return 0; },
+  async addNotifications(ids, kind, title, body, link) { ids.forEach((id) => notify(id, kind, title, body, link)); },
   async adminStats() {
     const s = db();
     const t = Date.now();
@@ -294,11 +317,12 @@ export const demoRepo: Repo = {
   async listApplications(status) {
     return db().applications.filter((a) => !status || a.status === status).sort((a, b) => b.created_at.localeCompare(a.created_at));
   },
-  async reviewApplication(id, status, note) {
+  async reviewApplication(id, status, note, rejectReason) {
     const a = db().applications.find((x) => x.id === id);
-    if (!a) return;
+    if (!a) return null;
     a.status = status;
     a.review_note = note;
+    a.reject_reason = rejectReason ?? null;
     a.reviewed_at = now();
     if (status === "approved" && !db().profiles.some((p) => p.email === a.email)) {
       db().profiles.push({
@@ -308,6 +332,7 @@ export const demoRepo: Repo = {
         open_to_mentoring: false, show_phone_to_connections: true, locale: "ar", created_at: now(),
       });
     }
+    return a;
   },
   async listAllMembers() { return [...db().profiles].sort((a, b) => b.created_at.localeCompare(a.created_at)); },
   async adminUpdateMember(id, patch) {

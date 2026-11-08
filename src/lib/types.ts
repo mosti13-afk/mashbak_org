@@ -3,7 +3,7 @@ import type { L10n, Locale } from "@/i18n/config";
 export type UserRole = "member" | "admin";
 export type MemberStatus = "pending" | "active" | "suspended";
 export type ApplicationStatus = "pending" | "approved" | "rejected";
-export type RequestStatus = "pending" | "accepted" | "declined";
+export type RequestStatus = "pending" | "accepted" | "declined" | "withdrawn";
 export type RegistrationStatus = "registered" | "waitlist" | "cancelled" | "attended";
 export type JobType = "full_time" | "part_time" | "contract" | "freelance";
 export type WorkMode = "onsite" | "hybrid" | "remote";
@@ -31,6 +31,18 @@ export interface Profile {
   show_phone_to_connections: boolean;
   locale: Locale;
   created_at: string;
+  gender?: string | null;
+  date_of_birth?: string | null;
+  academic_title?: string | null;
+  is_manager?: boolean | null;
+  current_interests?: string[];
+  top_career_challenges?: string[];
+  interested_opportunities?: string[];
+  interested_in_mentoring?: string[];
+  cv_url?: string | null;
+  onboarded_at?: string | null;
+  notify_email?: boolean;
+  notify_whatsapp?: boolean;
 }
 
 export interface Application {
@@ -47,6 +59,14 @@ export interface Application {
   motivation: string;
   referral_source: string | null;
   age_confirmed: boolean;
+  date_of_birth: string | null;
+  gender: "male" | "female" | null;
+  academic_title: string | null;
+  is_manager: boolean | null;
+  mentoring_participated: boolean | null;
+  reject_reason: string | null;
+  flagged: boolean;
+  locale: Locale;
   status: ApplicationStatus;
   review_note: string | null;
   reviewed_at: string | null;
@@ -67,6 +87,8 @@ export interface EventItem {
   status: EventStatus;
   members_only: boolean;
   created_at: string;
+  registration_ends_at?: string | null;
+  waitlist_enabled?: boolean;
 }
 
 export interface EventWithStats extends EventItem {
@@ -95,6 +117,10 @@ export interface Job {
   description: string;
   requirements: string | null;
   apply_url: string | null;
+  industry?: string | null;
+  seniority?: string | null;
+  notes_for_members?: string | null;
+  archived?: boolean;
   posted_by: string;
   is_open: boolean;
   expires_at: string;
@@ -145,10 +171,12 @@ export interface Program {
   title: L10n;
   summary: L10n;
   body: L10n;
-  for_who: L10n;
-  duration: L10n;
-  sessions: L10n;
+  target_audience: L10n[];
   benefits: L10n[];
+  icon_url: string | null;
+  image_url: string | null;
+  sessions_count: number | null;
+  duration_months: number | null;
   color: string;
   icon: string;
   sort_order: number;
@@ -186,11 +214,18 @@ export interface ContactMessage {
   created_at: string;
 }
 
-export interface SiteSettings {
-  hero: { eyebrow: L10n; title: L10n; highlight: L10n; sub: L10n };
-  floatingAvatars: string[];
-  stats: { members: number; companies: number; events: number };
-  contact: { email: string; whatsapp: string; instagram: string; linkedin: string };
+/** Site settings keyed like the live platform (HERO_SECTION, HOW_IT_WORKS_SECTION, CONTACT_INFO ...). */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export type SiteSettings = Record<string, any>;
+
+export interface DropdownOption {
+  id: number;
+  type: string;
+  key: string;
+  label: L10n;
+  sort_order: number;
+  is_active: boolean;
+  status: "approved" | "pending";
 }
 
 export type MiniProfile = Pick<Profile, "id" | "full_name_ar" | "full_name_en" | "avatar_url" | "headline" | "company">;
