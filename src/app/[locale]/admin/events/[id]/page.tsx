@@ -70,7 +70,7 @@ export default async function AdminEvent({ params, searchParams }: { params: Pro
                     <tr key={a.id}>
                       <td><span className="flex items-center gap-3"><Avatar src={a.member.avatar_url} name={n} size={34} /><span><span className="block font-bold">{n}</span><span className="text-xs text-mist" dir="ltr">{a.member.email}</span></span></span></td>
                       <td><StatusBadge status={a.status} label={S[a.status]} /></td>
-                      <td className="text-ink-2">{a.checked_in_at ? fmtDate(a.checked_in_at, locale, { hour: "2-digit", minute: "2-digit" }) : "—"}</td>
+                      <td className="text-ink-2">{a.checked_in_at ? fmtDate(a.checked_in_at, locale, { hour: "2-digit", minute: "2-digit" }) : "-"}</td>
                     </tr>
                   );
                 })}

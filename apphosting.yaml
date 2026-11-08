@@ -1,0 +1,23 @@
+# Firebase App Hosting (Google Cloud) configuration
+# https://firebase.google.com/docs/app-hosting/configure
+runConfig:
+  minInstances: 0
+  maxInstances: 4
+  concurrency: 80
+  cpu: 1
+  memoryMiB: 512
+
+env:
+  # Public values: these are shipped to the browser anyway and protected by Row Level Security.
+  - variable: NEXT_PUBLIC_SUPABASE_URL
+    value: https://ogwryyvvntoqhnzvgsds.supabase.co
+    availability: [BUILD, RUNTIME]
+  - variable: NEXT_PUBLIC_SUPABASE_ANON_KEY
+    value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9nd3J5eXZ2bnRvcWhuenZnc2RzIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQxMjM4NDksImV4cCI6MjEwOTY5OTg0OX0.DvEybOcVEEiTtVZE06BWFveoUrgCbluZT18Gdy0k5BM
+    availability: [BUILD, RUNTIME]
+  # Optional secret for invitation emails. Create it with:
+  #   firebase apphosting:secrets:set supabase-service-role-key
+  # then uncomment:
+  # - variable: SUPABASE_SERVICE_ROLE_KEY
+  #   secret: supabase-service-role-key
+  #   availability: [RUNTIME]

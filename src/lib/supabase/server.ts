@@ -13,7 +13,7 @@ export async function supabaseServer() {
         try {
           list.forEach(({ name, value, options }) => store.set(name, value, options));
         } catch {
-          // called from a Server Component — middleware refreshes the session
+          // called from a Server Component, middleware refreshes the session
         }
       },
     },

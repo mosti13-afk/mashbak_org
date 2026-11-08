@@ -40,7 +40,7 @@ export default async function AdminMembers({ params, searchParams }: { params: P
                     </Link>
                   </td>
                   <td className="text-ink-2" dir="auto">{m.headline}{m.company ? ` · ${m.company}` : ""}</td>
-                  <td>{m.role === "admin" ? <span className="badge badge-navy">{t.common.admin}</span> : <span className="text-ink-2">—</span>}</td>
+                  <td>{m.role === "admin" ? <span className="badge badge-navy">{t.common.admin}</span> : <span className="text-ink-2">-</span>}</td>
                   <td><StatusBadge status={m.status} label={S[m.status]} /></td>
                   <td className="whitespace-nowrap text-ink-2">{fmtDate(m.created_at, locale, { day: "numeric", month: "short", year: "numeric" })}</td>
                   <td>

@@ -1,4 +1,4 @@
--- Mashbak v2 — core schema
+-- Mashbak v2 - core schema
 -- Run with: supabase db push   (or paste into the Supabase SQL editor)
 
 

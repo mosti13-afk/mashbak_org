@@ -12,9 +12,9 @@ export const defaultPrograms: Program[] = [
       he: "מסלול אינטנסיבי להאצת קידום או המעבר לתפקיד הבא.",
     },
     body: {
-      ar: "نعمل معك على قصتك المهنية، خطة الترقية، المقابلات والتفاوض — مع مرشدين من الشبكة سبقوك إلى نفس الطريق.",
-      en: "Work on your professional story, promotion plan, interviews and negotiation — with mentors from the network who've walked the same road.",
-      he: "עבודה על הסיפור המקצועי, תוכנית הקידום, ראיונות ומשא ומתן — עם מנטורים מהרשת שעשו את אותה הדרך.",
+      ar: "نعمل معك على قصتك المهنية، خطة الترقية، المقابلات والتفاوض، مع مرشدين من الشبكة سبقوك إلى نفس الطريق.",
+      en: "Work on your professional story, promotion plan, interviews and negotiation, with mentors from the network who've walked the same road.",
+      he: "עבודה על הסיפור המקצועי, תוכנית הקידום, ראיונות ומשא ומתן, עם מנטורים מהרשת שעשו את אותה הדרך.",
     },
     for_who: {
       ar: "محترفون في منتصف مسيرتهم يسعون للترقية",
@@ -36,7 +36,7 @@ export const defaultPrograms: Program[] = [
   {
     id: "prog-nexecutives",
     slug: "nexecutives",
-    title: { ar: "NEXecutives — القادة التنفيذيون", en: "NEXecutives", he: "NEXecutives" },
+    title: { ar: "NEXecutives, القادة التنفيذيون", en: "NEXecutives", he: "NEXecutives" },
     summary: {
       ar: "ملتقى حصري للمديرين والقادة التنفيذيين لتوسيع التأثير.",
       en: "An exclusive circle for managers and executives to widen their impact.",
@@ -93,7 +93,7 @@ export const defaultPrograms: Program[] = [
     title: { ar: "قيادات نسائية", en: "Women Lead", he: "נשים מובילות" },
     summary: {
       ar: "برنامج تمكين للنساء في مواقع قيادية أو في الطريق إليها.",
-      en: "An empowerment track for women in — or heading to — leadership.",
+      en: "An empowerment track for women in, or heading to, leadership.",
       he: "מסלול העצמה לנשים בתפקידי הובלה או בדרך אליהם.",
     },
     body: {
@@ -121,9 +121,9 @@ export const defaultFaqs: Faq[] = [
     id: "faq-1",
     question: { ar: "من يمكنه التقديم لشبكة مشبك؟", en: "Who can apply to Mashbak?", he: "מי יכול להגיש בקשה למשבק?" },
     answer: {
-      ar: "محترفون عرب بعمر 18 عامًا فأكثر، مع خبرة مهنية 4 سنوات فأكثر في الغالب، ويسعون للتقدّم — ترقية، دور إداري أو انتقال — ومستعدون لمساعدة غيرهم.",
-      en: "Arab professionals aged 18+, usually with 4+ years of experience, who are working toward their next step — promotion, a managerial role or a move — and are willing to help others.",
-      he: "אנשי מקצוע ערבים בני 18 ומעלה, לרוב עם 4+ שנות ניסיון, שעובדים לקראת הצעד הבא — קידום, תפקיד ניהולי או מעבר — ומוכנים לעזור לאחרים.",
+      ar: "محترفون عرب بعمر 18 عامًا فأكثر، مع خبرة مهنية 4 سنوات فأكثر في الغالب، ويسعون للتقدّم، ترقية، دور إداري أو انتقال، ومستعدون لمساعدة غيرهم.",
+      en: "Arab professionals aged 18+, usually with 4+ years of experience, who are working toward their next step, promotion, a managerial role or a move, and are willing to help others.",
+      he: "אנשי מקצוע ערבים בני 18 ומעלה, לרוב עם 4+ שנות ניסיון, שעובדים לקראת הצעד הבא, קידום, תפקיד ניהולי או מעבר, ומוכנים לעזור לאחרים.",
     },
     sort_order: 1,
     is_active: true,
@@ -156,7 +156,7 @@ export const defaultFaqs: Faq[] = [
     answer: {
       ar: "كل وظيفة ينشرها عضو تظهر للأعضاء فورًا. تطلب التوصية من العضو الذي نشرها، وإذا وافق يوصي بك مباشرة في شركته.",
       en: "Any role a member posts is visible to members immediately. You ask the member who posted it for a referral, and if they accept, they refer you directly at their company.",
-      he: "כל משרה שחבר/ה מפרסם/ת גלויה מיד לחברים. מבקשים המלצה ממי שפרסם, ואם מאשרים — הוא/היא ממליצים עליכם ישירות בחברה.",
+      he: "כל משרה שחבר/ה מפרסם/ת גלויה מיד לחברים. מבקשים המלצה ממי שפרסם, ואם מאשרים, הוא/היא ממליצים עליכם ישירות בחברה.",
     },
     sort_order: 4,
     is_active: true,
@@ -194,8 +194,8 @@ export const defaultReviews: MemberReview[] = [
     photo_url: "/members/sahar.jpg",
     quote: {
       ar: "أكتر إشي بميّز مشبك بالنسبة إلي هو الناس. مجتمع بيجمع أشخاص عندهم الشغف يتعلّموا، يدعموا بعض ويخلقوا فرص جديدة. مشبك أعطاني فرصة أطلع من إطار شغلي اليومي، أجرّب أشياء جديدة، وأكتشف جوانب من شخصيتي وقدراتي ما كنت منتبهة إلها قبل. والأحلى إنه العلاقات اللي بنيتها ما وقفت عند التعارف، بل تحوّلت لصداقات حقيقية وفرص ومبادرات إلها أثر، مش بس على مسيرتي المهنية، بل كمان على المستوى الشخصي.",
-      en: "What sets Mashbak apart for me is the people. It brings together people with a passion to learn, support each other and create new opportunities. Mashbak gave me the chance to step outside my daily work, try new things, and discover sides of my personality and abilities I hadn't noticed before. Best of all, the relationships I built didn't stop at an introduction — they became real friendships, opportunities and initiatives with impact, not only on my career but personally too.",
-      he: "מה שמייחד את משבק בשבילי הם האנשים. היא מחברת אנשים עם תשוקה ללמוד, לתמוך זה בזה וליצור הזדמנויות חדשות. משבק נתנה לי הזדמנות לצאת מהמסגרת של העבודה היומיומית, לנסות דברים חדשים ולגלות צדדים באישיות וביכולות שלי שלא שמתי לב אליהם קודם. והכי יפה — הקשרים שבניתי לא נעצרו בהיכרות, אלא הפכו לחברויות אמיתיות, הזדמנויות ויוזמות עם השפעה, לא רק על הקריירה שלי אלא גם ברמה האישית.",
+      en: "What sets Mashbak apart for me is the people. It brings together people with a passion to learn, support each other and create new opportunities. Mashbak gave me the chance to step outside my daily work, try new things, and discover sides of my personality and abilities I hadn't noticed before. Best of all, the relationships I built didn't stop at an introduction, they became real friendships, opportunities and initiatives with impact, not only on my career but personally too.",
+      he: "מה שמייחד את משבק בשבילי הם האנשים. היא מחברת אנשים עם תשוקה ללמוד, לתמוך זה בזה וליצור הזדמנויות חדשות. משבק נתנה לי הזדמנות לצאת מהמסגרת של העבודה היומיומית, לנסות דברים חדשים ולגלות צדדים באישיות וביכולות שלי שלא שמתי לב אליהם קודם. והכי יפה, הקשרים שבניתי לא נעצרו בהיכרות, אלא הפכו לחברויות אמיתיות, הזדמנויות ויוזמות עם השפעה, לא רק על הקריירה שלי אלא גם ברמה האישית.",
     },
     sort_order: 1,
     is_active: true,
@@ -209,8 +209,8 @@ export const defaultReviews: MemberReview[] = [
     photo_url: "/members/mahmoud.jpg",
     quote: {
       ar: "مشبك إلي أكتر من شبكة علاقات، هو مساحة بتوسّع الأفق وبتفتح أبواب. من خلاله تعرّفت على ناس من مجالات مختلفة، وكل واحد فيهم أضافلي إشي، والمحاضرات الغنية ساعدتني أتطوّر وأكبر. وبالنسبة إلي، هاي هي قوة مشبك: إنّه بيقوّي مجتمعنا العربي ومواهبه، وبيعطي كل واحد فينا مكان ينمو ويدعم غيره.",
-      en: "For me Mashbak is more than a network — it's a space that widens your horizons and opens doors. Through it I met people from different fields, each of whom added something to me, and the rich lectures helped me develop and grow. To me, that's Mashbak's strength: it strengthens our Arab community and its talent, and gives each of us a place to grow and support others.",
-      he: "בשבילי משבק היא יותר מרשת קשרים — היא מרחב שמרחיב אופקים ופותח דלתות. דרכה הכרתי אנשים מתחומים שונים, וכל אחד מהם הוסיף לי משהו, וההרצאות העשירות עזרו לי להתפתח ולצמוח. בעיניי זה הכוח של משבק: היא מחזקת את החברה הערבית ואת הכישרונות שלה, ונותנת לכל אחד מאיתנו מקום לצמוח ולתמוך באחרים.",
+      en: "For me Mashbak is more than a network, it's a space that widens your horizons and opens doors. Through it I met people from different fields, each of whom added something to me, and the rich lectures helped me develop and grow. To me, that's Mashbak's strength: it strengthens our Arab community and its talent, and gives each of us a place to grow and support others.",
+      he: "בשבילי משבק היא יותר מרשת קשרים, היא מרחב שמרחיב אופקים ופותח דלתות. דרכה הכרתי אנשים מתחומים שונים, וכל אחד מהם הוסיף לי משהו, וההרצאות העשירות עזרו לי להתפתח ולצמוח. בעיניי זה הכוח של משבק: היא מחזקת את החברה הערבית ואת הכישרונות שלה, ונותנת לכל אחד מאיתנו מקום לצמוח ולתמוך באחרים.",
     },
     sort_order: 2,
     is_active: true,

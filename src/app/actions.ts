@@ -7,7 +7,8 @@ import { z } from "zod";
 import { isLocale, type Locale, type L10n } from "@/i18n/config";
 import { repo } from "@/lib/data";
 import { DEMO_ADMIN_ID, DEMO_MEMBER_ID } from "@/lib/data/demo-seed";
-import { isDemo, SITE_URL } from "@/lib/env";
+import { isDemo } from "@/lib/env";
+import { siteUrl } from "@/lib/site-url";
 import { fromLocalInput } from "@/lib/format";
 import { DEMO_COOKIE, requireAdmin, requireMember } from "@/lib/session";
 import { supabaseServer } from "@/lib/supabase/server";
@@ -48,7 +49,7 @@ export async function passwordLogin(f: FormData) {
 export async function magicLink(f: FormData) {
   const locale = loc(f);
   const s = await supabaseServer();
-  await s.auth.signInWithOtp({ email: str(f, "email"), options: { emailRedirectTo: `${SITE_URL}/auth/callback?next=/${locale}/app` } });
+  await s.auth.signInWithOtp({ email: str(f, "email"), options: { emailRedirectTo: `${await siteUrl()}/auth/callback?next=/${locale}/app` } });
   redirect(`/${locale}/login?sent=1`);
 }
 

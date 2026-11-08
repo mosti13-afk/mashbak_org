@@ -36,7 +36,7 @@ export async function Footer({ locale, t }: { locale: Locale; t: Dict }) {
       </div>
       <div className="relative border-t border-white/10">
         <div className="container-x flex flex-wrap items-center justify-between gap-2 py-5 text-xs text-white/50">
-          <span>© {year} Mashbak · Co Impact — {t.common.rights}</span>
+          <span>© {year} Mashbak · Co Impact, {t.common.rights}</span>
           <Link href={`/${locale}/privacy`} className="hover:text-white">{t.common.privacy}</Link>
         </div>
       </div>

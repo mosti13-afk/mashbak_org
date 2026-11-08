@@ -103,7 +103,7 @@ export function seedEvents(): EventItem[] {
         en: "A small evening for 30 members with managers who recently stepped into leadership. Honest questions, no slides.",
         he: "ערב אינטימי ל-30 חברים עם מנהלים שעברו לאחרונה לתפקידי ניהול. שאלות כנות, בלי מצגות.",
       },
-      location: { ar: "حيفا — مجمّع مَتام", en: "Haifa — MATAM park", he: "חיפה — פארק מת״ם" },
+      location: { ar: "حيفا، مجمّع مَتام", en: "Haifa, MATAM park", he: "חיפה, פארק מת״ם" },
       is_online: false, starts_at: at(9, 19), ends_at: at(9, 22), capacity: 30, members_only: true,
     }),
     ev({
@@ -119,13 +119,13 @@ export function seedEvents(): EventItem[] {
     }),
     ev({
       id: "ev-hightech-meetup",
-      title: { ar: "لقاء نادي الهايتك — نوفمبر", en: "HighTech Club meetup — November", he: "מפגש מועדון ההייטק — נובמבר" },
+      title: { ar: "لقاء نادي الهايتك، نوفمبر", en: "HighTech Club meetup, November", he: "מפגש מועדון ההייטק, נובמבר" },
       description: {
         ar: "محاضرتان قصيرتان عن منصّات البيانات وGenAI في الإنتاج، ثم تشبيك مفتوح.",
         en: "Two short talks on data platforms and GenAI in production, then open networking.",
         he: "שתי הרצאות קצרות על פלטפורמות דאטה ו-GenAI בפרודקשן, ואחריהן נטוורקינג.",
       },
-      location: { ar: "الناصرة — مركز الأعمال", en: "Nazareth — Business Center", he: "נצרת — מרכז העסקים" },
+      location: { ar: "الناصرة، مركز الأعمال", en: "Nazareth, Business Center", he: "נצרת, מרכז העסקים" },
       is_online: false, starts_at: at(16, 18, 30), ends_at: at(16, 21), capacity: 80, members_only: false,
     }),
     ev({
@@ -180,7 +180,7 @@ function job(x: Omit<Job, "is_open" | "expires_at" | "requirements" | "apply_url
 export function seedJobs(): Job[] {
   return [
     job({
-      id: "job-em-infra", title: "Engineering Manager — Infrastructure", company: "Wix", city: "تل أبيب-يافا",
+      id: "job-em-infra", title: "Engineering Manager, Infrastructure", company: "Wix", city: "تل أبيب-يافا",
       job_type: "full_time", work_mode: "hybrid", is_managerial: true, posted_by: "u-omar", created_at: ago(2),
       description: "Lead a team of 7 backend engineers owning our deployment and observability platform. You'll hire, coach and set technical direction together with staff engineers.",
       requirements: "5+ years backend experience, 1+ years leading people or acting as a tech lead. Kubernetes and cloud experience.",
@@ -251,7 +251,7 @@ export function seedApplications(): Application[] {
       company: "Fiverr", sector: "Marketing", years_experience: 8, status: "pending", created_at: ago(3), referral_source: "Friend",
       motivation: "Looking for a director-level move and happy to mentor junior marketers." },
     { ...base, id: "app3", full_name: "خالد مصاروة", email: "khaled.m@example.com", phone: "+972500000103", headline: "Software Engineer",
-      years_experience: 2, status: "rejected", created_at: ago(10), reviewed_at: ago(8), review_note: "أقل من 4 سنوات خبرة — شجّعناه على التقديم لاحقًا.",
+      years_experience: 2, status: "rejected", created_at: ago(10), reviewed_at: ago(8), review_note: "أقل من 4 سنوات خبرة، شجّعناه على التقديم لاحقًا.",
       motivation: "أريد التعرّف على أشخاص في المجال." },
   ];
 }

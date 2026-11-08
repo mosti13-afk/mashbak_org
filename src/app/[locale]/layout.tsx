@@ -11,7 +11,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
   const { locale } = await params;
   const t = getDict(isLocale(locale) ? locale : "ar");
   return {
-    title: { default: `${t.common.brand} — ${t.home.eyebrow}`, template: `%s · ${t.common.brand}` },
+    title: { default: `${t.common.brand} | ${t.home.eyebrow}`, template: `%s · ${t.common.brand}` },
     description: t.home.sub,
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL ?? "https://mashbak.org"),
     openGraph: { title: t.common.brand, description: t.home.sub, images: ["/logo_color.png"] },

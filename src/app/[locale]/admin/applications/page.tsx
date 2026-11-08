@@ -56,9 +56,9 @@ export default async function Applications({ params, searchParams }: { params: P
                 <div className="flex items-center gap-2"><Mail className="h-4 w-4 text-mist" /><a href={`mailto:${selected.email}`} className="font-semibold hover:underline" dir="ltr">{selected.email}</a></div>
                 <div className="flex items-center gap-2"><Phone className="h-4 w-4 text-mist" /><a href={`tel:${selected.phone}`} className="font-semibold" dir="ltr">{selected.phone}</a></div>
                 <div><dt className="text-xs text-mist">{t.common.years}</dt><dd className="font-bold">{selected.years_experience}</dd></div>
-                <div><dt className="text-xs text-mist">{t.common.sector}</dt><dd className="font-bold">{selected.sector ?? "—"}</dd></div>
-                <div><dt className="text-xs text-mist">{t.common.city}</dt><dd className="font-bold">{selected.city ?? "—"}</dd></div>
-                <div><dt className="text-xs text-mist">{t.apply.source}</dt><dd className="font-bold">{selected.referral_source ?? "—"}</dd></div>
+                <div><dt className="text-xs text-mist">{t.common.sector}</dt><dd className="font-bold">{selected.sector ?? "-"}</dd></div>
+                <div><dt className="text-xs text-mist">{t.common.city}</dt><dd className="font-bold">{selected.city ?? "-"}</dd></div>
+                <div><dt className="text-xs text-mist">{t.apply.source}</dt><dd className="font-bold">{selected.referral_source ?? "-"}</dd></div>
                 {selected.linkedin_url && <div className="sm:col-span-2"><a href={selected.linkedin_url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-bold text-navy"><ExternalLink className="h-4 w-4" />LinkedIn</a></div>}
               </dl>
               <div className="mt-5 rounded-xl bg-paper p-4">

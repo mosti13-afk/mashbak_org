@@ -9,7 +9,7 @@ export function Logo({ white = false, className = "", height = 40 }: { white?: b
   return (
     <Image
       src={white ? "/logo-white.png" : "/logo_color.png"}
-      alt="مشبك — Mashbak"
+      alt="مشبك، Mashbak"
       width={w}
       height={height}
       className={clsx("h-auto select-none", className)}

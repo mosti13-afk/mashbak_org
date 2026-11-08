@@ -1,4 +1,4 @@
-# Mashbak v2 — mashbak.org
+# Mashbak v2, mashbak.org
 
 A full rebuild of [mashbak.org](https://mashbak.org): public website, member app and admin dashboard, in Arabic, English and Hebrew (RTL-first).
 
@@ -40,7 +40,7 @@ Regenerate the seed after editing `src/lib/content.ts`: `node --experimental-str
 - Membership is by application; applicants must confirm they are 18+.
 - Members can't change their own role or status (RLS).
 - Phone numbers are only revealed to accepted connections who opted in (`connection_phone()`).
-- RSVP uses `register_for_event()` — capacity is enforced and extra sign-ups go to a waitlist; cancelling promotes the next person and notifies them.
+- RSVP uses `register_for_event()`, capacity is enforced and extra sign-ups go to a waitlist; cancelling promotes the next person and notifies them.
 - Notifications are created by triggers for connection requests/acceptances and referral requests/acceptances.
 
 ## Project layout

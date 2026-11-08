@@ -1,6 +1,6 @@
 import "server-only";
 import { defaultFaqs, defaultPrograms, defaultReviews, defaultSettings } from "../content";
-import { SITE_URL } from "../env";
+import { siteUrl } from "../site-url";
 import { supabaseAdmin, supabaseServer } from "../supabase/server";
 import type {
   Application, AttendeeRow, Connection, ConnectionWithPeople, ContactMessage, EventItem, EventWithStats, Faq, Job,
@@ -323,7 +323,7 @@ export const supabaseRepo: Repo = {
       check(await s.from("profiles").update({ status: "active" }).eq("id", existing.id));
     } else {
       const admin = supabaseAdmin();
-      if (admin) await admin.auth.admin.inviteUserByEmail(app.email, { data: { full_name: app.full_name }, redirectTo: `${SITE_URL}/auth/callback` });
+      if (admin) await admin.auth.admin.inviteUserByEmail(app.email, { data: { full_name: app.full_name }, redirectTo: `${await siteUrl()}/auth/callback` });
     }
   },
   async listAllMembers() {

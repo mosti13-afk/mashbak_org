@@ -4,7 +4,7 @@ import QRCode from "qrcode";
 import { cancelEvent, registerEvent } from "@/app/actions";
 import type { Dict, Locale } from "@/i18n";
 import { tr } from "@/i18n/config";
-import { SITE_URL } from "@/lib/env";
+import { siteUrl } from "@/lib/site-url";
 import { fmtDate, fmtTime } from "@/lib/format";
 import type { EventWithStats, Profile } from "@/lib/types";
 import { SubmitButton } from "./ui/client";
@@ -16,7 +16,7 @@ export async function EventDetail({ e, locale, t, viewer, backHref }: { e: Event
   const isMember = viewer && (viewer.status === "active" || viewer.role === "admin");
   const here = `/${locale}/${viewer ? "app/" : ""}events/${e.id}`;
   const qr = reg && reg.status !== "waitlist"
-    ? await QRCode.toDataURL(`${SITE_URL}/${locale}/admin/events/${e.id}?code=${reg.checkin_code}`, { margin: 1, width: 360, color: { dark: "#04223a", light: "#ffffff" } })
+    ? await QRCode.toDataURL(`${await siteUrl()}/${locale}/admin/events/${e.id}?code=${reg.checkin_code}`, { margin: 1, width: 360, color: { dark: "#04223a", light: "#ffffff" } })
     : null;
 
   return (
@@ -39,7 +39,7 @@ export async function EventDetail({ e, locale, t, viewer, backHref }: { e: Event
         <div className="card space-y-4 p-6">
           <Row icon={<CalendarDays className="h-5 w-5" />} label={t.events.when}>{fmtDate(e.starts_at, locale, { weekday: "long", day: "numeric", month: "long", year: "numeric" })}</Row>
           <Row icon={<Clock className="h-5 w-5" />} label="">
-            <span dir="ltr">{fmtTime(e.starts_at, locale)} – {fmtTime(e.ends_at, locale)}</span>
+            <span dir="ltr">{fmtTime(e.starts_at, locale)}, {fmtTime(e.ends_at, locale)}</span>
           </Row>
           <Row icon={<MapPin className="h-5 w-5" />} label={t.events.where}>{tr(e.location, locale)}</Row>
           {e.capacity != null && (

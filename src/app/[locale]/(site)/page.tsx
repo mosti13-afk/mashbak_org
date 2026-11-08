@@ -173,12 +173,12 @@ export default async function Home({ params }: LocaleParams) {
   );
 }
 
-/** A static illustration of the member app — not live data. */
+/** A static illustration of the member app, not live data. */
 function PhoneMock({ locale, t, faces }: { locale: "ar" | "en" | "he"; t: import("@/i18n").Dict; faces: string[] }) {
   const sample = locale === "ar"
-    ? { name: "عمر خطيب", role: "Engineering Manager", job: "Engineering Manager — Infrastructure" }
-    : locale === "he" ? { name: "עומר ח׳טיב", role: "Engineering Manager", job: "Engineering Manager — Infrastructure" }
-    : { name: "Omar Khatib", role: "Engineering Manager", job: "Engineering Manager — Infrastructure" };
+    ? { name: "عمر خطيب", role: "Engineering Manager", job: "Engineering Manager, Infrastructure" }
+    : locale === "he" ? { name: "עומר ח׳טיב", role: "Engineering Manager", job: "Engineering Manager, Infrastructure" }
+    : { name: "Omar Khatib", role: "Engineering Manager", job: "Engineering Manager, Infrastructure" };
   return (
     <div className="relative mx-auto w-full max-w-[380px]" aria-hidden>
       <div className="absolute -inset-8 rounded-[3rem] bg-gradient-to-br from-mint/30 to-teal/10 blur-2xl" />
