@@ -95,6 +95,18 @@
 .mbk[data-state="notify"] .mbk__badge { transform: scale(1); animation: mbk-badge 2s infinite; }
 @keyframes mbk-badge { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.18); } }
 
+/* ---------- Alive: Mashbakni is always gently animated (float, glance, wave, blink) ---------- */
+.mbk__body { transform-box: fill-box; transform-origin: 50% 90%; }
+.mbk__blush { fill: var(--mb-mint-on-navy); opacity: .5; }
+.mbk--alive .mbk__svg { animation: mbk-float 3.8s ease-in-out infinite; }
+.mbk--alive[data-state="idle"] .mbk__body, .mbk--alive[data-state="notify"] .mbk__body { animation: mbk-wave 9s ease-in-out infinite; }
+.mbk--alive [data-part="idle"] .mbk__eyes { transform-box: fill-box; animation: mbk-look 7s ease-in-out infinite; }
+@keyframes mbk-float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-4%); } }
+@keyframes mbk-wave { 0%, 70%, 100% { transform: rotate(0); } 74% { transform: rotate(-8deg); } 78% { transform: rotate(6deg); } 82% { transform: rotate(-4deg); } 86% { transform: rotate(0); } }
+@keyframes mbk-look { 0%, 28%, 100% { transform: translateX(0); } 34%, 48% { transform: translateX(-9%); } 56%, 68% { transform: translateX(9%); } 76% { transform: translateX(0); } }
+/* the light variant: a mint-ringed avatar used inside conversations */
+.mbk--soft { box-shadow: 0 0 0 3px var(--mb-white), 0 6px 14px rgba(10, 71, 109, .25); }
+
 @media (prefers-reduced-motion: reduce) {
   .mbk, .mbk *, .mbk::before { animation: none !important; transition: none !important; }
 }

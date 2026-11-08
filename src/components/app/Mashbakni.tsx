@@ -125,7 +125,8 @@ export function Mashbakni({ locale, copy, firstName }: { locale: string; copy: M
       <div className="flex-1 overflow-y-auto px-4 py-5 sm:px-6" aria-live="polite">
         {msgs.length === 0 ? (
           <div className="mx-auto flex h-full max-w-xl flex-col items-center justify-center text-center">
-            <p className="mt-2 text-[20px] font-semibold text-ink">{copy.hello.replace("{name}", firstName)}</p>
+            <MashbakniButton size={84} state={input.trim() ? "listening" : "idle"} className="mb-4 hidden sm:grid" />
+            <p className="mt-2 text-[20px] font-bold text-ink">{copy.hello.replace("{name}", firstName)}</p>
             <p className="mt-1 text-[15px] text-ink-2">{copy.sub}</p>
             <div className="mt-6 grid w-full gap-2 sm:grid-cols-2">
               {copy.suggestions.map((s) => (

@@ -11,7 +11,9 @@ import { isDemo } from "@/lib/env";
 import { siteUrl } from "@/lib/site-url";
 import { fromLocalInput } from "@/lib/format";
 import { DEMO_COOKIE, requireAdmin, requireMember } from "@/lib/session";
-import { supabaseServer } from "@/lib/supabase/server";
+import { supabaseAdmin, supabaseServer } from "@/lib/supabase/server";
+import { checkPhoneVerification, startPhoneVerification } from "@/lib/notify";
+import { CATEGORIES, CHANNELS, type NotifyPrefs } from "@/lib/notify/prefs";
 import type { EventItem, Faq, MemberReview, Program, SiteSettings } from "@/lib/types";
 import * as hooks from "@/lib/notify/hooks";
 
@@ -159,7 +161,7 @@ export async function submitApplication(f: FormData) {
     redirect(`/${locale}/application?error=1`);
   }
   if (ageOf(parsed.data.date_of_birth) < 18) redirect(`/${locale}/application?error=age`);
-  const input = { ...parsed.data, locale };
+  const input = { ...parsed.data, locale, whatsapp_opt_in: bool(f, "whatsapp_opt_in"), sms_opt_in: bool(f, "sms_opt_in") };
   const res = await repo.createApplication(input);
   if (res === "duplicate") redirect(`/${locale}/application?error=dup`);
   // New values typed into the searchable lists become suggestions for admins to approve
@@ -394,12 +396,63 @@ export async function saveProfile(f: FormData) {
     years_experience: int(f, "years_experience"), linkedin_url: opt(f, "linkedin_url"), avatar_url: opt(f, "avatar_url"),
     phone: phone || null, bio: opt(f, "bio"), career_goals: list(str(f, "career_goals")), interests: list(str(f, "interests")),
     open_to_mentoring: bool(f, "open_to_mentoring"), show_phone_to_connections: bool(f, "show_phone_to_connections"),
-    notify_email: bool(f, "notify_email"), notify_whatsapp: bool(f, "notify_whatsapp"),
     company_id: match?.id ?? null, open_to_referrals: bool(f, "open_to_referrals"), open_to_chats: bool(f, "open_to_chats"),
     help_offers: list(str(f, "help_offers")).slice(0, 8), cv_url: opt(f, "cv_url"),
   });
   revalidatePath("/", "layout");
   redirect(`/${locale}/app/profile?saved=1`);
+}
+
+// ---------- member: notification channels ----------
+const NOTIF = (l: Locale) => `/${l}/app/account/notifications`;
+export async function saveNotificationPrefs(f: FormData) {
+  const locale = loc(f);
+  const v = await requireMember(locale);
+  const prefs: NotifyPrefs = {};
+  for (const c of CATEGORIES) prefs[c] = Object.fromEntries(CHANNELS.map((ch) => [ch, bool(f, `${c}.${ch}`)]));
+  await repo.updateProfile(v.id, {
+    notify_prefs: prefs, notify_email: bool(f, "notify_email"), notify_whatsapp: bool(f, "notify_whatsapp"),
+    notify_sms: bool(f, "notify_sms") && !!v.phone_verified_at,
+  });
+  revalidatePath("/", "layout");
+  redirect(`${NOTIF(locale)}?saved=1`);
+}
+const VERIFY_COOKIE = "mb_phone_verify";
+const SIM_COOKIE = "mb_phone_sim";
+export async function startPhoneVerify(f: FormData) {
+  const locale = loc(f);
+  await requireMember(locale);
+  const phone = str(f, "phone").replace(/[^\d+]/g, "");
+  const channel = str(f, "channel") === "sms" ? "sms" : "whatsapp";
+  const r = await startPhoneVerification(phone, channel);
+  if (!r.ok) redirect(`${NOTIF(locale)}?verify=invalid`);
+  const jar = await cookies();
+  const opts = { httpOnly: true, sameSite: "lax" as const, secure: process.env.NODE_ENV === "production", maxAge: 600, path: "/" };
+  jar.set(VERIFY_COOKIE, JSON.stringify({ token: r.token, phone, channel }), opts);
+  if (r.provider === "simulated") jar.set(SIM_COOKIE, r.code, opts); else jar.delete(SIM_COOKIE);
+  redirect(`${NOTIF(locale)}?verify=code`);
+}
+export async function confirmPhoneVerify(f: FormData) {
+  const locale = loc(f);
+  const v = await requireMember(locale);
+  const jar = await cookies();
+  let pending: { token: string; phone: string } | null = null;
+  try { pending = JSON.parse(jar.get(VERIFY_COOKIE)?.value ?? "null"); } catch { pending = null; }
+  if (!pending) redirect(`${NOTIF(locale)}?verify=expired`);
+  const ok = await checkPhoneVerification(pending.token, str(f, "code"));
+  if (!ok) redirect(`${NOTIF(locale)}?verify=bad`);
+  const patch = { phone: pending.phone, phone_verified_at: new Date().toISOString() };
+  const admin = isDemo ? null : supabaseAdmin();
+  if (admin) await admin.from("profiles").update(patch).eq("id", v.id);
+  else await repo.updateProfile(v.id, patch);
+  jar.delete(VERIFY_COOKIE); jar.delete(SIM_COOKIE);
+  revalidatePath("/", "layout");
+  redirect(`${NOTIF(locale)}?verify=done`);
+}
+export async function cancelPhoneVerify(f: FormData) {
+  const jar = await cookies();
+  jar.delete(VERIFY_COOKIE); jar.delete(SIM_COOKIE);
+  redirect(NOTIF(loc(f)));
 }
 
 // ---------- admin ----------

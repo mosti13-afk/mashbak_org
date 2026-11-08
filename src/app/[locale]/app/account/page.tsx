@@ -58,7 +58,7 @@ export default async function Account({ params }: LocaleParams) {
       <div className="list mt-5">
         <LinkRow href={`${b}/activity?tab=sent`} icon={<Inbox className="h-[18px] w-[18px]" />} label={A.requests} />
         <LinkRow href={`${b}/connections`} icon={<Users className="h-[18px] w-[18px]" />} label={A.network} end={network ? <span className="text-[14px] text-mist">{network}</span> : null} />
-        <LinkRow href={`${b}/activity?tab=updates`} icon={<Bell className="h-[18px] w-[18px]" />} label={A.notifications} />
+        <LinkRow href={`${b}/account/notifications`} icon={<Bell className="h-[18px] w-[18px]" />} label={A.notifications} />
       </div>
 
       <p className="list-label flex items-center gap-2"><Globe className="h-4 w-4" />{A.language}</p>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Chevron, EmptyState, SectionHeader } from "@/components/shell/page";
 import { Avatar } from "@/components/ui";
 import { EventRow, JobRow, PersonRow } from "@/components/v2";
+import { fit } from "@/lib/match";
 import { fmt, memberDict } from "@/i18n/member";
 import { shellDict } from "@/i18n/shell";
 import { repo } from "@/lib/data";
@@ -32,7 +33,9 @@ export default async function Home({ params }: LocaleParams) {
     repo.listEvents({ when: "upcoming", viewerId: v.id }),
   ]);
   // opportunities: followed companies first, otherwise jobs where a member can help
-  const jobs = (jobsFollow.length ? jobsFollow : [...jobsAll].sort((a, z) => (z.insiders_count ?? 0) - (a.insiders_count ?? 0))).slice(0, 3);
+  const pool = [...new Map([...jobsFollow, ...jobsAll].filter((j) => j.is_open !== false).map((j) => [j.id, j])).values()];
+  const ranked = pool.map((j) => ({ j, ...fit(j, v, followed, locale) })).sort((a, z) => z.score - a.score);
+  const jobs = ranked.slice(0, 3);
   const waiting = [
     ...refs.filter((r) => r.direction === "incoming" && r.status === "pending").map((r) => ({ id: r.id, who: r.requester, kind: M.requests.referral, what: `${r.job.title} · ${r.job.company}`, at: r.created_at })),
     ...cons.filter((c) => c.direction === "incoming" && c.status === "pending").map((c) => ({ id: c.id, who: c.other, kind: M.requests.chat, what: c.message, at: c.created_at })),
@@ -86,7 +89,7 @@ export default async function Home({ params }: LocaleParams) {
           )}
 
           <SectionHeader title={jobsFollow.length ? M.home.jobsFollow : M.jobs.title} href={`${b}/jobs`} more={M.home.seeAll} />
-          {jobs.length ? <div className="list">{jobs.map((j) => <JobRow key={j.id} j={j} locale={locale} M={M} />)}</div>
+          {jobs.length ? <div className="list">{jobs.map(({ j, reason }) => <JobRow key={j.id} j={j} locale={locale} M={M} reason={reason} />)}</div>
             : <EmptyState title={M.jobs.empty} />}
         </div>
 

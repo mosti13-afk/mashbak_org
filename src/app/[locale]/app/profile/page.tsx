@@ -1,8 +1,10 @@
 import type { ReactNode } from "react";
 import { saveProfile } from "@/app/actions";
-import { BackLink, PageTitle } from "@/components/shell/page";
+import Link from "next/link";
+import { BackLink, Chevron, PageTitle } from "@/components/shell/page";
 import { Avatar, Notice } from "@/components/ui";
 import { SubmitButton } from "@/components/ui/client";
+import { ProfileWriter } from "@/components/app/ProfileWriter";
 import { memberDict } from "@/i18n/member";
 import { shellDict } from "@/i18n/shell";
 import { repo } from "@/lib/data";
@@ -81,6 +83,7 @@ export default async function Profile({ params, searchParams }: { params: Promis
           <Toggle name="open_to_mentoring" label={P.mentoring} on={v.open_to_mentoring} />
         </Group>
         <Group title={G.about}>
+          <ProfileWriter locale={locale} />
           <F label={P.bio}><textarea name="bio" rows={4} defaultValue={v.bio ?? ""} className="textarea" dir="auto" /></F>
           <F label={P.goals} hint={P.goalsHint}><input name="career_goals" defaultValue={v.career_goals.join(", ")} className="input" dir="auto" /></F>
           <F label={P.interests}><input name="interests" defaultValue={v.interests.join(", ")} className="input" dir="auto" /></F>
@@ -89,10 +92,9 @@ export default async function Profile({ params, searchParams }: { params: Promis
           <F label={t.common.phone} hint={P.phoneHint}><input name="phone" type="tel" defaultValue={v.phone ?? ""} className="input" dir="ltr" /></F>
           <Toggle name="show_phone_to_connections" label={P.showPhone} on={v.show_phone_to_connections} />
         </Group>
-        <Group title={G.notify}>
-          <Toggle name="notify_email" label={G.email} on={v.notify_email !== false} />
-          <Toggle name="notify_whatsapp" label={G.wa} on={v.notify_whatsapp !== false} />
-        </Group>
+        <Link href={`/${locale}/app/account/notifications`} className="row mt-6 rounded-[20px] bg-white ring-1 ring-line">
+          <span className="min-w-0 flex-1"><span className="row-title">{G.notify}</span></span><Chevron />
+        </Link>
         <div className="fixed inset-x-0 bottom-[calc(64px+env(safe-area-inset-bottom))] z-20 border-t border-line bg-white/95 p-3 backdrop-blur lg:static lg:mt-6 lg:border-0 lg:bg-transparent lg:p-0">
           <SubmitButton className="btn btn-primary btn-lg w-full lg:w-auto">{G.save}</SubmitButton>
         </div>

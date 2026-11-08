@@ -15,6 +15,7 @@ export interface ApplicationInput {
   referral_source?: string | null; age_confirmed: boolean;
   date_of_birth?: string | null; gender?: "male" | "female" | null; academic_title?: string | null;
   is_manager?: boolean | null; mentoring_participated?: boolean | null; locale?: string;
+  whatsapp_opt_in?: boolean; sms_opt_in?: boolean;
 }
 export interface JobInput {
   title: string; company: string; city?: string | null; job_type: JobType; work_mode: WorkMode; is_managerial: boolean;
@@ -23,7 +24,7 @@ export interface JobInput {
 }
 export type ProfilePatch = Partial<Pick<Profile,
   "full_name_ar" | "full_name_en" | "phone" | "avatar_url" | "headline" | "company" | "sector" | "city" | "years_experience" |
-  "linkedin_url" | "bio" | "career_goals" | "interests" | "open_to_mentoring" | "show_phone_to_connections" | "locale" | "notify_email" | "notify_whatsapp" |
+  "linkedin_url" | "bio" | "career_goals" | "interests" | "open_to_mentoring" | "show_phone_to_connections" | "locale" | "notify_email" | "notify_whatsapp" | "notify_sms" | "notify_prefs" | "phone_verified_at" |
   "company_id" | "open_to_referrals" | "open_to_chats" | "help_offers" | "cv_url">>;
 
 export interface CompanyInput {

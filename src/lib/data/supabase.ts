@@ -137,7 +137,13 @@ export const supabaseRepo: Repo = {
     const s = await sb();
     const { data: dup } = await s.rpc("application_pending", { p_email: a.email });
     if (dup) return "duplicate";
-    check(await s.from("applications").insert(a));
+    const res = await s.from("applications").insert(a);
+    // Before migration 0005 the channel columns don't exist yet: save the application without them.
+    if (res.error && /whatsapp_opt_in|sms_opt_in|PGRST204/i.test(`${res.error.message} ${res.error.code}`)) {
+      const { whatsapp_opt_in: _w, sms_opt_in: _s, ...rest } = a;
+      void _w; void _s;
+      check(await s.from("applications").insert(rest));
+    } else check(res);
     return "ok";
   },
   async listDropdowns() {
@@ -206,7 +212,16 @@ export const supabaseRepo: Repo = {
     const s = await sb();
     return check(await s.from("profiles").select("*").eq("id", id).maybeSingle()) as Profile | null;
   },
-  async updateProfile(id, patch) { const s = await sb(); check(await s.from("profiles").update({ ...patch, updated_at: new Date().toISOString() }).eq("id", id)); },
+  async updateProfile(id, patch) {
+    const s = await sb();
+    const res = await s.from("profiles").update({ ...patch, updated_at: new Date().toISOString() }).eq("id", id);
+    // Before migration 0005: drop the channel fields that don't exist yet and keep the rest of the change.
+    if (res.error && /notify_prefs|notify_sms|phone_verified_at|PGRST204/i.test(`${res.error.message} ${res.error.code}`)) {
+      const { notify_prefs: _p, notify_sms: _s, phone_verified_at: _v, ...rest } = patch;
+      void _p; void _s; void _v;
+      check(await s.from("profiles").update({ ...rest, updated_at: new Date().toISOString() }).eq("id", id));
+    } else check(res);
+  },
   async listMembers({ viewerId, q, sector, mentor, companyId, chats }) {
     const s = await sb();
     let query = s.from("profiles").select("*").eq("status", "active").neq("id", viewerId).order("created_at", { ascending: false }).limit(300);

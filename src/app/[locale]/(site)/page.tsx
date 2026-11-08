@@ -1,11 +1,11 @@
 import { FaqSection, ProgramsSection, ReviewsSection } from "@/components/site/sections";
-import { Features, FinalCta, FitStrip, Hero, HowToJoin } from "@/components/site/landing";
+import { FinalCta, Hero, HowToJoin, MashbakniBand, UseCases } from "@/components/site/landing";
 import { landingDict } from "@/i18n/landing";
 import { repo } from "@/lib/data";
 import { pageLocale, type LocaleParams } from "@/lib/page";
 import { hero, memberCount } from "@/lib/settings";
 
-/* Lean home: what Mashbak is, how it fits, what you do inside, how to join, proof, then one call to action. */
+/* Home: what Mashbak is (with a live demo), what members do inside, Mashbakni, how to join, proof, one call to action. */
 export default async function Home({ params }: LocaleParams) {
   const { locale } = await pageLocale(params);
   const L = landingDict[locale];
@@ -18,9 +18,9 @@ export default async function Home({ params }: LocaleParams) {
 
   return (
     <>
-      <Hero locale={locale} L={L} faces={faces} members={members} />
-      <FitStrip L={L} />
-      <Features L={L} />
+      <Hero locale={locale} L={L} faces={faces} members={members} companies={pulse?.companies ?? 0} />
+      <UseCases L={L} />
+      <MashbakniBand L={L} />
       <HowToJoin L={L} locale={locale} />
       <ReviewsSection reviews={reviews} locale={locale} />
       {programs.length > 0 && <ProgramsSection programs={programs} locale={locale} limit={3} />}

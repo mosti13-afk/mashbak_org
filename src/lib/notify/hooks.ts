@@ -17,7 +17,7 @@ const where = (e: EventItem, locale: Locale) => (e.is_online ? (locale === "ar" 
 
 export async function onApplicationSubmitted(a: ApplicationInput) {
   await Promise.allSettled([
-    notify("application_received", { email: a.email, phone: a.phone, name: a.full_name, locale: a.locale }),
+    notify("application_received", { email: a.email, phone: a.phone, name: a.full_name, locale: a.locale, whatsappOk: a.whatsapp_opt_in !== false }),
     notifyAdmins("admin_new_application", {
       applicant: a.full_name, headline: a.headline, company: a.company ?? "-", years: a.years_experience, email: a.email, phone: a.phone,
     }),
@@ -26,7 +26,7 @@ export async function onApplicationSubmitted(a: ApplicationInput) {
 
 export async function onApplicationReviewed(app: Application | null, status: string, reason?: string | null) {
   if (!app || (status !== "approved" && status !== "rejected")) return;
-  const to = { email: app.email, phone: app.phone, name: app.full_name, locale: app.locale ?? "ar" };
+  const to = { email: app.email, phone: app.phone, name: app.full_name, locale: app.locale ?? "ar", whatsappOk: (app as { whatsapp_opt_in?: boolean }).whatsapp_opt_in !== false };
   if (status === "approved") await notify("application_approved", to);
   else await notify("application_rejected", to, { reason: reason ?? "" });
 }

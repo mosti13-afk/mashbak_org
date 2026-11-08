@@ -1,5 +1,5 @@
 import clsx from "clsx";
-import { Award, Briefcase, Handshake, HeartHandshake, MapPin, Star, Users } from "lucide-react";
+import { Award, Briefcase, Handshake, HeartHandshake, MapPin, Star, Users, Sparkles } from "lucide-react";
 import Link from "next/link";
 import { LogoImg } from "@/components/LogoImg";
 import { Chevron } from "@/components/shell/page";
@@ -30,7 +30,7 @@ export function CompanyLogo({ c, size = 44, className }: { c: CompanyLike | null
   );
 }
 
-export function JobRow({ j, locale, M }: { j: JobWithPoster; locale: Locale; M: MemberDict }) {
+export function JobRow({ j, locale, M, reason }: { j: JobWithPoster; locale: Locale; M: MemberDict; reason?: string }) {
   const c = j.company_ref ?? { name: j.company, name_ar: null, name_he: null, logo_url: null };
   const where = j.location || j.city;
   const st = j.my_referral?.status;
@@ -41,6 +41,7 @@ export function JobRow({ j, locale, M }: { j: JobWithPoster; locale: Locale; M: 
       <span className="min-w-0 flex-1">
         <span className="line-clamp-2 block text-[15px] font-bold leading-6 text-ink" dir="auto">{j.title}</span>
         <span className="row-sub block">{j.company_ref ? companyName(j.company_ref, locale) : j.company}{where ? ` · ${where}` : ""}</span>
+        {reason && <span className="mt-1 flex items-center gap-1 text-[13px] font-bold text-green-deep"><Sparkles className="h-3.5 w-3.5 shrink-0" />{reason}</span>}
         <span className="mt-1.5 flex flex-wrap items-center gap-1.5">
           {n > 0 && <span className="badge badge-mint"><Users className="h-3 w-3" />{fmt(M.jobs.insiders, { n })}</span>}
           {j.is_managerial && <span className="badge badge-navy">{M.jobs.managerialTag}</span>}

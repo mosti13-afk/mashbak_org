@@ -1,4 +1,4 @@
-import { CheckCircle2, CircleAlert, Mail, MessageCircle, Sparkles } from "lucide-react";
+import { CheckCircle2, CircleAlert, FlaskConical, Mail, MessageCircle, Smartphone, Sparkles } from "lucide-react";
 import { saveNotificationTemplate, sendBroadcast, sendTestEmail } from "@/app/actions";
 import { L10nFields } from "@/components/admin/L10nFields";
 import { Check, Field, Notice, PageHeader, Tabs } from "@/components/ui";
@@ -6,7 +6,7 @@ import { SubmitButton } from "@/components/ui/client";
 import type { Locale } from "@/i18n/config";
 import { repo } from "@/lib/data";
 import { fmtRelative } from "@/lib/format";
-import { emailConfigured, whatsappConfigured } from "@/lib/notify";
+import { emailConfigured, smsProvider, verifyProvider, whatsappProvider } from "@/lib/notify";
 import { listLog, listTemplateRows } from "@/lib/notify/store";
 import { TEMPLATES, TEMPLATE_KEYS, waName, type Template } from "@/lib/notify/templates";
 import { pageLocale, sp, type SearchParams } from "@/lib/page";
@@ -14,8 +14,9 @@ import { requireAdmin } from "@/lib/session";
 
 const C: Record<Locale, Record<string, string>> = {
   ar: {
+    sms: "الرسائل النصية (SMS)", sim: "محاكاة", simHint: "لا يوجد مزوّد مربوط بعد. تُصاغ الرسائل وتُسجَّل في سجل الإرسال لمعاينتها، دون إرسال فعلي.", smsHint: "Twilio: أضف TWILIO_ACCOUNT_SID و TWILIO_AUTH_TOKEN و TWILIO_SMS_FROM.", verify: "توثيق رقم الهاتف", verifyHint: "Twilio Verify: أضف TWILIO_VERIFY_SERVICE_SID. في وضع المحاكاة يظهر الرمز للعضو على الشاشة.", provider: "المزوّد", preview: "معاينة",
     channels: "قنوات الإرسال", email: "البريد الإلكتروني", wa: "واتساب للأعمال", ai: "مشبكني (ذكاء اصطناعي)", on: "مفعّل", off: "غير مفعّل",
-    emailHint: "يُرسل من info@mashbak.org عبر SMTP. أضف SMTP_USER و SMTP_PASS في Cloud Run.", waHint: "WhatsApp Cloud API. أضف WHATSAPP_TOKEN و WHATSAPP_PHONE_NUMBER_ID، وأنشئ القوالب في Meta.", aiHint: "أضف ANTHROPIC_API_KEY في Cloud Run.",
+    emailHint: "يُرسل من info@mashbak.org عبر SMTP. أضف SMTP_USER و SMTP_PASS في Cloud Run.", waHint: "Meta Cloud API (WHATSAPP_TOKEN و WHATSAPP_PHONE_NUMBER_ID) أو Twilio (TWILIO_ACCOUNT_SID و TWILIO_AUTH_TOKEN و TWILIO_WHATSAPP_FROM).", aiHint: "أضف ANTHROPIC_API_KEY في Cloud Run.",
     test: "إرسال تجربة", testTo: "إلى بريد", testPhone: "رقم واتساب (اختياري)", template: "القالب", lang: "اللغة", tested: "تم إرسال التجربة. راجع سجل الإرسال أدناه.",
     broadcast: "رسالة جماعية للأعضاء", bTitle: "العنوان", bMsg: "نص الرسالة", bLink: "رابط داخلي (اختياري)", audience: "الجمهور", all: "كل الأعضاء الفعّالين", mentors: "المستعدون للإرشاد",
     inapp: "تصل دائمًا كإشعار داخل المنصة.", alsoEmail: "أرسل بالبريد أيضًا", alsoWa: "أرسل بواتساب أيضًا", sendB: "إرسال", sent: "تم الإرسال إلى {n} عضو.",
@@ -24,8 +25,9 @@ const C: Record<Locale, Record<string, string>> = {
     when: "الوقت", channel: "القناة", to: "إلى", status: "الحالة",
   },
   en: {
+    sms: "Text messages (SMS)", sim: "Simulated", simHint: "No provider connected yet. Messages are composed and recorded in the delivery log for preview, without being sent.", smsHint: "Twilio: add TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN and TWILIO_SMS_FROM.", verify: "Phone verification", verifyHint: "Twilio Verify: add TWILIO_VERIFY_SERVICE_SID. In simulated mode the code is shown to the member on screen.", provider: "Provider", preview: "Preview",
     channels: "Delivery channels", email: "Email", wa: "WhatsApp Business", ai: "Mashbakni (AI)", on: "On", off: "Off",
-    emailHint: "Sent from info@mashbak.org over SMTP. Add SMTP_USER and SMTP_PASS in Cloud Run.", waHint: "WhatsApp Cloud API. Add WHATSAPP_TOKEN and WHATSAPP_PHONE_NUMBER_ID and create the templates in Meta.", aiHint: "Add ANTHROPIC_API_KEY in Cloud Run.",
+    emailHint: "Sent from info@mashbak.org over SMTP. Add SMTP_USER and SMTP_PASS in Cloud Run.", waHint: "Meta Cloud API (WHATSAPP_TOKEN, WHATSAPP_PHONE_NUMBER_ID) or Twilio (TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_WHATSAPP_FROM).", aiHint: "Add ANTHROPIC_API_KEY in Cloud Run.",
     test: "Send a test", testTo: "To email", testPhone: "WhatsApp number (optional)", template: "Template", lang: "Language", tested: "Test sent. Check the delivery log below.",
     broadcast: "Broadcast to members", bTitle: "Title", bMsg: "Message", bLink: "Internal link (optional)", audience: "Audience", all: "All active members", mentors: "Open to mentoring",
     inapp: "Always delivered as an in-app notification.", alsoEmail: "Also send by email", alsoWa: "Also send on WhatsApp", sendB: "Send", sent: "Sent to {n} members.",
@@ -34,8 +36,9 @@ const C: Record<Locale, Record<string, string>> = {
     when: "When", channel: "Channel", to: "To", status: "Status",
   },
   he: {
+    sms: "מסרונים (SMS)", sim: "סימולציה", simHint: "עוד לא חובר ספק. ההודעות מנוסחות ונרשמות ביומן השליחה לתצוגה מקדימה, בלי שליחה בפועל.", smsHint: "Twilio: הוסיפו TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN ו-TWILIO_SMS_FROM.", verify: "אימות מספר טלפון", verifyHint: "Twilio Verify: הוסיפו TWILIO_VERIFY_SERVICE_SID. במצב סימולציה הקוד מוצג לחבר/ה על המסך.", provider: "ספק", preview: "תצוגה מקדימה",
     channels: "ערוצי שליחה", email: "אימייל", wa: "וואטסאפ עסקי", ai: "משבקני (AI)", on: "פעיל", off: "כבוי",
-    emailHint: "נשלח מ-info@mashbak.org דרך SMTP. הוסיפו SMTP_USER ו-SMTP_PASS ב-Cloud Run.", waHint: "WhatsApp Cloud API. הוסיפו WHATSAPP_TOKEN ו-WHATSAPP_PHONE_NUMBER_ID וצרו את התבניות ב-Meta.", aiHint: "הוסיפו ANTHROPIC_API_KEY ב-Cloud Run.",
+    emailHint: "נשלח מ-info@mashbak.org דרך SMTP. הוסיפו SMTP_USER ו-SMTP_PASS ב-Cloud Run.", waHint: "Meta Cloud API (WHATSAPP_TOKEN, WHATSAPP_PHONE_NUMBER_ID) או Twilio (TWILIO_ACCOUNT_SID, TWILIO_AUTH_TOKEN, TWILIO_WHATSAPP_FROM).", aiHint: "הוסיפו ANTHROPIC_API_KEY ב-Cloud Run.",
     test: "שליחת בדיקה", testTo: "לאימייל", testPhone: "מספר וואטסאפ (אופציונלי)", template: "תבנית", lang: "שפה", tested: "הבדיקה נשלחה. בדקו את יומן השליחה למטה.",
     broadcast: "הודעה לכל החברים", bTitle: "כותרת", bMsg: "תוכן", bLink: "קישור פנימי (אופציונלי)", audience: "קהל", all: "כל החברים הפעילים", mentors: "פתוחים למנטורינג",
     inapp: "תמיד נשלח גם כהתראה במערכת.", alsoEmail: "לשלוח גם במייל", alsoWa: "לשלוח גם בוואטסאפ", sendB: "שליחה", sent: "נשלח ל-{n} חברים.",
@@ -54,10 +57,13 @@ export default async function AdminNotifications({ params, searchParams }: { par
   const b = `/${locale}/admin/notifications`;
   const [rows, log, members] = await Promise.all([listTemplateRows(), listLog(), repo.listAllMembers()]);
   const sectors = [...new Set(members.filter((m) => m.status === "active" && m.sector).map((m) => m.sector!))].sort();
+  const wa = whatsappProvider(), sms = smsProvider(), ver = verifyProvider();
   const status = [
-    { icon: Mail, label: L.email, on: emailConfigured(), hint: L.emailHint },
-    { icon: MessageCircle, label: L.wa, on: whatsappConfigured(), hint: L.waHint },
-    { icon: Sparkles, label: L.ai, on: !!process.env.ANTHROPIC_API_KEY, hint: L.aiHint },
+    { icon: Mail, label: L.email, state: emailConfigured() ? "on" : "off", provider: "SMTP", hint: L.emailHint },
+    { icon: MessageCircle, label: L.wa, state: wa === "simulated" ? "sim" : "on", provider: wa === "meta" ? "Meta" : wa === "twilio" ? "Twilio" : "", hint: L.waHint },
+    { icon: Smartphone, label: L.sms, state: sms === "simulated" ? "sim" : "on", provider: sms === "twilio" ? "Twilio" : "", hint: L.smsHint },
+    { icon: CheckCircle2, label: L.verify, state: ver === "simulated" ? "sim" : "on", provider: ver === "twilio" ? "Twilio Verify" : "", hint: L.verifyHint },
+    { icon: Sparkles, label: L.ai, state: process.env.ANTHROPIC_API_KEY ? "on" : "off", provider: "Claude", hint: L.aiHint },
   ];
   const hidden = <input type="hidden" name="locale" value={locale} />;
 
@@ -75,15 +81,18 @@ export default async function AdminNotifications({ params, searchParams }: { par
 
       {tab === "overview" && (
         <div className="space-y-5">
-          <section className="grid gap-3 md:grid-cols-3">
+          <section className="grid gap-3 sm:grid-cols-2 xl:grid-cols-3">
             {status.map((s) => (
               <div key={s.label} className="card p-5">
                 <div className="flex items-center gap-3">
-                  <span className="grid h-10 w-10 place-items-center rounded-xl bg-mint-soft text-navy"><s.icon className="h-5 w-5" /></span>
-                  <p className="flex-1 font-bold">{s.label}</p>
-                  {s.on ? <span className="badge badge-mint"><CheckCircle2 className="h-3.5 w-3.5" />{L.on}</span> : <span className="badge badge-gray"><CircleAlert className="h-3.5 w-3.5" />{L.off}</span>}
+                  <span className="grid h-10 w-10 shrink-0 place-items-center rounded-xl bg-mint-soft text-navy"><s.icon className="h-5 w-5" /></span>
+                  <p className="min-w-0 flex-1 font-bold">{s.label}</p>
+                  {s.state === "on" ? <span className="badge badge-mint"><CheckCircle2 className="h-3.5 w-3.5" />{s.provider || L.on}</span>
+                    : s.state === "sim" ? <span className="badge badge-amber"><FlaskConical className="h-3.5 w-3.5" />{L.sim}</span>
+                    : <span className="badge badge-gray"><CircleAlert className="h-3.5 w-3.5" />{L.off}</span>}
                 </div>
-                {!s.on && <p className="mt-3 text-xs leading-5 text-mist">{s.hint}</p>}
+                {s.state === "sim" && <p className="mt-3 text-xs leading-5 text-ink-2">{L.simHint}</p>}
+                {s.state !== "on" && <p className="mt-2 text-xs leading-5 text-mist" dir="auto">{s.hint}</p>}
               </div>
             ))}
           </section>
@@ -179,11 +188,19 @@ export default async function AdminNotifications({ params, searchParams }: { par
                 {log.map((r, i) => (
                   <tr key={r.id ?? i}>
                     <td className="whitespace-nowrap p-3 text-mist">{fmtRelative(r.created_at, locale)}</td>
-                    <td className="p-3">{r.channel === "email" ? <Mail className="h-4 w-4 text-navy" /> : <MessageCircle className="h-4 w-4 text-mint" />}</td>
-                    <td className="p-3"><code className="text-xs">{r.template}</code></td>
+                    <td className="p-3">{r.channel === "email" ? <Mail className="h-4 w-4 text-navy" /> : r.channel === "sms" ? <Smartphone className="h-4 w-4 text-navy" /> : <MessageCircle className="h-4 w-4 text-green-deep" />}{r.provider && <span className="mt-1 block text-[11px] text-mist">{r.provider}</span>}</td>
+                    <td className="p-3">
+                      <code className="text-xs">{r.template}</code>
+                      {r.body && (
+                        <details className="mt-1">
+                          <summary className="cursor-pointer text-xs font-bold text-navy">{L.preview}</summary>
+                          <p className="mt-2 max-w-xs whitespace-pre-line rounded-[14px] rounded-ss-[4px] bg-sky p-2.5 text-xs leading-5 text-ink" dir="auto">{r.body}</p>
+                        </details>
+                      )}
+                    </td>
                     <td className="p-3" dir="ltr">{r.recipient}</td>
                     <td className="p-3">
-                      <span className={`badge ${r.status === "sent" ? "badge-mint" : r.status === "failed" ? "badge-red" : "badge-gray"}`}>{r.status}</span>
+                      <span className={`badge ${r.status === "sent" ? "badge-mint" : r.status === "failed" ? "badge-red" : r.status === "simulated" ? "badge-amber" : "badge-gray"}`}>{r.status === "simulated" ? L.sim : r.status}</span>
                       {r.error && <p className="mt-1 max-w-xs truncate text-xs text-mist" title={r.error}>{r.error}</p>}
                     </td>
                   </tr>

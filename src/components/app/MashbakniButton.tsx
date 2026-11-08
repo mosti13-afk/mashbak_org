@@ -12,10 +12,15 @@ const LABELS: Record<MashbakniState, string> = {
 function Face() {
   return (
     <svg className="mbk__svg" viewBox="4 6 96 90" aria-hidden="true" focusable="false">
+      <g className="mbk__body">
       <path className="mbk__bubble" d="M42 16 H62 A28 28 0 0 1 90 44 A28 28 0 0 1 62 72 H34 L14 84 V44 A28 28 0 0 1 42 16 Z" />
       <g data-part="idle">
-        <circle className="mbk__eye" cx="42" cy="43" r="7" />
-        <circle className="mbk__eye" cx="62" cy="43" r="7" />
+        <g className="mbk__eyes">
+          <circle className="mbk__eye" cx="42" cy="43" r="7" />
+          <circle className="mbk__eye" cx="62" cy="43" r="7" />
+        </g>
+        <ellipse className="mbk__blush" cx="32" cy="53" rx="4.5" ry="2.6" />
+        <ellipse className="mbk__blush" cx="72" cy="53" rx="4.5" ry="2.6" />
         <path className="mbk__accent" d="M44.5 56 Q52 62.5 59.5 56" />
       </g>
       <g data-part="listening">
@@ -36,16 +41,17 @@ function Face() {
         <path className="mbk__ink-line" d="M34.5 45 Q42 34 49.5 45 M54.5 45 Q62 34 69.5 45" />
         <path className="mbk__accent" d="M43 54 Q52 64 61 54" />
       </g>
+      </g>
     </svg>
   );
 }
 
 /** The round button. As a link (nav) when href is given, otherwise a decorative avatar. */
-export function MashbakniButton({ state = "idle", href, size, active, className, label }: {
-  state?: MashbakniState; href?: string; size?: number; active?: boolean; className?: string; label?: string;
+export function MashbakniButton({ state = "idle", href, size, active, className, label, still }: {
+  state?: MashbakniState; href?: string; size?: number; active?: boolean; className?: string; label?: string; still?: boolean;
 }) {
   const style = size ? ({ "--mb-btn-size": `${size}px` } as CSSProperties) : undefined;
-  const props = { className: clsx("mbk", className), "data-state": state, style };
+  const props = { className: clsx("mbk", !still && "mbk--alive", className), "data-state": state, style };
   if (href) {
     return (
       <Link href={href} {...props} aria-label={label ?? LABELS[state]} aria-current={active ? "page" : undefined} aria-expanded={active ? true : undefined}>

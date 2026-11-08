@@ -9,7 +9,7 @@ export interface TemplateRow {
   key: string; subject: Record<string, string>; body: Record<string, string>;
   whatsapp_template: { name?: string; lang?: string }; email_enabled: boolean; whatsapp_enabled: boolean;
 }
-export interface LogRow { id?: string; channel: string; template: string | null; recipient: string; status: string; error: string | null; created_at: string }
+export interface LogRow { id?: string; channel: string; template: string | null; recipient: string; status: string; error: string | null; created_at: string; body?: string | null; provider?: string | null; subject?: string }
 
 const demoTemplates = new Map<string, TemplateRow>();
 
@@ -29,7 +29,7 @@ export async function saveTemplateRow(row: TemplateRow) {
 }
 
 export async function listLog(limit = 150): Promise<LogRow[]> {
-  if (isDemo) return demoLog.slice(0, limit).map((r) => ({ ...r, error: r.error ?? null, created_at: r.at }));
+  if (isDemo) return demoLog.slice(0, limit).map((r) => ({ ...r, error: r.error ?? null, body: r.body ?? r.subject ?? null, created_at: r.at }));
   const s = await supabaseServer();
   const { data } = await s.from("message_log").select("*").order("created_at", { ascending: false }).limit(limit);
   return (data ?? []) as LogRow[];

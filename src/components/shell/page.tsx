@@ -82,7 +82,7 @@ export function SectionHeader({ title, href, more }: { title: string; href?: str
   return (
     <div className="mb-3 mt-8 flex items-center justify-between gap-3 first:mt-0">
       <h2 className="t-h2">{title}</h2>
-      {href && more && <Link href={href} className="text-[14px] text-navy hover:underline">{more}</Link>}
+      {href && more && <Link href={href} className="shrink-0 whitespace-nowrap text-[14px] text-navy hover:underline">{more}</Link>}
     </div>
   );
 }

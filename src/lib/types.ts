@@ -47,6 +47,9 @@ export interface Profile {
   onboarded_at?: string | null;
   notify_email?: boolean;
   notify_whatsapp?: boolean;
+  notify_sms?: boolean;
+  notify_prefs?: import("./notify/prefs").NotifyPrefs | null;
+  phone_verified_at?: string | null;
 }
 
 export interface Application {
