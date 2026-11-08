@@ -1,9 +1,10 @@
-import { ArrowRight, LogIn, Mail, ShieldCheck, UserRound } from "lucide-react";
+import { ArrowRight, Mail, ShieldCheck, UserRound } from "lucide-react";
 import Link from "next/link";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { demoLogin, logout, oauthLogin, resetLogin, sendLoginCode, verifyLoginCode } from "@/app/actions";
 import { SocialIcon } from "@/components/site/Social";
+import { Logo } from "@/components/ui";
 import { SubmitButton } from "@/components/ui/client";
 import { siteDict } from "@/i18n/site";
 import { isDemo } from "@/lib/env";
@@ -37,36 +38,36 @@ export default async function Login({ params, searchParams }: { params: Promise<
   const errText = err === "notfound" ? L.notFound : err === "code" ? L.badCode : err ? t.login.error : null;
   const hidden = <input type="hidden" name="locale" value={locale} />;
 
+  const social = (
+    <div className="grid gap-3">
+      <form action={oauthLogin}>{hidden}<input type="hidden" name="provider" value="google" />
+        <SubmitButton className="btn btn-outline btn-lg w-full"><GoogleG />{L.google}</SubmitButton></form>
+      <form action={oauthLogin}>{hidden}<input type="hidden" name="provider" value="linkedin" />
+        <SubmitButton className="btn btn-outline btn-lg w-full"><span className="text-[#0A66C2]"><SocialIcon name="linkedin" className="h-5 w-5" /></span>{L.linkedin}</SubmitButton></form>
+    </div>
+  );
+
   return (
-    <main className="min-h-dvh bg-white pb-16">
-      <div className="container-x flex items-center justify-between py-4">
-        <Link href={`/${locale}`} className="flex items-center gap-3 text-[15px] text-ink-2 hover:text-navy">
-          <span className="grid h-8 w-8 place-items-center rounded-full border border-mint text-navy"><ArrowRight className="h-4 w-4 ltr:rotate-180" /></span>
-          {N.back}
-        </Link>
-      </div>
+    <main className="flex min-h-dvh flex-col bg-sky">
+      <header className="container-x flex h-16 items-center justify-between">
+        <Link href={`/${locale}`} aria-label={N.backHome}><Logo height={40} /></Link>
+        <Link href={`/${locale}`} className="inline-flex h-10 items-center gap-1.5 text-[14px] text-mist hover:text-navy"><ArrowRight className="h-4 w-4 ltr:rotate-180" />{N.back}</Link>
+      </header>
 
-      <div className="container-x mx-auto max-w-[830px] pt-6 text-center sm:pt-12">
-        <span className="inline-flex items-center gap-1.5 rounded-full border border-navy-deep/60 bg-mint-soft px-3.5 py-1 text-[15px] text-navy-deep">
-          <ShieldCheck className="h-4 w-4 text-mint" />{L.badge}
-        </span>
-        <h1 className="mt-6 text-[34px] font-semibold text-ink sm:text-[44px]">{L.heading}</h1>
-
-        <section className="relative mt-10 overflow-hidden rounded-[32px] border border-[#F3F4F6] bg-white px-5 py-10 text-start shadow-[0_10px_30px_rgba(0,0,0,0.05)] sm:px-12">
-          <span className="pointer-events-none absolute -end-10 -top-10 h-32 w-32 rounded-full bg-haze/50" aria-hidden />
-          <span className="mx-auto grid h-16 w-16 place-items-center rounded-[20px] bg-mint-soft text-mint"><LogIn className="h-8 w-8 rtl:rotate-180" strokeWidth={1.8} /></span>
-          <h2 className="mt-5 text-center text-[24px] font-semibold text-ink">{L.title}</h2>
+      <div className="flex flex-1 items-start justify-center px-4 pb-10 pt-4 sm:items-center sm:pt-0">
+        <section className="w-full max-w-[440px] rounded-[28px] bg-white p-6 ring-1 ring-line sm:p-8">
+          <h1 className="t-h1">{L.heading}</h1>
 
           {viewer && viewer.status !== "active" && (
-            <div className="mx-auto mt-6 max-w-md rounded-2xl bg-mint-soft p-5 text-center">
+            <div className="mt-5 rounded-[18px] bg-mint-soft p-4">
               <p className="font-bold text-navy">{L.pendingTitle}</p>
               <p className="mt-1 text-[15px] text-ink-2">{L.pendingBody}</p>
               <form action={logout} className="mt-3">{hidden}<SubmitButton className="btn btn-outline btn-sm">{t.common.logout}</SubmitButton></form>
             </div>
           )}
 
-          <div className="mx-auto mt-6 max-w-[460px]">
-            {errText && <p role="alert" className="mb-4 rounded-xl bg-[#fdecea] px-4 py-3 text-[14px] text-[#b3261e]">{errText}</p>}
+          <div className="mt-6">
+            {errText && <p role="alert" className="mb-4 rounded-[14px] bg-[#fdecea] px-4 py-3 text-[14px] text-[#b3261e]">{errText}</p>}
 
             {isDemo ? (
               <div className="grid gap-3">
@@ -77,59 +78,44 @@ export default async function Login({ params, searchParams }: { params: Promise<
               </div>
             ) : step === "email" ? (
               <>
-                <div className="my-2 flex items-center gap-3 text-[13px] text-mist"><span className="h-px flex-1 bg-line" />{L.viaEmail}<span className="h-px flex-1 bg-line" /></div>
-                <form action={sendLoginCode} className="mt-5 space-y-5">
+                {social}
+                <div className="my-6 flex items-center gap-3 text-[13px] text-mist"><span className="h-px flex-1 bg-line" />{L.or}<span className="h-px flex-1 bg-line" /></div>
+                <form action={sendLoginCode} className="space-y-4">
                   {hidden}
                   <label className="block">
-                    <span className="mb-2 block text-[16px] text-ink">{L.email} <span className="text-[#e53935]">*</span></span>
-                    <span className="flex items-center gap-2 rounded-[14px] border border-line px-3 focus-within:border-navy">
-                      <Mail className="h-5 w-5 shrink-0 text-mist" />
-                      <input name="email" type="email" required autoComplete="email" inputMode="email" dir="ltr" placeholder={L.emailPh}
-                        className="h-12 w-full bg-transparent text-[15px] outline-none placeholder:text-mist rtl:text-right" />
+                    <span className="label">{L.email}</span>
+                    <span className="relative block">
+                      <Mail className="pointer-events-none absolute start-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-mist" />
+                      <input name="email" type="email" required autoComplete="email" inputMode="email" dir="ltr" placeholder={L.emailPh} className="input ps-11 rtl:text-right" />
                     </span>
                   </label>
-                  <SubmitButton className="btn btn-primary btn-lg mx-auto flex w-full sm:w-[300px]">{L.sendCode}</SubmitButton>
+                  <SubmitButton className="btn btn-primary btn-lg w-full">{L.sendCode}</SubmitButton>
                 </form>
-                <div className="my-6 flex items-center gap-3 text-[13px] text-mist"><span className="h-px flex-1 bg-line" />{L.or}<span className="h-px flex-1 bg-line" /></div>
-                <div className="grid gap-3 sm:grid-cols-2">
-                  <form action={oauthLogin}>{hidden}<input type="hidden" name="provider" value="google" />
-                    <SubmitButton className="flex h-12 w-full items-center justify-center gap-2 rounded-[14px] border border-line bg-white text-[15px] font-medium text-ink transition hover:border-navy"><GoogleG />{L.google}</SubmitButton></form>
-                  <form action={oauthLogin}>{hidden}<input type="hidden" name="provider" value="linkedin" />
-                    <SubmitButton className="flex h-12 w-full items-center justify-center gap-2 rounded-[14px] border border-line bg-white text-[15px] font-medium text-ink transition hover:border-navy"><span className="text-[#0A66C2]"><SocialIcon name="linkedin" className="h-5 w-5" /></span>{L.linkedin}</SubmitButton></form>
-                </div>
               </>
             ) : (
               <>
-                <p className="text-center text-[15px] text-ink-2">{L.codeSent} <b dir="ltr" className="text-ink">{pendingEmail}</b></p>
-                <form action={verifyLoginCode} className="mt-6 space-y-5">
+                <p className="text-[15px] leading-7 text-ink-2">{L.codeSent} <b dir="ltr" className="text-ink">{pendingEmail}</b></p>
+                <form action={verifyLoginCode} className="mt-5 space-y-4">
                   {hidden}
                   <label className="block">
-                    <span className="mb-2 block text-[16px] text-ink">{L.code}</span>
+                    <span className="label">{L.code}</span>
                     <input name="code" required autoFocus inputMode="numeric" autoComplete="one-time-code" pattern="[0-9]{6,10}" maxLength={10} dir="ltr" placeholder={L.codePh}
-                      className="h-14 w-full rounded-[14px] border border-line text-center text-[24px] tracking-[0.5em] outline-none placeholder:text-[15px] placeholder:tracking-normal placeholder:text-mist focus:border-navy" />
+                      className="input h-14 text-center text-[24px] tracking-[0.5em] placeholder:text-[15px] placeholder:tracking-normal" />
                   </label>
-                  <SubmitButton className="btn btn-primary btn-lg mx-auto flex w-full sm:w-[300px]">{L.verify}</SubmitButton>
+                  <SubmitButton className="btn btn-primary btn-lg w-full">{L.verify}</SubmitButton>
                 </form>
                 <div className="mt-4 flex items-center justify-center gap-5 text-[14px]">
-                  <form action={sendLoginCode}>{hidden}<input type="hidden" name="email" value={pendingEmail} /><button className="font-medium text-navy underline underline-offset-4">{L.resend}</button></form>
-                  <form action={resetLogin}>{hidden}<button className="text-ink-2 underline underline-offset-4">{L.change}</button></form>
+                  <form action={sendLoginCode}>{hidden}<input type="hidden" name="email" value={pendingEmail} /><button className="h-10 font-bold text-navy">{L.resend}</button></form>
+                  <form action={resetLogin}>{hidden}<button className="h-10 text-ink-2">{L.change}</button></form>
                 </div>
               </>
             )}
-
-            <p className="mt-7 flex items-center justify-center gap-1.5 text-[14px] text-ink-2">
-              <ShieldCheck className="h-4 w-4 text-mist" />{L.trouble}
-              <Link href={`/${locale}/contact`} className="font-medium text-navy underline underline-offset-4">{L.support}</Link>
-            </p>
           </div>
-        </section>
 
-        <section className="relative mx-auto mt-14 max-w-[390px] overflow-hidden rounded-[20px] border border-[#F3F4F6] bg-white p-6 shadow-[0_4px_14px_rgba(0,0,0,0.04)]">
-          <span className="pointer-events-none absolute -end-12 -top-12 h-36 w-36 rounded-full bg-haze/40" aria-hidden />
-          <h3 className="relative text-[24px] font-semibold text-ink">{L.notMember}</h3>
-          <Link href={`/${locale}/application`} className="relative mt-5 flex h-14 items-center justify-center gap-2 rounded-[14px] border border-navy text-[18px] font-medium text-navy transition hover:bg-mint-soft">
-            {N.register}<ArrowRight className="h-5 w-5 rtl:rotate-180" />
-          </Link>
+          <div className="mt-8 border-t border-line pt-5 text-[14px] text-ink-2">
+            <p>{L.notMember} <Link href={`/${locale}/application`} className="font-bold text-navy hover:underline">{siteDict[locale].apply}</Link></p>
+            <p className="mt-2">{L.trouble} <Link href={`/${locale}/contact`} className="text-navy hover:underline">{L.support}</Link></p>
+          </div>
         </section>
       </div>
     </main>

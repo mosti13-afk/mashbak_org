@@ -41,9 +41,9 @@ export default async function Applications({ params, searchParams }: { params: P
           <ul className="card h-fit divide-y divide-line overflow-hidden">
             {list.map((a) => (
               <li key={a.id}>
-                <Link href={`${b}?status=${status}&id=${a.id}`} className={`block p-4 transition hover:bg-paper ${selected?.id === a.id ? "bg-mint-soft/60" : ""}`}>
+                <Link href={`${b}?status=${status}&id=${a.id}`} className={`block p-4 transition hover:bg-sky ${selected?.id === a.id ? "bg-mint-soft/60" : ""}`}>
                   <div className="flex items-center justify-between gap-2">
-                    <p className="truncate font-black">{a.full_name}</p>
+                    <p className="truncate font-bold">{a.full_name}</p>
                     <span className="shrink-0 text-xs text-mist">{fmtRelative(a.created_at, locale)}</span>
                   </div>
                   <p className="truncate text-sm text-ink-2" dir="auto">{a.headline}{a.company ? ` · ${a.company}` : ""}</p>
@@ -74,7 +74,7 @@ export default async function Applications({ params, searchParams }: { params: P
                 <div><dt className="text-xs text-mist">{t.apply.source}</dt><dd className="font-bold">{selected.referral_source ?? "-"}</dd></div>
                 {selected.linkedin_url && <div className="sm:col-span-2"><a href={selected.linkedin_url} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-bold text-navy"><ExternalLink className="h-4 w-4" />LinkedIn</a></div>}
               </dl>
-              <div className="mt-5 rounded-xl bg-paper p-4">
+              <div className="mt-5 rounded-xl bg-sky p-4">
                 <p className="mb-1 text-xs font-bold text-mist">{t.apply.motivation}</p>
                 <p className="whitespace-pre-line leading-relaxed" dir="auto">{selected.motivation}</p>
               </div>

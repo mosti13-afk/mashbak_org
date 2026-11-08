@@ -83,7 +83,7 @@ export default async function AdminCompanies({ params, searchParams }: { params:
                   {logo ? <img src={logo} alt="" className="h-7 w-7 object-contain" /> : <span className="font-bold text-navy">{c.name[0]}</span>}
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block font-black">{c.name} {c.name_ar && <span className="font-normal text-mist">· {c.name_ar}</span>}</span>
+                  <span className="block font-bold">{c.name} {c.name_ar && <span className="font-normal text-mist">· {c.name_ar}</span>}</span>
                   <span className="block text-xs text-mist">{c.members} {L.members} · {c.jobs} {L.jobs} · {c.last_synced_at ? `${fmtRelative(c.last_synced_at, locale)} · ${c.last_sync_status ?? ""}` : c.careers_url ? L.never : "-"}</span>
                 </span>
                 {err && <span className="badge badge-red">!</span>}

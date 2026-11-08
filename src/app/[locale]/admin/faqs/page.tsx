@@ -40,7 +40,7 @@ export default async function AdminFaqs({ params }: LocaleParams) {
           <details key={f.id} className="card overflow-hidden">
             <summary className="flex cursor-pointer list-none items-center gap-3 p-4">
               <span className="text-sm font-bold text-mist">#{f.sort_order}</span>
-              <span className="flex-1 font-black">{tr(f.question, locale)}</span>
+              <span className="flex-1 font-bold">{tr(f.question, locale)}</span>
               {!f.is_active && <span className="badge badge-gray">{t.common.inactive}</span>}
             </summary>
             <FaqForm f={f} locale={locale} t={t} next={next} />

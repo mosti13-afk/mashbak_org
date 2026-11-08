@@ -40,7 +40,7 @@ export function EventCard({ e, locale, t, href }: { e: EventWithStats; locale: L
   return (
     <Link href={href} className={clsx("card card-hover group flex gap-4 p-4 sm:p-5", past && "opacity-75")}>
       <div className="flex w-16 shrink-0 flex-col items-center justify-center rounded-2xl bg-navy py-3 text-white">
-        <span className="text-2xl font-black leading-none">{d.day}</span>
+        <span className="text-2xl font-bold leading-none">{d.day}</span>
         <span className="mt-1 text-xs font-bold text-mint">{d.month}</span>
       </div>
       <div className="min-w-0 flex-1">
@@ -49,7 +49,7 @@ export function EventCard({ e, locale, t, href }: { e: EventWithStats; locale: L
           {e.members_only && <span className="badge badge-gray">{t.events.membersOnly}</span>}
           {e.my_registration && <span className="badge badge-mint">{e.my_registration.status === "waitlist" ? t.events.waitlisted : e.my_registration.status === "attended" ? t.events.attended : t.events.registered}</span>}
         </div>
-        <h3 className="truncate text-lg font-black text-navy-ink group-hover:text-navy">{tr(e.title, locale)}</h3>
+        <h3 className="truncate text-lg font-bold text-navy-ink group-hover:text-navy">{tr(e.title, locale)}</h3>
         <p className="mt-0.5 flex flex-wrap items-center gap-x-3 gap-y-1 text-sm text-ink-2">
           <span className="flex items-center gap-1"><CalendarDays className="h-3.5 w-3.5" />{d.weekday} · <span dir="ltr">{fmtTime(e.starts_at, locale)}</span></span>
           <span className="flex items-center gap-1 truncate"><MapPin className="h-3.5 w-3.5 shrink-0" />{tr(e.location, locale)}</span>
@@ -75,7 +75,7 @@ export function ReviewCard({ r, locale, featured = false }: { r: MemberReview; l
       <figcaption className="mt-6 flex items-center gap-3">
         <Avatar src={r.photo_url} name={name} size={52} />
         <div className="min-w-0">
-          <p className={clsx("font-black", featured ? "text-white" : "text-navy-ink")}>{name}</p>
+          <p className={clsx("font-bold", featured ? "text-white" : "text-navy-ink")}>{name}</p>
           <p className={clsx("truncate text-sm", featured ? "text-white/65" : "text-mist")} dir="auto">
             {tr(r.role_title, locale)}{r.organization ? ` · ${r.organization}` : ""}
           </p>
@@ -93,7 +93,7 @@ export function MemberTile({ m, locale, t }: { m: MemberCardT; locale: Locale; t
       <div className="flex items-start gap-3.5">
         <Avatar src={m.avatar_url} name={name} size={56} />
         <div className="min-w-0 flex-1">
-          <p className="truncate text-lg font-black text-navy-ink">{name}</p>
+          <p className="truncate text-lg font-bold text-navy-ink">{name}</p>
           <p className="truncate text-sm font-semibold text-ink-2" dir="auto">{m.headline}</p>
           {m.company && <p className="mt-0.5 flex items-center gap-1 truncate text-sm text-mist"><Building2 className="h-3.5 w-3.5" />{m.company}</p>}
         </div>

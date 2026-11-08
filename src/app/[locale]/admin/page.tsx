@@ -30,7 +30,7 @@ export default async function AdminHome({ params }: LocaleParams) {
       {cmsEmpty && (
         <form action={seedDefaults} className="card mb-6 flex flex-wrap items-center justify-between gap-4 border-mint bg-mint-soft/60 p-5">
           <input type="hidden" name="locale" value={locale} />
-          <div className="max-w-xl"><p className="font-black text-navy-ink">{t.admin.seedTitle}</p><p className="text-sm text-ink-2">{t.admin.seedBody}</p></div>
+          <div className="max-w-xl"><p className="font-bold text-navy-ink">{t.admin.seedTitle}</p><p className="text-sm text-ink-2">{t.admin.seedBody}</p></div>
           <SubmitButton className="btn btn-primary">{t.admin.seedCta}</SubmitButton>
         </form>
       )}
@@ -38,21 +38,21 @@ export default async function AdminHome({ params }: LocaleParams) {
         {cards.map(({ n, l, I, href, hot }) => (
           <Link key={l} href={href} className={`card card-hover p-5 ${hot ? "border-mint bg-mint-soft/50" : ""}`}>
             <I className="h-5 w-5 text-green" />
-            <p className="mt-3 text-3xl font-black text-navy-ink">{n}</p>
+            <p className="mt-3 text-3xl font-bold text-navy-ink">{n}</p>
             <p className="text-sm font-semibold text-ink-2">{l}</p>
           </Link>
         ))}
       </div>
-      <div className="mt-8 grid gap-8 xl:grid-cols-2">
+      <div className="mt-8 grid gap-8 xl:grid-cols-2 [&>*]:min-w-0">
         <section>
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-lg font-black">{t.admin.recentApps}</h2>
+            <h2 className="text-lg font-bold">{t.admin.recentApps}</h2>
             <Link href={`${b}/applications`} className="flex items-center gap-1 text-sm font-bold text-navy">{t.common.viewAll}<ArrowRight className="flip-rtl h-4 w-4" /></Link>
           </div>
           <ul className="card divide-y divide-line">
             {apps.slice(0, 6).map((a) => (
               <li key={a.id}>
-                <Link href={`${b}/applications?id=${a.id}`} className="flex items-center gap-3 p-4 hover:bg-paper">
+                <Link href={`${b}/applications?id=${a.id}`} className="flex items-center gap-3 p-4 hover:bg-sky">
                   <div className="min-w-0 flex-1">
                     <p className="truncate font-bold">{a.full_name}</p>
                     <p className="truncate text-sm text-ink-2" dir="auto">{a.headline}{a.company ? ` · ${a.company}` : ""} · {a.years_experience} {t.common.yearsShort}</p>
@@ -66,7 +66,7 @@ export default async function AdminHome({ params }: LocaleParams) {
         </section>
         <section>
           <div className="mb-3 flex items-center justify-between">
-            <h2 className="text-lg font-black">{t.admin.stats.events}</h2>
+            <h2 className="text-lg font-bold">{t.admin.stats.events}</h2>
             <Link href={`${b}/events/new`} className="btn btn-primary btn-sm">{t.admin.newEvent}</Link>
           </div>
           <div className="space-y-3">{events.slice(0, 4).map((e) => <EventCard key={e.id} e={e} locale={locale} t={t} href={`${b}/events/${e.id}`} />)}</div>

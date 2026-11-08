@@ -65,7 +65,7 @@ export default async function AdminPrograms({ params }: LocaleParams) {
           <details key={p.id} className="card overflow-hidden">
             <summary className="flex cursor-pointer list-none items-center gap-3 p-4">
               <span className="flex h-10 w-10 items-center justify-center rounded-xl text-white" style={{ background: p.color }}><ProgramIcon name={p.icon} className="h-5 w-5" /></span>
-              <span className="flex-1 font-black">{tr(p.title, locale)}</span>
+              <span className="flex-1 font-bold">{tr(p.title, locale)}</span>
               {!p.is_active && <span className="badge badge-gray">{t.common.inactive}</span>}
               <span className="text-sm font-bold text-mist">#{p.sort_order}</span>
             </summary>

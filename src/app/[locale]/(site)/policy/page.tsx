@@ -52,24 +52,24 @@ export default async function Policy({ params }: LocaleParams) {
   const secs = content[locale];
   return (
     <>
-      <PageHero a={t.policy.title} sub={t.policy.sub} back={{ href: `/${locale}`, label: t.nav.back }}>
+      <PageHero a={t.policy.title} sub={t.policy.sub}>
         <p className="text-sm text-mist">{t.policy.updated}: 08/11/2026</p>
       </PageHero>
       <section className="container-x grid gap-8 pb-16 lg:grid-cols-[260px_1fr]">
-        <nav className="h-fit rounded-[16px] bg-mint-soft p-5 lg:sticky lg:top-28">
-          <p className="mb-3 font-semibold text-ink">{t.policy.toc}</p>
-          <ol className="space-y-2 text-[14px]">{secs.map((x, i) => <li key={i}><a href={`#s${i + 1}`} className="flex gap-2 text-ink-2 hover:text-navy"><span className="font-semibold text-mint">{String(i + 1).padStart(2, "0")}</span>{x.h}</a></li>)}</ol>
+        <nav className="hidden h-fit rounded-[24px] bg-sky p-5 lg:sticky lg:top-24 lg:block">
+          <p className="mb-3 font-bold text-ink">{t.policy.toc}</p>
+          <ol className="space-y-2 text-[14px]">{secs.map((x, i) => <li key={i}><a href={`#s${i + 1}`} className="flex gap-2 text-ink-2 hover:text-navy"><span className="w-5 shrink-0 text-mist">{i + 1}</span>{x.h}</a></li>)}</ol>
         </nav>
-        <div className="space-y-5">
+        <div className="max-w-[68ch] space-y-8">
           {secs.map((x, i) => (
-            <article key={i} id={`s${i + 1}`} className="scroll-mt-28 rounded-[16px] border border-line bg-white p-6">
-              <h2 className="text-[20px] font-semibold text-ink">{i + 1}. {x.h}</h2>
+            <article key={i} id={`s${i + 1}`} className="scroll-mt-24">
+              <h2 className="t-h2">{i + 1}. {x.h}</h2>
               {x.p && <p className="mt-3 leading-8 text-ink-2">{x.p}</p>}
               {x.li && <ul className="mt-3 list-inside list-disc space-y-1.5 text-ink-2 marker:text-mint">{x.li.map((l) => <li key={l}>{l}</li>)}</ul>}
             </article>
           ))}
-          <article className="rounded-[16px] bg-navy-deep p-6 text-white">
-            <h2 className="text-[20px] font-semibold">{t.policy.question}</h2>
+          <article className="rounded-[24px] bg-navy-deep p-6 text-white">
+            <h2 className="text-[20px] font-bold">{t.policy.question}</h2>
             <p className="mt-1 text-white/75">{t.policy.questionSub}</p>
             <div className="mt-4 flex flex-wrap gap-3">
               {c.email && <a href={`mailto:${c.email}`} className="inline-flex items-center gap-2 rounded-[12px] bg-white/10 px-4 py-2" dir="ltr"><Mail className="h-4 w-4" />{c.email}</a>}

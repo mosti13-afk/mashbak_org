@@ -34,49 +34,44 @@ export function ReferralBox({ action, locale, jobId, insiders, copy, cvUrl }: {
       <input type="hidden" name="job_id" value={jobId} />
       <input type="hidden" name="insider_id" value={picked} />
       <fieldset>
-        <legend className="mb-2 text-[14px] font-semibold text-ink">{copy.choose}</legend>
-        <ul className="space-y-2" role="radiogroup">
+        <legend className="mb-2 px-1 text-[14px] font-bold text-ink">{copy.choose}</legend>
+        <div className="list" role="radiogroup">
           {shown.map((i) => (
-            <li key={i.id}>
-              <button type="button" role="radio" aria-checked={picked === i.id} onClick={() => setPicked(i.id)}
-                className={clsx("flex w-full items-center gap-3 rounded-[16px] border p-3 text-start transition", picked === i.id ? "border-navy bg-sky ring-1 ring-navy" : "border-line hover:border-navy/40")}>
-                <Avatar src={i.avatar} name={i.name} size={42} />
-                <span className="min-w-0 flex-1">
-                  <span className="flex items-center gap-2">
-                    <span className="truncate font-semibold text-ink">{i.name}</span>
-                    {i.tag && <span className="badge badge-navy shrink-0">{i.tag}</span>}
-                  </span>
-                  <span className="block truncate text-[12px] text-ink-2" dir="auto">{i.headline}</span>
-                  <span className="block text-[11px] text-green-deep">{i.signal}{i.helped ? ` · ${i.helped}` : ""}</span>
-                </span>
-                <span className={clsx("grid h-6 w-6 shrink-0 place-items-center rounded-full border-2", picked === i.id ? "border-navy bg-navy text-white" : "border-line")}>
-                  {picked === i.id && <Check className="h-3.5 w-3.5" />}
-                </span>
-              </button>
-            </li>
+            <button key={i.id} type="button" role="radio" aria-checked={picked === i.id} onClick={() => setPicked(i.id)}
+              className={clsx("row w-full text-start", picked === i.id && "bg-mint-soft")}>
+              <Avatar src={i.avatar} name={i.name} size={44} />
+              <span className="min-w-0 flex-1">
+                <span className="flex items-center gap-1.5"><span className="row-title">{i.name}</span>{i.tag && <span className="badge badge-navy shrink-0 py-0">{i.tag}</span>}</span>
+                <span className="row-sub block" dir="auto">{i.headline}</span>
+                <span className="block text-[12px] text-green-deep">{i.signal}{i.helped ? ` · ${i.helped}` : ""}</span>
+              </span>
+              <span className={clsx("grid h-6 w-6 shrink-0 place-items-center rounded-full border-2", picked === i.id ? "border-navy bg-navy text-white" : "border-line bg-white")}>
+                {picked === i.id && <Check className="h-3.5 w-3.5" />}
+              </span>
+            </button>
           ))}
-        </ul>
+        </div>
         {insiders.length > 3 && !all && (
-          <button type="button" onClick={() => setAll(true)} className="mt-2 flex items-center gap-1 text-[13px] font-semibold text-navy">
+          <button type="button" onClick={() => setAll(true)} className="mt-2 flex h-9 items-center gap-1 px-1 text-[14px] text-navy">
             <ChevronDown className="h-4 w-4" />{copy.showMore} ({insiders.length - 3})
           </button>
         )}
       </fieldset>
       <label className="block">
-        <span className="mb-1.5 flex items-center justify-between gap-2">
-          <span className="text-[14px] font-semibold text-ink">{copy.message}</span>
-          <button type="button" onClick={draft} disabled={busy || !picked} className="inline-flex items-center gap-1 rounded-full bg-mint-soft px-3 py-1 text-[12px] font-semibold text-green-deep disabled:opacity-60">
+        <span className="mb-1.5 flex items-center justify-between gap-2 px-1">
+          <span className="text-[14px] font-bold text-ink">{copy.message}</span>
+          <button type="button" onClick={draft} disabled={busy || !picked} className="inline-flex h-8 items-center gap-1.5 rounded-full bg-mint-soft px-3 text-[13px] text-navy disabled:opacity-60">
             <Sparkles className={clsx("h-3.5 w-3.5", busy && "animate-spin")} />{busy ? copy.drafting : copy.draft}
           </button>
         </span>
         <textarea name="message" required minLength={5} rows={6} value={msg} onChange={(e) => setMsg(e.target.value)} placeholder={copy.messagePh} className="textarea" dir="auto" />
       </label>
       <label className="block">
-        <span className="mb-1.5 block text-[14px] font-semibold text-ink">{copy.cv}</span>
+        <span className="label px-1">{copy.cv}</span>
         <input name="cv_url" type="url" defaultValue={cvUrl ?? ""} className="input" dir="ltr" placeholder="https://drive.google.com/..." />
-        <span className="mt-1 block text-[12px] text-mist">{copy.cvHint}</span>
+        <span className="hint px-1">{copy.cvHint}</span>
       </label>
-      <SubmitButton className="btn btn-primary w-full">{copy.send}</SubmitButton>
+      <SubmitButton className="btn btn-primary btn-lg w-full">{copy.send}</SubmitButton>
     </form>
   );
 }

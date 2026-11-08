@@ -53,3 +53,29 @@ export function InstallButton({ label, iosHint, className = "btn btn-outline btn
     </div>
   );
 }
+
+/** Full list row version for the Account screen; renders nothing when the app is installed or can't be installed. */
+export function InstallRow({ label, iosHint }: { label: string; iosHint: string }) {
+  const [evt, setEvt] = useState<BIPEvent | null>(null);
+  const [ios, setIos] = useState(false);
+  const [hint, setHint] = useState(false);
+  const [installed, setInstalled] = useState(true);
+  useEffect(() => {
+    const standalone = window.matchMedia("(display-mode: standalone)").matches || (navigator as unknown as { standalone?: boolean }).standalone;
+    setInstalled(!!standalone);
+    setIos(/iphone|ipad|ipod/i.test(navigator.userAgent));
+    const onPrompt = (e: Event) => { e.preventDefault(); setEvt(e as BIPEvent); };
+    window.addEventListener("beforeinstallprompt", onPrompt);
+    return () => window.removeEventListener("beforeinstallprompt", onPrompt);
+  }, []);
+  if (installed || (!evt && !ios)) return null;
+  return (
+    <div>
+      <button type="button" className="row w-full text-start" onClick={async () => { if (evt) { await evt.prompt(); await evt.userChoice; setEvt(null); } else setHint((h) => !h); }}>
+        <span className="grid h-9 w-9 shrink-0 place-items-center rounded-[10px] bg-sky text-navy"><Download className="h-[18px] w-[18px]" /></span>
+        <span className="flex-1 text-[15px] text-ink">{label}</span>
+      </button>
+      {hint && <p className="mx-4 mb-3 flex items-center gap-1.5 rounded-xl bg-mint-soft p-3 text-[13px] text-green-deep"><Share className="h-4 w-4 shrink-0" />{iosHint}</p>}
+    </div>
+  );
+}

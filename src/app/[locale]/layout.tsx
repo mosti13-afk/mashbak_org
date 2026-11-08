@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import type { ReactNode } from "react";
 import "../globals.css";
+import "../mashbakni.css";
 import { getDict, isLocale, localeMeta, type Locale } from "@/i18n";
 import { ServiceWorker } from "@/components/pwa";
 import { isDemo } from "@/lib/env";

@@ -1,6 +1,8 @@
 @import "tailwindcss";
 
-/* ---------- Fonts (same families as the live mashbak.org) ---------- */
+/* ---------- Fonts: Ooredoo Arabic (brand) for Arabic, Fredoka for Latin, Varela Round for Hebrew ---------- */
+@font-face { font-family: "Ooredoo"; src: url("/fonts/ooredoo/ooredoo-arabic-Regular.woff2") format("woff2"); font-weight: 100 550; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F; }
+@font-face { font-family: "Ooredoo"; src: url("/fonts/ooredoo/ooredoo-arabic-Heavy.woff2") format("woff2"); font-weight: 551 1000; font-display: swap; unicode-range: U+0600-06FF, U+0750-077F, U+08A0-08FF, U+FB50-FDFF, U+FE70-FEFF, U+200C-200F; }
 @font-face { font-family: "notoKufi"; src: url("/fonts/live/noto-kufi-arabic-arabic-400-normal.woff2") format("woff2"); font-weight: 400; font-display: swap; }
 @font-face { font-family: "notoKufi"; src: url("/fonts/live/noto-kufi-arabic-arabic-500-normal.woff2") format("woff2"); font-weight: 500; font-display: swap; }
 @font-face { font-family: "notoKufi"; src: url("/fonts/live/noto-kufi-arabic-arabic-600-normal.woff2") format("woff2"); font-weight: 600; font-display: swap; }
@@ -12,25 +14,32 @@
 @font-face { font-family: "Varela Round"; src: url("/fonts/live/varela-round-hebrew-400-normal.woff2") format("woff2"); unicode-range: U+0590-05FF, U+FB1D-FB4F; font-display: swap; }
 @font-face { font-family: "Varela Round"; src: url("/fonts/live/varela-round-latin-400-normal.woff2") format("woff2"); font-display: swap; }
 
-/* ---------- Tokens ---------- */
+/* ---------- Tokens (V2 design system) ---------- */
 @theme {
-  --font-sans: "notoKufi", "Fredoka", system-ui, sans-serif;
-  --font-display: "notoKufi", "Fredoka", system-ui, sans-serif;
+  --font-sans: "Ooredoo", "Fredoka", "notoKufi", system-ui, sans-serif;
+  --font-display: "Ooredoo", "Fredoka", "notoKufi", system-ui, sans-serif;
 
-  --color-navy: #0b486d;
-  --color-navy-deep: #08334d;
-  --color-navy-ink: #1e1f24;
-  --color-mint: #77be98;
-  --color-mint-soft: #f1f9f5;
-  --color-green: #5aa77f;
-  --color-green-deep: #2f7d57;
-  --color-paper: #f8feff;
-  --color-line: #e8e8e8;
-  --color-ink: #1e1f24;
-  --color-ink-2: #4b4c50;
-  --color-mist: #8c8c8c;
+  /* brand */
+  --color-navy: #0a476d;        /* primary actions, links, active states */
+  --color-navy-deep: #062a40;   /* deep surfaces: hero, footer */
+  --color-navy-ink: #13222e;    /* headings on light */
+  --color-mint: #78bf98;        /* accent, success, the smile */
+  --color-mint-soft: #eaf6ef;   /* tonal accent surface */
+  --color-green: #4f9e76;
+  --color-green-deep: #2d7a55;  /* mint text on light (AA) */
+  --color-sand: #fbf1d9;        /* "asks" accent surface */
+  --color-sand-ink: #7a5600;
 
-  /* station colours */
+  /* neutrals, cool and slightly navy-tinted */
+  --color-ink: #13222e;
+  --color-ink-2: #4a5a66;
+  --color-mist: #74858f;
+  --color-line: #e3e9ee;
+  --color-haze: #e9eff3;
+  --color-sky: #f4f7f9;         /* app background, quiet surfaces */
+  --color-paper: #f4f7f9;
+
+  /* station colours (programs) */
   --color-sage: #80a69e;
   --color-olive: #a5b683;
   --color-forest: #4e8c74;
@@ -38,78 +47,121 @@
   --color-steel: #6795a8;
 
   --radius-card: 20px;
-  --color-haze: #e7edf0;
-  --color-sky: #f8feff;
-  --shadow-card: 0 1px 2px rgb(4 34 58 / 0.04), 0 8px 24px -12px rgb(4 34 58 / 0.12);
-  --shadow-lift: 0 2px 4px rgb(4 34 58 / 0.05), 0 22px 48px -20px rgb(4 34 58 / 0.28);
+  --shadow-card: 0 1px 2px rgb(6 42 64 / 0.04);
+  --shadow-lift: 0 18px 40px -24px rgb(6 42 64 / 0.35);
+  --shadow-float: 0 24px 60px -28px rgb(6 42 64 / 0.55);
 
   --animate-drift: drift 9s ease-in-out infinite;
-  --animate-rise: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  --animate-rise: rise 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
 @keyframes drift {
   0%, 100% { transform: translate3d(0, 0, 0); }
-  50% { transform: translate3d(0, -12px, 0); }
+  50% { transform: translate3d(0, -8px, 0); }
 }
 @keyframes rise {
-  from { opacity: 0; transform: translateY(14px); }
+  from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: none; }
 }
 
 html, body { overflow-x: clip; }
-html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; }
+html { -webkit-text-size-adjust: 100%; -webkit-tap-highlight-color: transparent; scroll-padding-top: 88px; }
 @media (display-mode: standalone) { body { overscroll-behavior-y: none; } }
-.card-hover:active, .btn:active { transform: scale(0.98); }
 body {
   background: #fff;
   color: var(--color-ink);
   font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.7;
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
 }
-:lang(he) body, body:lang(he) { font-family: "Varela Round", "Fredoka", system-ui, sans-serif; }
-:lang(en) body, body:lang(en) { font-family: "Fredoka", system-ui, sans-serif; }
+:lang(he) body, body:lang(he) { font-family: "Varela Round", "Ooredoo", "Fredoka", system-ui, sans-serif; }
+:lang(en) body, body:lang(en) { font-family: "Fredoka", "Ooredoo", system-ui, sans-serif; line-height: 1.6; }
 ::selection { background: var(--color-mint); color: var(--color-navy-ink); }
+:focus-visible { outline: 3px solid var(--color-mint); outline-offset: 2px; border-radius: 6px; }
 
 /* ---------- Components ---------- */
 @layer components {
   .container-x { @apply mx-auto w-full max-w-6xl px-4 sm:px-6; }
 
+  /* Type scale (Ooredoo has Regular + Heavy: headings use Heavy, everything else Regular) */
+  .t-display { @apply text-[34px] font-bold leading-[1.2] tracking-[-0.01em] text-navy-ink sm:text-[48px] lg:text-[60px]; }
+  .t-h1 { @apply text-[26px] font-bold leading-[1.3] text-navy-ink sm:text-[30px]; }
+  .t-h2 { @apply text-[19px] font-bold leading-[1.4] text-navy-ink sm:text-[21px]; }
+  .t-h3 { @apply text-[16px] font-bold leading-[1.5] text-ink; }
+  .t-body { @apply text-[16px] leading-[1.75] text-ink-2; }
+  .t-small { @apply text-[13px] leading-[1.6] text-mist; }
+  .h-display { @apply font-bold text-navy-ink; }
+
+  /* Buttons: 44px default touch target */
   .btn {
-    @apply inline-flex items-center justify-center gap-2 rounded-[14px] px-5 py-2.5 text-[0.95rem] font-semibold leading-none transition
-      focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-mint disabled:cursor-not-allowed disabled:opacity-50;
+    @apply inline-flex h-11 items-center justify-center gap-2 whitespace-nowrap rounded-[14px] px-5 text-[15px] font-bold leading-none transition-colors
+      disabled:cursor-not-allowed disabled:opacity-50;
   }
-  .btn-primary { @apply border-b-[1.5px] border-e-[1.5px] border-navy-deep bg-navy text-white hover:bg-navy-deep active:translate-y-px; }
-  .btn-mint { @apply bg-mint text-navy-ink hover:bg-[#6ab48b] active:translate-y-px; }
+  .btn:active { transform: scale(0.98); }
+  .btn-primary { @apply bg-navy text-white hover:bg-[#083a59]; }
+  .btn-secondary { @apply bg-mint-soft text-navy hover:bg-[#dcefe4]; }
+  .btn-mint { @apply bg-mint text-navy-deep hover:bg-[#6ab48b]; }
   .btn-ghost { @apply bg-transparent text-navy hover:bg-navy/5; }
-  .btn-outline { @apply border-[1.5px] border-navy bg-white text-navy hover:bg-navy hover:text-white; }
+  .btn-outline { @apply border border-line bg-white text-navy hover:border-navy; }
+  .btn-light { @apply bg-white text-navy hover:bg-mint-soft; }
   .btn-danger { @apply bg-[#b3261e] text-white hover:bg-[#8f1e18]; }
-  .btn-sm { @apply px-3.5 py-2 text-sm; }
-  .btn-lg { @apply px-7 py-3.5 text-base; }
+  .btn-sm { @apply h-9 rounded-[12px] px-3.5 text-[14px]; }
+  .btn-lg { @apply h-[52px] px-7 text-[16px]; }
+  .btn-icon { @apply h-11 w-11 px-0; }
 
-  .card { @apply rounded-[var(--radius-card)] border border-line bg-white shadow-[var(--shadow-card)]; }
-  .card-hover { @apply transition hover:-translate-y-0.5 hover:shadow-[var(--shadow-lift)]; }
+  /* Surfaces */
+  .card { @apply rounded-[var(--radius-card)] border border-line bg-white; }
+  .card-hover { @apply transition-colors hover:border-navy/30; }
+  .panel { @apply rounded-[28px] bg-white; }
 
+  /* Grouped lists, like a native app */
+  .list { @apply overflow-hidden rounded-[20px] border border-line bg-white; }
+  .list > * + * { @apply border-t border-line; }
+  .row { @apply flex min-h-[64px] items-center gap-3 px-4 py-3 transition-colors; }
+  a.row:hover, button.row:hover { @apply bg-sky; }
+  .row-title { @apply truncate text-[15px] font-bold text-ink; }
+  .row-sub { @apply truncate text-[13px] text-mist; }
+  .list-label { @apply mb-2 mt-7 px-1 text-[14px] font-bold text-ink-2; }
+
+  /* Segmented control (section switcher) */
+  .seg { @apply flex w-full gap-1 rounded-[14px] bg-haze p-1 sm:inline-flex sm:w-auto; }
+  .seg > a, .seg > button { @apply flex h-9 flex-1 items-center justify-center gap-1.5 whitespace-nowrap rounded-[10px] px-4 text-[14px] text-ink-2 transition-colors sm:flex-none; }
+  .seg > [aria-current="page"], .seg > [aria-selected="true"] { @apply bg-white font-bold text-navy shadow-[0_1px_2px_rgb(6_42_64/0.08)]; }
+
+  /* Forms */
   .input, .select, .textarea {
-    @apply w-full rounded-xl border border-line bg-white px-3.5 py-2.5 text-[0.95rem] text-ink placeholder:text-mist
-      transition focus:border-navy/40 focus:outline-none focus:ring-4 focus:ring-mint/25;
+    @apply w-full rounded-[14px] border border-line bg-white px-4 text-[15px] text-ink placeholder:text-mist
+      transition focus:border-navy focus:outline-none focus:ring-4 focus:ring-mint/25;
   }
-  .textarea { @apply min-h-28 leading-relaxed; }
-  .label { @apply mb-1.5 block text-sm font-bold text-ink; }
-  .hint { @apply mt-1 text-xs text-mist; }
+  .input, .select { @apply h-12; }
+  .textarea { @apply min-h-28 py-3 leading-relaxed; }
+  .label { @apply mb-1.5 block text-[14px] font-bold text-ink; }
+  .hint { @apply mt-1 text-[12px] text-mist; }
+  .search { @apply h-12 w-full rounded-[14px] border-0 bg-haze ps-11 text-[15px] text-ink placeholder:text-mist focus:bg-white focus:outline-none focus:ring-2 focus:ring-navy; }
 
-  .chip { @apply inline-flex items-center gap-1.5 rounded-full border border-line bg-white px-3 py-1 text-xs font-bold text-ink-2; }
-  .badge { @apply inline-flex items-center gap-1 rounded-full px-2.5 py-0.5 text-xs font-bold; }
+  /* Chips & badges */
+  .chip { @apply inline-flex h-8 items-center gap-1.5 whitespace-nowrap rounded-full border border-line bg-white px-3 text-[13px] text-ink-2; }
+  .chip[aria-pressed="true"], .chip-on { @apply border-navy bg-navy text-white; }
+  .badge { @apply inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2.5 py-0.5 text-[12px]; }
   .badge-mint { @apply bg-mint-soft text-green-deep; }
   .badge-navy { @apply bg-navy/8 text-navy; }
-  .badge-amber { @apply bg-[#fdf3d8] text-[#7a5a00]; }
+  .badge-amber { @apply bg-sand text-sand-ink; }
   .badge-red { @apply bg-[#fde7e5] text-[#9b1c13]; }
-  .badge-gray { @apply bg-[#eef1f3] text-ink-2; }
+  .badge-gray { @apply bg-haze text-ink-2; }
+  .dot { @apply inline-grid h-5 min-w-5 place-items-center rounded-full bg-[#d93a2b] px-1 text-[11px] font-bold leading-none text-white; }
 
-  .eyebrow { @apply inline-flex min-h-[34px] items-center gap-1 rounded-full border border-navy-deep/40 bg-white px-3 py-1 text-sm font-medium text-navy-deep; }
+  /* The speech bubble: the brand's signature shape (quotes, requests, Mashbakni) */
+  .bubble { @apply relative rounded-[20px] bg-sky px-4 py-3; }
+  .bubble::after { content: ""; position: absolute; bottom: -7px; inset-inline-start: 22px; width: 16px; height: 16px; background: inherit; border-radius: 0 0 4px 0; transform: rotate(45deg); }
+  [dir="rtl"] .bubble::after { border-radius: 0 0 0 4px; }
+  .bubble-me { @apply bg-navy text-white; }
+  .bubble-me::after { inset-inline-start: auto; inset-inline-end: 22px; }
+
+  .eyebrow { @apply inline-flex items-center gap-1.5 rounded-full bg-mint-soft px-3 py-1 text-[13px] text-green-deep; }
   .leaf { border-radius: 80px 4px 80px 4px; }
   [dir="rtl"] .leaf { border-radius: 4px 80px 4px 80px; }
-  .h-display { @apply font-[var(--font-display)] font-black tracking-tight text-navy-ink; }
 
   .table { @apply w-full text-sm; }
   .table th { @apply border-b border-line px-3 py-2.5 text-start text-xs font-bold text-mist; }
@@ -119,15 +171,10 @@ body {
   .mesh {
     background:
       radial-gradient(60% 50% at 85% 10%, rgb(120 191 152 / 0.22), transparent 70%),
-      radial-gradient(50% 60% at 10% 90%, rgb(17 114 134 / 0.18), transparent 70%),
-      linear-gradient(180deg, #06314d 0%, #0a476d 100%);
+      linear-gradient(180deg, #062a40 0%, #0a476d 100%);
   }
-  .grid-lines {
-    background-image:
-      linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px),
-      linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px);
-    background-size: 56px 56px;
-  }
+  .no-scrollbar { scrollbar-width: none; }
+  .no-scrollbar::-webkit-scrollbar { display: none; }
 }
 
 /* Flip directional icons in RTL */

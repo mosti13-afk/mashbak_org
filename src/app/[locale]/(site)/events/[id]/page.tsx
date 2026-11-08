@@ -19,7 +19,7 @@ export default async function EventPage({ params }: P) {
   const e = await repo.getEvent((await params).id, viewer?.id);
   if (!e || e.status !== "published") notFound();
   return (
-    <div className="container-x py-12 sm:py-16">
+    <div className="container-x py-6 pb-28 sm:py-10 lg:pb-16">
       <EventDetail e={e} locale={locale} t={t} viewer={viewer} backHref={`/${locale}/events`} />
     </div>
   );

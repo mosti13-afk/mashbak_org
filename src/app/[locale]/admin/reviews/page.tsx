@@ -44,7 +44,7 @@ export default async function AdminReviews({ params }: LocaleParams) {
             <summary className="flex cursor-pointer list-none items-center gap-4 p-4">
               <Avatar src={r.photo_url} name={tr(r.name, locale)} size={48} />
               <div className="min-w-0 flex-1">
-                <p className="font-black">{tr(r.name, locale)} {!r.is_active && <span className="badge badge-gray ms-1">{t.common.inactive}</span>}</p>
+                <p className="font-bold">{tr(r.name, locale)} {!r.is_active && <span className="badge badge-gray ms-1">{t.common.inactive}</span>}</p>
                 <p className="truncate text-sm text-ink-2">{tr(r.quote, locale)}</p>
               </div>
               <span className="text-sm font-bold text-mist">#{r.sort_order}</span>

@@ -20,22 +20,18 @@ export function SafeSvg({ svg, className }: { svg?: string; className?: string }
 
 export function Badge({ children, icon }: { children: ReactNode; icon?: string }) {
   return (
-    <span className="inline-flex min-h-[34px] items-center gap-1.5 rounded-full border border-navy-deep/40 bg-white px-3.5 py-1 text-[15px] font-medium text-navy-deep">
-      {icon && <SafeSvg svg={icon} className="h-4 w-4 text-mint" />}
+    <span className="eyebrow">
+      {icon && <SafeSvg svg={icon} className="h-4 w-4" />}
       {children}
     </span>
   );
 }
 
-/** Section heading in the live style: badge, dark title with a mint middle part, grey description. */
-export function SectionHead({ badge, a, b, c, desc, center = true, className }: { badge?: string; a?: string; b?: string; c?: string; desc?: string; center?: boolean; className?: string }) {
+export function SectionHead({ a, b, c, desc, center = true, className }: { badge?: string; a?: string; b?: string; c?: string; desc?: string; center?: boolean; className?: string }) {
   return (
-    <div className={clsx("flex flex-col gap-4", center ? "items-center text-center" : "items-start text-start", className)}>
-      {badge && <Badge>{badge}</Badge>}
-      <h2 className="max-w-3xl text-balance text-[26px] font-semibold leading-snug text-ink md:text-[40px] md:leading-[1.6]">
-        {a} {b && <span className="text-mint">{b}</span>} {c}
-      </h2>
-      {desc && <p className="max-w-2xl text-balance text-[16px] leading-relaxed text-ink-2 md:text-[20px] md:leading-[33px]">{desc}</p>}
+    <div className={clsx("flex flex-col gap-3", center ? "items-center text-center" : "items-start text-start", className)}>
+      <h2 className="max-w-3xl text-balance text-[28px] font-bold leading-[1.3] text-navy-ink md:text-[40px]">{[a, b, c].filter(Boolean).join(" ")}</h2>
+      {desc && <p className="max-w-2xl text-balance text-[16px] leading-8 text-ink-2 md:text-[18px]">{desc}</p>}
     </div>
   );
 }
@@ -114,16 +110,16 @@ export function JoinSteps({ locale }: { locale: Locale }) {
 export function ProgramTile({ p, locale }: { p: Program; locale: Locale }) {
   const t = siteDict[locale].programs;
   return (
-    <Link href={`/${locale}/our_programs/${p.slug}`} className="group flex h-full min-h-[292px] flex-col gap-3 rounded-[24px] border border-line bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.06)] transition hover:-translate-y-1 hover:shadow-[0_18px_40px_-20px_rgba(11,72,109,0.35)]">
-      <span className="grid h-[82px] w-[82px] place-items-center overflow-hidden rounded-[16px] bg-sky p-2 shadow-[0_12px_16px_-12px_rgba(11,72,109,0.25)]">
+    <Link href={`/${locale}/our_programs/${p.slug}`} className="group flex h-full flex-col rounded-[24px] border border-line bg-white p-5 transition-colors hover:border-navy/40">
+      <span className="grid h-16 w-16 place-items-center overflow-hidden rounded-[18px] bg-sky p-2">
         {/* eslint-disable-next-line @next/next/no-img-element */}
-        {p.icon_url ? <img src={p.icon_url} alt="" className="max-h-full max-w-full object-contain" /> : <Sparkles className="h-8 w-8 text-mint" />}
+        {p.icon_url ? <img src={p.icon_url} alt="" className="max-h-full max-w-full object-contain" /> : <Sparkles className="h-7 w-7 text-mint" />}
       </span>
-      <h3 className="text-[21px] font-semibold text-ink" dir="auto">{tr(p.title, locale)}</h3>
-      <p className="line-clamp-5 flex-1 text-[15px] leading-7 text-ink-2">{tr(p.summary, locale)}</p>
+      <h3 className="mt-4 text-[19px] font-bold text-navy-ink" dir="auto">{tr(p.title, locale)}</h3>
+      <p className="mt-1.5 line-clamp-3 flex-1 text-[15px] leading-7 text-ink-2">{tr(p.summary, locale)}</p>
       {(p.sessions_count || p.duration_months) && (
-        <p className="flex items-center gap-2 border-t border-line pt-3 text-[14px] font-semibold text-navy">
-          <Clock className="h-4 w-4 text-mint" />
+        <p className="mt-4 flex items-center gap-2 text-[13px] text-mist">
+          <Clock className="h-4 w-4" />
           {p.sessions_count ? `${p.sessions_count} ${t.sessions}` : ""}{p.sessions_count && p.duration_months ? " · " : ""}{p.duration_months ? `${p.duration_months} ${t.months}` : ""}
         </p>
       )}
@@ -131,14 +127,16 @@ export function ProgramTile({ p, locale }: { p: Program; locale: Locale }) {
   );
 }
 
-export function ProgramsSection({ programs, locale }: { programs: Program[]; locale: Locale }) {
+export function ProgramsSection({ programs, locale, limit = 6 }: { programs: Program[]; locale: Locale; limit?: number }) {
   const t = siteDict[locale].programs;
   return (
     <section className="bg-white py-16 md:py-24">
       <div className="container-x">
-        <SectionHead badge={t.badge} a={t.titleA} b={t.titleB} desc={t.body} />
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{programs.slice(0, 6).map((p) => <ProgramTile key={p.id} p={p} locale={locale} />)}</div>
-        <div className="mt-10 flex justify-center"><Link href={`/${locale}/our_programs`} className="btn btn-outline h-11 px-5">{t.all}</Link></div>
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <SectionHead a={t.titleA} b={t.titleB} desc={t.body} center={false} />
+          <Link href={`/${locale}/our_programs`} className="btn btn-outline">{t.all}</Link>
+        </div>
+        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">{programs.slice(0, limit).map((p) => <ProgramTile key={p.id} p={p} locale={locale} />)}</div>
       </div>
     </section>
   );
@@ -148,30 +146,35 @@ export function ReviewsSection({ reviews, locale }: { reviews: MemberReview[]; l
   const t = siteDict[locale].reviews;
   if (!reviews.length) return null;
   return (
-    <section className="overflow-x-clip bg-sky py-14 md:py-24">
+    <section className="overflow-x-clip bg-sky py-16 md:py-24">
       <div className="container-x">
-        <SectionHead badge={t.badge} a={t.titleA} b={t.titleB} c={t.titleC} desc={t.body} />
-        <div className="mt-6">
-          <Carousel label={t.badge}>
-            {reviews.map((r) => (
-              <ReviewCard key={r.id} name={tr(r.name, locale)} role={[tr(r.role_title, locale), r.organization].filter(Boolean).join(" · ")}
-                quote={tr(r.quote, locale)} photo={r.photo_url} more={t.more} less={t.less} />
-            ))}
-          </Carousel>
+        <SectionHead a={t.titleA} b={t.titleB} c={t.titleC} desc={t.body} center={false} />
+        <div className="no-scrollbar -mx-4 mt-10 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-2 md:mx-0 md:grid md:grid-cols-3 md:overflow-visible md:px-0">
+          {reviews.slice(0, 3).map((r) => (
+            <figure key={r.id} className="flex w-[85%] shrink-0 snap-center flex-col md:w-auto">
+              <blockquote className="bubble flex-1 bg-white p-5 text-[15px] leading-7 text-ink-2 ring-1 ring-line"><p className="line-clamp-6">{tr(r.quote, locale)}</p></blockquote>
+              <figcaption className="mt-5 flex items-center gap-3 px-2">
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                {r.photo_url ? <img src={r.photo_url} alt="" className="h-11 w-11 rounded-full object-cover" loading="lazy" /> : <span className="h-11 w-11 rounded-full bg-haze" />}
+                <span className="min-w-0"><span className="block font-bold text-ink">{tr(r.name, locale)}</span><span className="block truncate text-[13px] text-mist" dir="auto">{[tr(r.role_title, locale), r.organization].filter(Boolean).join(" · ")}</span></span>
+              </figcaption>
+            </figure>
+          ))}
         </div>
       </div>
     </section>
   );
 }
 
-export function FaqSection({ faqs, locale, limit }: { faqs: FaqT[]; locale: Locale; limit?: number }) {
+export function FaqSection({ faqs, locale, limit, more }: { faqs: FaqT[]; locale: Locale; limit?: number; more?: boolean }) {
   const t = siteDict[locale].faq;
   if (!faqs.length) return null;
   return (
-    <section className="bg-white py-14 md:py-20">
-      <div className="container-x max-w-4xl">
-        <SectionHead badge={t.badge} a={t.titleA} b={t.titleB} />
-        <div className="mt-10"><Faq items={faqs.slice(0, limit ?? faqs.length).map((f) => ({ q: tr(f.question, locale), a: tr(f.answer, locale) }))} /></div>
+    <section className="bg-white py-16 md:py-24">
+      <div className="container-x max-w-3xl">
+        <SectionHead a={t.titleA} b={t.titleB} center={false} />
+        <div className="mt-8"><Faq items={faqs.slice(0, limit ?? faqs.length).map((f) => ({ q: tr(f.question, locale), a: tr(f.answer, locale) }))} /></div>
+        {more && limit && faqs.length > limit && <div className="mt-6 text-center"><Link href={`/${locale}/faq`} className="btn btn-outline">{t.all}</Link></div>}
       </div>
     </section>
   );
@@ -183,21 +186,21 @@ export function ContactBlock({ s, locale, sent, error }: { s: SiteSettings; loca
   const hours = workingHours(s);
   return (
     <div className="grid gap-6 lg:grid-cols-12 lg:gap-12">
-      <section className="rounded-[16px] border border-sky bg-white p-5 shadow-[0_1px_3px_rgba(0,0,0,0.1)] sm:p-7 lg:col-span-7">
-        <h3 className="text-[20px] font-medium text-ink">{t.formTitle}</h3>
+      <section className="rounded-[24px] bg-white p-5 ring-1 ring-line sm:p-7 lg:col-span-7">
+        <h3 className="t-h2">{t.formTitle}</h3>
         {sent && <p className="mt-4 rounded-xl bg-mint-soft p-3 text-sm font-semibold text-green-deep">{t.sent}</p>}
         {error && <p className="mt-4 rounded-xl bg-[#fdeceb] p-3 text-sm font-semibold text-[#8f1e18]">{t.error}</p>}
         <form action={submitContact} className="mt-5 space-y-4">
           <input type="hidden" name="locale" value={locale} />
           <input type="text" name="website" className="hidden" tabIndex={-1} autoComplete="off" aria-hidden />
-          <label className="block"><span className="label">{t.name} <span className="text-[#f54e3f]">*</span></span><input name="name" required maxLength={50} placeholder={t.namePh} className="input h-12 rounded-[16px]" /></label>
-          <label className="block"><span className="label">{t.email} <span className="text-[#f54e3f]">*</span></span><input name="email" type="email" required maxLength={80} placeholder={t.emailPh} className="input h-12 rounded-[16px]" dir="ltr" /></label>
-          <label className="block"><span className="label">{t.message} <span className="text-[#f54e3f]">*</span></span><textarea name="message" required maxLength={500} rows={5} placeholder={t.messagePh} className="textarea rounded-[16px]" /></label>
-          <SubmitButton className="btn btn-primary h-12 w-full sm:w-44">{t.send}</SubmitButton>
+          <label className="block"><span className="label">{t.name} <span className="text-[#f54e3f]">*</span></span><input name="name" required maxLength={50} placeholder={t.namePh} className="input" /></label>
+          <label className="block"><span className="label">{t.email} <span className="text-[#f54e3f]">*</span></span><input name="email" type="email" required maxLength={80} placeholder={t.emailPh} className="input" dir="ltr" /></label>
+          <label className="block"><span className="label">{t.message} <span className="text-[#f54e3f]">*</span></span><textarea name="message" required maxLength={500} rows={5} placeholder={t.messagePh} className="textarea" /></label>
+          <SubmitButton className="btn btn-primary btn-lg w-full sm:w-auto">{t.send}</SubmitButton>
         </form>
       </section>
-      <aside className="space-y-3 rounded-[16px] bg-mint-soft p-5 sm:p-6 lg:col-span-5">
-        <h3 className="text-[20px] font-medium text-ink">{t.info}</h3>
+      <aside className="space-y-3 lg:col-span-5">
+        <h3 className="t-h2">{t.info}</h3>
         {[
           c.phoneNumber && { icon: <Phone className="h-5 w-5" />, label: t.phone, value: c.phoneNumber, href: `tel:${c.phoneNumber}`, ltr: true },
           c.email && { icon: <Mail className="h-5 w-5" />, label: t.email, value: c.email, href: `mailto:${c.email}`, ltr: true },
@@ -205,14 +208,14 @@ export function ContactBlock({ s, locale, sent, error }: { s: SiteSettings; loca
         ].filter(Boolean).map((r) => {
           const x = r as { icon: ReactNode; label: string; value: string; href?: string; ltr: boolean };
           return (
-            <a key={x.label} href={x.href} target={x.href?.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="flex min-w-0 items-center gap-3 rounded-[16px] border border-[#E7E7E7] bg-white p-4">
-              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-[16px] bg-sky text-mint">{x.icon}</span>
-              <span className="min-w-0"><span className="block text-[13px] text-mist">{x.label}</span><span className="block break-all font-semibold text-ink" dir={x.ltr ? "ltr" : undefined}>{x.value}</span></span>
+            <a key={x.label} href={x.href} target={x.href?.startsWith("http") ? "_blank" : undefined} rel="noreferrer" className="flex min-w-0 items-center gap-3 rounded-[18px] bg-white p-4 ring-1 ring-line">
+              <span className="grid h-11 w-11 shrink-0 place-items-center rounded-[14px] bg-mint-soft text-navy">{x.icon}</span>
+              <span className="min-w-0"><span className="block text-[13px] text-mist">{x.label}</span><span className="block break-all font-bold text-ink" dir={x.ltr ? "ltr" : undefined}>{x.value}</span></span>
             </a>
           );
         })}
         {hours.length > 0 && (
-          <div className="rounded-[16px] border border-[#E7E7E7] bg-white p-4">
+          <div className="rounded-[18px] bg-white p-4 ring-1 ring-line">
             <p className="mb-2 flex items-center gap-2 font-semibold text-ink"><CalendarDays className="h-4 w-4 text-mint" />{t.hours}</p>
             {hours.map((h, i) => (
               <p key={i} className="flex justify-between gap-3 py-1 text-[14px]"><span className="text-ink-2">{tr(h.title, locale)}</span><span className="font-semibold" style={{ color: h.valueHexColor === "#FF6B6B" ? "#d64545" : "#2f7d57" }}>{tr(h.value, locale)}</span></p>
@@ -228,9 +231,9 @@ export function ContactBlock({ s, locale, sent, error }: { s: SiteSettings; loca
 export function ContactSection({ s, locale }: { s: SiteSettings; locale: Locale }) {
   const t = siteDict[locale].contact;
   return (
-    <section className="bg-gradient-to-b from-haze/70 to-mint-soft/60 py-14 md:py-24">
+    <section className="bg-sky py-16 md:py-24">
       <div className="container-x">
-        <SectionHead badge={t.badge} a={t.titleA} b={t.titleB} c={t.titleC} />
+        <SectionHead a={t.titleA} b={t.titleB} c={t.titleC} />
         <div className="mt-10"><ContactBlock s={s} locale={locale} /></div>
       </div>
     </section>
@@ -241,29 +244,27 @@ export function CtaBand({ locale }: { locale: Locale }) {
   const t = siteDict[locale].cta;
   return (
     <section className="container-x py-14">
-      <div className="relative overflow-hidden rounded-[24px] bg-mint-soft px-6 py-12 text-center sm:px-12 sm:py-16">
-        <p className="text-[16px] font-semibold text-green-deep">{t.q}</p>
-        <h2 className="mt-2 text-balance text-[26px] font-semibold text-ink md:text-[40px]">{t.a} <span className="text-mint">{t.b}</span> {t.c}</h2>
-        <p className="mx-auto mt-3 max-w-xl text-[16px] text-ink-2 md:text-[18px]">{t.body}</p>
-        <Link href={`/${locale}/application`} className="btn btn-primary mt-7 h-12 px-6 text-[16px]">{t.button}<ArrowLeft className="h-4 w-4 ltr:rotate-180" /></Link>
+      <div className="relative overflow-hidden rounded-[28px] bg-navy-deep px-6 py-12 text-center text-white sm:px-12 sm:py-14">
+        <h2 className="mx-auto max-w-2xl text-balance text-[26px] font-bold md:text-[36px]">{[t.a, t.b, t.c].filter(Boolean).join(" ")}</h2>
+        <p className="mx-auto mt-3 max-w-xl text-[16px] leading-7 text-white/75 md:text-[18px]">{t.body}</p>
+        <Link href={`/${locale}/application`} className="btn btn-light btn-lg mt-7">{t.button}</Link>
       </div>
     </section>
   );
 }
 
-export function PageHero({ badge, a, b, sub, children, back }: { badge?: string; a: string; b?: string; sub?: string; children?: ReactNode; back?: { href: string; label: string } }) {
+export function PageHero({ a, b, sub, children, back, narrow }: { badge?: string; a: string; b?: string; sub?: string; children?: ReactNode; back?: { href: string; label: string }; narrow?: boolean }) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-sky to-white pb-10 pt-8 md:pb-14 md:pt-12">
-      <div className="pointer-events-none absolute start-[6%] top-6 text-mint/60"><Sparkles className="h-10 w-10" /></div>
-      <div className="container-x relative">
-        {back && <Link href={back.href} className="mb-6 inline-flex items-center gap-2 text-[15px] text-ink-2 hover:text-navy"><span className="grid h-8 w-8 place-items-center rounded-full border border-line"><ArrowLeft className="h-4 w-4 rtl:rotate-180" /></span>{back.label}</Link>}
-        <div className="mx-auto flex max-w-3xl flex-col items-center gap-4 text-center">
-          {badge && <Badge>{badge}</Badge>}
-          <h1 className="text-balance text-[30px] font-semibold text-ink md:text-[48px]">{a} {b && <span className="text-mint">{b}</span>}</h1>
-          {sub && <p className="text-balance text-[17px] leading-relaxed text-ink-2 md:text-[20px] md:leading-[33px]">{sub}</p>}
-          {children}
+    <section className="bg-white pb-6 pt-6 md:pb-10 md:pt-12">
+      <div className={clsx("container-x", narrow && "max-w-3xl")}>
+        {back && <Link href={back.href} className="mb-4 inline-flex h-9 items-center gap-1 text-[14px] text-mist hover:text-navy"><ArrowLeft className="h-4 w-4 rtl:rotate-180" />{back.label}</Link>}
+        <div className="max-w-3xl">
+          <h1 className="text-balance text-[32px] font-bold leading-[1.25] text-navy-ink md:text-[48px]">{[a, b].filter(Boolean).join(" ")}</h1>
+          {sub && <p className="mt-3 text-balance text-[17px] leading-8 text-ink-2 md:text-[19px]">{sub}</p>}
+          {children && <div className="mt-6">{children}</div>}
         </div>
       </div>
     </section>
   );
 }
+

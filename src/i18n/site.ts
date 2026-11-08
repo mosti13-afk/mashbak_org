@@ -28,7 +28,7 @@ const ar = {
     forWho: "لمن هذا البرنامج", offers: "ماذا يقدم", join: "انضم إلى مشبك", interested: "مهتم بأحد برامجنا؟", more: "اقرأ المزيد",
   },
   reviews: { badge: "آراء الأعضاء", titleA: "قصص نجاح", titleB: "بدأت", titleC: "من هنا", body: "استمع إلى تجارب الأعضاء الذين بنوا علاقات مهنية ذات معنى، طوّروا مهاراتهم، ووجدوا فرصاً جديدة عبر مشبك.", more: "اقرأ المزيد", less: "عرض أقل" },
-  faq: { badge: "الأسئلة الشائعة", titleA: "كل ما تود معرفته عن", titleB: "مشبك" },
+  faq: { badge: "الأسئلة الشائعة", titleA: "أسئلة شائعة", titleB: "", all: "كل الأسئلة" },
   events: { badge: "الفعاليات", titleA: "فعاليات", titleB: "قادمة", body: "لقاءات، ورشات وبرامج قريبة. معظم الفعاليات للأعضاء.", all: "كل الفعاليات" },
   contact: {
     badge: "تواصل معنا", titleA: "ابق على", titleB: "تواصل", titleC: "مع فريقنا", formTitle: "مرحبا، نحن هنا دائما للمساعدة",
@@ -93,7 +93,7 @@ const en: SiteDict = {
     forWho: "Who it's for", offers: "What it offers", join: "Join Mashbak", interested: "Interested in one of our programs?", more: "Read more",
   },
   reviews: { badge: "Member voices", titleA: "Success stories", titleB: "that started", titleC: "here", body: "Hear from members who built meaningful professional relationships, grew their skills and found new opportunities through Mashbak.", more: "Read more", less: "Show less" },
-  faq: { badge: "FAQ", titleA: "Everything you want to know about", titleB: "Mashbak" },
+  faq: { badge: "FAQ", titleA: "Common questions", titleB: "", all: "All questions" },
   events: { badge: "Events", titleA: "Upcoming", titleB: "events", body: "Meetups, workshops and programs coming up. Most events are for members.", all: "All events" },
   contact: {
     badge: "Contact", titleA: "Stay in", titleB: "touch", titleC: "with our team", formTitle: "Hello, we're here to help",
@@ -156,7 +156,7 @@ const he: SiteDict = {
     forWho: "למי מתאים", offers: "מה מקבלים", join: "הצטרפו למשבק", interested: "מתעניינים באחת התוכניות?", more: "קראו עוד",
   },
   reviews: { badge: "חברים מספרים", titleA: "סיפורי הצלחה", titleB: "שהתחילו", titleC: "כאן", body: "הכירו חברים שבנו קשרים מקצועיים משמעותיים, פיתחו מיומנויות ומצאו הזדמנויות חדשות דרך משבק.", more: "קראו עוד", less: "פחות" },
-  faq: { badge: "שאלות נפוצות", titleA: "כל מה שרציתם לדעת על", titleB: "משבק" },
+  faq: { badge: "שאלות נפוצות", titleA: "שאלות נפוצות", titleB: "", all: "לכל השאלות" },
   events: { badge: "אירועים", titleA: "אירועים", titleB: "קרובים", body: "מפגשים, סדנאות ותוכניות בקרוב. רוב האירועים לחברים.", all: "לכל האירועים" },
   contact: {
     badge: "צור קשר", titleA: "הישארו ב", titleB: "קשר", titleC: "עם הצוות שלנו", formTitle: "שלום, אנחנו כאן כדי לעזור",

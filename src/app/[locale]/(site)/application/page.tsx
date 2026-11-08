@@ -25,9 +25,9 @@ export default async function Application({ params, searchParams }: { params: Pr
     return (
       <div className="container-x flex max-w-xl flex-col items-center py-24 text-center">
         <span className="grid h-16 w-16 place-items-center rounded-full bg-mint text-white"><BadgeCheck className="h-8 w-8" /></span>
-        <h1 className="mt-6 text-[30px] font-semibold text-ink">{t.application.successTitle}</h1>
+        <h1 className="mt-6 t-h1">{t.application.successTitle}</h1>
         <p className="mt-3 text-[17px] leading-8 text-ink-2">{t.application.successBody}</p>
-        <Link href={`/${locale}`} className="btn btn-outline mt-8 h-11 px-6">{t.nav.backHome}</Link>
+        <Link href={`/${locale}`} className="btn btn-outline mt-8">{t.nav.backHome}</Link>
       </div>
     );
   }
@@ -40,8 +40,8 @@ export default async function Application({ params, searchParams }: { params: Pr
   const error = err === "age" ? t.application.ageError : err === "dup" ? t.application.duplicate : err ? t.application.error : undefined;
   return (
     <>
-      <PageHero a={t.application.titleA} b={t.application.titleB} sub={t.application.sub} back={{ href: `/${locale}`, label: t.nav.back }} />
-      <section className="container-x pb-16"><ApplicationForm t={t.application} locale={locale} lists={lists} error={error} /></section>
+      <PageHero narrow a={t.application.titleA} b={t.application.titleB} sub={t.application.sub} />
+      <section className="container-x max-w-3xl pb-16"><ApplicationForm t={t.application} locale={locale} lists={lists} error={error} /></section>
     </>
   );
 }

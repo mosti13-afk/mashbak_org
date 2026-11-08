@@ -48,7 +48,7 @@ export default async function AdminDropdowns({ params, searchParams }: { params:
       {all.some((d) => d.id < 0) && <Notice tone="red">{L.seed}</Notice>}
       {pending.length > 0 && (
         <section className="card mb-5 p-5">
-          <h2 className="font-black">{L.pending} <span className="badge badge-red ms-1">{pending.length}</span></h2>
+          <h2 className="font-bold">{L.pending} <span className="badge badge-red ms-1">{pending.length}</span></h2>
           <p className="mb-3 text-xs text-mist">{L.pendingHint}</p>
           <ul className="divide-y divide-line">
             {pending.map((d) => (
@@ -80,7 +80,7 @@ export default async function AdminDropdowns({ params, searchParams }: { params:
                   <span className="flex-1 font-semibold" dir="auto">{labelOf(d, locale)}</span>
                   {!d.is_active && <span className="badge badge-gray">{L.inactive}</span>}
                 </summary>
-                <form action={saveDropdown} className="space-y-3 border-t border-line bg-paper/50 p-4">
+                <form action={saveDropdown} className="space-y-3 border-t border-line bg-sky/50 p-4">
                   {hidden}<input type="hidden" name="id" value={d.id} />
                   <div className="grid gap-3 sm:grid-cols-[1fr_100px]">
                     <Field label={L.value}><input name="key" defaultValue={d.key} className="input" dir="auto" /></Field>
@@ -92,7 +92,7 @@ export default async function AdminDropdowns({ params, searchParams }: { params:
                     <SubmitButton className="btn btn-primary btn-sm">{L.save}</SubmitButton>
                   </div>
                 </form>
-                <form action={removeDropdown} className="bg-paper/50 px-4 pb-3 text-end">
+                <form action={removeDropdown} className="bg-sky/50 px-4 pb-3 text-end">
                   {hidden}<input type="hidden" name="id" value={d.id} />
                   <SubmitButton className="btn btn-ghost btn-sm text-[#b3261e]" confirm={`${t.common.delete}?`}><Trash2 className="h-4 w-4" />{t.common.delete}</SubmitButton>
                 </form>
@@ -103,7 +103,7 @@ export default async function AdminDropdowns({ params, searchParams }: { params:
 
         <form action={saveDropdown} className="card h-fit space-y-3 p-5">
           {hidden}
-          <h2 className="flex items-center gap-2 font-black"><Plus className="h-4 w-4" />{L.add}</h2>
+          <h2 className="flex items-center gap-2 font-bold"><Plus className="h-4 w-4" />{L.add}</h2>
           <textarea name="keys" rows={6} required className="textarea" dir="auto" />
           <p className="text-xs text-mist">{L.addHint}</p>
           <Field label={L.order}><input name="sort_order" type="number" defaultValue={(items.at(-1)?.sort_order ?? 0) + 1} className="input" dir="ltr" /></Field>

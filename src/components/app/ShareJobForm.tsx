@@ -28,14 +28,14 @@ export function ShareJobForm({ action, locale, copy, types, modes, defaultCompan
 
   return (
     <div className="space-y-4">
-      <div className="card p-5">
+      <div className="rounded-[20px] bg-white p-4 ring-1 ring-line sm:p-5">
         <label className="mb-1.5 block text-[14px] font-semibold text-ink">{copy.link}</label>
         <div className="flex gap-2">
           <span className="relative flex-1">
             <Link2 className="pointer-events-none absolute start-3 top-1/2 h-4 w-4 -translate-y-1/2 text-mist" />
-            <input value={url} onChange={(e) => setUrl(e.target.value)} type="url" dir="ltr" placeholder="https://careers.company.com/jobs/123" className="input h-11 ps-9" />
+            <input value={url} onChange={(e) => setUrl(e.target.value)} type="url" dir="ltr" placeholder="https://careers.company.com/jobs/123" className="input ps-10" />
           </span>
-          <button type="button" onClick={load} disabled={state === "loading"} className="btn btn-outline h-11 shrink-0">
+          <button type="button" onClick={load} disabled={state === "loading"} className="btn btn-secondary h-12 shrink-0">
             {state === "loading" ? <Loader2 className="h-4 w-4 animate-spin" /> : null}{state === "loading" ? copy.fetching : copy.fetch}
           </button>
         </div>
@@ -43,7 +43,7 @@ export function ShareJobForm({ action, locale, copy, types, modes, defaultCompan
         {state === "fail" && <p className="mt-2 text-[13px] text-[#b3261e]">{copy.failed}</p>}
       </div>
       <p className="text-center text-[13px] text-mist">{copy.manual}</p>
-      <form key={k} action={action} className="card grid gap-4 p-5 sm:grid-cols-2 sm:p-7">
+      <form key={k} action={action} className="grid gap-4 rounded-[20px] bg-white p-4 ring-1 ring-line sm:grid-cols-2 sm:p-6">
         <input type="hidden" name="locale" value={locale} />
         <input type="hidden" name="external_url" value={p?.url ?? ""} />
         <label className="sm:col-span-2"><span className="label">{copy.jobTitle}</span><input name="title" required minLength={2} defaultValue={p?.title ?? ""} className="input" dir="auto" /></label>

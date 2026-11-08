@@ -80,7 +80,7 @@ export default async function AdminNotifications({ params, searchParams }: { par
               <div key={s.label} className="card p-5">
                 <div className="flex items-center gap-3">
                   <span className="grid h-10 w-10 place-items-center rounded-xl bg-mint-soft text-navy"><s.icon className="h-5 w-5" /></span>
-                  <p className="flex-1 font-black">{s.label}</p>
+                  <p className="flex-1 font-bold">{s.label}</p>
                   {s.on ? <span className="badge badge-mint"><CheckCircle2 className="h-3.5 w-3.5" />{L.on}</span> : <span className="badge badge-gray"><CircleAlert className="h-3.5 w-3.5" />{L.off}</span>}
                 </div>
                 {!s.on && <p className="mt-3 text-xs leading-5 text-mist">{s.hint}</p>}
@@ -91,7 +91,7 @@ export default async function AdminNotifications({ params, searchParams }: { par
           <div className="grid gap-5 lg:grid-cols-2">
             <form action={sendBroadcast} className="card space-y-3 p-5">
               {hidden}
-              <h2 className="font-black">{L.broadcast}</h2>
+              <h2 className="font-bold">{L.broadcast}</h2>
               <Field label={L.bTitle}><input name="title" required maxLength={140} className="input" dir="auto" /></Field>
               <Field label={L.bMsg}><textarea name="message" required rows={4} className="textarea" dir="auto" /></Field>
               <div className="grid gap-3 sm:grid-cols-2">
@@ -110,7 +110,7 @@ export default async function AdminNotifications({ params, searchParams }: { par
 
             <form action={sendTestEmail} className="card h-fit space-y-3 p-5">
               {hidden}
-              <h2 className="font-black">{L.test}</h2>
+              <h2 className="font-bold">{L.test}</h2>
               <div className="grid gap-3 sm:grid-cols-2">
                 <Field label={L.template}>
                   <select name="template" className="select">{TEMPLATE_KEYS.map((k) => <option key={k} value={k}>{k}</option>)}</select>
@@ -136,7 +136,7 @@ export default async function AdminNotifications({ params, searchParams }: { par
             return (
               <details key={k} id={k} className="card overflow-hidden">
                 <summary className="flex cursor-pointer list-none flex-wrap items-center gap-2 p-4">
-                  <span className="flex-1 font-black">{def.subject[locale]}</span>
+                  <span className="flex-1 font-bold">{def.subject[locale]}</span>
                   <code className="text-xs text-mist" dir="ltr">{k}</code>
                   {(row ? row.email_enabled : true) && <span className="badge badge-navy"><Mail className="h-3 w-3" /></span>}
                   {(row ? row.whatsapp_enabled : !!def.wa) && def.wa && <span className="badge badge-mint"><MessageCircle className="h-3 w-3" /></span>}
@@ -156,7 +156,7 @@ export default async function AdminNotifications({ params, searchParams }: { par
                   <p className="text-xs text-mist">{L.vars}: <span dir="ltr">{vars.join(" ")}</span> · {L.overrideHint}</p>
                   <L10nFields name="subject" labels={[`${L.subject} (AR)`, "EN", "HE"]} value={{ ar: row?.subject?.ar ?? "", en: row?.subject?.en ?? "", he: row?.subject?.he ?? "" }} />
                   <L10nFields name="body" labels={[`${L.body} (AR)`, "EN", "HE"]} value={{ ar: row?.body?.ar ?? "", en: row?.body?.en ?? "", he: row?.body?.he ?? "" }} textarea rows={5} />
-                  <details className="rounded-xl bg-paper p-3 text-sm text-ink-2">
+                  <details className="rounded-xl bg-sky p-3 text-sm text-ink-2">
                     <summary className="cursor-pointer font-bold">Default</summary>
                     <p className="mt-2 whitespace-pre-line" dir="auto">{def.body[locale]}</p>
                   </details>
@@ -172,7 +172,7 @@ export default async function AdminNotifications({ params, searchParams }: { par
         log.length === 0 ? <p className="card p-6 text-center text-mist">{L.empty}</p> : (
           <div className="card overflow-x-auto">
             <table className="w-full min-w-[640px] text-sm">
-              <thead className="bg-paper text-start text-xs text-mist">
+              <thead className="bg-sky text-start text-xs text-mist">
                 <tr><th className="p-3 text-start">{L.when}</th><th className="p-3 text-start">{L.channel}</th><th className="p-3 text-start">{L.template}</th><th className="p-3 text-start">{L.to}</th><th className="p-3 text-start">{L.status}</th></tr>
               </thead>
               <tbody className="divide-y divide-line">

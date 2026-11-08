@@ -102,17 +102,13 @@ export function ReviewCard({ name, role, quote, photo, more, less }: { name: str
 export function Faq({ items }: { items: { q: string; a: string }[] }) {
   const [open, setOpen] = useState<number | null>(0);
   return (
-    <div className="space-y-3">
+    <div className="list">
       {items.map((f, i) => (
-        <div key={i} className="rounded-[12px] border border-line bg-white shadow-[0_2px_8px_rgba(0,0,0,0.04)]">
+        <div key={i}>
           <button type="button" onClick={() => setOpen(open === i ? null : i)} aria-expanded={open === i}
-            className="flex w-full items-center justify-between gap-4 px-4 py-4 text-start">
-            <span className="flex items-center gap-3 text-[16px] font-semibold text-ink">
-              <span className="h-6 w-[3px] rounded-full bg-navy" />{f.q}
-            </span>
-            <span className="grid h-8 w-8 shrink-0 place-items-center rounded-[8px] bg-navy text-white">
-              <ChevronDown className={clsx("h-4 w-4 transition", open === i && "rotate-180")} />
-            </span>
+            className="flex min-h-[64px] w-full items-center justify-between gap-4 px-5 py-4 text-start transition-colors hover:bg-sky">
+            <span className="text-[16px] font-bold text-ink">{f.q}</span>
+            <ChevronDown className={clsx("h-5 w-5 shrink-0 text-navy transition-transform", open === i && "rotate-180")} />
           </button>
           {open === i && <p className="px-5 pb-5 text-[15px] leading-7 text-ink-2">{f.a}</p>}
         </div>

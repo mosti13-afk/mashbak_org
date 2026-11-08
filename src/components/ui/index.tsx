@@ -5,18 +5,11 @@ import type { ReactNode } from "react";
 import { initials } from "@/lib/format";
 
 export function Logo({ white = false, className = "", height = 40 }: { white?: boolean; className?: string; height?: number }) {
-  const w = Math.round(height * (white ? 737 / 385 : 363 / 195));
-  return (
-    <Image
-      src={white ? "/logo-white.png" : "/logo_color.png"}
-      alt="مشبك، Mashbak"
-      width={w}
-      height={height}
-      className={clsx("h-auto select-none", className)}
-      style={{ height, width: "auto" }}
-      priority
-    />
-  );
+  // The live mashbak.org logo (speech bubble with "مشبك"), crisp at any size
+  const src = white ? "/brand/logo_footer.png" : "/brand/nav_logo.png";
+  const ratio = white ? 760 / 396 : 1688 / 875;
+  // eslint-disable-next-line @next/next/no-img-element
+  return <img src={src} alt="مشبك، Mashbak" width={Math.round(height * ratio)} height={height} className={clsx("select-none", className)} style={{ height, width: "auto" }} />;
 }
 
 const avatarTones = ["#117286", "#4e8c74", "#6795a8", "#80a69e", "#a5b683", "#0a476d"];
@@ -38,13 +31,12 @@ export function Avatar({ src, name, size = 44, className = "", ring = false }: {
   );
 }
 
-export function PageHeader({ eyebrow, title, sub, actions }: { eyebrow?: string; title: string; sub?: string; actions?: ReactNode }) {
+export function PageHeader({ title, sub, actions }: { eyebrow?: string; title: string; sub?: string; actions?: ReactNode }) {
   return (
     <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
       <div className="min-w-0">
-        {eyebrow && <p className="eyebrow mb-2">{eyebrow}</p>}
-        <h1 className="h-display text-2xl sm:text-3xl">{title}</h1>
-        {sub && <p className="mt-1.5 max-w-2xl text-ink-2">{sub}</p>}
+        <h1 className="t-h1">{title}</h1>
+        {sub && <p className="mt-1.5 max-w-2xl text-[15px] leading-7 text-ink-2">{sub}</p>}
       </div>
       {actions && <div className="flex flex-wrap gap-2">{actions}</div>}
     </div>
@@ -98,7 +90,7 @@ export function Tabs({ items }: { items: { href: string; label: string; active: 
   return (
     <nav className="mb-5 flex gap-1 overflow-x-auto rounded-full border border-line bg-white p-1 text-sm">
       {items.map((t) => (
-        <Link key={t.href} href={t.href} className={clsx("flex shrink-0 items-center gap-1.5 rounded-full px-4 py-2 font-bold transition", t.active ? "bg-navy text-white" : "text-ink-2 hover:bg-paper")}>
+        <Link key={t.href} href={t.href} className={clsx("flex shrink-0 items-center gap-1.5 rounded-full px-4 py-2 font-bold transition", t.active ? "bg-navy text-white" : "text-ink-2 hover:bg-sky")}>
           {t.label}
           {t.count ? <span className={clsx("rounded-full px-1.5 text-[11px]", t.active ? "bg-white/20" : "bg-mint-soft text-green-deep")}>{t.count}</span> : null}
         </Link>

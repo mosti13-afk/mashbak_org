@@ -1,9 +1,10 @@
 "use client";
 
 import clsx from "clsx";
-import { ArrowUp, RotateCcw, Sparkles, Square } from "lucide-react";
+import { ArrowUp, RotateCcw, Square } from "lucide-react";
 import Link from "next/link";
 import { Fragment, useEffect, useRef, useState, type ReactNode } from "react";
+import { MashbakniButton, MashbakniMark } from "./MashbakniButton";
 
 type Msg = { role: "user" | "assistant"; content: string };
 
@@ -60,6 +61,7 @@ export function Mashbakni({ locale, copy, firstName }: { locale: string; copy: M
   const [msgs, setMsgs] = useState<Msg[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
+  const [answered, setAnswered] = useState(false);
   const abortRef = useRef<AbortController | null>(null);
   const endRef = useRef<HTMLDivElement>(null);
   const taRef = useRef<HTMLTextAreaElement>(null);
@@ -94,6 +96,8 @@ export function Mashbakni({ locale, copy, firstName }: { locale: string; copy: M
         setMsgs([...next, { role: "assistant", content: acc }]);
       }
       if (!acc.trim()) setMsgs([...next, { role: "assistant", content: "…" }]);
+      setAnswered(true);
+      setTimeout(() => setAnswered(false), 2000);
     } catch (e) {
       if ((e as Error).name !== "AbortError") setMsgs([...next, { role: "assistant", content: locale === "en" ? "Connection problem, please try again." : locale === "he" ? "בעיית חיבור, נסו שוב." : "مشكلة في الاتصال، حاول مرة أخرى." }]);
     } finally {
@@ -104,9 +108,9 @@ export function Mashbakni({ locale, copy, firstName }: { locale: string; copy: M
   }
 
   return (
-    <div className="flex h-[calc(100dvh-9.5rem)] min-h-[480px] flex-col overflow-hidden rounded-[24px] border border-line bg-white shadow-[0_10px_30px_rgba(0,0,0,0.04)] lg:h-[calc(100dvh-7rem)]">
+    <div className="flex h-[calc(100dvh-56px-64px-env(safe-area-inset-bottom)-36px)] min-h-[420px] flex-col overflow-hidden rounded-[24px] border border-line bg-white shadow-[0_10px_30px_rgba(0,0,0,0.04)] lg:h-[calc(100dvh-80px)]">
       <header className="flex items-center gap-3 border-b border-line bg-gradient-to-l from-mint-soft to-white px-4 py-3 sm:px-5">
-        <span className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl bg-navy text-white"><Sparkles className="h-5 w-5" /></span>
+        <MashbakniButton size={44} state={busy ? "thinking" : answered ? "answered" : input.trim() ? "listening" : "idle"} className="shrink-0" />
         <div className="min-w-0 flex-1">
           <h1 className="text-[17px] font-bold text-ink">{copy.title}</h1>
           <p className="truncate text-[13px] text-mist">{copy.sub}</p>
@@ -121,8 +125,7 @@ export function Mashbakni({ locale, copy, firstName }: { locale: string; copy: M
       <div className="flex-1 overflow-y-auto px-4 py-5 sm:px-6" aria-live="polite">
         {msgs.length === 0 ? (
           <div className="mx-auto flex h-full max-w-xl flex-col items-center justify-center text-center">
-            <span className="grid h-16 w-16 place-items-center rounded-[22px] bg-mint-soft text-navy"><Sparkles className="h-8 w-8" /></span>
-            <p className="mt-4 text-[20px] font-semibold text-ink">{copy.hello.replace("{name}", firstName)}</p>
+            <p className="mt-2 text-[20px] font-semibold text-ink">{copy.hello.replace("{name}", firstName)}</p>
             <p className="mt-1 text-[15px] text-ink-2">{copy.sub}</p>
             <div className="mt-6 grid w-full gap-2 sm:grid-cols-2">
               {copy.suggestions.map((s) => (
@@ -139,7 +142,7 @@ export function Mashbakni({ locale, copy, firstName }: { locale: string; copy: M
                   <div className="max-w-[85%] whitespace-pre-wrap rounded-[20px] rounded-ee-md bg-navy px-4 py-2.5 text-[15px] leading-7 text-white">{m.content}</div>
                 ) : (
                   <div className="flex max-w-[92%] gap-2.5">
-                    <span className="mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-xl bg-mint-soft text-navy"><Sparkles className="h-4 w-4" /></span>
+                    <span className="mt-1 grid h-7 w-7 shrink-0 place-items-center rounded-xl bg-mint-soft text-navy"><MashbakniMark className="h-5 w-5" /></span>
                     <div className="rounded-[20px] rounded-ss-md bg-sky px-4 py-2.5 text-[15px] leading-7 text-ink-2 ring-1 ring-line">
                       {m.content ? <Markdown text={m.content} /> : (
                         <span className="inline-flex gap-1 py-2" aria-label="…">

@@ -15,7 +15,7 @@ export default async function Contact({ params, searchParams }: { params: Promis
   const s = await repo.getSettings();
   return (
     <>
-      <PageHero a={t.contact.pageTitleA} b={t.contact.pageTitleB} sub={t.contact.pageSub} back={{ href: `/${locale}`, label: t.nav.back }} />
+      <PageHero a={t.contact.pageTitleA} b={t.contact.pageTitleB} sub={t.contact.pageSub} />
       <section className="container-x pb-14"><ContactBlock s={s} locale={locale} sent={!!sp(q.ok)} error={!!sp(q.error)} /></section>
       <CtaBand locale={locale} />
     </>

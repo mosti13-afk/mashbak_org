@@ -79,7 +79,7 @@ export function Dialog({ trigger, triggerClass = "btn btn-primary", title, child
         <div className="p-6">
           <div className="mb-4 flex items-start justify-between gap-4">
             <h2 className="h-display text-xl">{title}</h2>
-            <button type="button" onClick={() => ref.current?.close()} className="-m-1 rounded-full p-1 text-mist hover:bg-paper hover:text-ink" aria-label="close">
+            <button type="button" onClick={() => ref.current?.close()} className="-m-1 rounded-full p-1 text-mist hover:bg-sky hover:text-ink" aria-label="close">
               <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M6 6l12 12M18 6L6 18" /></svg>
             </button>
           </div>
@@ -110,5 +110,24 @@ export function CopyButton({ text, label, done }: { text: string; label: string;
     <button type="button" className="btn btn-outline btn-sm" onClick={() => navigator.clipboard.writeText(text).then(() => { setOk(true); setTimeout(() => setOk(false), 1600); })}>
       {ok ? done : label}
     </button>
+  );
+}
+
+/** Full-width language choice with the language names (used in Account and the public footer). */
+export function LanguageSeg({ locale, dark = false }: { locale: Locale; dark?: boolean }) {
+  const path = usePathname();
+  const router = useRouter();
+  const names: Record<Locale, string> = { ar: "العربية", en: "English", he: "עברית" };
+  return (
+    <div className={clsx("flex gap-1 rounded-[14px] p-1", dark ? "bg-white/10" : "bg-haze")} role="radiogroup">
+      {locales.map((l) => (
+        <button key={l} type="button" role="radio" aria-checked={l === locale} lang={l}
+          onClick={() => { const p = path.split("/"); p[1] = l; router.push(p.join("/") + window.location.search); }}
+          className={clsx("h-9 flex-1 rounded-[10px] px-3 text-[14px] transition-colors",
+            l === locale ? (dark ? "bg-white font-bold text-navy" : "bg-white font-bold text-navy shadow-[0_1px_2px_rgb(6_42_64/0.08)]") : dark ? "text-white/75 hover:text-white" : "text-ink-2")}>
+          {names[l]}
+        </button>
+      ))}
+    </div>
   );
 }
