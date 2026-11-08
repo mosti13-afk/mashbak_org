@@ -3,7 +3,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { cache } from "react";
 import type { Locale } from "@/i18n/config";
-import { isDemo } from "./env";
+import { demoActive } from "./preview";
 import { repo } from "./data";
 import { supabaseServer } from "./supabase/server";
 import type { Profile } from "./types";
@@ -12,7 +12,7 @@ export const DEMO_COOKIE = "mb_demo_uid";
 
 /** The signed-in member (or null). Cached per request. */
 export const getViewer = cache(async (): Promise<Profile | null> => {
-  if (isDemo) {
+  if (await demoActive()) {
     const id = (await cookies()).get(DEMO_COOKIE)?.value;
     return id ? repo.getProfile(id) : null;
   }

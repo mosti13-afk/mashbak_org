@@ -5,6 +5,7 @@ import "../mashbakni.css";
 import { getDict, isLocale, localeMeta, type Locale } from "@/i18n";
 import { ServiceWorker } from "@/components/pwa";
 import { isDemo } from "@/lib/env";
+import { demoActive } from "@/lib/preview";
 
 // Content comes from the database and the session, so every page renders on request
 export const dynamic = "force-dynamic";
@@ -34,9 +35,14 @@ export default async function LocaleLayout({ children, params }: { children: Rea
   return (
     <html lang={locale} dir={localeMeta[locale].dir}>
       <body className="min-h-dvh">
-        {isDemo && (
+        {isDemo ? (
           <div className="bg-navy-ink px-4 py-1.5 text-center text-[11px] font-semibold tracking-wide text-white/80">{t.common.demoBanner}</div>
-        )}
+        ) : (await demoActive()) ? (
+          <div className="bg-navy-ink px-4 py-1.5 text-center text-[12px] text-white/85">
+            {{ ar: "وضع المعاينة: بيانات تجريبية فقط، ولا تُرسل أي رسائل.", en: "Preview mode: demo data only, no messages are sent.", he: "מצב תצוגה מקדימה: נתוני הדגמה בלבד, לא נשלחות הודעות." }[locale]}{" "}
+            <a href={`/${locale}/preview/exit`} className="font-bold text-mint underline underline-offset-2">{{ ar: "خروج", en: "Exit", he: "יציאה" }[locale]}</a>
+          </div>
+        ) : null}
         {children}
         <ServiceWorker />
       </body>

@@ -14,6 +14,8 @@ const ago = (days: number) => new Date(Date.now() - days * DAY).toISOString();
 
 export const DEMO_MEMBER_ID = "u-yousef";
 export const DEMO_ADMIN_ID = "u-nabil";
+/** The owner's own account in the private preview (admin and member). */
+export const DEMO_OWNER_ID = "u-mustafa";
 
 function p(x: Partial<Profile> & Pick<Profile, "id" | "full_name_ar" | "full_name_en" | "email">): Profile {
   return {
@@ -40,6 +42,12 @@ function p(x: Partial<Profile> & Pick<Profile, "id" | "full_name_ar" | "full_nam
 
 export function seedProfiles(): Profile[] {
   return [
+    p({
+      id: DEMO_OWNER_ID, role: "admin", full_name_ar: "مصطفى البكري", full_name_en: "Mustafa Bakri", email: "mosti13@gmail.com",
+      headline: "Community Leader, Mashbak", company: "Co-Impact", sector: "Nonprofit", city: "عكا",
+      bio: "أقود مجتمع مشبك في كو-إمباكت: الاستراتيجية، البرامج، الشراكات والفعاليات.", career_goals: ["قيادة", "شراكات"], interests: ["Community", "Product"],
+      open_to_mentoring: true, created_at: ago(900),
+    }),
     p({
       id: DEMO_MEMBER_ID, full_name_ar: "يوسف نصّار", full_name_en: "Yousef Nassar", email: "yousef@example.com",
       phone: "+972500000005", avatar_url: "/members/m5.jpg", headline: "Senior Data Engineer", company: "Check Point",

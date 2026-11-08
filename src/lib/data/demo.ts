@@ -65,6 +65,15 @@ function db(): Store {
     for (const pr of st.profiles) { pr.company_id = matchCompany(st.companies, pr.company); pr.open_to_referrals ??= true; pr.open_to_chats ??= true; pr.help_offers ??= []; }
     for (const j of st.jobs) { j.company_id ??= matchCompany(st.companies, j.company); j.source ??= "member"; }
     for (const r of st.referrals) r.insider_id ??= st.jobs.find((j) => j.id === r.job_id)?.posted_by ?? null;
+    // Give the owner's preview account the same activity as the demo member, so the inside looks lived-in.
+    const M = seed.DEMO_MEMBER_ID, O = seed.DEMO_OWNER_ID;
+    const mirror = <T extends object>(list: T[]) => {
+      for (const row of list.filter((r) => Object.values(r).includes(M))) {
+        const copy = Object.fromEntries(Object.entries(row).map(([k, v]) => [k, v === M ? O : k === "id" ? `${v}-o` : v])) as T;
+        list.push(copy);
+      }
+    };
+    mirror(st.registrations); mirror(st.referrals); mirror(st.connections); mirror(st.notifications); mirror(st.follows);
   }
   return g.__mashbakDemo;
 }

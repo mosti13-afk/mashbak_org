@@ -7,7 +7,7 @@ import { SocialIcon } from "@/components/site/Social";
 import { Logo } from "@/components/ui";
 import { SubmitButton } from "@/components/ui/client";
 import { siteDict } from "@/i18n/site";
-import { isDemo } from "@/lib/env";
+import { demoActive } from "@/lib/preview";
 import { pageLocale, sp, type SearchParams } from "@/lib/page";
 import { getViewer } from "@/lib/session";
 
@@ -69,7 +69,7 @@ export default async function Login({ params, searchParams }: { params: Promise<
           <div className="mt-6">
             {errText && <p role="alert" className="mb-4 rounded-[14px] bg-[#fdecea] px-4 py-3 text-[14px] text-[#b3261e]">{errText}</p>}
 
-            {isDemo ? (
+            {(await demoActive()) ? (
               <div className="grid gap-3">
                 <form action={demoLogin}>{hidden}<input type="hidden" name="as" value="member" />
                   <SubmitButton className="btn btn-primary btn-lg w-full"><UserRound className="h-4 w-4" />{t.login.demoMember}</SubmitButton></form>

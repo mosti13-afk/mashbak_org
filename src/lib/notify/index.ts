@@ -6,6 +6,7 @@ import { repo } from "@/lib/data";
 import { isDemo, SITE_URL } from "@/lib/env";
 import { supabaseAdmin } from "@/lib/supabase/server";
 import { emailHtml, fill } from "./render";
+import { previewOnly } from "@/lib/preview";
 import { wants, type NotifyPrefs, type TemplateCategory } from "./prefs";
 import { TEMPLATES, waName, type Template, type TemplateKey } from "./templates";
 
@@ -242,6 +243,7 @@ export const TEMPLATE_CATEGORY: Record<TemplateKey, TemplateCategory> = {
 };
 
 export async function notify(key: TemplateKey, to: Recipient, vars: Vars = {}) {
+  if (await previewOnly().catch(() => false)) return; // private preview: never send real messages
   try {
     const t: Template = TEMPLATES[key];
     const ov = (await overrides()).get(key);

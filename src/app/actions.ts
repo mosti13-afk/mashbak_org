@@ -7,7 +7,7 @@ import { z } from "zod";
 import { isLocale, type Locale, type L10n } from "@/i18n/config";
 import { repo } from "@/lib/data";
 import { DEMO_ADMIN_ID, DEMO_MEMBER_ID } from "@/lib/data/demo-seed";
-import { isDemo } from "@/lib/env";
+import { demoActive, PREVIEW_COOKIE } from "@/lib/preview";
 import { siteUrl } from "@/lib/site-url";
 import { fromLocalInput } from "@/lib/format";
 import { DEMO_COOKIE, requireAdmin, requireMember } from "@/lib/session";
@@ -35,7 +35,7 @@ const list = (s: string) => s.split(/[,،\n]/).map((x) => x.trim()).filter(Boole
 
 // ---------- auth ----------
 export async function demoLogin(f: FormData) {
-  if (!isDemo) return;
+  if (!(await demoActive())) return;
   const who = str(f, "as") === "admin" ? DEMO_ADMIN_ID : DEMO_MEMBER_ID;
   (await cookies()).set(DEMO_COOKIE, who, { path: "/", httpOnly: true, sameSite: "lax", maxAge: 60 * 60 * 24 * 7 });
   redirect(`/${loc(f)}/${who === DEMO_ADMIN_ID ? "admin" : "app"}`);
@@ -100,7 +100,7 @@ export async function passwordLogin(f: FormData) {
 }
 
 export async function logout(f: FormData) {
-  if (isDemo) (await cookies()).delete(DEMO_COOKIE);
+  if (await demoActive()) { const jar = await cookies(); jar.delete(DEMO_COOKIE); jar.delete(PREVIEW_COOKIE); }
   else await (await supabaseServer()).auth.signOut();
   redirect(`/${loc(f)}`);
 }
@@ -442,7 +442,7 @@ export async function confirmPhoneVerify(f: FormData) {
   const ok = await checkPhoneVerification(pending.token, str(f, "code"));
   if (!ok) redirect(`${NOTIF(locale)}?verify=bad`);
   const patch = { phone: pending.phone, phone_verified_at: new Date().toISOString() };
-  const admin = isDemo ? null : supabaseAdmin();
+  const admin = (await demoActive()) ? null : supabaseAdmin();
   if (admin) await admin.from("profiles").update(patch).eq("id", v.id);
   else await repo.updateProfile(v.id, patch);
   jar.delete(VERIFY_COOKIE); jar.delete(SIM_COOKIE);

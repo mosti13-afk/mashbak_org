@@ -1,5 +1,5 @@
 import "server-only";
-import { isDemo } from "@/lib/env";
+import { demoActive } from "@/lib/preview";
 import { supabaseServer } from "@/lib/supabase/server";
 import { clearTemplateCache, demoLog } from "./index";
 
@@ -14,7 +14,7 @@ export interface LogRow { id?: string; channel: string; template: string | null;
 const demoTemplates = new Map<string, TemplateRow>();
 
 export async function listTemplateRows(): Promise<TemplateRow[]> {
-  if (isDemo) return [...demoTemplates.values()];
+  if (await demoActive()) return [...demoTemplates.values()];
   const s = await supabaseServer();
   const { data } = await s.from("notification_templates").select("*");
   return (data ?? []) as TemplateRow[];
@@ -22,21 +22,21 @@ export async function listTemplateRows(): Promise<TemplateRow[]> {
 
 export async function saveTemplateRow(row: TemplateRow) {
   clearTemplateCache();
-  if (isDemo) { demoTemplates.set(row.key, row); return; }
+  if (await demoActive()) { demoTemplates.set(row.key, row); return; }
   const s = await supabaseServer();
   const { error } = await s.from("notification_templates").upsert({ ...row, updated_at: new Date().toISOString() });
   if (error) throw new Error(error.message);
 }
 
 export async function listLog(limit = 150): Promise<LogRow[]> {
-  if (isDemo) return demoLog.slice(0, limit).map((r) => ({ ...r, error: r.error ?? null, body: r.body ?? r.subject ?? null, created_at: r.at }));
+  if (await demoActive()) return demoLog.slice(0, limit).map((r) => ({ ...r, error: r.error ?? null, body: r.body ?? r.subject ?? null, created_at: r.at }));
   const s = await supabaseServer();
   const { data } = await s.from("message_log").select("*").order("created_at", { ascending: false }).limit(limit);
   return (data ?? []) as LogRow[];
 }
 
 export async function recordBroadcast(b: { title: string; body: string; channels: string[]; audience: string; recipients: number; created_by: string }) {
-  if (isDemo) return;
+  if (await demoActive()) return;
   const s = await supabaseServer();
   await s.from("broadcasts").insert({ ...b, title: { ar: b.title, en: b.title, he: b.title }, body: { ar: b.body, en: b.body, he: b.body } });
 }
